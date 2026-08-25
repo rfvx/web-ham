@@ -1,0 +1,4791 @@
+{
+ "fetchedAt": "2026-07-31T15:10:55.452Z",
+ "sources": {
+  "cabrillo": "https://www.contestcalendar.com/cabnames.php",
+  "n1mm": "https://n1mmwp.hamdocs.com/manual-supported/contests-list/"
+ },
+ "wa7bnm": [
+  {
+   "ref": "156",
+   "cab": "10-10-SPRINT",
+   "name": "10-10 Int. 10-10 Day Sprint",
+   "exchange": "10-10 Member: Name + 10-10 number + (state/province/country)|Non-Member: Name + 0 + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "All"
+  },
+  {
+   "ref": "464",
+   "cab": "10-10-FALL-DIGITAL",
+   "name": "10-10 Int. Fall Contest, Digital",
+   "exchange": "10-10 Member: Name + 10-10 number + (state/province/country)|Non-Member: Name + 0 + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "Digital"
+  },
+  {
+   "ref": "81",
+   "cab": "10-10-SUMMER-PHONE",
+   "name": "10-10 Int. Summer Contest, SSB",
+   "exchange": "10-10 Member: Name + 10-10 number + (state/province/country)|Non-Member: Name + 0 + (state/province/country)",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "237",
+   "cab": "10-10-WINTER-PHONE",
+   "name": "10-10 Int. Winter Contest, SSB",
+   "exchange": "10-10 Member: Name + 10-10 number + (state/province/country)|Non-Member: Name + 0 + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "Phone"
+  },
+  {
+   "ref": "404",
+   "cab": "7QP",
+   "name": "7th Call Area QSO Party",
+   "exchange": "7th Area: RS(T) + 5-letter state/county code|non-7th Area: RS(T) + (state/province/DX)",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital (no FT8)"
+  },
+  {
+   "ref": "715",
+   "cab": "A1CLUB-AWT",
+   "name": "A1Club AWT",
+   "exchange": "Member: RST + Name",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "578",
+   "cab": "ALL-AFRICA",
+   "name": "Africa All Mode International DX Contest",
+   "exchange": "RS(T) + Serial No.",
+   "status": "Active, but no recent results",
+   "mode": "CW, SSB, RTTY"
+  },
+  {
+   "ref": "752",
+   "cab": "",
+   "name": "Africa FT4 DX Contest",
+   "exchange": "Signal report + 4-character grid square",
+   "status": "Active, but no recent results",
+   "mode": "FT4"
+  },
+  {
+   "ref": "7",
+   "cab": "AGCW-QRP",
+   "name": "AGCW QRP/QRP Party",
+   "exchange": "RST + QSO No. + \"/\" + Class ID (A/B)",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "134",
+   "cab": "AL-QSO-PARTY",
+   "name": "Alabama QSO Party",
+   "exchange": "AL: RS(T) + County|non-AL: RS(T) + (state/province/country)",
+   "status": "Active, but no recent results",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "47",
+   "cab": "AADX-CW",
+   "name": "All Asian DX Contest, CW",
+   "exchange": "RST + 2-digit age",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "102",
+   "cab": "AADX-SSB",
+   "name": "All Asian DX Contest, Phone",
+   "exchange": "RS + 2-digit age",
+   "status": "Active, confirmed",
+   "mode": "Phone"
+  },
+  {
+   "ref": "719",
+   "cab": "ANZAC",
+   "name": "ANZAC Day Contest",
+   "exchange": "CW/SSB: RS(T) + Serial No.|FT8: Signal report + grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB, FT8"
+  },
+  {
+   "ref": "686",
+   "cab": "40-80",
+   "name": "ARI 40/80 Contest",
+   "exchange": "RS(T) + 2-letter province car code",
+   "status": "Active historically, but unconfirmed",
+   "mode": "Phone, CW, Digital"
+  },
+  {
+   "ref": "9",
+   "cab": "ARI-DX",
+   "name": "ARI International DX Contest",
+   "exchange": "I: RS(T) + 2-letter province|non-I: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "Phone, CW, RTTY"
+  },
+  {
+   "ref": "482",
+   "cab": "AZ-QSO-PARTY",
+   "name": "Arizona QSO Party",
+   "exchange": "AZ: RS(T) + county|non-AZ: RS(T) + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "132",
+   "cab": "AR-QSO-PARTY",
+   "name": "Arkansas QSO Party",
+   "exchange": "AR: RS(T) + County|non-AR: RS(T) + (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital (no FT8)"
+  },
+  {
+   "ref": "88",
+   "cab": "ARRL-10-GHZ",
+   "name": "ARRL 10 GHz and Up Contest",
+   "exchange": "6-Character Maidenhead Locator",
+   "status": "Active, confirmed",
+   "mode": "Any"
+  },
+  {
+   "ref": "199",
+   "cab": "ARRL-10",
+   "name": "ARRL 10-Meter Contest",
+   "exchange": "W/VE: RST + State/Province|XE: RST + State|DX: RST + Serial No.|MM: RST + ITU Region",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "194",
+   "cab": "ARRL-160",
+   "name": "ARRL 160-Meter Contest",
+   "exchange": "W/VE: RST + ARRL/RAC Section|DX: RST",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "615",
+   "cab": "ARRL-222",
+   "name": "ARRL 222 MHz and Up Distance Contest",
+   "exchange": "6-character grid square",
+   "status": "Active, confirmed",
+   "mode": "Any"
+  },
+  {
+   "ref": "417",
+   "cab": "ARRL-EME",
+   "name": "ARRL EME Contest",
+   "exchange": "4-character grid square (standard signal report acceptable for analog modes if grid square not possible)",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "57",
+   "cab": "ARRL-FD",
+   "name": "ARRL Field Day",
+   "exchange": "W/VE: Number of transmitters (see rules) + Operating class + ARRL/RAC section|DX: Number of transmitters (see rules) + Operating class + \"DX\"",
+   "status": "Active, confirmed",
+   "mode": "All"
+  },
+  {
+   "ref": "716",
+   "cab": "ARRL-DIGI",
+   "name": "ARRL Inter. Digital Contest",
+   "exchange": "4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "Digital (no RTTY)"
+  },
+  {
+   "ref": "256",
+   "cab": "ARRL-DX-CW",
+   "name": "ARRL Inter. DX Contest, CW",
+   "exchange": "W/VE: RST + (state/province)|non-W/VE: RST + power",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "289",
+   "cab": "ARRL-DX-SSB",
+   "name": "ARRL Inter. DX Contest, SSB",
+   "exchange": "W/VE: RS + (state/province)|non-W/VE: RS + power",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "231",
+   "cab": "ARRL-VHF-JAN",
+   "name": "ARRL January VHF Contest",
+   "exchange": "4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "Any"
+  },
+  {
+   "ref": "43",
+   "cab": "ARRL-VHF-JUN",
+   "name": "ARRL June VHF Contest",
+   "exchange": "4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "All"
+  },
+  {
+   "ref": "502",
+   "cab": "ARRL-RR-CW",
+   "name": "ARRL Rookie Roundup, CW",
+   "exchange": "NA: Name + 2-digit year first licensed + (state/province/XE area/DX)",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "501",
+   "cab": "ARRL-RR-DIG",
+   "name": "ARRL Rookie Roundup, RTTY",
+   "exchange": "NA: Name + 2-digit year first licensed + (state/province/XE area/DX)",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "500",
+   "cab": "ARRL-RR-PH",
+   "name": "ARRL Rookie Roundup, SSB",
+   "exchange": "Name + 2-digit year first licensed + (state/province/XE area/DX)",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "217",
+   "cab": "ARRL-RTTY",
+   "name": "ARRL RTTY Roundup",
+   "exchange": "W/VE: RST + (state/province)|non-W/VE: RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "254",
+   "cab": "ARRL-SCR",
+   "name": "ARRL School Club Roundup",
+   "exchange": "RS(T) + Class (I/C/S) + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, RTTY/Digital"
+  },
+  {
+   "ref": "113",
+   "cab": "ARRL-VHF-SEP",
+   "name": "ARRL September VHF Contest",
+   "exchange": "4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "All"
+  },
+  {
+   "ref": "177",
+   "cab": "ARRL-SS-CW",
+   "name": "ARRL Sweepstakes Contest, CW",
+   "exchange": "Serial No. + Precedence (Q/A/B/U/M/S) + [your call sign] + Check + ARRL/RAC Section",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "178",
+   "cab": "ARRL-SS-SSB",
+   "name": "ARRL Sweepstakes Contest, SSB",
+   "exchange": "Serial No. + Precedence (Q/A/B/U/M/S) + [your call sign] + Check + ARRL/RAC Section",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "764",
+   "cab": "ARSI-VU-DX",
+   "name": "ARSI VU DX Contest",
+   "exchange": "VU: RS(T) + 2-letter state/UT code|Non-VU: RS(T) + Serial No.",
+   "status": "Active, but no recent results",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "164",
+   "cab": "AP-SPRINT",
+   "name": "Asia-Pacific Fall Sprint, CW",
+   "exchange": "RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "42",
+   "cab": "AP-SPRINT",
+   "name": "Asia-Pacific Sprint, SSB",
+   "exchange": "RS + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "773",
+   "cab": "AC-QSO-PARTY",
+   "name": "Atlantic Canada QSO Party",
+   "exchange": "VE1/9,VO1/2,VY2: RS(T) + province + county/division|Non-VE1/9,VO1/2,VY2: RS(T) + (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "714",
+   "cab": "WIA-AUSTRALIADAY",
+   "name": "Australia Day Contest",
+   "exchange": "RST + 4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "599",
+   "cab": "BALKAN-HF",
+   "name": "Balkan HF Contest",
+   "exchange": "RS(T) + QSO No.",
+   "status": "Active, but no recent results",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "28",
+   "cab": "BALTIC-CONTEST",
+   "name": "Baltic Contest",
+   "exchange": "RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "309",
+   "cab": "BARTG-RTTY",
+   "name": "BARTG HF RTTY Contest",
+   "exchange": "RST + Serial No. + 4-digit time (UTC)",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "230",
+   "cab": "BARTG-SPRINT",
+   "name": "BARTG RTTY Sprint",
+   "exchange": "Serial No. (no signal report)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "513",
+   "cab": "BARTG-SPRINT",
+   "name": "BARTG Sprint 75",
+   "exchange": "Serial No.",
+   "status": "Active, confirmed",
+   "mode": "75 Baud RTTY"
+  },
+  {
+   "ref": "703",
+   "cab": "BARTG-SPRINT",
+   "name": "BARTG Sprint PSK63 Contest",
+   "exchange": "Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "PSK63"
+  },
+  {
+   "ref": "269",
+   "cab": "BC-QSO-PARTY",
+   "name": "British Columbia QSO Party",
+   "exchange": "BC: RS(T) + District|non-BC: RS(T) + (state/province/\"DX\")",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "427",
+   "cab": "BUCURESTI-DIGITAL",
+   "name": "Bucharest Digital Contest",
+   "exchange": "RST + QSO No.",
+   "status": "Active, confirmed",
+   "mode": "FT4"
+  },
+  {
+   "ref": "140",
+   "cab": "CA-QSO-PARTY",
+   "name": "California QSO Party",
+   "exchange": "CA: Serial No. + County|non-CA: Serial No. + (state/VE province or territory/DX)",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "717",
+   "cab": "CP-QSO-PARTY",
+   "name": "Canadian Prairies QSO Party",
+   "exchange": "VE4/5/6: RS(T) + district code|Non-VE4/5/6: RST + (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "122",
+   "cab": "CQP",
+   "name": "Collegiate QSO Party",
+   "exchange": "Collegiate: School Identifier + RS(T)|Individual: State/Province/DX Entity + RS(T)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "431",
+   "cab": "COQP",
+   "name": "Colorado QSO Party",
+   "exchange": "CO: Name + county|W/VE: Name + (state/province)|DX: Name + DXCC prefix",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "282",
+   "cab": "RSGB-COMMONWEALTH",
+   "name": "Commonwealth (BERU) Contest",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "673",
+   "cab": "STAYHOME",
+   "name": "COVID-19 Radio Communication Event",
+   "exchange": "RST + Op age",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB, Digital (FT4/FT8)"
+  },
+  {
+   "ref": "232",
+   "cab": "CQ-160-CW",
+   "name": "CQ 160-Meter Contest, CW",
+   "exchange": "W/VE: RST + (state/province)|DX: RST + CQ Zone",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "259",
+   "cab": "CQ-160-SSB",
+   "name": "CQ 160-Meter Contest, SSB",
+   "exchange": "W/VE: RS + (state/province)|DX: RS + CQ Zone",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "192",
+   "cab": "CQ-WW-CW",
+   "name": "CQ Worldwide DX Contest, CW",
+   "exchange": "RST + CQ Zone No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "130",
+   "cab": "CQ-WW-RTTY",
+   "name": "CQ Worldwide DX Contest, RTTY",
+   "exchange": "48 States/Canada: RST + CQ Zone + (state/VE area)|All Others: RST + CQ Zone",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "172",
+   "cab": "CQ-WW-SSB",
+   "name": "CQ Worldwide DX Contest, SSB",
+   "exchange": "RS + CQ Zone No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "768",
+   "cab": "CQ-VHF-DIGI",
+   "name": "CQ Worldwide VHF Digital Contest",
+   "exchange": "4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "Digital"
+  },
+  {
+   "ref": "73",
+   "cab": "CQ-VHF-SSBCW",
+   "name": "CQ Worldwide VHF SSB/CW Contest",
+   "exchange": "4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB, FM"
+  },
+  {
+   "ref": "245",
+   "cab": "CQ-WPX-RTTY",
+   "name": "CQ WW RTTY WPX Contest",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "29",
+   "cab": "CQ-WPX-CW",
+   "name": "CQ WW WPX Contest, CW",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "291",
+   "cab": "CQ-WPX-SSB",
+   "name": "CQ WW WPX Contest, SSB",
+   "exchange": "RS + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "14",
+   "cab": "CQ-M",
+   "name": "CQ-M International DX Contest",
+   "exchange": "RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "21",
+   "cab": "CQMMDX",
+   "name": "CQMM DX Contest",
+   "exchange": "All: RST+continent abbreviation|CWJF members: RST + continent + \"M\"|QRP: RST + continent + \"Q\"|YL: RST + continent + \"Y\"|Multi-Op,Clubs,Groups: RST + continent + \"C\"",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "206",
+   "cab": "9A-DX",
+   "name": "Croatian DX Contest",
+   "exchange": "9A: RS(T) + county|non-9A: RS(T) + ITU Zone",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "534",
+   "cab": "CVA-DX-CW",
+   "name": "CVA DX Contest, CW",
+   "exchange": "Brazil: RST + state|Non-Brazil: RST + continent|Military: RST + \"MIL\"",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "535",
+   "cab": "CVA-DX-SSB",
+   "name": "CVA DX Contest, SSB",
+   "exchange": "Brazil: RST + state|Non-Brazil: RST + continent|Military: RST + \"MIL\"",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "532",
+   "cab": "CW-OPEN",
+   "name": "CWOps CW Open",
+   "exchange": "Serial No. + Name",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "498",
+   "cab": "CW-OPS",
+   "name": "CWops Test (CWT)",
+   "exchange": "Member: Name + Member No./\"CWA\"|non-Member: Name + (state/province/country)",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "223",
+   "cab": "DARC-10",
+   "name": "DARC 10-Meter Contest",
+   "exchange": "DL: RS(T) + QSO No. + DOK|non-DL: RS(T) + QSO No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "210",
+   "cab": "XMAS",
+   "name": "DARC Christmas Contest",
+   "exchange": "DL: RS(T) + DOK (or \"NM\" if not a DARC member)|non-DL: RS(T) + QSO No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "776",
+   "cab": "DARC-CWA",
+   "name": "DARC CW-Training Contest",
+   "exchange": "DE: RST + DOK/NM|non-DE: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "668",
+   "cab": "EASTER",
+   "name": "DARC Easter Contest",
+   "exchange": "DL: RS(T) + DOK (or \"NM\" if not a DARC member)|non-DL: RS(T) + QSO No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "745",
+   "cab": "FT4",
+   "name": "DARC FT4 Contest",
+   "exchange": "Signal report + 4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "FT4"
+  },
+  {
+   "ref": "744",
+   "cab": "ShortRY",
+   "name": "DARC RTTY Sprint",
+   "exchange": "DL: RST + (DOK/\"NM\")|non-DL: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "240",
+   "cab": "DE-QSO-PARTY",
+   "name": "Delaware QSO Party",
+   "exchange": "DE: RS(T) + County|non-DE: RS(T) + (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "Digital(CW/RTTY/Digital), Phone"
+  },
+  {
+   "ref": "691",
+   "cab": "DIG-QSO-PARTY",
+   "name": "DIG QSO Party, CW",
+   "exchange": "DIG Member: RST + Member No.|non-Member: RST",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "690",
+   "cab": "DIG-QSO-PARTY",
+   "name": "DIG QSO Party, SSB",
+   "exchange": "DIG Member: RS + Member No.|non-Member: RS",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "568",
+   "cab": "DRCG-WW-RTTY",
+   "name": "DRCG WW RTTY Contest",
+   "exchange": "RST + CQ Zone",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "249",
+   "cab": "PACC",
+   "name": "Dutch PACC Contest",
+   "exchange": "PA: RS(T) + province|non-PA: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "693",
+   "cab": "PACCDIGI",
+   "name": "Dutch PACCdigi Contest",
+   "exchange": "PA: Signal report + 2-character province|non-PA: Signal report + serial number",
+   "status": "Active, confirmed",
+   "mode": "FT4/8, RTTY"
+  },
+  {
+   "ref": "403",
+   "cab": "EA-PSK",
+   "name": "EA PSK63 Contest",
+   "exchange": "EA: RSQ + province code|non-EA: RSQ + Serial no.",
+   "status": "Active, confirmed",
+   "mode": "PSK63"
+  },
+  {
+   "ref": "313",
+   "cab": "EARTTY",
+   "name": "EA RTTY Contest",
+   "exchange": "EA: RSQ + province|non-EA: RSQ + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "550",
+   "cab": "EANET-SPRINT",
+   "name": "EANET Sprint",
+   "exchange": "RS(T)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "Any"
+  },
+  {
+   "ref": "27",
+   "cab": "EU-PSK-DX",
+   "name": "EU PSK DX Contest",
+   "exchange": "EU: RST + EU area|non-EU: RST + QSO No.",
+   "status": "Active, confirmed",
+   "mode": "BPSK63"
+  },
+  {
+   "ref": "219",
+   "cab": "EUCW-160M",
+   "name": "EUCW 160m Contest",
+   "exchange": "Affiliated Club Member: RST + name + club + membership no.|Other: RST + name + \"NM\"",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "660",
+   "cab": "EURASIA-CHAMP",
+   "name": "EurAsia HF Championship",
+   "exchange": "RS(T) + 6-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "82",
+   "cab": "EUHFC",
+   "name": "European HF Championship",
+   "exchange": "RS(T) + 2-digit year first licensed",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "687",
+   "cab": "EUDXC",
+   "name": "European Union DX Contest",
+   "exchange": "EU Union: RS(T) + EU Union Region (4-characters)|Non-EU Union: RS(T) + ITU Zone No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "488",
+   "cab": "F9AA-CW",
+   "name": "F9AA Cup, CW",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "577",
+   "cab": "F9AA-DIGI",
+   "name": "F9AA Cup, PSK",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "PSK"
+  },
+  {
+   "ref": "489",
+   "cab": "F9AA-SSB",
+   "name": "F9AA Cup, SSB",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "692",
+   "cab": "FIRAC-CONTEST",
+   "name": "FIRAC HF Contest",
+   "exchange": "Member: RS(T) + Serial No. + \"F\"|Non-member: RS(T)",
+   "status": "Active, confirmed",
+   "mode": ""
+  },
+  {
+   "ref": "786",
+   "cab": "",
+   "name": "Flemish Windmill Contest",
+   "exchange": "Activator: RST + QSO No. + Mill Reference|Hunter: RST + QSO No.",
+   "status": "Active, but no recent results",
+   "mode": "SSB, FM"
+  },
+  {
+   "ref": "325",
+   "cab": "FCG-FQP",
+   "name": "Florida QSO Party",
+   "exchange": "FL: RS(T) + county|W/VE: RS(T) + (state/province)|DX: RS(T) + DXCC prefix",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "762",
+   "cab": "FRAPR-10M",
+   "name": "FRAPR 10M Contest",
+   "exchange": "RS(T) + power",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "766",
+   "cab": "FT-CHALLENGE",
+   "name": "FT Challenge",
+   "exchange": "signal report + 4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "FT8/FT4"
+  },
+  {
+   "ref": "45",
+   "cab": "WWSA",
+   "name": "GACW WWSA CW DX Contest",
+   "exchange": "RST + CQ Zone No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "328",
+   "cab": "GA-QSO-PARTY",
+   "name": "Georgia QSO Party",
+   "exchange": "GA: RST + county|non-GA: RST + (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "732",
+   "cab": "GUNUNGJATI",
+   "name": "Gunung Jati DX Contest",
+   "exchange": "RS + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "449",
+   "cab": "HA3NS-SPRINT",
+   "name": "HA3NS Sprint Memorial Contest",
+   "exchange": "HACWG Members: RST + Membership No.|non-Members: RST + NM",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "729",
+   "cab": "HAM-SPIRIT",
+   "name": "Ham Spirit Contest",
+   "exchange": "RST + ITU Zone No. + 2-character grid field",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "730",
+   "cab": "HAM-SPIRIT-SSB",
+   "name": "Ham Spirit Contest, SSB",
+   "exchange": "RST + ITU Zone No. + 2-character grid field",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "742",
+   "cab": "HARC-QSOP",
+   "name": "HARC Anniversary QSO Party",
+   "exchange": "RS(T) + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "96",
+   "cab": "HI-QSO-PARTY",
+   "name": "Hawaii QSO Party",
+   "exchange": "HI: RS(T) + HI district|non-HI W/VE: RS(T) + (state/province)|DX: RS(T)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "326",
+   "cab": "HELVETIA",
+   "name": "Helvetia Contest",
+   "exchange": "HB: RS(T) + 2-letter canton|non-HB: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB, Digital"
+  },
+  {
+   "ref": "651",
+   "cab": "ARRL-HPM-150",
+   "name": "Hiram Percy Maxim Birthday Celebration",
+   "exchange": "W/VE: RS(T)/SNR + ARRL/RAC Section|DX: RS(T)/SNR + \"DX\"",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "23",
+   "cab": "EA-MAJESTAD-CW",
+   "name": "His Maj. King of Spain Contest, CW",
+   "exchange": "EA: RST + province|non-EA: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "59",
+   "cab": "EA-MAJESTAD-SSB",
+   "name": "His Maj. King of Spain Contest, SSB",
+   "exchange": "EA: RST + province|non-EA: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "228",
+   "cab": "HA-DX",
+   "name": "Hungarian DX Contest",
+   "exchange": "HA: RS(T) + 2-letter county|non-HA: RS(T) + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "67",
+   "cab": "IARU-HF",
+   "name": "IARU HF World Championship",
+   "exchange": "IARU HQ: RS(T) + IARU Society|Non-HQ: RS(T) + ITU Zone No.",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "720",
+   "cab": "ICWC-MST",
+   "name": "ICWC Medium Speed Test",
+   "exchange": "Name + QSO No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "305",
+   "cab": "ID-QSO-PARTY",
+   "name": "Idaho QSO Party",
+   "exchange": "ID: County|non-ID: (state/province/country)",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital (no FT8)"
+  },
+  {
+   "ref": "688",
+   "cab": "IG-WW-RY",
+   "name": "IG-RY World Wide RTTY Contest",
+   "exchange": "RST + 4-digit year license first issued",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "167",
+   "cab": "IL-QSO-PARTY",
+   "name": "Illinois QSO Party",
+   "exchange": "IL: RS(T) + County|non-IL: RS(T) + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW/digital (no FT4/8), Phone"
+  },
+  {
+   "ref": "743",
+   "cab": "INDEXA-QSOP",
+   "name": "INDEXA Worldwide QSO Party",
+   "exchange": "W/VE: RS(T) + INDEXA Member status (N/M/O) + (state/province/territory)|non-W/VE: RS(T) + INDEXA Member status (N/M/O)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, RTTY"
+  },
+  {
+   "ref": "8",
+   "cab": "IN-QSO-PARTY",
+   "name": "Indiana QSO Party",
+   "exchange": "IN: RS(T) + county|non-IN: W/VE: RS(T) + (state/province)|DX: RS(T) + \"DX\"",
+   "status": "Active, confirmed",
+   "mode": "Phone, CW"
+  },
+  {
+   "ref": "484",
+   "cab": "IAQP",
+   "name": "Iowa QSO Party",
+   "exchange": "IA: RS(T) + County|non-IA: RS(T) + (state/province/\"DX\")",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "758",
+   "cab": "IRTS-CONTEST",
+   "name": "IRTS 2m Counties Contest",
+   "exchange": "EI/GI: RS(T) + Serial no. + county|non-EI/GI: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "FM, SSB"
+  },
+  {
+   "ref": "757",
+   "cab": "IRTS-CONTEST",
+   "name": "IRTS 70cm Counties Contest",
+   "exchange": "EI/GI: RS(T) + Serial no. + county|non-EI/GI: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "FM, SSB"
+  },
+  {
+   "ref": "756",
+   "cab": "IRTS-80-CONTEST",
+   "name": "IRTS 80m Counties Contest",
+   "exchange": "EI/GI: RS(T) + Serial no. + county|non-EI/GI: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "161",
+   "cab": "JARTS-WW-RTTY",
+   "name": "JARTS WW RTTY Contest",
+   "exchange": "SO: RST + age of operator|MO: RST + callsign owner's age or zero zero|Club: RST + 99",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "314",
+   "cab": "JIDX-CW",
+   "name": "JIDX CW Contest",
+   "exchange": "JA: RST + Prefecture No.|non-JA: RST + CQ Zone No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "184",
+   "cab": "JIDX-SSB",
+   "name": "JIDX Phone Contest",
+   "exchange": "JA: RST + Prefecture No.|non-JA: RST + CQ Zone No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "785",
+   "cab": "WIA-JMMFD",
+   "name": "John Moyle Memorial Field Day",
+   "exchange": "Serial No. (see rules)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "681",
+   "cab": "K1USNSST",
+   "name": "K1USN Slow Speed Test",
+   "exchange": "Maximum 20 wpm|Name + (state/province/country)",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "763",
+   "cab": "K1USNSST-OPEN",
+   "name": "K1USN SST Open",
+   "exchange": "Name + (state/province/country)",
+   "status": "Active, but no recent results",
+   "mode": "CW"
+  },
+  {
+   "ref": "734",
+   "cab": "KALBAR CONTEST",
+   "name": "Kalbar Contest",
+   "exchange": "RS + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "675",
+   "cab": "KANHAM",
+   "name": "KANHAM Contest",
+   "exchange": "JA: RST + Prefecture No.|JA Young or YL: RST + Prefecture No. + \"Y\"|Non-JA: RST|Non-JA Young or YL: RST + \"Y\"",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "483",
+   "cab": "KS-QSO-PARTY",
+   "name": "Kansas QSO Party",
+   "exchange": "KS: RS(T) + county|non-KS: RS(T) + (state/province/\"DX\")",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB, Digital/RTTY"
+  },
+  {
+   "ref": "781",
+   "cab": "KAWANUA-DX",
+   "name": "Kawanua DX Contest",
+   "exchange": "Indonesia North Sulawesi: RS + District Code|Indonesia Outside N.Sulawsi: RS + \"ORARI\"|Non-Indonesia: RS + \"DX\"",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "244",
+   "cab": "KCJ-TOPBAND",
+   "name": "KCJ Topband Contest",
+   "exchange": "JA: RST + Prefecture/District Code|non-JA: RST + CQ Zone",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "371",
+   "cab": "KYQP",
+   "name": "Kentucky QSO Party",
+   "exchange": "KY: RS(T) + county|non-KY: RS(T) + (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "761",
+   "cab": "LABRE-DX",
+   "name": "LABRE DX Contest",
+   "exchange": "Brazilian: RS(T) + 2-letter state|Non-Brazilian: RS(T) + 2-letter continent",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "759",
+   "cab": "CQWW-DIGI",
+   "name": "LABRE-RS Digi Contest",
+   "exchange": "4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "FT4/8"
+  },
+  {
+   "ref": "250",
+   "cab": "LA-QSO-PARTY",
+   "name": "Louisiana QSO Party",
+   "exchange": "LA: RS(T) + Parish|non-LA: RS(T) + (state/province/country)",
+   "status": "Active, but no recent results",
+   "mode": "CW/Digital, Phone"
+  },
+  {
+   "ref": "187",
+   "cab": "LZ-DX",
+   "name": "LZ DX Contest",
+   "exchange": "LZ: RS(T) + 2-letter district|non-LZ: RS(T) + ITU Zone No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "592",
+   "cab": "ME-QSO-PARTY",
+   "name": "Maine QSO Party",
+   "exchange": "ME: RS(T) + county|non-ME: RS(T) + (state/province/\"DX\")",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "159",
+   "cab": "MAKROTHEN-RTTY",
+   "name": "Makrothen RTTY Contest",
+   "exchange": "4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "658",
+   "cab": "MYDX-SSB-CONTEST",
+   "name": "Malaysia DX Contest",
+   "exchange": "RS + CQ Zone",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "710",
+   "cab": "MCD-QSO-PARTY",
+   "name": "Marconi Club ARI Loano QSO Party Day",
+   "exchange": "Marconi Club Member: RST + \"MC\" + Member No.|non-Members: RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "769",
+   "cab": "SLOW-CW-QSO-PARTY",
+   "name": "Marconi Club ARI Loano Slow CW QSO Party",
+   "exchange": "Marconi Club Member: RST + \"MC\" + Member No.|non-Members: RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "56",
+   "cab": "MMC-HF-CW",
+   "name": "Marconi Memorial HF Contest",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "86",
+   "cab": "MDC-QSO-PARTY",
+   "name": "Maryland-DC QSO Party",
+   "exchange": "MDC: county/city|non-MDC: (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "241",
+   "cab": "XE-RTTY",
+   "name": "Mexico RTTY International Contest",
+   "exchange": "XE: RST + State|non-XE: RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY Only"
+  },
+  {
+   "ref": "323",
+   "cab": "MI-QSO-PARTY",
+   "name": "Michigan QSO Party",
+   "exchange": "MI: RST + county|non-MI: RST + (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "711",
+   "cab": "MINITEST-40",
+   "name": "Mini-Test 40",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "712",
+   "cab": "MINITEST-80",
+   "name": "Mini-Test 80",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "238",
+   "cab": "MN-QSO-PARTY",
+   "name": "Minnesota QSO Party",
+   "exchange": "MN: Name + County|W/VE: Name + (state/province)|DX: Name",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone (FM/SSB/AM)"
+  },
+  {
+   "ref": "308",
+   "cab": "MS-QSO-PARTY",
+   "name": "Mississippi QSO Party",
+   "exchange": "MS: RS(T) + county|non-MS: RS(T) + (state/province/country)|FT4/8: Signal report + 4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB, RTTY, FT4/8"
+  },
+  {
+   "ref": "327",
+   "cab": "MO-QSO-PARTY",
+   "name": "Missouri QSO Party",
+   "exchange": "MO: RS(T) + county|non-MO W/VE: RS(T) + (state/province/territory)|DX: RS(T) + \"DX\"",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "778",
+   "cab": "NCCC-FIESTA",
+   "name": "NCCC 55th Anniversary Fiesta",
+   "exchange": "Members: State/province/country + year joined|Non-members: State/province/country",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB, RTTY"
+  },
+  {
+   "ref": "741",
+   "cab": "NCCC-SPRINT-FT4",
+   "name": "NCCC FT4 Sprint",
+   "exchange": "4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "FT4"
+  },
+  {
+   "ref": "44",
+   "cab": "NCCC-SPRINT-CW",
+   "name": "NCCC Sprint",
+   "exchange": "Serial No. + Name + QTH",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "405",
+   "cab": "NCCC-SPRINT-CW",
+   "name": "NCCC Sprint Ladder",
+   "exchange": "Serial No. + Name + QTH",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "336",
+   "cab": "NE-QSO-PARTY",
+   "name": "Nebraska QSO Party",
+   "exchange": "NE (non-FT8): county|non-NE (non-FT8): (state/province/country)|FT8: grid square",
+   "status": "Active, but no recent results",
+   "mode": "CW, Phone, Digital (non-FT8), FT4/8"
+  },
+  {
+   "ref": "10",
+   "cab": "NEQP",
+   "name": "New England QSO Party",
+   "exchange": "CT,ME,MA,NH,RI,VT: RS(T) + state + county|non-NE: RS(T) + (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "Phone, CW/Digital"
+  },
+  {
+   "ref": "71",
+   "cab": "NH-QSO-PARTY",
+   "name": "New Hampshire QSO Party",
+   "exchange": "NH: RS(T) + county|non-NH W/VE: RS(T) + (state/province)|DX: RS(T) + \"DX\"",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "92",
+   "cab": "NJQP",
+   "name": "New Jersey QSO Party",
+   "exchange": "NJ: RS(T) + county|non-NJ: RS(T) + (state/province/\"DX\")",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "286",
+   "cab": "NM-QSO-PARTY",
+   "name": "New Mexico QSO Party",
+   "exchange": "NM: RS(T) + county|non-NM: RS(T) + (state/province/country)",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "473",
+   "cab": "NY-QSO-PARTY",
+   "name": "New York QSO Party",
+   "exchange": "NY: RS(T) + county|non-NY: RS(T) + (state/province/\"DX\")",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB, Digital"
+  },
+  {
+   "ref": "727",
+   "cab": "VHF-NAMSS",
+   "name": "North American Meteor Scatter Sprint",
+   "exchange": "4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "MSK144, FSK441"
+  },
+  {
+   "ref": "218",
+   "cab": "NAQP-CW",
+   "name": "North American QSO Party, CW",
+   "exchange": "NA: Name + (state/DC/province/country)|non-NA: Name",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "263",
+   "cab": "NAQP-RTTY",
+   "name": "North American QSO Party, RTTY",
+   "exchange": "NA: Name + (state/DC/province/country)|non-NA: Name",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "229",
+   "cab": "NAQP-SSB",
+   "name": "North American QSO Party, SSB",
+   "exchange": "NA: Name + (state/DC/province/country)|non-NA: Name",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "253",
+   "cab": "NA-SPRINT-CW",
+   "name": "North American Sprint, CW",
+   "exchange": "[other station's call] + [your call] + [serial no.] + [your name] + [your state/province/country]",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "155",
+   "cab": "NA-SPRINT-RTTY",
+   "name": "North American Sprint, RTTY",
+   "exchange": "[other station's call] + [your call] + [serial no.] + [your name] + [your state/DC/province/country]",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "242",
+   "cab": "NA-SPRINT-SSB",
+   "name": "North American SSB Sprint Contest",
+   "exchange": "[other station's call] + [your call] + [serial no.] + [your name] + [your state/province/country]",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "265",
+   "cab": "NC-QSO-PARTY",
+   "name": "North Carolina QSO Party",
+   "exchange": "NC: County|non-NC: (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital (FT4/8 see rules)"
+  },
+  {
+   "ref": "468",
+   "cab": "ND-QSO-PARTY",
+   "name": "North Dakota QSO Party",
+   "exchange": "ND: RS(T) + County|non-ND: RS(T) + (state/province/country)",
+   "status": "Active, but no recent results",
+   "mode": "CW, Phone, Digital (RTTY/PSK)"
+  },
+  {
+   "ref": "562",
+   "cab": "NRAU-10",
+   "name": "NRAU 10m Activity Contest",
+   "exchange": "RS(T) + 6-character grid square",
+   "status": "Active, but no recent results",
+   "mode": "CW, SSB, FM, Digital"
+  },
+  {
+   "ref": "220",
+   "cab": "NRAU-CW",
+   "name": "NRAU-Baltic Contest, CW",
+   "exchange": "RST + Serial No. + 2-letter Fylke/Lan/Province/Region",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "222",
+   "cab": "NRAU-SSB",
+   "name": "NRAU-Baltic Contest, SSB",
+   "exchange": "RST + Serial No. + 2-letter Fylke/Lan/Province/Region",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "706",
+   "cab": "NRRL-MGM",
+   "name": "NRRL MGM Weekend Contest",
+   "exchange": "RST + 4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "Digital (any digital mode)"
+  },
+  {
+   "ref": "721",
+   "cab": "MEMORIAL-CONTEST",
+   "name": "NZART Memorial Contest",
+   "exchange": "RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "151",
+   "cab": "OCEANIA-DX-CW",
+   "name": "Oceania DX Contest, CW",
+   "exchange": "RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "142",
+   "cab": "OCEANIA-DX-SSB",
+   "name": "Oceania DX Contest, Phone",
+   "exchange": "RS + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "Phone"
+  },
+  {
+   "ref": "100",
+   "cab": "MRRC-OHQP",
+   "name": "Ohio QSO Party",
+   "exchange": "OH: RS(T) + county|non-OH: RS(T) + (state/province/\"DX\")",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "204",
+   "cab": "OK-DX-RTTY",
+   "name": "OK DX RTTY Contest",
+   "exchange": "RST + CQ Zone",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "185",
+   "cab": "OK-OM-DX",
+   "name": "OK/OM DX Contest, CW",
+   "exchange": "OK/OM: RST + county|non-OK/OM: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "567",
+   "cab": "OK-OM-DX",
+   "name": "OK/OM DX Contest, SSB",
+   "exchange": "OK/OM: RS + 3-letter county code|non-OK/OM: RS + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "293",
+   "cab": "OK-QSO-PARTY",
+   "name": "Oklahoma QSO Party",
+   "exchange": "OK: RS(T) + County|non-OK: RS(T) + (state/province/country)",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital (no FT8/4)"
+  },
+  {
+   "ref": "554",
+   "cab": "RADIO-ONY",
+   "name": "Old New Year Contest",
+   "exchange": "RS(T) + sum of operator age and years on the air",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "357",
+   "cab": "ON-QSO-PARTY",
+   "name": "Ontario QSO Party",
+   "exchange": "ON: RS(T) + county|non-ON: RST + (state/province/country)",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "334",
+   "cab": "UKR-CHAMP-RTTY",
+   "name": "Open Ukraine RTTY Championship",
+   "exchange": "2-letter regional abbrev. (state/province/canton, etc.) + Serial No.(restart serial no. for high band)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "722",
+   "cab": "PBDX-CONTEST",
+   "name": "Pajajaran Bogor DX Contest",
+   "exchange": "RS + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "153",
+   "cab": "PA-QSO-PARTY",
+   "name": "Pennsylvania QSO Party",
+   "exchange": "PA: Serial No. + County|non-PA: Serial No. + ARRL/RAC Section",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "775",
+   "cab": "RADIO-POPOV",
+   "name": "Popov Memorial Contest",
+   "exchange": "YL: RS(T) + experience (see rules)",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "679",
+   "cab": "POC",
+   "name": "Portable Operations Challenge",
+   "exchange": "4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "41",
+   "cab": "PORTUGAL-DAY",
+   "name": "Portugal Day Contest",
+   "exchange": "CT: RS(T) + District|non-CT: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "723",
+   "cab": "TBD",
+   "name": "PRG CQ Pride Contest",
+   "exchange": "RS(T) + number of years licensed + diversity group",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital, Hotspot"
+  },
+  {
+   "ref": "53",
+   "cab": "QC-QSO-PARTY",
+   "name": "Quebec QSO Party",
+   "exchange": "QC: RS(T) + QC zone|non-QC: RST + (state/province/'DX')",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "60",
+   "cab": "CANADA-DAY",
+   "name": "RAC Canada Day Contest",
+   "exchange": "VE: RS(T) + province/territory|non-VE: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "205",
+   "cab": "CANADA-WINTER",
+   "name": "RAC Winter Contest",
+   "exchange": "VE: RS(T) + (province/territory)|non-VE and VE0: RS(T) + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "209",
+   "cab": "RAEM",
+   "name": "RAEM Contest",
+   "exchange": "Serial No. + latitude (degs only) + hemisphere + longitude (degs only) + hemisphere (see rules)|N=North, S=South, W=West, O=East (e.g. 57N 85O)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "645",
+   "cab": "RCC-CUP",
+   "name": "RCC Cup",
+   "exchange": "RCC Members: RS(T) + \"RCC\" + member number|Non-Members: RS(T) + ITU Zone",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "782",
+   "cab": "RTC",
+   "name": "Real Time Contest",
+   "exchange": "Serial No. + 4-character grid",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "233",
+   "cab": "REF-CW",
+   "name": "REF Contest, CW",
+   "exchange": "French: RST + Department/Prefix|non-French: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "260",
+   "cab": "REF-SSB",
+   "name": "REF Contest, SSB",
+   "exchange": "French: RS + Department/Prefix|non-French: RS + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "780",
+   "cab": "DIASPORA-SSB",
+   "name": "Romanian Diaspora SSB Contest",
+   "exchange": "YO/ER: RS + county/district|non-YO/ER: RS + \"DX\"",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "252",
+   "cab": "RSGB-160",
+   "name": "RSGB 1.8 MHz Contest",
+   "exchange": "UK: RST + Serial No. + District Code|non-UK: RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "458",
+   "cab": "RSGB-80M-AUT",
+   "name": "RSGB 80m Autumn Series, CW",
+   "exchange": "RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "617",
+   "cab": "RSGB-80M-AUT",
+   "name": "RSGB 80m Autumn Series, Data",
+   "exchange": "RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY, PSK"
+  },
+  {
+   "ref": "459",
+   "cab": "RSGB-80M-AUT",
+   "name": "RSGB 80m Autumn Series, SSB",
+   "exchange": "RS + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "275",
+   "cab": "RSGB-80M-CC",
+   "name": "RSGB 80m Club Championship, CW",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "274",
+   "cab": "RSGB-80M-CC",
+   "name": "RSGB 80m Club Championship, Data",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "RTTY, PSK"
+  },
+  {
+   "ref": "273",
+   "cab": "RSGB-80M-CC",
+   "name": "RSGB 80m Club Championship, SSB",
+   "exchange": "RS + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "627",
+   "cab": "RSGB-AFS-CW",
+   "name": "RSGB AFS Contest, CW",
+   "exchange": "RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "653",
+   "cab": "RSGB-FT4",
+   "name": "RSGB FT4 Contest",
+   "exchange": "Signal report",
+   "status": "Active, confirmed",
+   "mode": "FT4"
+  },
+  {
+   "ref": "718",
+   "cab": "RSGB-FT4",
+   "name": "RSGB FT4 International Activity Day",
+   "exchange": "Signal report",
+   "status": "Active, confirmed",
+   "mode": "FT4"
+  },
+  {
+   "ref": "662",
+   "cab": "RSGB-HQP",
+   "name": "RSGB Hope QSO Party",
+   "exchange": "",
+   "status": "Active historically, but unconfirmed",
+   "mode": ""
+  },
+  {
+   "ref": "74",
+   "cab": "RSGB-LOW-POWER",
+   "name": "RSGB International Low Power Contest",
+   "exchange": "RST + Serial No. + Power",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "75",
+   "cab": "RSGB-IOTA",
+   "name": "RSGB IOTA Contest",
+   "exchange": "RS(T) + Serial No. + IOTA No.(if applicable)",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "37",
+   "cab": "RSGB-NFD",
+   "name": "RSGB National Field Day",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "106",
+   "cab": "RSGB-NFD",
+   "name": "RSGB SSB Field Day",
+   "exchange": "RS + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "669",
+   "cab": "RTTYOPS-WEEKEND-SPRINT",
+   "name": "RTTYOPS Weekend Sprint",
+   "exchange": "[other station's call] + [your call] + [serial no.] + [your name] + [6-character grid locator]",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "670",
+   "cab": "RTTYOPS-WEEKSPRINT",
+   "name": "RTTYOPS Weeksprint",
+   "exchange": "[other station's call] + [your call] + [serial no.] + [your name]",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "202",
+   "cab": "RADIO-160",
+   "name": "Russian 160-Meter DX Contest",
+   "exchange": "RS(T) + 4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "94",
+   "cab": "RDAC",
+   "name": "Russian District Award Contest",
+   "exchange": "RU: RS(T) + District code|non-RU: RS(T) + QSO No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "310",
+   "cab": "RDXC",
+   "name": "Russian DX Contest",
+   "exchange": "Ru: RS(T) + 2-character oblast|non-Ru: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "258",
+   "cab": "RUS-WW-PSK",
+   "name": "Russian PSK WW Contest",
+   "exchange": "RU: RST + 2-letter oblast|non-RU: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "BPSK31, BPSK63, BPSK125"
+  },
+  {
+   "ref": "103",
+   "cab": "RADIO-WW-RTTY",
+   "name": "Russian RTTY WW Contest",
+   "exchange": "RU: RSQ + 2-letter oblast|non-RU: RST + QSO No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "570",
+   "cab": "RUS-WW-DIGI",
+   "name": "Russian WW Digital Contest",
+   "exchange": "UA: RST(Q) + 2-character oblast code|non-UA: RST(Q) + QSO No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "BPSK63, RTTY"
+  },
+  {
+   "ref": "574",
+   "cab": "RUS-WW-MM",
+   "name": "Russian WW MultiMode Contest",
+   "exchange": "UA: RST(Q) + 2-character oblast|non-UA: RST(Q) + QSO No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB, RTTY, BPSK"
+  },
+  {
+   "ref": "774",
+   "cab": "RADIO-YL-OM",
+   "name": "Russian YL/OM Contest",
+   "exchange": "YL: RS(T) + \"88\"|OM: RS(T) + \"73\"",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "787",
+   "cab": "SMMC",
+   "name": "Samuel Morse Memorial Contest",
+   "exchange": "RST + ITU Zone",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "101",
+   "cab": "SARL-HF-CW",
+   "name": "SARL HF CW Contest",
+   "exchange": "RST + Serial No.",
+   "status": "Active, but no recent results",
+   "mode": "CW"
+  },
+  {
+   "ref": "545",
+   "cab": "SARL-HF-DIGI",
+   "name": "SARL HF Digital Contest",
+   "exchange": "RST + Serial No.",
+   "status": "Active, but no recent results",
+   "mode": "RTTY, PSK31"
+  },
+  {
+   "ref": "78",
+   "cab": "SARL-HF-SSB",
+   "name": "SARL HF Phone Contest",
+   "exchange": "RS + Serial No.",
+   "status": "Active, but no recent results",
+   "mode": "SSB"
+  },
+  {
+   "ref": "211",
+   "cab": "SARTG-NY-RTTY",
+   "name": "SARTG New Year RTTY Contest",
+   "exchange": "RST + QSO No. + name + happy new year (native language)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "87",
+   "cab": "SARTG-RTTY",
+   "name": "SARTG WW RTTY Contest",
+   "exchange": "RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "121",
+   "cab": "SAC-CW",
+   "name": "Scandinavian Activity Contest, CW",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "131",
+   "cab": "SAC-SSB",
+   "name": "Scandinavian Activity Contest, SSB",
+   "exchange": "RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "680",
+   "cab": "RTTYOPS-WW-RTTY",
+   "name": "SCRY/RTTYOps WW DX RTTY Contest",
+   "exchange": "RST + 4-digit year license first issued",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "749",
+   "cab": "SEC-QSO-PARTY",
+   "name": "SEC QSO Party",
+   "exchange": "School clubs: RS(T) + school abbrev|Others: RS(T) + (state/province/country)|FT4/8 QSOs: standard digital exchange",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, RTTY, FT4/8"
+  },
+  {
+   "ref": "616",
+   "cab": "ECLIPSE-QSO",
+   "name": "Solar Eclipse QSO Party",
+   "exchange": "RS(T) + 4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "598",
+   "cab": "SA10M",
+   "name": "South America 10 Meter Contest",
+   "exchange": "RS(T) + CQ zone",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "728",
+   "cab": "SACW",
+   "name": "South American Integration Contest CW",
+   "exchange": "CWSP Members: RST + \"M\"|QRP: RST + \"QRP\"|YL: RST + \"YL\"|All Others: RST + ITU Zone No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "123",
+   "cab": "SC-QSO-PARTY",
+   "name": "South Carolina QSO Party",
+   "exchange": "SC: RS(T) + County|non-SC: RS(T) + (state/province/\"DX\")",
+   "status": "Active, confirmed",
+   "mode": "CW, Digital, Phone"
+  },
+  {
+   "ref": "492",
+   "cab": "SDQSOP",
+   "name": "South Dakota QSO Party",
+   "exchange": "SD: RS(T) + county|non-SD: RS(T) + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "312",
+   "cab": "SPDX",
+   "name": "SP DX Contest",
+   "exchange": "SP: RS(T) + 1-character province|non-SP: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "207",
+   "cab": "STEW-PERRY",
+   "name": "Stew Perry Topband Challenge",
+   "exchange": "4-Character grid square",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "115",
+   "cab": "TN-QSO-PARTY",
+   "name": "Tennessee QSO Party",
+   "exchange": "TN: RS(T) + county|non-TN: RS(T) + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "725",
+   "cab": "TNPOTA",
+   "name": "Tennessee State Parks on the Air",
+   "exchange": "TN Park: park abbreviation)|W/VE: (state/province)|DX: \"DX\"",
+   "status": "Active historically, but unconfirmed",
+   "mode": "All that support exchange"
+  },
+  {
+   "ref": "566",
+   "cab": "TESLA-HF",
+   "name": "TESLA Memorial HF CW Contest",
+   "exchange": "RST + Serial No. + 4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "133",
+   "cab": "TXQP",
+   "name": "Texas QSO Party",
+   "exchange": "TX: RS(T) + County|non-TX: RS(T) + (state/province/country/MM region)",
+   "status": "Active, confirmed",
+   "mode": "All"
+  },
+  {
+   "ref": "559",
+   "cab": "TSPOTA",
+   "name": "Texas State Parks on the Air",
+   "exchange": "TX Park: RS(T) + park abbreviation)|W/VE: RS(T) + (state/province)|DX: RS(T) + \"DX\"|For FT4/8 use signal report and grid",
+   "status": "Active, confirmed",
+   "mode": "All"
+  },
+  {
+   "ref": "777",
+   "cab": "TIPALAYO DX CONTEST",
+   "name": "Tipalayo DX Contest",
+   "exchange": "RS + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "678",
+   "cab": "TISZACUP",
+   "name": "Tisza Cup CW Contest",
+   "exchange": "RST + CQ Zone No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "637",
+   "cab": "TRC-DIGI",
+   "name": "TRC Digi Contest",
+   "exchange": "TRC Members: RST + Serial No. + \"TRC\"|non-TRC Members: RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "536",
+   "cab": "TRC-DX",
+   "name": "TRC DX Contest",
+   "exchange": "TRC Members: RST + Serial No. + \"TRC\"|non-TRC Members: RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "788",
+   "cab": "TTC-SPCWC",
+   "name": "Tuesday's Telegraphy Contest",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "779",
+   "cab": "TA-HF-SSB",
+   "name": "Turkey HF SSB Contest",
+   "exchange": "TA: RS + 2-digit city code|non-TA: RS + serial no.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "169",
+   "cab": "ISLAND-QSO-PARTY",
+   "name": "U.S. Islands QSO Party",
+   "exchange": "Islands: RS(T) + USI/CISA Island Designation (see rules for digital)|Non-Islands: RS(T) + (state/province/country)(see rules for digital)",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "697",
+   "cab": "ALRS-UA1DZ-CUP",
+   "name": "UA1DZ Memorial Cup",
+   "exchange": "SP/LO Oblasts: RS(T) + RDA district|Non-SP/LO: RS(T) + 4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "261",
+   "cab": "UBA-DX-CW",
+   "name": "UBA DX Contest, CW",
+   "exchange": "ON: RST + Serial No. + section|non-ON: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "235",
+   "cab": "UBA-DX-SSB",
+   "name": "UBA DX Contest, SSB",
+   "exchange": "ON: RST + Serial No. + section|non-ON: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "165",
+   "cab": "UBA-ON-2M",
+   "name": "UBA ON Contest, 2m",
+   "exchange": "ON: RS(T) + Serial No. + ON Section|non-ON: RS(T) + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "139",
+   "cab": "UBA-ON-6M",
+   "name": "UBA ON Contest, 6m",
+   "exchange": "ON: RS(T) + Serial No. + ON Section|non-ON: RS(T) + Serial No.",
+   "status": "Active, but no recent results",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "157",
+   "cab": "UBA-ON-CW",
+   "name": "UBA ON Contest, CW",
+   "exchange": "ON: RST + Serial No. + ON Section|non-ON: RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "144",
+   "cab": "UBA-ON-SSB",
+   "name": "UBA ON Contest, SSB",
+   "exchange": "ON: RS + Serial No. + ON Section|non-ON: RS + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "576",
+   "cab": "UBA-PSK63-PREFIX",
+   "name": "UBA PSK63 Prefix Contest",
+   "exchange": "ON: RSQ + UBA Section|non-ON: RSQ + Serial No. (starting with 001)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "BPSK63"
+  },
+  {
+   "ref": "297",
+   "cab": "UBA-SPRING-CONTEST",
+   "name": "UBA Spring Contest, 2m",
+   "exchange": "ON: RS(T) + Serial No. + UBA Section|non-ON: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "298",
+   "cab": "UBA-SPRING-CONTEST",
+   "name": "UBA Spring Contest, 6m",
+   "exchange": "ON: RS(T) + Serial No. + UBA Section|non-ON: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "295",
+   "cab": "UBA-SPRING-CONTEST",
+   "name": "UBA Spring Contest, CW",
+   "exchange": "ON: RST + Serial No. + UBA Section|non-ON: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "296",
+   "cab": "UBA-SPRING-CONTEST",
+   "name": "UBA Spring Contest, SSB",
+   "exchange": "ON: RS + Serial No. + UBA Section|non-ON: RS + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "603",
+   "cab": "UFT-QRP",
+   "name": "UFT QRP Contest",
+   "exchange": "Member: RST + QRP/QRO + UFT member no.|non-member: RST + QRP/QRO + \"NM\"",
+   "status": "Active, but no recent results",
+   "mode": "CW"
+  },
+  {
+   "ref": "597",
+   "cab": "UKEI-DX",
+   "name": "UK/EI DX Contest, CW",
+   "exchange": "UK/EI: RST + Serial No. + District Code|DX: RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "596",
+   "cab": "UKEI-DX",
+   "name": "UK/EI DX Contest, SSB",
+   "exchange": "UK/EI: RS + Serial No. + District Code|DX: RS + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "583",
+   "cab": "UKEICC-80M",
+   "name": "UKEICC 80m Contest",
+   "exchange": "6-Character grid square",
+   "status": "Active, confirmed",
+   "mode": ""
+  },
+  {
+   "ref": "542",
+   "cab": "UR-DX-RTTY",
+   "name": "Ukrainian DX Classic RTTY Contest",
+   "exchange": "Ukraine: RST + 2-letter oblast|non-Ukraine: RST + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "176",
+   "cab": "UKRAINIAN-DX",
+   "name": "Ukrainian DX Contest",
+   "exchange": "Ukraine: RS(T) + 2-letter oblast|non-Ukraine: RS(T) + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "55",
+   "cab": "UR-DX-DIGI",
+   "name": "Ukrainian DX DIGI Contest",
+   "exchange": "UR: RST + 2-letter Oblast|non-UR: RST + QSO No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY, PSK63"
+  },
+  {
+   "ref": "480",
+   "cab": "UN-DX",
+   "name": "UN DX Contest",
+   "exchange": "Kazakhstan: RS(T) + District Code|non-Kazakhstan: RS(T) + QSO No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "765",
+   "cab": "URCDX",
+   "name": "URC DX RTTY Contest",
+   "exchange": "RST + 3-letter territory code (see rules)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "236",
+   "cab": "VT-QSO-PARTY",
+   "name": "Vermont QSO Party",
+   "exchange": "VT: RS(T) + County|non-VT W/VE: RS(T) + (state/province)|DX: RS(T)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "All (see rules for FT8 guidance)"
+  },
+  {
+   "ref": "302",
+   "cab": "VA-QSO-PARTY",
+   "name": "Virginia QSO Party",
+   "exchange": "VA: Serial No. + county|non-VA: Serial No. + (state/province/\"DX\")",
+   "status": "Active, but no recent results",
+   "mode": "CW, Phone, Digital"
+  },
+  {
+   "ref": "481",
+   "cab": "VKSHIRES",
+   "name": "VK Shires Contest",
+   "exchange": "VK: RS(T) + Shire|non-VK: RS(T) + CQ Zone",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "13",
+   "cab": "VOLTA-RTTY",
+   "name": "VOLTA WW RTTY Contest",
+   "exchange": "RST + QSO No. + CQ Zone",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "85",
+   "cab": "DARC-WAEDC-CW",
+   "name": "WAE DX Contest, CW",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW"
+  },
+  {
+   "ref": "183",
+   "cab": "DARC-WAEDC-RTTY",
+   "name": "WAE DX Contest, RTTY",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "111",
+   "cab": "DARC-WAEDC-SSB",
+   "name": "WAE DX Contest, SSB",
+   "exchange": "RS + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "126",
+   "cab": "WA-SALMON-RUN",
+   "name": "Washington State Salmon Run",
+   "exchange": "WA: RS(T) + County|non-WA: RS(T) + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, Phone"
+  },
+  {
+   "ref": "753",
+   "cab": "WRT",
+   "name": "Weekly RTTY Test",
+   "exchange": "Name + (state/province/country)",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "49",
+   "cab": "WVQP",
+   "name": "West Virginia QSO Party",
+   "exchange": "WV: RS(T) + county|non-WV: RS(T) + (state/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB, Digital"
+  },
+  {
+   "ref": "421",
+   "cab": "WFD",
+   "name": "Winter Field Day",
+   "exchange": "Category + ARRL Section (or MX or DX)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "Any (see rules for exceptions)"
+  },
+  {
+   "ref": "330",
+   "cab": "WIQP",
+   "name": "Wisconsin QSO Party",
+   "exchange": "WI: county|non-WI: (state/province/country)",
+   "status": "Active, confirmed",
+   "mode": "CW, Phone, Digital (no FT4/8)"
+  },
+  {
+   "ref": "163",
+   "cab": "WAG",
+   "name": "Worked All Germany Contest",
+   "exchange": "DL, DARC-Member: RS(T) + DOK (chapter code)|DL, non-DARC: RS(T) + \"NM\"|non-DL: RS(T) + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "546",
+   "cab": "WAPC-DX",
+   "name": "Worked All Provinces of China DX Contest",
+   "exchange": "BY: RS(T) + 2-character province|non-BY: RS(T) + Serial No.",
+   "status": "Active, but no recent results",
+   "mode": ""
+  },
+  {
+   "ref": "783",
+   "cab": "WTZC",
+   "name": "World Time Zone Challenge",
+   "exchange": "RS(T) + TZ offset code",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "755",
+   "cab": "WWPDX",
+   "name": "World Wide Argentina DX Contest",
+   "exchange": "RS(T) + 4-character grid square",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "650",
+   "cab": "WW-DIGI",
+   "name": "World Wide Digi DX Contest",
+   "exchange": "4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "FT4/8"
+  },
+  {
+   "ref": "319",
+   "cab": "WWHC",
+   "name": "World Wide Holyland Contest",
+   "exchange": "4X: RS(T) + area|non-4X: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "672",
+   "cab": "WWSAC",
+   "name": "Worldwide Sideband Activity Contest",
+   "exchange": "RS + age group (OM, YL, Youth YL or Youth)",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "471",
+   "cab": "WW-PMC",
+   "name": "WW PMC Contest",
+   "exchange": "PMC: RS(T) + PMC abbreviation|World: RS(T) + CQ Zone",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "630",
+   "cab": "YARC-QSO-PARTY",
+   "name": "YARC QSO Party",
+   "exchange": "age + (state/province/MX/DX)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB, Digital"
+  },
+  {
+   "ref": "747",
+   "cab": "BANGGAI-DX",
+   "name": "YB Banggai DX Contest",
+   "exchange": "RS + Age",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "746",
+   "cab": "BEKASI-MERDEKA-CONTEST",
+   "name": "YB Bekasi Merdeka Contest",
+   "exchange": "YB: RS(T) + YB-Section|non-YB: RS(T) + \"DX\"",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "621",
+   "cab": "YB DX CONTEST",
+   "name": "YB DX Contest",
+   "exchange": "RS + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "642",
+   "cab": "YB-DX-CONTEST",
+   "name": "YB DX RTTY Contest",
+   "exchange": "RST + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "RTTY"
+  },
+  {
+   "ref": "772",
+   "cab": "ORARI-DX",
+   "name": "YB ORARI DX Contest",
+   "exchange": "YB: RS + \"ORARI\"|non-YB: RS + \"DX\"",
+   "status": "Active, confirmed",
+   "mode": "SSB"
+  },
+  {
+   "ref": "353",
+   "cab": "YL-OM",
+   "name": "YLRL YL-OM Contest",
+   "exchange": "QSO No. + RS(T) + (section/province/country)",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW/Digital, SSB"
+  },
+  {
+   "ref": "98",
+   "cab": "YO-DX-HF",
+   "name": "YO DX HF Contest",
+   "exchange": "YO: RS(T) + county|non-YO: RS(T) + Serial No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "696",
+   "cab": "YOTA",
+   "name": "YOTA Contest",
+   "exchange": "Single Op: RS(T) + age (on Jan 1 of year of contest)|Multi-Op: RS(T) + average age of ops (on Jan 1 of year of contest)",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "322",
+   "cab": "YUDX",
+   "name": "YU DX Contest",
+   "exchange": "YU/YT: RS(T) + County|non-YU/YT: RS(T) + Serial No.",
+   "status": "Active historically, but unconfirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "367",
+   "cab": "GC",
+   "name": "Yuri Gagarin International DX Contest",
+   "exchange": "RST + ITU Zone No.",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB"
+  },
+  {
+   "ref": "737",
+   "cab": "ZL-SPRINT",
+   "name": "ZL Sprint",
+   "exchange": "CW/SSB: RS(T) + Outside Temperature (C)|FT4: 4-character grid square",
+   "status": "Active, confirmed",
+   "mode": "CW, SSB, FT4"
+  }
+ ],
+ "n1mm": [
+  {
+   "code": "DX",
+   "desc": "Sent RST. Received RST fields. Name and Comment field"
+  },
+  {
+   "code": "DXPEDITION",
+   "desc": "Only has Sent and Received RST fields"
+  },
+  {
+   "code": "DXSERIAL",
+   "desc": "Sent and received RST. Nr fields and a Comment field for Generic Serial number contests. Default multipliers and points."
+  },
+  {
+   "code": "DXSATELLIT",
+   "desc": "Only three fields: Call. Grid and Satellite"
+  },
+  {
+   "code": "VHFDX",
+   "desc": "Sent RST. Received RST fields. Grid and Comment field"
+  },
+  {
+   "code": "VHFSERIAL",
+   "desc": "Sent and received RST. Nr fields and Grid fields. For generic VHF serial number contests. Comments possible."
+  },
+  {
+   "code": "9ACW",
+   "desc": "Croatian CW Contest. CW only; 3rd full weekend in December"
+  },
+  {
+   "code": "AGCW",
+   "desc": "AGCW Happy New Year. Happy New Year"
+  },
+  {
+   "code": "ALLASIACW",
+   "desc": "All Asian DX contest CW. CW &ndash; Third Saturday of June (48 hours)"
+  },
+  {
+   "code": "ALLASIASSB",
+   "desc": "All Asian DX contest SSB. SSB &ndash; First Saturday of September (48 hours)"
+  },
+  {
+   "code": "APSCW",
+   "desc": "Asia-Pacific Sprint Contest CW. In Spring. Summer. Fall (2 hours)"
+  },
+  {
+   "code": "APSSSB",
+   "desc": "Asia-Pacific Sprint Contest SSB. In Spring. Summer. Fall (2 hours)"
+  },
+  {
+   "code": "ARCI",
+   "desc": "ARCI QRP Contests. This contest supports 7 ARCI QRP contests plus several other QRP contests with similar exchanges"
+  },
+  {
+   "code": "ARIDX",
+   "desc": "Italian Radio International DX Contest. Per version 4.0.63"
+  },
+  {
+   "code": "ARRL10M",
+   "desc": "ARRL 10 Meter contest. &ndash;"
+  },
+  {
+   "code": "ARRL160",
+   "desc": "ARRL 160-meter contest. &ndash;"
+  },
+  {
+   "code": "ARRLDXCW",
+   "desc": "ARRL International DX contest CW. &ndash;"
+  },
+  {
+   "code": "ARRLDXSSB",
+   "desc": "ARRL International DX contest Phone"
+  },
+  {
+   "code": "ARRL-SCR",
+   "desc": "ARRL School Club Roundup. 5-day events in mid-February and mid-October"
+  },
+  {
+   "code": "ASRUCHAMP",
+   "desc": "Asiatic Russia Championship. January. 6 hours. 160-40 meters. SSB/CW"
+  },
+  {
+   "code": "BALTIC",
+   "desc": "Lithuation Radio Sports Federation contest. Every year the next to last weekend in May &ndash; one week before WPX CW Contest"
+  },
+  {
+   "code": "BFRRCW",
+   "desc": "Belarus (only) CW Championship. For Belarus stations only"
+  },
+  {
+   "code": "BFRRSSB",
+   "desc": "Belarus (only) SSB Championship. For Belarus stations only"
+  },
+  {
+   "code": "BSCI",
+   "desc": "Black Sea Cup International. First full weekend in February"
+  },
+  {
+   "code": "CNCW",
+   "desc": "CNCW Spanish contest. Local Spanish CW contest"
+  },
+  {
+   "code": "CQ160CW",
+   "desc": "CQ World-Wide 160 Meter DX Contest &ndash; CW"
+  },
+  {
+   "code": "CQ160SSB",
+   "desc": "CQ World-Wide 160 Meter DX Contest &ndash; Phone"
+  },
+  {
+   "code": "CQM",
+   "desc": "CQ-M International DX contest. Second weekend of May"
+  },
+  {
+   "code": "CQMMDX",
+   "desc": "CQMM DX Contest. International Manchester Mineira contest by CWJF &ndash; 3rd full weekend of April"
+  },
+  {
+   "code": "CQSASSB",
+   "desc": "CQ South America SSB Contest (inactive). South America. Second full weekend in October"
+  },
+  {
+   "code": "CQWPXCW",
+   "desc": "CQ World Wide WPX contest &ndash; CW"
+  },
+  {
+   "code": "CQWPXSSB",
+   "desc": "CQ World Wide WPX contest &ndash; Phone"
+  },
+  {
+   "code": "CQWWCW",
+   "desc": "CQ World Wide DX contest &ndash; CW. CW &ndash; Last full weekend of November (48 hours)"
+  },
+  {
+   "code": "CQWWSSB",
+   "desc": "CQ World Wide DX contest &ndash; SSB. SSB &ndash; Last full weekend of October (48 hours)"
+  },
+  {
+   "code": "CWOPS",
+   "desc": "CWops Mini-CWT Test. Several 1-hour contests each week"
+  },
+  {
+   "code": "CWOPSOPEN",
+   "desc": "CWops CW Open. in late August or early September"
+  },
+  {
+   "code": "DARC10M",
+   "desc": "German Amateur Radio Club. DARC 10 meter contest. 2nd full weekend in January"
+  },
+  {
+   "code": "DIGCW",
+   "desc": "German Amateur Radio Club. CW: Second weekend in April. Also for short contests in June and October"
+  },
+  {
+   "code": "DIGSSB",
+   "desc": "German Amateur Radio Club. SSB: Second weekend in March. also for short contests in June and October"
+  },
+  {
+   "code": "DZCUP",
+   "desc": "Russian UA1DZ Memorial Cup. For English text select on top Translate to English"
+  },
+  {
+   "code": "ECLIPSE",
+   "desc": "Solar Eclipse QSO Party (2017, 2023, 2024). Includes digital modes as well as CW, SSB"
+  },
+  {
+   "code": "EQSO",
+   "desc": "Elecraft QSO Party (inactive). Despite the name. handled as a separate contest"
+  },
+  {
+   "code": "EUAS-CHAMP",
+   "desc": "EurAsia Contest. EurAsia HamRadio Championship Contest"
+  },
+  {
+   "code": "EUHFC",
+   "desc": "European (only) HF Championship. EU -to- EU station contacts. First Saturday in August (12:00 &ndash; 23:59 UTC)"
+  },
+  {
+   "code": "EUSCW",
+   "desc": "European Sprint (inactive). In April and October. both modes. 4 hours"
+  },
+  {
+   "code": "EUSSSB",
+   "desc": "European Sprint (inactive). In April and October. both modes. 4 hours"
+  },
+  {
+   "code": "FD",
+   "desc": "ARRL Field Day contest. See ARRL Field Day Setup instructions."
+  },
+  {
+   "code": "FDGOTA",
+   "desc": "ARRL Field Day GOTA station log. See FDGOTA setup instructions"
+  },
+  {
+   "code": "FDREG1",
+   "desc": "International Amateur Radio Union. Varying rules for Belgium. Germany. United Kingdom (SSB and CW). Netherlands. Switzerland. Ireland (only CW). Italy. Slovenia (S5) and Russia (UA. UA2. UA9)"
+  },
+  {
+   "code": "FOCBWQP",
+   "desc": "First Class Operators Club QSO Party. First Class Operators Club (FOC) QSO Party"
+  },
+  {
+   "code": "FOCCW",
+   "desc": "First Class Operators Club Marathon. First Class Operators Club (FOC) Marathon. First full weekend in February"
+  },
+  {
+   "code": "GACW",
+   "desc": "GACW WW South America CW DX contest. Second weekend in June. CW only"
+  },
+  {
+   "code": "GCUP",
+   "desc": "Yuri Gagarin International DX Contest. April; CW, SSB. HF plus satellites"
+  },
+  {
+   "code": "HADX",
+   "desc": "Hungarian Amateur Radio DX contest. 3rd full weekend in January"
+  },
+  {
+   "code": "HAMSPIRCW",
+   "desc": "Ham Spirit CW"
+  },
+  {
+   "code": "HAMSPIRSSB",
+   "desc": "Ham Spirit SSB"
+  },
+  {
+   "code": "HELVETIA",
+   "desc": "Helvetia Contest"
+  },
+  {
+   "code": "HOLYLAND",
+   "desc": "Holyland contest"
+  },
+  {
+   "code": "HSCCW",
+   "desc": "High Speed CW Contest -HSC CW"
+  },
+  {
+   "code": "IARU",
+   "desc": "International Amateur Radio Union HF Contest. International Amateur Radio Union &ndash; The second full weekend of July"
+  },
+  {
+   "code": "IOTA",
+   "desc": "RSGB Islands On The Air Contest"
+  },
+  {
+   "code": "JADOMESTIC",
+   "desc": "Japan (only) domestic contest. Generic support for Japanese domestic contests"
+  },
+  {
+   "code": "JIDXCW",
+   "desc": "Japan International DX Contest. CW: 2nd full weekend of April Sat. 0700 UTC &ndash; Sun. 1300 UTC"
+  },
+  {
+   "code": "JIDXSSB",
+   "desc": "Japan International DX Contest. SSB: 2nd full weekend of November Sat. 0700 UTC &ndash; Sun. 1300 UTC"
+  },
+  {
+   "code": "JTDX",
+   "desc": "Mongolian DX Contest. Third weekend in November. CW or SSB (inactive)"
+  },
+  {
+   "code": "KINGEACW",
+   "desc": "King of Spain contest &ndash; CW"
+  },
+  {
+   "code": "KINGEASSB",
+   "desc": "King of Spain contest &ndash; SSB"
+  },
+  {
+   "code": "LOTWCW",
+   "desc": "Logbook Of The World contest &ndash; CW (inactive)"
+  },
+  {
+   "code": "LOTWSSB",
+   "desc": "Logbook Of The World contest &ndash; SSB (inactive)"
+  },
+  {
+   "code": "LZDX",
+   "desc": "Bulgarian Federation DX contest. The weekend before the last full weekend of November (weekend before CQWW CW)"
+  },
+  {
+   "code": "LZOPEN",
+   "desc": "Bulgarian Federation Open and LZ Sprint contests. For all three contests. LZ Open and both sprint contests (40/80 meter)"
+  },
+  {
+   "code": "MINITESTCW",
+   "desc": "Minitest CW Test. CW:Almost every Wednesday 1800-1900Z"
+  },
+  {
+   "code": "NAQPCW",
+   "desc": "North American QSO Parties &ndash; CW. CW: Second full weekend in January. First full weekend in August"
+  },
+  {
+   "code": "NAQPSSB",
+   "desc": "North American QSO Parties &ndash; SSB. SSB: Third full weekend in January. Third full weekend in August"
+  },
+  {
+   "code": "NAVAL",
+   "desc": "International Naval Contest"
+  },
+  {
+   "code": "NRAU10M",
+   "desc": "Nordic Radio Amateur Union 10m Activity Contest &ndash; 1st Thursday of the month, CW, SSB, FM, Digi 1 hour each"
+  },
+  {
+   "code": "NRAUCW",
+   "desc": "Nordic Radio Amateur Union-Baltic contest &ndash; CW. 2nd full weekend in January"
+  },
+  {
+   "code": "NRAUSSB",
+   "desc": "Nordic Radio Amateur Union-Baltic contest &ndash; SSB. 2nd full weekend in January"
+  },
+  {
+   "code": "NRRLVINTER",
+   "desc": "Norwegian RRL Winter Contest. March. Rules in Norwegian"
+  },
+  {
+   "code": "OCEANIACW",
+   "desc": "Oceania contest &ndash; CW. CW: Second weekend in October"
+  },
+  {
+   "code": "OCEANIASSB",
+   "desc": "Oceania contest &ndash; SSB. SSB: First weekend in October"
+  },
+  {
+   "code": "OKOMDX",
+   "desc": "Czech and Slovak Republics DX contest (CW version only). Second full weekend in November The OK/OM DX SSB contest in April now has the same rules. See the UDC_OKOMDXSSB contest type in the list of UDC contests."
+  },
+  {
+   "code": "PABEKERCW",
+   "desc": "Netherlands &ndash; PA-beker &ndash; CW. Second full weekend in November Local Dutch CW and SSB contest"
+  },
+  {
+   "code": "PABEKERSSB",
+   "desc": "Netherlands &ndash; PA-beker &ndash; SSB. Second full weekend in November Local Dutch CW and SSB contest"
+  },
+  {
+   "code": "PACC",
+   "desc": "Netherlands &ndash; PACC contest. First full weekend of February"
+  },
+  {
+   "code": "PORTUGAL",
+   "desc": "Portugal Day Contest. Second Saturday of June"
+  },
+  {
+   "code": "QCWAQSO",
+   "desc": "Quarter Century Wireless Association &ndash; QCWA QSO Party. Despite the name. treated as a separate contest"
+  },
+  {
+   "code": "RAC",
+   "desc": "RAC Canada Day Contest / RAC Canada Winter Contest. Both contests have the same rules"
+  },
+  {
+   "code": "RAEM",
+   "desc": "Russian Amateur Radio Union &ndash; RAEM Contest (E.T.Krenkel contest). Fourth full weekend of December"
+  },
+  {
+   "code": "RCCCUP",
+   "desc": "Russian Contest Club Cup. First weekend in May"
+  },
+  {
+   "code": "RDAC",
+   "desc": "Russian District Award Contest"
+  },
+  {
+   "code": "REFCW",
+   "desc": "French REF DX contest. CW: last weekend of January"
+  },
+  {
+   "code": "REFSSB",
+   "desc": "French REF DX contest. SSB: last weekend of February"
+  },
+  {
+   "code": "RFCCW",
+   "desc": "Cup of the Russian Federation &ndash; CW. Internal Russian contest in January &ndash; see also RTTY version below"
+  },
+  {
+   "code": "RFCHAMP",
+   "desc": "Russion Federation (only) RF Championship. For English text select on top Translate to English"
+  },
+  {
+   "code": "RFCSSB",
+   "desc": "Cup of the Russian Federation &ndash; SSB. Internal Russian contest in January &ndash; see also RTTY version below"
+  },
+  {
+   "code": "ROPOCO",
+   "desc": "RSGB ROPOCO. Now ROLO(cator) RSGB contest"
+  },
+  {
+   "code": "RRCW",
+   "desc": "ARRL Rookie Roundup &ndash; CW. SSB in April. RTTY in August. CW in December"
+  },
+  {
+   "code": "RRSSB",
+   "desc": "ARRL Rookie Roundup &ndash; SSB. SSB in April. RTTY in August. CW in December"
+  },
+  {
+   "code": "RRTC",
+   "desc": "Russian Radiosport Team Championship. Third Saturday in July"
+  },
+  {
+   "code": "RRTCT",
+   "desc": "Russian Radiosport Team Championship. Third Saturday in July"
+  },
+  {
+   "code": "RSGB160CW",
+   "desc": "RSGB 160 Meter CW contests. CW only. In RSGB1st160CW in February and RSGB2nd160CW in November"
+  },
+  {
+   "code": "RSGB2128",
+   "desc": "RSGB 21/28 MHz contest (inactive)"
+  },
+  {
+   "code": "RSGB80MCC",
+   "desc": "RSGB 80 Meter Club Championship"
+  },
+  {
+   "code": "RSGBAFS-C",
+   "desc": "RSGB Affiliated Societies Contests &ndash; CW"
+  },
+  {
+   "code": "RSGBAFS-S",
+   "desc": "RSGB Affiliated Societies Contests &ndash; SSB"
+  },
+  {
+   "code": "RSGBBERU",
+   "desc": "RSGB Commonwealth Contest. British Commonwealth stations only"
+  },
+  {
+   "code": "RSGBCLUB",
+   "desc": "RSGB Club Calls contest"
+  },
+  {
+   "code": "RSGBDX",
+   "desc": "RSGB DX contest"
+  },
+  {
+   "code": "RSGBLP",
+   "desc": "RSGB Low Power Contest"
+  },
+  {
+   "code": "RUSSIANDX",
+   "desc": "Russian DX"
+  },
+  {
+   "code": "RUSYLOM",
+   "desc": "Russian YL/OM contest. in Russian"
+  },
+  {
+   "code": "SACCW",
+   "desc": "Scandinavian Activity Contest &ndash; SAC &ndash; CW. Scandinavian Activity Contest"
+  },
+  {
+   "code": "SACSSB",
+   "desc": "Scandinavian Activity Contest &ndash; SAC &ndash; SSB. Scandinavian Activity Contest"
+  },
+  {
+   "code": "SAMOVAR",
+   "desc": "Samovar CW Contest &ndash; 3rd full weekend of April"
+  },
+  {
+   "code": "SPDX",
+   "desc": "Polish Amateur Radio &ndash; SP DX contest. First full weekend of April (15:00-15:00 GMT)"
+  },
+  {
+   "code": "SPRINTCW",
+   "desc": "North American Sprint &ndash; CW. CW: First Sunday in February. Sunday following first Monday in September"
+  },
+  {
+   "code": "SPRINTLADD",
+   "desc": "NS Sprint and Sprint Ladder. Northern CA Contest Club. Both contests are weekly. CW only. see setup"
+  },
+  {
+   "code": "SPRINTNS",
+   "desc": "NS Sprint and Sprint Ladder. Northern CA Contest Club. Both contests are weekly. CW only. see setup"
+  },
+  {
+   "code": "SPRINTSSB",
+   "desc": "North American Sprint &ndash; SSB. SSB: Sunday of first full weekend in February. Second Sunday following first Monday in September"
+  },
+  {
+   "code": "SSCW",
+   "desc": "ARRL November Sweepstakes CW"
+  },
+  {
+   "code": "SSSSB",
+   "desc": "ARRL November Sweepstakes SSB"
+  },
+  {
+   "code": "STEWPERRY",
+   "desc": "Stew Perry Topband Distance Challenge. Last full weekend of December"
+  },
+  {
+   "code": "SYLRA",
+   "desc": "Scandinavian YL &ndash; SYLRA contest"
+  },
+  {
+   "code": "TRCDX",
+   "desc": "Bulgaria. Thracian Rose Club &ndash; TRC DX Contest"
+  },
+  {
+   "code": "UBACW",
+   "desc": "Belgium Amateur Radio &ndash; UBA DX Contest &ndash; CWSB. SSB: last weekend of January CW: last weekend of February"
+  },
+  {
+   "code": "UBAON",
+   "desc": "Belgium Amateur Radio &ndash; UBA ON contest. Last Sunday September: 6 m Phone/CW First Sunday October: HF &ndash; 80 m SSB Second Sunday October: HF &ndash; 80 m CW Third Sunday October: 2 m Phone/CW"
+  },
+  {
+   "code": "UBASPRING",
+   "desc": "Belgium Amateur Radio &ndash; UBA Spring. Second Sunday March: HF &ndash; 80m CW Third Sunday March: VHF-6m Phone/CW Fourth Sunday March: VHF-2m Phone/CW First Sunday April: HF &ndash; 80m SSB"
+  },
+  {
+   "code": "UBASSB",
+   "desc": "Belgium Amateur Radio &ndash; UBA DX Contest CW/SSB. SSB: last weekend of January CW: last weekend of February"
+  },
+  {
+   "code": "UBAWINTER",
+   "desc": "Belgium Amateur Radio &ndash; UBA Low Band Winter Contest. 160. 80 and 40 meters"
+  },
+  {
+   "code": "UKEIDXCW",
+   "desc": "United Kingdom and Ireland -UK / EI DX &ndash; CW"
+  },
+  {
+   "code": "UKEIDXSSB",
+   "desc": "United Kingdom and Ireland -UK / EI DX &ndash; SSB"
+  },
+  {
+   "code": "UKRAINDX",
+   "desc": "Ukrainian DX contest. First full weekend of November"
+  },
+  {
+   "code": "UKRCHCW",
+   "desc": "Ukrainian Championship &ndash; CW"
+  },
+  {
+   "code": "UKRCHSSB",
+   "desc": "Ukrainian Championship &ndash; SSB"
+  },
+  {
+   "code": "UNDX",
+   "desc": "Kazakhstan Federation of Radiosport &ndash; UN DX contest. Open Kazakhstan Championship"
+  },
+  {
+   "code": "WAECW",
+   "desc": "Worked All Europe DX Contest &ndash; CW."
+  },
+  {
+   "code": "WAESSB",
+   "desc": "Worked All Europe DX Contest &ndash; SSB."
+  },
+  {
+   "code": "WAG",
+   "desc": "Worked All Germany contest. October. third full weekend"
+  },
+  {
+   "code": "WFD",
+   "desc": "Winter Field Day"
+  },
+  {
+   "code": "WRTC",
+   "desc": "World Radiosport Team Championship. for on-site participants in World Radiosport Team Championship held every 4 years &ndash; others use IARU"
+  },
+  {
+   "code": "WWPMC",
+   "desc": "World Wide Peace Messenger Contest. 1200UTC Saturday to 1200 UTC Sunday. every second weekend of January"
+  },
+  {
+   "code": "XMAS",
+   "desc": "German Amateur Radio Club. DARC Weihnachtswettbewerb &ndash; XMAS contest"
+  },
+  {
+   "code": "YOHFDX",
+   "desc": "Romanian HF DX contest, end of August"
+  },
+  {
+   "code": "YV",
+   "desc": "Independence of Venezuela Contest. First full weekend in July"
+  },
+  {
+   "code": "QSOP_7QP",
+   "desc": "7th Call Area &ndash; 7QP. For 7-area stations only. Others use the IN7QPNE QSO Party contest"
+  },
+  {
+   "code": "QSOP_AK",
+   "desc": "Alaska &ndash; AK (inactive)"
+  },
+  {
+   "code": "QSOP_AL",
+   "desc": "Alabama &ndash; AL"
+  },
+  {
+   "code": "QSOP_AR",
+   "desc": "Arkansas &ndash; AR"
+  },
+  {
+   "code": "QSOP_AZ",
+   "desc": "Arizona &ndash; AZ"
+  },
+  {
+   "code": "QSOP_BC",
+   "desc": "British Columbia &ndash; BC"
+  },
+  {
+   "code": "QSOP_CA",
+   "desc": "California &ndash; CA"
+  },
+  {
+   "code": "QSOP_CO",
+   "desc": "Colorado &ndash; CO"
+  },
+  {
+   "code": "QSOP_CT",
+   "desc": "Connecticut &ndash; CT. Inactive. See New England Contest NEWE"
+  },
+  {
+   "code": "QSOP_DE",
+   "desc": "Delaware &ndash; DE. For Delaware in-state stations only. Others use the IN7QPNE QSO Party contest"
+  },
+  {
+   "code": "QSOP_GA",
+   "desc": "Georgia &ndash; GA"
+  },
+  {
+   "code": "QSOP_HI",
+   "desc": "Hawaii &ndash; HI"
+  },
+  {
+   "code": "QSOP_IA",
+   "desc": "Iowa &ndash; IA"
+  },
+  {
+   "code": "QSOP_ID",
+   "desc": "Idaho &ndash; ID"
+  },
+  {
+   "code": "QSOP_IL",
+   "desc": "Illinois &ndash; IL"
+  },
+  {
+   "code": "QSOP_IN",
+   "desc": "Indiana &ndash; IN. For Indiana in-state stations only. Others use the IN7QPNE QSO Party contest"
+  },
+  {
+   "code": "QSOP_IN7QPE",
+   "desc": "Combined multi-state QSO Party contest. See 7QP, DE, IN and NEWE for rules for each individual contest."
+  },
+  {
+   "code": "QSOP_KS",
+   "desc": "Kansas &ndash; KS"
+  },
+  {
+   "code": "QSOP_KY",
+   "desc": "Kentucky &ndash; KY"
+  },
+  {
+   "code": "QSOP_LA",
+   "desc": "Louisiana &ndash; LA"
+  },
+  {
+   "code": "QSOP_MARAC_",
+   "desc": "MARAC County Hunters Contest"
+  },
+  {
+   "code": "QSOP_MCC",
+   "desc": "Maritime QSO Party &ndash; MCC (inactive)"
+  },
+  {
+   "code": "QSOP_MD",
+   "desc": "Maryland DC &ndash; MD"
+  },
+  {
+   "code": "QSOP_MI",
+   "desc": "Michigan &ndash; MI"
+  },
+  {
+   "code": "QSOP_MN",
+   "desc": "Minnesota &ndash; MN"
+  },
+  {
+   "code": "QSOP_MO",
+   "desc": "Missouri &ndash; MO"
+  },
+  {
+   "code": "QSOP_MT",
+   "desc": "Montana &ndash; MT (inactive)"
+  },
+  {
+   "code": "QSOP_NC",
+   "desc": "North Carolina &ndash; NC"
+  },
+  {
+   "code": "QSOP_ND",
+   "desc": "North Dakota &ndash; ND"
+  },
+  {
+   "code": "QSOP_NE",
+   "desc": "Nebraska &ndash; NE"
+  },
+  {
+   "code": "QSOP_NEWE",
+   "desc": "New England &ndash; NEWE. For New England stations only; Others use the IN7QPNE QSO Party contest"
+  },
+  {
+   "code": "QSOP_NH",
+   "desc": "New Hampshire &ndash; NH"
+  },
+  {
+   "code": "QSOP_NJ",
+   "desc": "New Jersey &ndash; NJ"
+  },
+  {
+   "code": "QSOP_NM",
+   "desc": "New Mexico &ndash; NM"
+  },
+  {
+   "code": "QSOP_NV",
+   "desc": "Nevada &ndash; NV"
+  },
+  {
+   "code": "QSOP_NY",
+   "desc": "New York &ndash; NY"
+  },
+  {
+   "code": "QSOP_OH",
+   "desc": "Ohio &ndash; OH"
+  },
+  {
+   "code": "QSOP_OK",
+   "desc": "Oklahoma &ndash; OK"
+  },
+  {
+   "code": "QSOP_ON",
+   "desc": "Ontario &ndash; ON. Bonus points for county activation by rovers/mobiles are not calculated."
+  },
+  {
+   "code": "QSOP_OR",
+   "desc": "Oregon &ndash; OR (inactive &ndash; replaced by 7QP)"
+  },
+  {
+   "code": "QSOP_PA",
+   "desc": "Pennsylvania &ndash; PA"
+  },
+  {
+   "code": "QSOP_SC",
+   "desc": "South Carolina &ndash; SC"
+  },
+  {
+   "code": "QSOP_SD",
+   "desc": "South Dakota &ndash; SD"
+  },
+  {
+   "code": "QSOP_TN",
+   "desc": "Tennessee &ndash; TN"
+  },
+  {
+   "code": "QSOP_TX",
+   "desc": "Texas &ndash; TX"
+  },
+  {
+   "code": "QSOP_VA",
+   "desc": "Virginia &ndash; VA"
+  },
+  {
+   "code": "QSOP_VT",
+   "desc": "Vermont &ndash; VT"
+  },
+  {
+   "code": "QSOP_WA",
+   "desc": "Washington Salmon Run &ndash; WA"
+  },
+  {
+   "code": "QSOP_WI",
+   "desc": "Wisconsin &ndash; WI. The 1.5 power multiplier is not supported. The score is stored as an integer."
+  },
+  {
+   "code": "QSOP_WV",
+   "desc": "West Virginia &ndash; WV"
+  },
+  {
+   "code": "ARRL10GHz",
+   "desc": "ARRL 10 GHz & Up. Over two weekends. in August and September. See setup"
+  },
+  {
+   "code": "ARRL222",
+   "desc": "ARRL222. ARRL UHF August &ndash; ARRL 222 and Up"
+  },
+  {
+   "code": "ARRLVHFJAN",
+   "desc": "ARRL January VHF Sweepstakes. ARRL_January_VHF_Sweepstakes"
+  },
+  {
+   "code": "ARRLVHFJUN",
+   "desc": "ARRL June VHF QSO Party. ARRL_June_VHF_QSO_Party"
+  },
+  {
+   "code": "ARRLVHFSEP",
+   "desc": "ARRL September VHF QSO Party. ARRL_September_VHF_QSO_Party"
+  },
+  {
+   "code": "CQWWVHF",
+   "desc": "CQ World Wide VHF Contest. July &ndash; 50 MHz and 144 MHz only"
+  },
+  {
+   "code": "DDFM50",
+   "desc": "French Amateur Radio. REF Departments contest 50 MHz"
+  },
+  {
+   "code": "REGIOVHF",
+   "desc": "VRZA &ndash; Nederlandse Locator Contest. WANLC &ndash; Dutch contest. every month NB selecteer: REGIOVHF"
+  },
+  {
+   "code": "UKSMG",
+   "desc": "UKSMG sporadic-E competition."
+  },
+  {
+   "code": "VHFDZCUP",
+   "desc": "VHF UA1DZ Cup. Russian VHF contest"
+  },
+  {
+   "code": "VHFHELV26",
+   "desc": "VHF/UHF Helvetia 26 contest. Swiss VHF and up contest"
+  },
+  {
+   "code": "VHFHGOB",
+   "desc": "VHF HG OB contest. Hungarian VHF contest"
+  },
+  {
+   "code": "VHFNAC",
+   "desc": "Nordic Amateur Radio. NRAU Activity Contest"
+  },
+  {
+   "code": "VHFREG1",
+   "desc": "IARU Region 1 50 MHz contest. Only 50 MHz &ndash; June"
+  },
+  {
+   "code": "FTROUNDUP",
+   "desc": "FT Roundup (formerly 10 Meter RTTY Contest (AA5AU / W0YK)). First full weekend of December (contest rules same as ARRL RTTY Roundup)"
+  },
+  {
+   "code": "ANATOLRTTY",
+   "desc": "Anatolian RTTY contest (discontinued). Third full weekend in May"
+  },
+  {
+   "code": "ARRLIDC",
+   "desc": "ARRL International Digital Contest (June). First full weekend in June. All digital modes except for RTTY."
+  },
+  {
+   "code": "ARRLRTTY",
+   "desc": "ARRL RTTY Roundup (January). First full weekend of January (not on January 1)"
+  },
+  {
+   "code": "BAR75RTTYS",
+   "desc": "BARTG Sprint75 contest (April. 75 baud RTTY. April. September (4 hours each)"
+  },
+  {
+   "code": "BARTGRTTYS",
+   "desc": "BARTG RTTY Sprint contest (January). Fourth full weekend of January"
+  },
+  {
+   "code": "BARTGSRTTY",
+   "desc": "BARTG HF RTTY contest (formerly Spring RTTY Contest). Third full weekend in March"
+  },
+  {
+   "code": "CISDXRTTY",
+   "desc": "CIS DX RTTY contest (discontinued). QPSK63 in 2009/2010. Third full weekend of September"
+  },
+  {
+   "code": "CQWPXRTTY",
+   "desc": "CQ World Wide WPX &ndash; RTTY. Second full weekend of February"
+  },
+  {
+   "code": "CQWWRTTY",
+   "desc": "CQ World Wide DX &ndash; RTTY. Last full weekend of September (48 hours)"
+  },
+  {
+   "code": "DARCRTTY",
+   "desc": "DARC RTTY Jan, Apr, Jul, Oct. use XMAS Module"
+  },
+  {
+   "code": "DLDXRTTY",
+   "desc": "German DL-DX RTTY contest. First full weekend of July"
+  },
+  {
+   "code": "DMCRTTY",
+   "desc": "Digital Modes Club Contest (discontinued). Third full weekend of July"
+  },
+  {
+   "code": "DRCGWWRTTY",
+   "desc": "German WW RTTY contest"
+  },
+  {
+   "code": "EAPSK",
+   "desc": "Spanish Radio Union. EA PSK63 contest. Second full weekend of March"
+  },
+  {
+   "code": "EARTTY",
+   "desc": "Spanish Radio Union. EA RTTY contest. First full weekend of April"
+  },
+  {
+   "code": "EPCPSK63QP",
+   "desc": "EPC PSK63 QSO party (discontinued). PSK63. Third full weekend of November"
+  },
+  {
+   "code": "EPCRUDX",
+   "desc": "EPC RU DX Contest (discontinued). March BPSK63"
+  },
+  {
+   "code": "EPCWWDX",
+   "desc": "EPC PSK World Wide DX (discontinued). PSK63. First weekend in February"
+  },
+  {
+   "code": "EUPSKDX",
+   "desc": "European PSK DX contest. PSK63. Third full weekend of May"
+  },
+  {
+   "code": "JARTSWWRTY",
+   "desc": "Japan Amateur Radio Telegraphy. Third full weekend in October"
+  },
+  {
+   "code": "JTDXRTTY",
+   "desc": "Mongolian RTTY (discontinued). Second full weekend in January"
+  },
+  {
+   "code": "LOTWRTTY",
+   "desc": "LOTW RTTY contest. Contest discontinued."
+  },
+  {
+   "code": "MAKRORTTY",
+   "desc": "Makrothen RTTY contest. Second full weekend in October"
+  },
+  {
+   "code": "NAQPRTTY",
+   "desc": "North American QSO Parties (NAQP) &ndash; RTTY. Last full weekend in February. Third full weekend in August"
+  },
+  {
+   "code": "OKDXRTTY",
+   "desc": "Czech Amateur Radio. OK DX RTTY contest. Third full weekend in December"
+  },
+  {
+   "code": "RFCDIGI",
+   "desc": "Russian Federation Digital contest (SRR DIGI CUP). Second weekend of September"
+  },
+  {
+   "code": "RRRTTY",
+   "desc": "ARRL Rookie Roundup RTTY (April. Third Sunday of August"
+  },
+  {
+   "code": "RUCUPRTTY",
+   "desc": "Do not use &ndash; use RFCDIGI instead."
+  },
+  {
+   "code": "RUSDXRTTY",
+   "desc": "Russian WW RTTY contest. RTTY. First Saturday of September"
+  },
+  {
+   "code": "RUS-WW-DIG",
+   "desc": "Russian WW Digital. First weekend in October"
+  },
+  {
+   "code": "RUS-WW-MM",
+   "desc": "Russian WW MultiMode. Dates variable."
+  },
+  {
+   "code": "RUS-WW-PSK",
+   "desc": "Russian WW PSK Contest. Russian WorldWide PSK. Third weekend in February"
+  },
+  {
+   "code": "SARTGNYRTY",
+   "desc": "Scandinavian Amateur Radio. SARTG New Year RTTY. January 1st"
+  },
+  {
+   "code": "SARTGRTTY",
+   "desc": "Quick PSK63 contest. PSK63. Uses SARTG rules. First Saturday of September"
+  },
+  {
+   "code": "SCCRTTY",
+   "desc": "Slovenia Contest Club SCC RTTY Championship. (discontinued &ndash; replaced by WW-DIGI FT4/8 Contest). (Use for RYOPSWW) Last full weekend in August"
+  },
+  {
+   "code": "SPDXRTTY",
+   "desc": "Polish Amateur Radio. SP DX RTTY contest. 4th full weekend of April"
+  },
+  {
+   "code": "SPRINTRTTY",
+   "desc": "North American Sprint &ndash; RTTY. Sunday of second full weekend in March. Sunday of second full weekend in October"
+  },
+  {
+   "code": "TARAGRID",
+   "desc": "TARA Grid Dip contest (discontinued). RTTY and PSK. First Saturday of August"
+  },
+  {
+   "code": "TARAPSK",
+   "desc": "TARA PSK Rumble (discontinued). PSK31. First Saturday of October"
+  },
+  {
+   "code": "TARARTTY",
+   "desc": "TARA RTTY Melee (discontinued). RTTY. First Saturday of December"
+  },
+  {
+   "code": "UKDXRTTY",
+   "desc": "United Kingdom DX Contest &ndash; RTTY (discontinued). Second full weekend of July"
+  },
+  {
+   "code": "UKRAINDIGI",
+   "desc": "Ukrainian DX DIGI contest. RTTY 75 baud and PSK63. Fourth full weekend of June"
+  },
+  {
+   "code": "UKRAINRTTY",
+   "desc": "Ukrainian DX Classic RTTY contest. DX Classic RTTY. Third weekend of June"
+  },
+  {
+   "code": "UKRCHRTTY",
+   "desc": "Ukrainian RTTY Championship. FOR UKRAINIAN STATION ONLY. Third weekend of April"
+  },
+  {
+   "code": "UKRTTYOPEN",
+   "desc": "Ukrainian Open RTTY Championship. First full weekend of March"
+  },
+  {
+   "code": "VOLTARTTY",
+   "desc": "Volta RTTY contest. Second full weekend in May"
+  },
+  {
+   "code": "WAERTTY",
+   "desc": "Worked All Europe. Second full weekend in November"
+  },
+  {
+   "code": "WWDIGI",
+   "desc": "WW Digi FT8/FT4 Contest. Last full weekend in August."
+  },
+  {
+   "code": "X ERTTY",
+   "desc": "XE RTTY (FMRE) Contest. First full weekend in February."
+  },
+  {
+   "code": "UDC_070TPRTTY",
+   "desc": "PODXS Triple Play Low Band Sprint."
+  },
+  {
+   "code": "UDC_070VSRTTY",
+   "desc": "PODXS Valentine Sprint Contest."
+  },
+  {
+   "code": "UDC_13COLONIES",
+   "desc": "13 Colonies Event. 1-7 July For &lsquo;Hunters&rsquo; &ndash; SESs use DX Module"
+  },
+  {
+   "code": "UDC_1WATTGAME_VHF",
+   "desc": "The 1 Watt Game. (Ignore &lsquo;VHF&rsquo;) Last Sunday March."
+  },
+  {
+   "code": "UDC_1MAY_AGCW",
+   "desc": "Activity Group CW QRP-QRP Party. 1st May"
+  },
+  {
+   "code": "UDC_4SQRP",
+   "desc": "4 States QRP Group SSS. 2nd Sun every month."
+  },
+  {
+   "code": "UDC_6M_WMRTTY",
+   "desc": "UKSMG Winter Marathon."
+  },
+  {
+   "code": "UDC_A1AWT",
+   "desc": "A1 Club Weekly Test."
+  },
+  {
+   "code": "UDC_ACHAMPCW",
+   "desc": "Asian Russia Champion. Third Saturday of January"
+  },
+  {
+   "code": "UDC_AC-SPRING",
+   "desc": "ARKTIKA-SPRING."
+  },
+  {
+   "code": "UDC_AEGEANRTTY",
+   "desc": "AEGEAN RTTY Contest."
+  },
+  {
+   "code": "UDC_AGB",
+   "desc": "Activity Group of Belarus Contests."
+  },
+  {
+   "code": "UDC_AGB_RTTY",
+   "desc": "AGB NEMIGA/PARTY."
+  },
+  {
+   "code": "UDC_AGBPARTY",
+   "desc": "AGB Party."
+  },
+  {
+   "code": "UDC_AGCW-NTCQP",
+   "desc": "AGCW-NTC-QSO-PARTY. 2nd Weekend October."
+  },
+  {
+   "code": "UDC_AGCW-YL-CWP",
+   "desc": "AGCW YL CW Party."
+  },
+  {
+   "code": "UDC_AKQP_RTTY",
+   "desc": "ALASKA QSO Party."
+  },
+  {
+   "code": "UDC_ALARA",
+   "desc": "Australian Ladies Amateur Radio Assc Contest last weekend August"
+  },
+  {
+   "code": "UDC_ANZAC-DAY",
+   "desc": "ANZAC DAY Contest. April"
+  },
+  {
+   "code": "UDC_AMRALLY",
+   "desc": "AM Rally. First Sat. February"
+  },
+  {
+   "code": "UDC_AMSAT_FD",
+   "desc": "AMSAT FIELD DAY 4th Wkend June"
+  },
+  {
+   "code": "UDC_AOEE_8040",
+   "desc": "All Austrian Exercise AOEE 80/40m. 1st May"
+  },
+  {
+   "code": "UDC_ARCK_MORSE",
+   "desc": "ARCK Morse Sings. 3rd Weekend January"
+  },
+  {
+   "code": "UDC_LU7MC",
+   "desc": "Argentina 4OM Contest. 2nd Sat October."
+  },
+  {
+   "code": "UDC_ARI_BASFER",
+   "desc": "ARI BASSO FERRARESE Contest. 3rd Weekend December"
+  },
+  {
+   "code": "UDC_ARI_EME",
+   "desc": "ARI EME 2nd Weekend April, Last Weekend Sept"
+  },
+  {
+   "code": "UDC_ARI_SEZIONI",
+   "desc": "ARI SEZIONI. 2nd Saturday June"
+  },
+  {
+   "code": "UDC_ARIRTTY",
+   "desc": "Amateur Radio Italy 80/40m. Italian internal. 2nd weekend Dec."
+  },
+  {
+   "code": "UDC_ARKTIKAPR",
+   "desc": "Arktika Polar Radioman."
+  },
+  {
+   "code": "UDC_ARRLEMEVHF",
+   "desc": "ARRL-EME."
+  },
+  {
+   "code": "UDC_ARRL_VOTA",
+   "desc": "ARRL Volunteers On The Air. All 2023"
+  },
+  {
+   "code": "UDC_ARRRTTY",
+   "desc": "ARR-Portugese PSK63. 3rd Weekend June"
+  },
+  {
+   "code": "UDC_AUTUMN SPRINT",
+   "desc": "Michurinsk Contest Group Autumn Sprint. 2nd Friday in October"
+  },
+  {
+   "code": "UDC_BATAVIA_FT8",
+   "desc": "Batavia FT8 Contest. First Weekend in August"
+  },
+  {
+   "code": "UDC_BB_ITALIA",
+   "desc": "Bande Basse Italia Contest. Italian internal. 2nd Weekend January"
+  },
+  {
+   "code": "UDC_BCC_MSC",
+   "desc": "Bavarian Contest Club &ndash; Meteor Scatter Contest."
+  },
+  {
+   "code": "UDC_BCCPARTY",
+   "desc": "Bavarian Contest Club QSO Party"
+  },
+  {
+   "code": "UDC_BDMWWRTTY",
+   "desc": "Belgian Data Modes WW Contest."
+  },
+  {
+   "code": "UDC_BELGO_RTTY",
+   "desc": "Belgorod Open Championship."
+  },
+  {
+   "code": "UDC_BRAILEICUP",
+   "desc": "Brailei Cup Contest. 4th Monday May"
+  },
+  {
+   "code": "UDC_BRAZ_IRTTY",
+   "desc": "Brazil Independance Day Contest."
+  },
+  {
+   "code": "UDC_BUCURESTI",
+   "desc": "Bucharest-HF-Contest."
+  },
+  {
+   "code": "UDC_BY_WAPC_BY",
+   "desc": "Worked All China Provinces. &ndash; Chinese stations 3rd Weekend April"
+  },
+  {
+   "code": "UDC_BY_WAPC_DX",
+   "desc": "Worked All China Provinces &ndash; Non-Chinese stations"
+  },
+  {
+   "code": "UDC_CAVTEST",
+   "desc": "OK/OM CAV Contest. Every 28th September."
+  },
+  {
+   "code": "UDC_CAHF",
+   "desc": "Campeonato Argentino de HF"
+  },
+  {
+   "code": "UDC_CARPATHIAN",
+   "desc": "Carpathian Sprint Contest. Every last Thursday each quarter."
+  },
+  {
+   "code": "UDC_CBJ",
+   "desc": "Contest Battle of Jenipapo. Last Weekend April"
+  },
+  {
+   "code": "UDC_CBNRBRASIL",
+   "desc": "Battle of Riachuelo Contest"
+  },
+  {
+   "code": "UDC_CE_WPX",
+   "desc": "CHILE-WPX Contest. 3rd Weekend in September"
+  },
+  {
+   "code": "UDC_CHER-CUP",
+   "desc": "Chernozem Region Open Cup. Last Friday in December"
+  },
+  {
+   "code": "UDC_CHERNIGOV",
+   "desc": "CHERNIGOV. Cup Chernigov CW"
+  },
+  {
+   "code": "UDC_CLUBQSOPARTY",
+   "desc": "Club QSO Party"
+  },
+  {
+   "code": "UDC_COMMENT",
+   "desc": "Comment, a UDC sample"
+  },
+  {
+   "code": "UDC_CQWE",
+   "desc": "CQ Western Electric Contest 2nd Weekend November"
+  },
+  {
+   "code": "UDC_CQWS",
+   "desc": "CQ World Scouts. 2nd Saturday April."
+  },
+  {
+   "code": "UDC_CSAVHF",
+   "desc": "CSA-VHF."
+  },
+  {
+   "code": "UDC_CT_QRP",
+   "desc": "CT_QRP."
+  },
+  {
+   "code": "UDC_CUCALAMBE",
+   "desc": "Cuban District Contest. CUCALAMBE"
+  },
+  {
+   "code": "UDC_CWOPS10",
+   "desc": "CWOPS 10th Anniversary."
+  },
+  {
+   "code": "UDC_DARC_EASTER",
+   "desc": "Deutschland Easter Contest."
+  },
+  {
+   "code": "UDC_DARC_FT4",
+   "desc": "DARC FT4 Contest. 2nd Tues Feb. May, Aug. Nov."
+  },
+  {
+   "code": "UDC_DARC-HSW",
+   "desc": "DARC HSW Contest. Last Saturday in August."
+  },
+  {
+   "code": "UDC_DARC_X",
+   "desc": "DARC Thuringen Contest 3rd Weekend September DARC Ruhr Contest 4th Weekend September"
+  },
+  {
+   "code": "UDC_DARCFOA",
+   "desc": "DARC Funktag on Air. 3rd Weekend April"
+  },
+  {
+   "code": "UDC_DIG",
+   "desc": "DIG QSO Party. SSB &ndash; 2nd Weekend March, CW &ndash; 2nd Weekend April."
+  },
+  {
+   "code": "UDC_DIG_PA",
+   "desc": "DIG Club of Nederlands Contest. DIG_PA Contest &ndash; 4th Mon March/Sept"
+  },
+  {
+   "code": "UDC_DL_DTC",
+   "desc": "DL &ndash; German Telegraphy Contest. held 3rd October"
+  },
+  {
+   "code": "UDC_DNIEPERTTY",
+   "desc": "DNIEPER CUP League of Amateur Radio of Ukraine. 3 rounds/modes 1st Saturday October"
+  },
+  {
+   "code": "UDC_DOYLS",
+   "desc": "The Day of YLs Contest."
+  },
+  {
+   "code": "UDC_DU3MY_MEM",
+   "desc": "DU3MY Memorial. 3rd Weekend August"
+  },
+  {
+   "code": "UDC_EACNF",
+   "desc": "CONCURSO NACIONAL FONIA."
+  },
+  {
+   "code": "UDC_EACWMeet",
+   "desc": "EA CW MEET. Every 2nd Thurs except holidays."
+  },
+  {
+   "code": "UDC_EAQRP",
+   "desc": "EA QRP Contest. 3rd Weekend April"
+  },
+  {
+   "code": "UDC_EARSVHF",
+   "desc": "50RS VHF."
+  },
+  {
+   "code": "UDC_EASUFF29",
+   "desc": "Spanish Internal Suffixes. Suffixes XXIX National Last Sunday in January"
+  },
+  {
+   "code": "UDC_EPCFR",
+   "desc": "EPC French DX Contest."
+  },
+  {
+   "code": "UDC_EPC-UKR-DX",
+   "desc": "EPC Ukrainian DX."
+  },
+  {
+   "code": "UDC_ESENIN",
+   "desc": "ESENIN Russia Contest. 1st Friday in October"
+  },
+  {
+   "code": "UDC_ES-LL-KV",
+   "desc": "Estonion Lyhilaine Karikovoistlused"
+  },
+  {
+   "code": "UDC_ESOPENHF",
+   "desc": "ESTONIAN OPEN HF. 3rd Saturday in April"
+  },
+  {
+   "code": "UDC_EUCW160",
+   "desc": "EUCW ON5ME-160 Contest. Normally 1st Saturday in January"
+  },
+  {
+   "code": "UDC_EUCWFP",
+   "desc": "EUCW Fraternizing Party. &ndash; Discontinued"
+  },
+  {
+   "code": "UDC_EU_DXC",
+   "desc": "EU DX Club Contest. First Weekend February."
+  },
+  {
+   "code": "UDC_FELDHELLCLUB",
+   "desc": "Feld Hell Club Monthly Sprints and others."
+  },
+  {
+   "code": "UDC_FGUP2011",
+   "desc": "FGUP 2011."
+  },
+  {
+   "code": "UDC_FINNDOM",
+   "desc": "Finland Domestic Events."
+  },
+  {
+   "code": "UDC_FIRAC",
+   "desc": "FIRAC Contest. 2nd Sunday March and November."
+  },
+  {
+   "code": "UDC_FISTSSPR",
+   "desc": "Fists Sprints. All Fists Sprints"
+  },
+  {
+   "code": "UDC_FLAVORRTTY",
+   "desc": "PODXS070 PSK 31 Flavors."
+  },
+  {
+   "code": "UDC_FLSPOTA",
+   "desc": "Florida Parks on the Air."
+  },
+  {
+   "code": "UDC_FLTOTBBS",
+   "desc": "Flight of the Bumblebees."
+  },
+  {
+   "code": "UDC_FOC_MDQP",
+   "desc": "FOC Memorial Day QSO Party. 1-2 November"
+  },
+  {
+   "code": "UDC_DFCF",
+   "desc": "French National Castle Day. 3rd Sun May"
+  },
+  {
+   "code": "UDC_DMF",
+   "desc": "French National Mills Day. June"
+  },
+  {
+   "code": "UDC_FRAPR_10M",
+   "desc": "FRAPR 10m Contest. Last Weekend July."
+  },
+  {
+   "code": "UDC_FRPHF",
+   "desc": "Brazilian Farroupilha Contest."
+  },
+  {
+   "code": "UDC_G3ZQSMEM",
+   "desc": "Fists G3ZQS Memorial Contest &ndash; can be used for Fists Sprints"
+  },
+  {
+   "code": "UDC_GEDEBAGE",
+   "desc": "GEDEBAGE Indonesian DX Contest. 1st Friday in December"
+  },
+  {
+   "code": "UDC_GENERIC",
+   "desc": "GENERIC &ndash; a UDC Sample."
+  },
+  {
+   "code": "UDC_GENERIC2",
+   "desc": "GENERIC2 &ndash; a UDC Sample."
+  },
+  {
+   "code": "UDC_GENERRTTY",
+   "desc": "GENERIC RTTY &ndash; Sample DIGI UDC file."
+  },
+  {
+   "code": "UDC_GRIDCHASE",
+   "desc": "ARRL International Grid Chase."
+  },
+  {
+   "code": "UDC_HA_NChamp",
+   "desc": "Hungarian National Championship. 2nd full weekend January."
+  },
+  {
+   "code": "UDC_HA3NS",
+   "desc": "HA3NS Memorial Contest. 1st Friday in June"
+  },
+  {
+   "code": "UDC_HAMCATION",
+   "desc": "2021 HamCation QSO Party. 2nd Weekend February."
+  },
+  {
+   "code": "UDC_HAMVENT_QP",
+   "desc": "Hamvention QSO Party, May 16 2020 (HVQP)"
+  },
+  {
+   "code": "UDC_HARCQSOP",
+   "desc": "Halifax Amateur Radio Club 90th anniversary QSO Party."
+  },
+  {
+   "code": "UDC_HESSENCONTEST",
+   "desc": "Hessen Contest. 3rd Weekend May"
+  },
+  {
+   "code": "UDC_HINA33RTTY",
+   "desc": "Japan Ladies Radio Society &ndash; Hina 33 Contest. JLRS Hina 33 Contest held on 2nd March. (Can be used for JLRS Party, see UBAPSK63-Read-Me for starting with high Serial Nr.)"
+  },
+  {
+   "code": "UDC_HPM150",
+   "desc": "Hiram Percy Maxim 150th Birthday. August 31 &ndash; September 8. 2019"
+  },
+  {
+   "code": "UDC_ICWC_MST",
+   "desc": "International CW Council Medium Speed Test. Every Monday 1300-1400Z and 1900-2000Z Every Tuesday: 0300-0400Z"
+  },
+  {
+   "code": "UDC_IG_WW_RTTY",
+   "desc": "Interest Group RTTY Contest 2nd Full weekend April"
+  },
+  {
+   "code": "UDC_ILLW-2010",
+   "desc": "International Lighthouse Week 2010."
+  },
+  {
+   "code": "UDC_INDEXAQSOP",
+   "desc": "INDEXA Worldwide QSO Party. First Saturday Sept."
+  },
+  {
+   "code": "UDC_IPA_RC",
+   "desc": "International Police Association Radio Club Contest. First Weekend November"
+  },
+  {
+   "code": "UDC_IRTS80M",
+   "desc": "Irish Radio Transmitters Society 80M. IRTS80M See Website"
+  },
+  {
+   "code": "UDC_IRTSCQIR",
+   "desc": "Irish Radio Transmitters Society CQIR. See Evening Counties Rules"
+  },
+  {
+   "code": "UDC_IOC",
+   "desc": "Istra Open Contest. 3rd Sunday May"
+  },
+  {
+   "code": "UDC_JAKARTA",
+   "desc": "Indonesian Jakarta DX 40M DX Contest"
+  },
+  {
+   "code": "UDC_JOTA-JOTI",
+   "desc": "Jamboree On The Air. 2nd Weekend Oct."
+  },
+  {
+   "code": "UDC_JLRSPARTY",
+   "desc": "JLRS Party Contest. Last weekend Sept/1st weekend Oct."
+  },
+  {
+   "code": "UDC_JWFD",
+   "desc": "Jock White Memorial Field Day. Last full weekend in February"
+  },
+  {
+   "code": "UDC_K1USNSST",
+   "desc": "K1USN CW Slow Speed (con)Test"
+  },
+  {
+   "code": "UDC_K1USNSSTOP",
+   "desc": "K1USN CW Slow Speed (con)Test Open. 2nd Friday Sept."
+  },
+  {
+   "code": "UDC_KANAGAWA",
+   "desc": "Kanagawa."
+  },
+  {
+   "code": "UDC_KANHAM",
+   "desc": "Kanham Contest. 1st Weekend June. Read the rules."
+  },
+  {
+   "code": "UDC_KCJ_DX",
+   "desc": "Keymens Club of Japan DX Stations. 3rd Weekend August"
+  },
+  {
+   "code": "UDC_KCJ_JA",
+   "desc": "Keymens Club of Japan JA Stations."
+  },
+  {
+   "code": "UDC_KCJ_TB_DX",
+   "desc": "Keymens Club of Japan Top Band Contest. 2nd Weekend February."
+  },
+  {
+   "code": "UDC_KOMI_RUHR",
+   "desc": "Komi Ruhr Qso Party. SEE the rules. 2nd Saturday October."
+  },
+  {
+   "code": "UDC_KTKUP",
+   "desc": "KT Serbian Cup."
+  },
+  {
+   "code": "UDC_KTSCWC",
+   "desc": "Serbian CW Club Short Wave Contest"
+  },
+  {
+   "code": "UDC_LABRE_DX",
+   "desc": "Labre DX Contest. 3rd Weekend July"
+  },
+  {
+   "code": "UDC_LABRE_RSDG",
+   "desc": "LABRE-RS DIGI Contest."
+  },
+  {
+   "code": "UDC_MK_PARTY",
+   "desc": "Latvian Mechanical Key Party. Held Feb, May, Oct and Dec"
+  },
+  {
+   "code": "UDC_LCL-2010",
+   "desc": "Lighthouse Christmas Lights 2010."
+  },
+  {
+   "code": "UDC_LSL2010",
+   "desc": "Lighthouse Spring Lites 2010."
+  },
+  {
+   "code": "UDC_LYCUP",
+   "desc": "Lithuanian Cup Contest 3rd Saturday in June."
+  },
+  {
+   "code": "UDC_LOANO_MCD",
+   "desc": "Replaced with Marconiqpd."
+  },
+  {
+   "code": "UDC_LYWAL",
+   "desc": "Lithuanian WAL Contest . 1st Saturday in June"
+  },
+  {
+   "code": "UDC_MA-CHAMP",
+   "desc": "Moscow-Championship."
+  },
+  {
+   "code": "UDC_MARCONIQPD",
+   "desc": "Marconi Club QSO Party Day. 1st Sat. January."
+  },
+  {
+   "code": "UDC_MARCONIMEM",
+   "desc": "Marconi Memorial Contest. 1st Wkend July"
+  },
+  {
+   "code": "UDC_MLOTA",
+   "desc": "Masonic Lodges On The Air. September"
+  },
+  {
+   "code": "UDC_MEMORY",
+   "desc": "Memory Lives Forever Contest. 3rd Weekend December."
+  },
+  {
+   "code": "UDC_MM",
+   "desc": "Maidenhead Mayhem. 4th weekend March/3rd Sat July"
+  },
+  {
+   "code": "UDC_MOONRTTY",
+   "desc": "MOON CONTEST."
+  },
+  {
+   "code": "UDC_MRAI",
+   "desc": "Memorial DL6RAI. 3rd Weekend May"
+  },
+  {
+   "code": "UDC_MULANDXC",
+   "desc": "MULAN WAP- variation of Worked All China Provences. New version &ndash; WAPC.zip"
+  },
+  {
+   "code": "UDC_MVP_UKW",
+   "desc": "DL Mecklenburg Vorpommern Contest. 3rd Saturday March"
+  },
+  {
+   "code": "UDC_NAQCC",
+   "desc": "North American QRP CW Club Sprints. 15 sessions through the year"
+  },
+  {
+   "code": "UDC_NAURYZDX",
+   "desc": "NAURYZ Central Asia Spring Holiday . Nearest Saturday to the holiday"
+  },
+  {
+   "code": "UDC_NCCC_FT4",
+   "desc": "NCCC FT4 Sprint. Thursday"
+  },
+  {
+   "code": "UDC_NDGBRASIL",
+   "desc": "Natal Digital Group PSK125 . Natal Digital Group DIGITAL Contest."
+  },
+  {
+   "code": "UDC_NRLC",
+   "desc": "NRL Cup Russian Internal Contest."
+  },
+  {
+   "code": "UDC_NRRLTELEFO",
+   "desc": "Norway Radio Relay League TELEFONITEST."
+  },
+  {
+   "code": "UDC_NTC_JAN_AP",
+   "desc": "NTC Anniversary Party. 31st January."
+  },
+  {
+   "code": "UDC_NTC_QP",
+   "desc": "Netherlands Telegraphy Club. Qso Party. Every third Thursday."
+  },
+  {
+   "code": "UDC_NZ_SSC",
+   "desc": "NZ Sangster Shield Contest"
+  },
+  {
+   "code": "UDC_NZART",
+   "desc": "New Zealand Amateur Radio Tx WWll Memorial. 80M. NZ_VHFRTTY.udc for VHF-EHF"
+  },
+  {
+   "code": "UDC_OBLAST",
+   "desc": "Russian OBLAST Contest."
+  },
+  {
+   "code": "UDC_OH-PARKS",
+   "desc": "OHIO State Parks."
+  },
+  {
+   "code": "UDC_OK1WC",
+   "desc": "OK1WC Memorial Contest."
+  },
+  {
+   "code": "UDC_OKOMDXSSB",
+   "desc": "OKOM DX SSB Contest (Note: rules are now the same for CW event.)"
+  },
+  {
+   "code": "UDC_OKOMHOLPO",
+   "desc": "OK/OM HOLINESS CUP CHALLENGE (Holicky Pohar) Last Sat April"
+  },
+  {
+   "code": "UDC_OLDNEWYEAR",
+   "desc": "Old New Year Contest."
+  },
+  {
+   "code": "UDC_OMAC",
+   "desc": "OMAC."
+  },
+  {
+   "code": "UDC_OMISSQSOP",
+   "desc": "OMISS QSO Party"
+  },
+  {
+   "code": "UDC_OSTM-QP",
+   "desc": "Open Season Ten Meter Qso Party. 1st Thur Jun 48hrs"
+  },
+  {
+   "code": "UDC_OQRP",
+   "desc": "Original QRP."
+  },
+  {
+   "code": "UDC_OZACTIV",
+   "desc": "OZ ACTIV Contest."
+  },
+  {
+   "code": "UDC_OZCHRVHF",
+   "desc": "OZCHR-VHF."
+  },
+  {
+   "code": "UDC_OZ-EDR_JUL-NYT",
+   "desc": "OZ-EDR_JUL NYT Contest. July Contest"
+  },
+  {
+   "code": "UDC_PACCDIGI",
+   "desc": "PACC DIGI FT8 & RTTY 3rd Sunday April"
+  },
+  {
+   "code": "UDC_PADANG_DX",
+   "desc": "Indonesian Padang DX Contest."
+  },
+  {
+   "code": "UDC_POTA",
+   "desc": "Parks On The Air"
+  },
+  {
+   "code": "UDC_PARL",
+   "desc": "Spanish Provinces PARLA."
+  },
+  {
+   "code": "UDC_PCC",
+   "desc": "Pro CW/DIGI Contests (PCC)."
+  },
+  {
+   "code": "UDC_PGATEST-DX",
+   "desc": "Polish PGA Contest &ndash; DX Stations."
+  },
+  {
+   "code": "UDC_PGATEST-SP",
+   "desc": "Polish PGA Contest &ndash; SP Stations."
+  },
+  {
+   "code": "UDC_PHONEFRAY",
+   "desc": "Phone Fray."
+  },
+  {
+   "code": "UDC_PN_QUICKCW",
+   "desc": "PN QUICK CW Contest."
+  },
+  {
+   "code": "UDC_PND",
+   "desc": "Portuguese Navy Day Contest."
+  },
+  {
+   "code": "UDC_PODXS_TDW",
+   "desc": "PODXS Three Day Weekend Contest."
+  },
+  {
+   "code": "UDC_PODXS1RTTY",
+   "desc": "PODXS 070 Contests: PSK FEST. JAY HUDAK Mem.. PUMPKIN SPRINT. and Firecracker."
+  },
+  {
+   "code": "UDC_PODXS2RTTY",
+   "desc": "PODXS 070 St. Patrick&rsquo;s Day Contest."
+  },
+  {
+   "code": "UDC_POP_YTHCUP",
+   "desc": "Popov Youth Cup Contest."
+  },
+  {
+   "code": "UDC_POPOVMEMOR",
+   "desc": "Popov Memorial."
+  },
+  {
+   "code": "UDC_POPOVVHF",
+   "desc": "POPOV-VHF."
+  },
+  {
+   "code": "UDC_PRIMOR_HFC",
+   "desc": "Primorsky HF Contest."
+  },
+  {
+   "code": "UDC_PW_144_70",
+   "desc": "Practical Wireless 144 and 70Mhz."
+  },
+  {
+   "code": "UDC_QO-100",
+   "desc": "QO-100 Every Saturday."
+  },
+  {
+   "code": "UDC_QRP-AFIELD",
+   "desc": "QRP-AFIELD Contest. 3rd Saturday September"
+  },
+  {
+   "code": "UDC_QRPHFRTTY",
+   "desc": "QRP HF RTTY Contest."
+  },
+  {
+   "code": "UDC_R3A_CDRTTY",
+   "desc": "R3A Cup Digi Contest."
+  },
+  {
+   "code": "UDC_R3E-SC",
+   "desc": "R3E-SC."
+  },
+  {
+   "code": "UDC_R3L_HF_CUP",
+   "desc": "R3L &ndash; Smolensk HF Cup"
+  },
+  {
+   "code": "UDC_R4CCHAMP",
+   "desc": "R4C Champ."
+  },
+  {
+   "code": "UDC_R4W-CHAMP",
+   "desc": "R4W (Udmurtia. Russia) Open Championship"
+  },
+  {
+   "code": "UDC_R6HCHAMP",
+   "desc": "R6H Champ."
+  },
+  {
+   "code": "UDC_R6U-CHAMP",
+   "desc": "Championship of Astrahan oblast."
+  },
+  {
+   "code": "UDC_R9S-CHAMP",
+   "desc": "R9S Champ. Orenburg Downy Shawl Contest. 2nd Friday February."
+  },
+  {
+   "code": "UDC_SPRINTRCRM",
+   "desc": "Radio Club Region Murcia Sprint"
+  },
+  {
+   "code": "UDC_RCA_TQP",
+   "desc": "Radio Club of America Transatlantic QSO Party. 13th November"
+  },
+  {
+   "code": "UDC_RANDOMGRAM",
+   "desc": "RANDOMGRAM."
+  },
+  {
+   "code": "UDC_RCWC_RPX",
+   "desc": "Russian CW Club RPX Contest. 2nd Weekend September"
+  },
+  {
+   "code": "UDC_RCWC4",
+   "desc": "Russian CW Club 4 Seasons."
+  },
+  {
+   "code": "UDC_RCWCMINI",
+   "desc": "Russian CW Club MiniTest."
+  },
+  {
+   "code": "UDC_RAHULL_VHF",
+   "desc": "Ross A Hull Memorial. All January"
+  },
+  {
+   "code": "UDC_REGION-NR",
+   "desc": "REGION-NR."
+  },
+  {
+   "code": "UDC_RSGB_40QP",
+   "desc": "RSGB 40m QSO Party. RSGB 40m QSO Party (inactive)"
+  },
+  {
+   "code": "UDC_RSGB_FT4",
+   "desc": "RSGB FT4 Contest Series."
+  },
+  {
+   "code": "UDC_RSGBFT4IAD",
+   "desc": "RSGB FT4 International Activity Day. 1st Saturday April"
+  },
+  {
+   "code": "UDC_RSGBHOPEQP",
+   "desc": "RSGB HOPE QSO Party (Use for RSGB GOTA4C series)"
+  },
+  {
+   "code": "UDC_RSGBUKAC",
+   "desc": "RSGB UKAC (VHF) Contest"
+  },
+  {
+   "code": "UDC_RTC",
+   "desc": "Real Time Contest"
+  },
+  {
+   "code": "UDC_RTC_PARTY",
+   "desc": "Deutschland RTC Party Contest."
+  },
+  {
+   "code": "UDC_RUSSIAN160",
+   "desc": "RUSSIAN 160."
+  },
+  {
+   "code": "UDC_RYO_WS_VHF",
+   "desc": "RTTY OPS Weekend Sprint. Bands- 80-10m"
+  },
+  {
+   "code": "UDC_RY_OP_WDS",
+   "desc": "RTTY OPS WeekDAY Sprint. Friday 0145-0215"
+  },
+  {
+   "code": "UDC_SA10M",
+   "desc": "South America 10Mtr."
+  },
+  {
+   "code": "UDC_SACW",
+   "desc": "South America CW 3rd weekend Nov"
+  },
+  {
+   "code": "UDC_SALMON-RUN",
+   "desc": "SALMON-RUN."
+  },
+  {
+   "code": "UDC_SARA",
+   "desc": "SARA Spring Sprint."
+  },
+  {
+   "code": "UDC_SARA_OM",
+   "desc": "SARA Spring Sprint for OM Stations."
+  },
+  {
+   "code": "UDC_SARL",
+   "desc": "Several South Africa Relay League Contests. See Read_Me file in SARL.zip"
+  },
+  {
+   "code": "UDC_SASQUATCHS",
+   "desc": "Sasquatch Stomp. 1st Friday April"
+  },
+  {
+   "code": "UDC_SCAG",
+   "desc": "SCAG SPRINT."
+  },
+  {
+   "code": "UDC_SDXC",
+   "desc": "Scottish DX Contest."
+  },
+  {
+   "code": "UDC_SEANETRTTY",
+   "desc": "Seanet Contest."
+  },
+  {
+   "code": "UDC_SEA_PAC-QP",
+   "desc": "Sea-Pac QP"
+  },
+  {
+   "code": "UDC_SKEETER",
+   "desc": "New Jersey NJQRP Skeeter Contest."
+  },
+  {
+   "code": "UDC_SKIRMRTTY",
+   "desc": "TARA SKIRMISH."
+  },
+  {
+   "code": "UDC_SKMEM",
+   "desc": "Silent Key Memorial Contest. 1st November."
+  },
+  {
+   "code": "UDC_SLTESTEN",
+   "desc": "Swedish SL Contest. 2nd Sat. May and November"
+  },
+  {
+   "code": "UDC_SM_MT",
+   "desc": "Swedish Monthly Test."
+  },
+  {
+   "code": "UDC_SE_VHF_SPR",
+   "desc": "South East V/UHF Sprints."
+  },
+  {
+   "code": "UDC_SMMC",
+   "desc": "Samuel Morse Memorial Contest. Sunday before April 26th"
+  },
+  {
+   "code": "UDC_SP_OTC",
+   "desc": "Polish Old Timers Club. 4th Weekend January?"
+  },
+  {
+   "code": "UDC_SMIRK",
+   "desc": "Six Metre International Radio Klub Contest. SMIRK"
+  },
+  {
+   "code": "UDC_SP_PK",
+   "desc": "Zawody SP-PK."
+  },
+  {
+   "code": "UDC_SPEPC_RTTY",
+   "desc": "SP WW EPC BPSK63 Contest."
+  },
+  {
+   "code": "UDC_SRRJR",
+   "desc": "SRR JR."
+  },
+  {
+   "code": "UDC_SSA_MT",
+   "desc": "SSA MT events."
+  },
+  {
+   "code": "UDC_SSA_JT",
+   "desc": "SSA Christmas Contest. 25th December."
+  },
+  {
+   "code": "UDC_SWL",
+   "desc": "International 2010."
+  },
+  {
+   "code": "UDC_TAWWDX",
+   "desc": "TA WW DX Contest. CW 2nd Sat Mar, RTTY 3rd Sat Sept, SSB 2nd Sat Oct."
+  },
+  {
+   "code": "UDC_TNPOTA",
+   "desc": "Tennessee Parks on the Air."
+  },
+  {
+   "code": "UDC_TENTENRTTY",
+   "desc": "TenTen QSO Party (10-10) USE FOR ALL MODES, not just RTTY"
+  },
+  {
+   "code": "UDC_TENTEN",
+   "desc": "TenTen QSO Party &ndash; Phone, CW (uses UDC_TENTENRTTY .UDC contest file!)"
+  },
+  {
+   "code": "UDC_TESLA_VHF",
+   "desc": "Tesla HF Memorial Contest. 2nd Weekend in March."
+  },
+  {
+   "code": "UDC_TRHFSSB",
+   "desc": "Turkish HF SSB Contest. Last Wkend August"
+  },
+  {
+   "code": "UDC_TRIATHRTTY",
+   "desc": "SV Triathlon Contest."
+  },
+  {
+   "code": "UDC_TX_PARKS",
+   "desc": "Texas Parks On The Air."
+  },
+  {
+   "code": "UDC_TISZA_CUP",
+   "desc": "TISZA Cup International Radio Contest. 1st Weekend June."
+  },
+  {
+   "code": "UDC_TRUEBLUEDX",
+   "desc": "True Blue Ultra DX Marathon. 1st Jan to 31st Dec."
+  },
+  {
+   "code": "UDC_UBAPSK63",
+   "desc": "UBA PSK63 Prefix Contest. 2nd Weekend in January"
+  },
+  {
+   "code": "UDC_UFT_HF",
+   "desc": "Union of France Telegraphy HF Contest. First Weekend in December Discontinued?"
+  },
+  {
+   "code": "UDC_UFT_MEET",
+   "desc": "UFT Meet. First Weekend in December."
+  },
+  {
+   "code": "UDC_UFT_QRP",
+   "desc": "Union of France Telegraphy QRP Contest. Last Weekend in June"
+  },
+  {
+   "code": "UDC_UFT_YL_CW",
+   "desc": "Union of France Telegraphy YL-CW Contest."
+  },
+  {
+   "code": "UDC_UKDX63RTTY",
+   "desc": "UK DXC BPSK63 2nd Weekend in January Replaced by UBA PSK63."
+  },
+  {
+   "code": "UDC_UKEI80_VHF",
+   "desc": "UKEICC 80m Contests"
+  },
+  {
+   "code": "UDC_ UKEISS_VHF",
+   "desc": "UKEICC Summer Series"
+  },
+  {
+   "code": "UDC_UR5IOK_MEM",
+   "desc": "Alexander Savenkov Memorial."
+  },
+  {
+   "code": "UDC_URALCUP",
+   "desc": "URAL CUP."
+  },
+  {
+   "code": "UDC_URCDXRTTY",
+   "desc": "URC DX RTTY. 1st Friday October."
+  },
+  {
+   "code": "UDC_USI_QPRTTY",
+   "desc": "USi W/VE Islands Qso Party."
+  },
+  {
+   "code": "UDC_UT5EUVHF",
+   "desc": "UT5EU-MEMORIAL-VHF."
+  },
+  {
+   "code": "UDC_FT8-ACTVTY",
+   "desc": "VHF-UHF FT8 Activity. Every first Wednesday of each month for the 2m band (144.174 MHz). Every second Wednesday of each month for the 70cm band (432.174 MHz). Every third Wednesday of each month for the 23 cm band."
+  },
+  {
+   "code": "UDC_VHF902UP",
+   "desc": "902UP or MICROWAVE Sprint"
+  },
+  {
+   "code": "UDC_VHF_AGCW",
+   "desc": "AGCW VHF-UHF Contests."
+  },
+  {
+   "code": "UDC_VHF_ARAM50",
+   "desc": "VHF_ARAM 50MHZ 4th SAT July"
+  },
+  {
+   "code": "UDC_VHF_DFRTTY",
+   "desc": "DigiFest &ndash; digital mixed modes contest. First weekend June."
+  },
+  {
+   "code": "UDC_VHF_NAMSS",
+   "desc": "NA Meteor Scatter Sprint. 2nd Friday August."
+  },
+  {
+   "code": "UDC_VHF_PAUL4",
+   "desc": "RSGB UKAC (VHF)."
+  },
+  {
+   "code": "UDC_VHF_UHF_TA",
+   "desc": "Turkish VHF/UHF Contest."
+  },
+  {
+   "code": "UDC_VHFARAU_SA",
+   "desc": "Araucaria VHF Contest."
+  },
+  {
+   "code": "UDC_VHFGRIDS",
+   "desc": "VHF GRIDS. VHF GRIDS"
+  },
+  {
+   "code": "UDC_VHFR2RTTY",
+   "desc": "HF Region 2 RTTY Contest."
+  },
+  {
+   "code": "UDC_VHFRSGB",
+   "desc": "RSGB VHF Contests. see VHF_RSGB_Read_Me.txt in VHFRSGB.zip"
+  },
+  {
+   "code": "UDC_VHFSPRING",
+   "desc": "VHF-SPRING. VHF-SPRING"
+  },
+  {
+   "code": "UDC_VIDOVDAN",
+   "desc": "YU VIDOVDAN Contest. 4th Weekend June."
+  },
+  {
+   "code": "UDC_VOLGOGRAD",
+   "desc": "Volgograd Championship. 2nd Friday November."
+  },
+  {
+   "code": "UDC_VKSHIRES",
+   "desc": "Worked all VKSHIRES. Sat&Sun Weekend prior to 2nd Monday in June."
+  },
+  {
+   "code": "UDC_VMTROPHY",
+   "desc": "Vytautas Magnus trophy."
+  },
+  {
+   "code": "UDC_VU_DX_VU",
+   "desc": "VU International DX Contest."
+  },
+  {
+   "code": "UDC_VU_HIMA_VU",
+   "desc": "VU Himalaya Contest."
+  },
+  {
+   "code": "UDC_VUSUMMRTTY",
+   "desc": "VU Summer Contest."
+  },
+  {
+   "code": "UDC_WAB",
+   "desc": "Worked All Britain Contests."
+  },
+  {
+   "code": "UDC_WAL",
+   "desc": "Workes All Lithuania. 1st Saturday June"
+  },
+  {
+   "code": "UDC_WESM",
+   "desc": "WSEM minitest."
+  },
+  {
+   "code": "UDC_WFDA2RTTY",
+   "desc": "Winter Field Day. If you have previously downloaded this UDC file, delete it from your UserDefinedContests folder and use the built-in WFD contest type instead. See &ldquo;Setup HF SSB &ndash; CW Contests, WFD &ldquo;"
+  },
+  {
+   "code": "UDC_WI-PARKS",
+   "desc": "Wisconsin Park on the Air."
+  },
+  {
+   "code": "UDC_WIA_VK_DAY",
+   "desc": "WIA Australia Day Contest. Annually 26th Jan."
+  },
+  {
+   "code": "UDC_WIA_RDC",
+   "desc": "WIA Remembrance Day Contest. 2nd Weekend August."
+  },
+  {
+   "code": "UDC_WIA_VHFUHF",
+   "desc": "WIA VHF/UHF Contest. January/November"
+  },
+  {
+   "code": "UDC_WLOTARTTY",
+   "desc": "World Lighthouse OTA."
+  },
+  {
+   "code": "UDC_WORLDARDCH",
+   "desc": "World Amateur Radio Day Contests 18th April"
+  },
+  {
+   "code": "UDC_WRT",
+   "desc": "Weekly RTTY Test"
+  },
+  {
+   "code": "UDC_WTZC",
+   "desc": "World Time Zone Challenge. 3rd Weekend April"
+  },
+  {
+   "code": "UDC_WWA",
+   "desc": "World Wide Activity all January 2025"
+  },
+  {
+   "code": "UDC_WWPDX_vHF",
+   "desc": "WWPDX Contest. Last weekend Feb."
+  },
+  {
+   "code": "UDC_WW_SSB_AC",
+   "desc": "WW SSB Activity Contest. Every Tuesday."
+  },
+  {
+   "code": "UDC_YACHAMP",
+   "desc": "YACHAMP."
+  },
+  {
+   "code": "UDC_YBDXC",
+   "desc": "Indonesian DX Contest. Indonesian DX Contest. For non-YB stations. SSB 2nd Weekend January. RTTY 2nd Weekend March."
+  },
+  {
+   "code": "UDC_YBDXCYB",
+   "desc": "Indonesian DX Contest. Indonesian DX Contest. YB stations only. SSB 2nd Weekend January. RTTY 2nd Weekend March."
+  },
+  {
+   "code": "UDC_YBDXPI-FT8",
+   "desc": "Indonesian DXing Passion Islands FT8 Contest. 3rd Weekend October."
+  },
+  {
+   "code": "UDC_YBDXPISSB",
+   "desc": "Indonesian DX PI SSB Contest. 1st Weekend April."
+  },
+  {
+   "code": "UDC_YLOM",
+   "desc": "YL-OM Contest."
+  },
+  {
+   "code": "UDC_YO_CN_US",
+   "desc": "FRR CN US Contest.."
+  },
+  {
+   "code": "UDC_YOTA",
+   "desc": "YOTA Contest. Held May, July and December."
+  },
+  {
+   "code": "UDC_YORTTY",
+   "desc": "YO PSK31 Contest."
+  },
+  {
+   "code": "UDC_YV_CARABOBO",
+   "desc": "Battle of Carabobo Contest."
+  },
+  {
+   "code": "UDC_ZOMBIE",
+   "desc": "ZOMBIE Shuffle. ZOMBIE Shuffle &ndash; Day before Halloween"
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Not found — WebHam</title>
+    <!--
+      Cloudflare Pages serves this for any static path that does not exist,
+      with a real 404 status. Without it Pages answers a missing asset with
+      index.html and HTTP 200, which is actively misleading: a mistyped or
+      absent file looks like it loaded, and the browser reports a confusing
+      MIME-type refusal ("Refused to execute script ... MIME type
+      ('text/html')") instead of a plain 404. The optional-asset probe in
+      js/apps/map/index.js — which tries ./vendor/leaflet/* before falling back
+      to the CDN — is the case that hits this in practice.
+
+      Deliberately standalone: no CSS or JS, so it cannot itself 404.
+    -->
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #dee6d0;
+        color: #2b2a24;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        text-align: center;
+      }
+      main { padding: 2rem; }
+      h1 { margin: 0 0 0.35rem; font-size: 1.5rem; }
+      p { margin: 0 0 1.25rem; color: #5c5a4e; }
+      a {
+        display: inline-block;
+        padding: 0.55rem 1.1rem;
+        border-radius: 8px;
+        background: #b8442c;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      @media (prefers-color-scheme: dark) {
+        body { background: #14110c; color: #e8e4d8; }
+        p { color: #a8a293; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Not found</h1>
+      <p>That path isn&rsquo;t part of WebHam.</p>
+      <a href="/">Back to the app</a>
+    </main>
+  </body>
+</html>

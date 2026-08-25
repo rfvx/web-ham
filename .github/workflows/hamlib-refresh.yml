@@ -1,0 +1,122 @@
+# Watch Hamlib for a new release and open a PR when the rig catalogue drifts.
+#
+# Deliberately opens a PR and never pushes to a default branch: rig data decides
+# what bytes go down a serial line to somebody's radio, so every change gets
+# human review. See docs/hamlib-rig-import.md.
+#
+# The same thing you would run by hand at release time:
+#   node tools/sync-hamlib.mjs --refresh --latest
+#   node tools/sync-hamlib.mjs --build
+name: Hamlib catalogue refresh
+
+on:
+  schedule:
+    # Monthly. Hamlib releases a few times a year, so daily polling would just
+    # be noise against an unchanged snapshot.
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+    inputs:
+      latest:
+        description: "Move to Hamlib's current release (off = rebuild from the recorded one)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Refresh the snapshot from Hamlib
+        id: refresh
+        run: |
+          set -o pipefail
+          if [ "${{ inputs.latest == false }}" = "true" ]; then
+            node tools/sync-hamlib.mjs --refresh | tee refresh.log
+          else
+            node tools/sync-hamlib.mjs --refresh --latest | tee refresh.log
+          fi
+          echo "tag=$(node -p "require('./tools/hamlib-sources.json').hamlibTag")" >> "$GITHUB_OUTPUT"
+
+      - name: Rebuild the generated catalogue
+        run: node tools/sync-hamlib.mjs --build
+
+      # A refresh that pulls fewer rigs than last time usually means upstream
+      # moved files the importer could not fetch, not that rigs were retired —
+      # Hamlib 4.7.2 shipped a Makefile.am listing ftx1*.c files absent from the
+      # tag, which produced 18 gaps. Surface that in the PR rather than opening
+      # a quiet PR that silently drops radios from the picker.
+      - name: Summarise parse gaps
+        id: gaps
+        run: |
+          echo "count=$(node -p "require('./tools/hamlib-sources.json').parseGaps.length")" >> "$GITHUB_OUTPUT"
+
+      # Every WebHam CAT value against Hamlib's, reconciled against the decisions
+      # ledger. Non-zero when a new upstream release makes something disagree that
+      # nobody has ruled on yet — which is the whole point of running it here: an
+      # unreviewed disagreement should block the PR, not ride along inside it.
+      - name: Diff WebHam's CAT data against Hamlib
+        id: diff
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          node tools/sync-hamlib.mjs --diff | tee diff.log
+
+      - name: Verify
+        run: |
+          ./check.sh
+          for t in test/*.mjs; do node "$t"; done
+          node tools/sync-hamlib.mjs --check
+
+      - name: Open a PR if anything changed
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: automation/hamlib-refresh
+          title: "Hamlib catalogue refresh (${{ steps.refresh.outputs.tag }})"
+          commit-message: "chore(cat): refresh the rig catalogue from Hamlib ${{ steps.refresh.outputs.tag }}"
+          labels: automation
+          delete-branch: true
+          body: |
+            Automated `tools/sync-hamlib.mjs --refresh --latest && --build`.
+
+            **Hamlib release:** `${{ steps.refresh.outputs.tag }}`
+            **Parse gaps:** `${{ steps.gaps.outputs.count }}`
+            **CAT diff:** `${{ steps.diff.outcome }}` — `failure` means at least
+            one WebHam CAT value now disagrees with Hamlib and has no decision
+            recorded. See the diff step's log, then either change the value in
+            `js/connectors/cat.js` or record the call in
+            `tools/hamlib-decisions.json`. **Do not merge on a failing diff.**
+
+            Review before merging — this changes what the app sends to real
+            radios:
+
+            - **Parse gaps above the usual 2** mean the importer could not fetch
+              some backend sources, so rigs may be missing from this build rather
+              than genuinely retired upstream. Check the log before merging.
+            - **Serial-parameter disagreements** are reported, never applied.
+              WebHam's values were validated on hardware; Hamlib's are a second
+              opinion. Run `node tools/sync-hamlib.mjs --report` to see them.
+            - **New rigs** only appear once a protocol family is assigned in
+              `tools/hamlib-map.json`. Rigs with no family are reported, never
+              guessed.
+            - If any rig's **id** changed, saved profiles need a migration entry
+              (`migration.ids` in the map) or an operator's stored `profileId`
+              silently points at a different radio. `test/test-rig-migration.mjs`
+              guards this.
+
+            <details><summary>Refresh log</summary>
+
+            ```
+            ${{ steps.refresh.outputs.tag }}
+            ```
+
+            See the workflow run for the full drift report.
+            </details>

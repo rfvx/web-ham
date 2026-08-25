@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Static checks
+        run: ./check.sh
+      - name: Test suite
+        run: |
+          set -e
+          for f in test/test-*.mjs; do
+            echo "::group::$f"
+            node "$f"
+            echo "::endgroup::"
+          done

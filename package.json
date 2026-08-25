@@ -1,0 +1,11 @@
+{
+  "name": "web-ham-logger",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Browser-based ham radio logger with Web Serial radio control",
+  "scripts": {
+    "start": "node server.js",
+    "build:pages": "node tools/build-pages.mjs",
+    "test": "for t in test/*.mjs; do node \"$t\" || exit 1; done"
+  }
+}

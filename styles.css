@@ -1,0 +1,4000 @@
+/* ============================================================
+   WebHam — Compare & Swap redesign — Sage palette
+   ============================================================ */
+
+/* ---- Root variables (sage / light default) ---- */
+:root {
+  color-scheme: light;
+  --wh-ink:    28,42,28;
+  --wh-cream:  255,253,242;
+  --accent-rgb: 199,90,47;
+
+  --paper:        #dee6d0;
+  --paper-2:      #d2dac2;
+  --ink:          #1c2a1c;
+  --pencil:       #3e4c3a;
+  --pencil-2:     #6f7c66;
+  --accent:       #c75a2f;
+  --accent-mid:   #a64020;
+  --accent-light: rgba(var(--accent-rgb),.12);
+  --highlight:    #f4d56b;
+  --highlight-soft: #faeaa5;
+  --soft-fill:    rgba(var(--wh-ink),.05);
+  --connected:    #3a8a3f;
+  --danger:       #b83a18;
+
+  --bg:           var(--paper);
+  --bg-elevated:  var(--paper-2);
+  --panel:        rgba(var(--wh-cream),.72);
+  --panel-border: rgba(var(--wh-ink),.18);
+  --text:         var(--ink);
+  --muted:        var(--pencil-2);
+  --shadow:       0 4px 18px rgba(var(--wh-ink),.12);
+  --border-color: rgba(var(--wh-ink),.2);
+
+  --wh-input:       rgba(var(--wh-cream),.88);
+  --field-bg:       rgba(var(--wh-cream),.88);
+  --field-border:   rgba(var(--wh-ink),.28);
+  --field-label:    var(--pencil);
+
+  --button-bg:                var(--paper-2);
+  --button-bg-hover:          #c6ceb4;
+  --button-border:            rgba(var(--wh-ink),.3);
+  --button-text:              var(--ink);
+  --button-secondary-bg:      rgba(var(--wh-cream),.55);
+  --button-secondary-bg-hover:rgba(var(--wh-cream),.9);
+  --button-secondary-border:  rgba(var(--wh-ink),.22);
+  --button-secondary-text:    var(--ink);
+  --step-button-bg:           rgba(var(--accent-rgb),.1);
+  --step-button-bg-hover:     rgba(var(--accent-rgb),.2);
+  --step-button-border:       rgba(var(--accent-rgb),.38);
+  --step-button-text:         #7c2800;
+
+  --theme-toggle-bg:            var(--paper-2);
+  --theme-toggle-border:        rgba(var(--wh-ink),.28);
+  --theme-toggle-active-bg:     rgba(var(--wh-cream),.95);
+  --theme-toggle-active-border: rgba(var(--wh-ink),.4);
+  --theme-toggle-active-text:   var(--pencil-2);
+  --theme-toggle-shadow:        0 4px 14px rgba(var(--wh-ink),.1);
+  --theme-toggle-icon:          var(--pencil-2);
+
+  --wh-nav:        var(--pencil);
+  --wh-ink-dark:   var(--ink);
+  --accent-strong: #e07545;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper:        #121e12;
+  --paper-2:      #182018;
+  --ink:          #d8ead0;
+  --pencil:       #9ab090;
+  --pencil-2:     #6a8060;
+  --accent:       #52d4a0;
+  --accent-mid:   #3ab288;
+  --accent-light: rgba(82,212,160,.1);
+  --highlight:    #f4d56b;
+  --highlight-soft: rgba(244,213,107,.22);
+  --connected:    #5cd47c;
+  --danger:       #ff8070;
+
+  --bg:           #0e160e;
+  --bg-elevated:  #182018;
+  --panel:        rgba(22,34,22,.78);
+  --panel-border: rgba(180,220,160,.1);
+  --text:         #d8ead0;
+  --muted:        #6a8060;
+  --shadow:       0 4px 22px rgba(0,0,0,.42);
+  --border-color: rgba(180,220,160,.14);
+
+  --wh-input:       rgba(18,28,18,.88);
+  --field-bg:       rgba(18,28,18,.88);
+  --field-border:   rgba(180,220,160,.2);
+  --field-label:    #9ab090;
+
+  --button-bg:                #1e2e1e;
+  --button-bg-hover:          #283828;
+  --button-border:            rgba(180,220,160,.25);
+  --button-text:              #d8ead0;
+  --button-secondary-bg:      rgba(14,22,14,.6);
+  --button-secondary-bg-hover:rgba(22,34,22,.85);
+  --button-secondary-border:  rgba(180,220,160,.18);
+  --button-secondary-text:    #d8ead0;
+  --step-button-bg:           rgba(82,212,160,.08);
+  --step-button-bg-hover:     rgba(82,212,160,.16);
+  --step-button-border:       rgba(82,212,160,.3);
+  --step-button-text:         #a0e8c8;
+
+  --theme-toggle-bg:            #182018;
+  --theme-toggle-border:        rgba(180,220,160,.2);
+  --theme-toggle-active-bg:     rgba(26,40,26,.95);
+  --theme-toggle-active-border: rgba(180,220,160,.35);
+  --theme-toggle-active-text:   #6a8060;
+  --theme-toggle-shadow:        0 4px 14px rgba(0,0,0,.28);
+  --theme-toggle-icon:          #6a8060;
+
+  --wh-nav:        #9ab090;
+  --wh-ink-dark:   #0e160e;
+  --accent-strong: #5cd47c;
+}
+
+/* ============================================================
+   BASE RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+
+body {
+  font-family: 'Kalam', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg);
+  background-image:
+    radial-gradient(rgba(var(--wh-ink),.03) 1px, transparent 1px),
+    radial-gradient(rgba(var(--wh-ink),.018) 1px, transparent 1px);
+  background-size: 4px 4px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+  min-height: 100vh;
+}
+:root[data-theme="dark"] body {
+  background-image:
+    radial-gradient(rgba(198,222,182,.05) 1px, transparent 1px),
+    radial-gradient(rgba(198,222,182,.028) 1px, transparent 1px);
+  background-size: 4px 4px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  margin-top: 0;
+  line-height: 1.1;
+}
+p { margin-top: 0; }
+
+.eyebrow, .label {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .72rem;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+.wh-app { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+/* ---- Experimental notice strip ---- */
+.wh-notice {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 16px;
+  background: var(--highlight-soft);
+  border-bottom: 3px solid var(--danger);
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--ink);
+  z-index: 11;
+}
+
+.wh-notice[hidden] { display: none; }
+
+.wh-notice-tag {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 11px 3px 8px;
+  border: 1.5px solid var(--danger);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--danger) 14%, transparent);
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  color: var(--danger);
+}
+
+.wh-notice-tag svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+.wh-notice-copy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+
+.wh-notice-text { margin: 0; }
+
+.wh-notice-sub {
+  font-size: 11.5px;
+  color: var(--pencil);
+}
+
+.wh-notice-donate-inline {
+  color: var(--accent-mid);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wh-notice-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.wh-notice-links a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.wh-notice-links a:hover { color: var(--accent-mid); }
+
+.wh-notice-gh-link { display: inline-flex; align-items: center; gap: 5px; }
+.wh-notice-gh-icon { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* Reopens the first-run guide. A "?" disc rather than a word: it is the one
+   control in the strip that acts on the app instead of leaving it, and at this
+   size an icon reads as a button where more underlined text reads as another
+   outbound link. The accessible name is on the button's aria-label. */
+.wh-notice-guide-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  min-height: 0;
+}
+.wh-notice-guide-btn svg { width: 16px; height: 16px; }
+.wh-notice-guide-btn:hover {
+  color: var(--accent-mid);
+  background: rgba(var(--wh-ink), .09);
+}
+
+/* ---- First-run guide ---- */
+/* A transparent positioning layer, not the dimmer: the dimmer is .wh-guide-scrim
+   underneath, so the clip-path hole punched over a spotlight target cannot clip
+   the card away with it. pointer-events pass through here and are caught by the
+   scrim (everywhere) and the card (over itself). */
+.wh-guide {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  pointer-events: none;
+}
+.wh-guide[hidden] { display: none; }
+
+.wh-guide-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--wh-ink), .62);
+  pointer-events: auto;
+}
+
+/* The halo around a spotlit control. Purely decorative — it must never take the
+   click that is meant for the thing it is drawn around. */
+.wh-guide-ring {
+  position: absolute;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  box-shadow: 0 0 0 3px rgba(var(--wh-ink), .18), 0 0 18px 2px rgba(var(--wh-ink), .25);
+  pointer-events: none;
+}
+.wh-guide-ring[hidden] { display: none; }
+
+/* Docked out of the way of whatever is being pointed at — vertically always,
+   and horizontally too when the step says which side is safe. addTab is the
+   one spotlight with a dropdown of its own: that menu opens directly under
+   the button and grows sideways from it, so the card needs to be out of its
+   way rather than just off to whichever side is emptier. */
+.wh-guide-docked-top { align-items: flex-start; }
+.wh-guide-docked-bottom { align-items: flex-end; }
+.wh-guide-docked-left { justify-content: flex-start; }
+.wh-guide-docked-right { justify-content: flex-end; }
+
+.wh-guide-card {
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  width: min(430px, 100%);
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  padding: 20px 22px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  /* --paper, not --panel: every theme defines --panel as an rgba() meant to sit
+     on the page, and the app behind this card reads straight through it. */
+  background: var(--paper);
+  box-shadow: 5px 6px 0 rgba(var(--wh-ink), .28);
+}
+
+.wh-guide-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.wh-guide-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.wh-guide-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.wh-guide-title {
+  margin: 0 0 8px;
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.wh-guide-body { margin: 0 0 10px; font-size: 14px; line-height: 1.5; color: var(--text); }
+.wh-guide-note[hidden] { display: none; }
+.wh-guide-note {
+  margin: 0;
+  padding: 8px 10px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  background: var(--paper-2);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--pencil);
+}
+
+/* ---- Guide gate feedback ---- */
+/* The one dynamic line in the whole guide: what to do while the identity
+   fields are empty, what's wrong once something is typed, or confirmation
+   once both parse. Plain text, not a box — there is nothing left to set
+   apart once the fields themselves live in the highlighted Settings card. */
+.wh-guide-task-status {
+  margin: 0 0 10px;
+  min-height: 1.2em;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.wh-guide-task-status-bad { color: var(--accent-mid); }
+
+/* Sticky, not just last. The card scrolls when a spotlight shortens it, and a
+   Skip button that has scrolled out of reach is a modal with no visible way out
+   — the one thing this dialog must never be. */
+.wh-guide-foot {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 10px;
+  background: var(--paper);
+  box-shadow: 0 -10px 12px -6px var(--paper);
+}
+.wh-guide-dots { display: flex; gap: 5px; }
+.wh-guide-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(var(--wh-ink), .22);
+}
+.wh-guide-dot-on { background: var(--accent); }
+.wh-guide-actions { display: flex; gap: 7px; }
+.wh-guide-actions button[hidden] { display: none; }
+/* The gate, made visible. A card whose task is not done yet keeps Next here
+   rather than removing it, so what is being withheld — and that it is only
+   being withheld — stays obvious. */
+.wh-guide-actions button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+/* A pointer to somebody else's instructions, under the control it explains —
+   currently the .p12 attach row, where "where do I even get one of these"
+   is the question the field itself cannot answer. */
+.settings-help-link {
+  margin: .55rem 0 0;
+  font-size: .8rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  /* Bottom sheet rather than a centred card: it lands under the thumb, and a
+     dialog centred in a 844px viewport with the keyboard up ends up offscreen. */
+  .wh-guide { align-items: flex-end; padding: 0; }
+  /* …except when it is pointing at something near the bottom, where a bottom
+     sheet would sit on top of the thing being pointed at. */
+  .wh-guide.wh-guide-docked-top { align-items: flex-start; }
+  .wh-guide-card {
+    width: 100%;
+    max-height: 82dvh;
+    border-width: 2px 0 0;
+    border-radius: 14px 14px 0 0;
+    box-shadow: none;
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+  }
+  .wh-guide-docked-top .wh-guide-card {
+    border-width: 0 0 2px;
+    border-radius: 0 0 14px 14px;
+    padding-bottom: 18px;
+  }
+  /* A spotlight has to leave room to see what it is spotlighting. 82dvh of
+     sheet over a 844px phone leaves nothing worth highlighting. The card
+     scrolls inside what is left, with the sticky foot keeping Skip and Next
+     on screen throughout. */
+  .wh-guide-spotlit .wh-guide-card { max-height: 42dvh; }
+  /* A step with a cardSide has a dropdown of its own — on a phone the sheet
+     is full width, so there is no side to dock it to, only less of it to
+     leave in the dropdown's way. */
+  .wh-guide-docked-left.wh-guide-spotlit .wh-guide-card,
+  .wh-guide-docked-right.wh-guide-spotlit .wh-guide-card {
+    max-height: 24dvh;
+  }
+  /* The sheet is flush against its edge of the screen, so the sticky foot needs
+     the safe-area inset that the card's own padding gave up. */
+  .wh-guide-foot { padding-bottom: max(0px, env(safe-area-inset-bottom)); }
+  .wh-guide-docked-top .wh-guide-foot { padding-bottom: 0; }
+  .wh-guide-actions button { min-height: 44px; }
+}
+
+/* Stacked below 900px: tag on the first row, then the two lines of copy,
+   then the links. */
+@media (max-width: 900px) {
+  .wh-notice { flex-wrap: wrap; gap: 4px 12px; padding: 8px 14px; font-size: 12px; }
+  .wh-notice-copy { order: 2; flex-basis: 100%; }
+  .wh-notice-links { order: 3; flex-basis: 100%; gap: 14px; flex-wrap: wrap; }
+}
+
+/* ---- Top strip ---- */
+.wh-topstrip {
+  flex-shrink: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 22px;
+  background: var(--paper-2);
+  border-bottom: 2px solid var(--ink);
+  z-index: 10;
+}
+
+.wh-topstrip-logo {
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.wh-topstrip-sep {
+  width: 2px;
+  height: 46px;
+  background: rgba(var(--wh-ink),.45);
+  flex-shrink: 0;
+}
+
+.wh-topstrip-vfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.wh-topstrip-vfo-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pencil-2);
+}
+
+.wh-topstrip-freq {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: .02em;
+  background: linear-gradient(180deg, transparent 34%, var(--highlight) 34%, var(--highlight) 88%, transparent 88%);
+  padding: 0 3px;
+}
+
+.wh-topstrip-vfo-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1px;
+}
+
+.wh-pill {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 3px;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  background: transparent;
+}
+
+.wh-smeter-readout {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.wh-topstrip-smeter {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.wh-topstrip-smeter-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pencil-2);
+}
+
+.wh-smeter-track {
+  width: 130px;
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(var(--wh-ink),.14);
+  border: 1px solid rgba(var(--wh-ink),.22);
+  overflow: hidden;
+}
+
+.wh-smeter-fill {
+  height: 100%;
+  width: 18%;
+  border-radius: 1px;
+  background: var(--accent);
+  transition: width .35s ease;
+}
+
+.wh-topstrip-spacer { flex: 1; }
+
+.wh-topstrip-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.connection-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text);
+  padding: 5px 11px;
+  border: 1.5px solid rgba(var(--wh-ink),.26);
+  border-radius: 20px;
+  background: rgba(var(--wh-cream),.55);
+  white-space: nowrap;
+}
+
+.connection-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex-shrink: 0;
+  transition: background .3s;
+}
+#connection-status { font-weight: 700; }
+
+/* Theme toggle (three-state) */
+.wh-theme-toggle {
+  position: relative;
+  width: 88px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1.5px solid var(--theme-toggle-border);
+  background: var(--theme-toggle-bg);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+}
+.wh-theme-toggle-track { display: flex; align-items: center; height: 100%; position: relative; }
+.wh-theme-slot { flex: 1; display: flex; align-items: center; justify-content: center; height: 100%; }
+.wh-theme-slot svg, .wh-theme-thumb-icon { width: 14px; height: 14px; color: var(--theme-toggle-icon); }
+.wh-theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  width: calc(33.33% - 4px);
+  height: calc(100% - 4px);
+  border-radius: 5px;
+  background: var(--theme-toggle-active-bg);
+  border: 1px solid var(--theme-toggle-active-border);
+  box-shadow: var(--theme-toggle-shadow);
+  transition: left .18s cubic-bezier(.4,0,.2,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 2px;
+  pointer-events: none;
+}
+.wh-theme-toggle[data-theme-preference="light"]  .wh-theme-toggle-thumb,
+:root[data-theme-preference="light"]              .wh-theme-toggle-thumb { left: 2px; }
+.wh-theme-toggle[data-theme-preference="dark"]   .wh-theme-toggle-thumb,
+:root[data-theme-preference="dark"]              .wh-theme-toggle-thumb { left: calc(33.33% + 2px); }
+.wh-theme-toggle[data-theme-preference="system"] .wh-theme-toggle-thumb,
+:root[data-theme-preference="system"]            .wh-theme-toggle-thumb { left: calc(66.66% + 2px); }
+.wh-theme-thumb-icon { display: none; }
+.wh-theme-toggle[data-theme-preference="light"]  .wh-theme-thumb-icon-light,
+:root[data-theme-preference="light"]              .wh-theme-thumb-icon-light,
+.wh-theme-toggle[data-theme-preference="dark"]   .wh-theme-thumb-icon-dark,
+:root[data-theme-preference="dark"]              .wh-theme-thumb-icon-dark,
+.wh-theme-toggle[data-theme-preference="system"] .wh-theme-thumb-icon-system,
+:root[data-theme-preference="system"]            .wh-theme-thumb-icon-system {
+  display: block;
+  color: var(--theme-toggle-active-text);
+}
+
+/* CTA button */
+.wh-btn-gradient {
+  background: var(--accent);
+  border: 1.5px solid transparent;
+  color: #fff;
+  font-family: 'Kalam', sans-serif;
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background .14s, transform .12s;
+  white-space: nowrap;
+}
+.wh-btn-gradient:hover { background: var(--accent-mid); transform: translateY(-1px); border-color: transparent; }
+
+/* topstrip secondary buttons */
+.wh-topstrip-btn {
+  font-family: 'Kalam', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 7px;
+  border: 1.5px solid var(--button-secondary-border);
+  background: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  cursor: pointer;
+  transition: background .14s, transform .12s;
+  white-space: nowrap;
+}
+.wh-topstrip-btn:hover:not(:disabled) { background: var(--button-secondary-bg-hover); transform: translateY(-1px); }
+.wh-topstrip-btn:disabled { opacity: .42; cursor: not-allowed; transform: none; }
+
+/* old topbar stubs */
+.topbar-stat { display: none; }
+.wh-topbar-action { display: none; }
+
+/* ---- Pane area ---- */
+/* Mobile-only unified tab bar — shown/styled in the max-width:640px block. */
+.wh-mobile-tabbar { display: none; }
+
+.wh-pane-area {
+  flex: 1;
+  display: flex;
+  padding: 16px 18px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.wh-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.wh-pane-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.wh-pane-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--pencil-2);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.wh-view-select-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 340px;
+}
+
+.wh-view-select-icon {
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+  color: var(--ink);
+  z-index: 1;
+}
+
+.wh-view-select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 7px 32px 7px 34px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(var(--wh-ink),.28);
+  transition: border-color .14s, box-shadow .14s;
+}
+.wh-view-select:focus { outline: none; border-color: var(--accent); box-shadow: 3px 3px 0 rgba(var(--accent-rgb),.35); }
+.wh-view-select:hover { background: rgba(var(--wh-cream),.9); }
+
+.wh-view-select-chevron {
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  color: var(--ink);
+}
+
+.wh-pane-maximize {
+  font-family: 'Kalam', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1.5px dashed var(--pencil-2);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--pencil-2);
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color .14s, border-color .14s, transform .14s;
+}
+.wh-pane-maximize:hover { color: var(--ink); border-color: var(--ink); transform: none; }
+
+.wh-pane-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 4px 4px 0 rgba(var(--wh-ink),.16);
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--wh-ink),.18) transparent;
+}
+.wh-pane-content::-webkit-scrollbar { width: 7px; }
+.wh-pane-content::-webkit-scrollbar-track { background: transparent; margin: 3px; }
+.wh-pane-content::-webkit-scrollbar-thumb { background: rgba(var(--wh-ink),.18); border-radius: 4px; border: 2px solid transparent; background-clip: content-box; }
+
+/* ---- Gutter ---- */
+.wh-gutter {
+  width: 56px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+}
+.wh-gutter::before {
+  content: '';
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  left: 50%;
+  border-left: 2px dashed rgba(var(--wh-ink),.2);
+  pointer-events: none;
+}
+.wh-swap-btn {
+  position: relative;
+  z-index: 1;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(var(--wh-ink),.22);
+  transition: transform .14s, box-shadow .14s, border-color .14s, color .14s;
+  color: var(--ink);
+  flex-shrink: 0;
+  padding: 0;
+}
+.wh-swap-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 0 rgba(var(--accent-rgb),.38);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.wh-gutter-label {
+  position: relative;
+  z-index: 1;
+  font-family: 'Caveat', cursive;
+  font-size: 13px;
+  color: var(--pencil-2);
+  text-align: center;
+  line-height: 1;
+}
+
+/* ---- Panel pool + tabs ---- */
+#wh-panel-pool { display: none !important; }
+.tab-panel { display: none; }
+.wh-pane-content > .tab-panel { display: none; }
+.wh-pane-content > .tab-panel.pane-tab-active {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.65rem 0.85rem 0.85rem;
+  max-width: 100%;
+}
+
+/* ---- Tab bar ---- */
+.wh-tab-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.lotw-status-msg {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  align-self: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.lotw-status-msg:not(:empty) {
+  opacity: 1;
+}
+
+.lotw-status-msg.ok {
+  color: #28a745;
+  background: rgba(40, 167, 69, 0.1);
+}
+
+.lotw-status-msg.err {
+  color: #dc3545;
+  background: rgba(220, 53, 69, 0.1);
+}
+
+.lotw-status-msg.busy {
+  color: var(--muted);
+}
+
+.empty-state {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 16px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+#qso-map {
+  width: 100%;
+  height: 480px;
+  display: block;
+  margin: 1rem 0 0.6rem;
+  border-radius: 18px;
+  border: 1px solid rgba(158, 183, 207, 0.12);
+  overflow: hidden;
+}
+
+#qso-map .empty-state {
+  margin: 0;
+  height: 100%;
+}
+
+.leaflet-container {
+  background: linear-gradient(180deg, rgba(9, 26, 45, 0.96), rgba(4, 12, 21, 0.96));
+}
+
+.leaflet-control-attribution,
+.leaflet-control-zoom a {
+  background: rgba(3, 14, 24, 0.88);
+  color: var(--text);
+  border-color: rgba(158, 183, 207, 0.22);
+}
+
+.leaflet-tooltip {
+  background: rgba(3, 14, 24, 0.92);
+  color: var(--text);
+  border: 1px solid rgba(158, 183, 207, 0.18);
+  box-shadow: var(--shadow);
+}
+
+.spot-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.35rem;
+  border-radius: 999px;
+}
+
+.legend-dot.spot {
+  background: #38c0ff;
+}
+
+.legend-dot.qso {
+  background: #ffb347;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.wh-tab-bar::-webkit-scrollbar { display: none; }
+
+.wh-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px 5px 13px;
+  background: var(--paper-2);
+  border: 1.5px solid rgba(var(--wh-ink),.32);
+  border-bottom: none;
+  border-radius: 7px 7px 0 0;
+  font-family: 'Caveat', cursive;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--pencil);
+  cursor: pointer;
+  white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: 64px;
+  max-width: 180px;
+  overflow: hidden;
+  transition: color .12s, background .12s;
+  line-height: 1.2;
+}
+
+/* Port of main@d0e1300/8b2a07b: tabs shrink uniformly as more open, down to
+   min-width, and truncate their label with an ellipsis rather than the tab
+   bar overflowing. */
+.wh-tab-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wh-tab:hover { color: var(--ink); background: rgba(var(--wh-cream),.7); }
+.wh-tab.wh-tab-active {
+  background: var(--panel);
+  color: var(--ink);
+  border-color: var(--ink);
+  border-bottom: 2px solid var(--panel);
+  box-shadow: 2px -2px 0 rgba(var(--wh-ink),.07);
+  margin-bottom: -2px;
+}
+
+.wh-tab-close {
+  font-size: 13px;
+  line-height: 1;
+  opacity: 0.42;
+  font-family: system-ui, sans-serif;
+  font-weight: 400;
+  flex-shrink: 0;
+  transition: opacity .1s, color .1s;
+}
+.wh-tab:hover .wh-tab-close { opacity: 0.72; }
+.wh-tab.wh-tab-active .wh-tab-close { opacity: 0.52; }
+.wh-tab-close:hover { opacity: 1 !important; color: var(--accent); }
+/* Drag-and-drop tabs (feature #8): the insertion marker between tabs, and the
+   dragged tab's label fade. */
+.wh-tab-drop-indicator {
+  flex-shrink: 0;
+  width: 2px;
+  height: 24px;
+  background: var(--accent);
+  border-radius: 1px;
+  margin: 0 1px;
+}
+.wh-tab-dragging .wh-tab-label { opacity: 0.5; }
+
+/* ---- Add-tab button ---- */
+.wh-tab-add-wrap {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 4px;
+}
+.wh-tab-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1.5px dashed var(--pencil-2);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--pencil-2);
+  cursor: pointer;
+  transition: color .12s, border-color .12s, background .12s;
+  padding: 0;
+}
+.wh-tab-add-btn:hover:not(:disabled) {
+  color: var(--ink);
+  border-color: var(--ink);
+  border-style: solid;
+  background: rgba(var(--wh-ink),.06);
+}
+.wh-tab-add-btn:disabled { opacity: .3; cursor: not-allowed; }
+
+/* ---- Add-tab dropdown — Open View menu (dense variant) ---- */
+.wh-tab-add-menu {
+  position: fixed;   /* fixed escapes parent overflow:hidden clipping */
+  z-index: 1000;
+  width: 260px;
+}
+.wh-tab-add-menu[hidden] { display: none; }
+
+/* Drop-shadow ghost card */
+.wh-menu-shadow {
+  position: absolute;
+  inset: 0;
+  transform: translate(6px, 8px);
+  background: var(--ink);
+  border-radius: 8px;
+  opacity: .18;
+  pointer-events: none;
+}
+
+/* Rough SVG border drawn on top of the card — matches the SketchBox treatment in the design (rx=6) */
+.wh-tab-add-menu::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  filter: url(#rough);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Card */
+.wh-menu-card {
+  position: relative;
+  background: var(--paper);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Header */
+.wh-menu-header {
+  padding: 8px 14px 6px;
+  border-bottom: 1.5px dashed var(--pencil-2);
+}
+.wh-menu-header-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--pencil);
+}
+
+/* Items */
+.wh-menu-items { padding: 2px 0; }
+
+.wh-menu-item {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 14px 8px 12px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-top: 1px dashed transparent;
+  border-bottom: 1px dashed var(--pencil-2);
+  cursor: pointer;
+  transition: background .12s;
+}
+.wh-menu-item:last-child { border-bottom: none; }
+
+/* Rough-circle bullet */
+.wh-menu-dot { overflow: visible; flex-shrink: 0; }
+.wh-menu-dot circle {
+  fill: transparent;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  transition: fill .12s;
+}
+
+/* Label */
+.wh-menu-item-label {
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* Right: icon + triangle */
+.wh-menu-item-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  color: var(--pencil-2);
+  transition: color .12s;
+}
+.wh-menu-item-right svg { flex-shrink: 0; }
+.wh-menu-triangle path {
+  fill: transparent;
+  stroke: var(--pencil-2);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  transition: fill .12s, stroke .12s;
+}
+
+/* Hover — yellow tape, accent dot and triangle (mirrors the screenshot selected state) */
+.wh-menu-item:hover {
+  background: linear-gradient(180deg, transparent 18%, var(--highlight) 18%, var(--highlight) 86%, transparent 86%);
+}
+.wh-menu-item:hover .wh-menu-dot circle { fill: var(--accent); }
+.wh-menu-item:hover .wh-menu-item-right { color: var(--ink); }
+.wh-menu-item:hover .wh-menu-triangle path { fill: var(--accent); stroke: var(--ink); }
+
+/* Keyboard-focused row — yellow highlight tape */
+.wh-menu-item.wh-menu-item-focused {
+  background: linear-gradient(180deg, transparent 18%, var(--highlight) 18%, var(--highlight) 86%, transparent 86%);
+}
+.wh-menu-item.wh-menu-item-focused .wh-menu-dot circle { fill: var(--accent); }
+.wh-menu-item.wh-menu-item-focused .wh-menu-triangle path { fill: var(--accent); stroke: var(--ink); }
+.wh-menu-item.wh-menu-item-focused .wh-menu-item-right { color: var(--ink); }
+
+/* ---- Maximize / restore ---- */
+.wh-icon-restore { display: none; }
+.wh-pane.wh-pane-maximized .wh-pane-maximize .wh-icon-max     { display: none; }
+.wh-pane.wh-pane-maximized .wh-pane-maximize .wh-icon-restore { display: block; }
+
+.wh-pane-area.wh-maximized .wh-pane:not(.wh-pane-maximized),
+.wh-pane-area.wh-maximized .wh-gutter { display: none !important; }
+.wh-add-menu-item {
+  display: block;
+  width: 100%;
+  padding: 9px 15px;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(var(--wh-ink),.1);
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .1s;
+}
+.wh-add-menu-item:last-child { border-bottom: none; }
+.wh-add-menu-item:hover { background: var(--paper-2); }
+
+/* Old layout stubs (kept for app.js DOM refs) */
+.wh-sidebar  { display: none !important; }
+.wh-main     { display: contents; }
+.wh-topbar   { display: none !important; }
+.tab-shell   { display: contents; }
+
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
+.console-card {
+  background: var(--panel);
+  border: 1.5px solid var(--panel-border);
+  border-radius: 8px;
+  padding: 0.65rem;
+}
+.card-heading, .panel-header, .toolbar, .button-row, .spot-card-header, .spot-actions {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+}
+.panel-header { margin-bottom: .5rem; }
+.panel-header h2, .panel-header h3 { font-family: 'Caveat', cursive; font-size: 20px; margin: 0; }
+
+.collapse-toggle { transition: transform 0.2s ease; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border: none; background: transparent; color: var(--accent); padding: 0; }
+.collapse-toggle:hover { color: var(--accent-mid); }
+.collapse-toggle svg { transition: transform 0.2s ease; }
+.collapsed .collapse-toggle svg { transform: rotate(-90deg); }
+.collapsed .card-content { display: none; }
+.collapsed.console-card { padding-bottom: 0.1rem; }
+.collapsed.wh-filter-toolbar > *:not(.collapse-toggle) { display: none; }
+
+.badge {
+  padding: .22rem .65rem;
+  border-radius: 20px;
+  font-size: .72rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid rgba(var(--accent-rgb),.26);
+  letter-spacing: .04em;
+}
+.badge.muted { color: var(--muted); background: rgba(var(--wh-ink),.06); border-color: var(--panel-border); }
+
+.grid { display: grid; gap: .5rem; }
+.grid.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.grid.compact { margin-top: .5rem; }
+
+.frequency-readout {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: .04em;
+  cursor: text;
+}
+.frequency-readout:hover { opacity: .8; }
+.frequency-readout-input {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: .04em;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--accent);
+  outline: none;
+  width: 8ch;
+  padding: 0;
+  caret-color: transparent;
+}
+.frequency-unit { color: var(--muted); font-size: 1.5rem; margin-top: .2rem; }
+.frequency-step-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: .38rem; margin-top: .5rem; }
+.mode-readout { color: var(--accent); font-weight: 700; }
+.mode-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(88px,1fr)); gap: .48rem; }
+.command-grid { grid-template-columns: minmax(0,1fr) auto; align-items: end; margin: .85rem 0; }
+.form-stack { display: grid; gap: .5rem; }
+
+.lookup-panel { border: 1px solid var(--border-color); border-radius: 8px; padding: .75rem; background: rgba(var(--wh-ink),.03); }
+.lookup-header { display: flex; justify-content: space-between; gap: .65rem; margin-bottom: .5rem; }
+.lookup-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px,1fr)); gap: .42rem .75rem; }
+.lookup-grid .label { display: block; }
+
+/* FT8 — Legacy helpers (kept for backward compat) */
+.ft8-grid { display: grid; grid-template-columns: 1.2fr .9fr; gap: .55rem; margin-bottom: .55rem; }
+.ft8-status-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px,1fr)); gap: .38rem; margin-bottom: .55rem; }
+.ft8-status-strip > div { padding: .38rem .6rem; border-radius: 8px; border: 1px solid var(--panel-border); background: rgba(var(--wh-ink),.04); }
+.ft8-status-strip strong { display: block; margin-top: .1rem; color: var(--text); font-family: 'JetBrains Mono', monospace; }
+.ft8-card, .spot-panel { padding: .55rem; border-radius: 10px; border: 1px solid var(--panel-border); background: rgba(var(--wh-ink),.04); }
+.ft8-slot { display: flex; justify-content: space-between; gap: .55rem; margin-bottom: .55rem; }
+.ft8-slot strong { display: block; margin-top: .12rem; font-size: 1.2rem; }
+.ft8-message-list, .ft8-decoder-list, .spot-list { display: grid; gap: .38rem; }
+.ft8-decode-summary { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .42rem; margin: .5rem 0; }
+.ft8-decode-summary.compact { grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: .5rem; }
+.ft8-decode-summary strong { display: block; margin-top: .1rem; font-size: .9rem; }
+.ft8-candidate, .spot-card, .ft8-message { display: grid; gap: .2rem; padding: .48rem .6rem; border-radius: 8px; border: 1px solid var(--panel-border); background: rgba(var(--wh-cream),.42); }
+.ft8-candidate strong, .spot-title strong { font-size: .9rem; }
+.ft8-candidate span, .spot-card p, .spot-card span, .spot-meta, .ft8-meta { color: var(--muted); }
+.spot-title { display: flex; align-items: center; gap: .52rem; flex-wrap: wrap; }
+.spot-meta { display: flex; flex-wrap: wrap; gap: .62rem; font-size: .84rem; }
+.ft8-audio-panel { margin-bottom: .5rem; padding: .55rem; border-radius: 10px; border: 1px solid var(--panel-border); background: rgba(var(--wh-ink),.04); }
+.ft8-audio-panel.nested { margin-bottom: 0; margin-top: .5rem; }
+.ft8-meter { overflow: hidden; height: 9px; margin: .5rem 0; border-radius: 20px; background: rgba(var(--wh-ink),.12); }
+.ft8-meter-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--connected), var(--accent)); transition: width .08s linear; }
+#ft8-waterfall { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--panel-border); background: #040d06; }
+.ft8-message-header { display: flex; justify-content: space-between; gap: .9rem; align-items: center; }
+.ft8-message code { font-size: .88rem; color: var(--ink); white-space: pre-wrap; font-family: 'JetBrains Mono', monospace; }
+.ft8-helper-text { margin: .68rem 0 0; line-height: 1.5; color: var(--muted); font-size: .84rem; }
+.ft8-tx-summary { margin-bottom: .85rem; }
+.toggle-field { display: flex; align-items: center; justify-content: space-between; gap: .9rem; }
+.toggle-field input[type="checkbox"] { width: 1rem; height: 1rem; }
+.ft8-action-row { display: flex; gap: .48rem; flex-wrap: wrap; margin-top: .26rem; }
+.ft8-action-row button { min-width: auto; padding-inline: .82rem; }
+.ft8-advanced { border: 1px solid var(--panel-border); border-radius: 10px; background: rgba(var(--wh-ink),.04); padding: .72rem .88rem; }
+.ft8-advanced + .ft8-advanced { margin-top: .85rem; }
+.ft8-advanced summary { cursor: pointer; color: var(--text); font-weight: 700; font-family: 'Caveat', cursive; font-size: 18px; list-style: none; }
+.ft8-advanced summary::-webkit-details-marker { display: none; }
+.ft8-advanced summary::after { content: "+"; float: right; color: var(--accent); }
+.ft8-advanced[open] summary::after { content: "−"; }
+
+/* ============================================================
+   FT8 Console — redesigned mini-app (2026)
+   ============================================================ */
+
+/* Pane container — 4-row grid fills the tab */
+.ft8-console-pane {
+  display: grid;
+  /* status · waterfall · band row · main (flex) · settings rail */
+  grid-template-rows: auto auto auto 1fr auto;
+  gap: 7px;
+  padding: 8px;
+  height: 100%;
+  min-height: 0;
+  flex: 1;
+}
+
+/* ---------- ROW 1: Status strip ---------- */
+.ft8-status-row {
+  display: grid;
+  grid-template-columns: 152px 1fr 1fr auto;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+/* Shared card base */
+.ft8-slot-card,
+.ft8-freq-card,
+.ft8-tx-state-card,
+.ft8-session-card {
+  background: var(--panel-2, rgba(var(--wh-cream),.55));
+  border: 1.5px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+
+/* Session card (Start / Stop in the status row) */
+.ft8-session-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.ft8-session-btns { display: flex; gap: 4px; }
+#tab-ft8 .ft8-session-btns button {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-family: 'Kalam', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1.5px solid var(--panel-border);
+  background: var(--field-bg);
+  color: var(--ink, var(--text));
+  white-space: nowrap;
+  cursor: pointer;
+}
+#tab-ft8 .ft8-session-btns button:hover { transform: translateY(-1px); }
+#tab-ft8 .ft8-session-btns button.primary {
+  background: var(--ink, var(--text));
+  color: var(--paper, var(--bg));
+  border-color: var(--ink, var(--text));
+}
+[data-theme="dark"] #tab-ft8 .ft8-session-btns button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper, var(--bg));
+}
+
+/* Slot timer card */
+.ft8-slot-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ft8-slot-ring-wrap {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+.ft8-slot-ring-svg { width: 60px; height: 60px; display: block; }
+.ft8-slot-ring-track {
+  fill: none;
+  stroke: var(--panel-border);
+  stroke-width: 6;
+}
+.ft8-slot-ring-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset .12s linear;
+}
+.ft8-slot-ring-time {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink, var(--text));
+  pointer-events: none;
+}
+.ft8-slot-meta { display: flex; flex-direction: column; min-width: 0; }
+.ft8-slot-id-text {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink, var(--text));
+}
+.ft8-slot-parity {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: .1em;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+}
+.ft8-slot-parity::before {
+  content: "";
+  width: 5px; height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: ft8-blink 1.5s ease-in-out infinite;
+}
+@keyframes ft8-blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+/* Frequency card */
+.ft8-freq-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+.ft8-freq-readout {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink, var(--text));
+  letter-spacing: -.01em;
+  line-height: 1.05;
+}
+.ft8-freq-u {
+  color: var(--pencil-2, var(--muted));
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 1px;
+}
+.ft8-freq-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+.ft8-freq-band-name {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--accent);
+}
+.ft8-freq-mode-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  padding: 1px 6px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 4px;
+  background: var(--accent-light, rgba(var(--accent-rgb),.12));
+}
+
+/* TX state card */
+.ft8-tx-state-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  transition: background .2s, border-color .2s;
+}
+.ft8-tx-state-name {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink, var(--text));
+}
+.ft8-tx-queued-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink, var(--text));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+/* TX active state */
+.ft8-tx-state-card[data-state="tx"] {
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid, var(--accent)));
+  border-color: transparent;
+  color: #fff8ec;
+}
+.ft8-tx-state-card[data-state="tx"] .label,
+.ft8-tx-state-card[data-state="tx"] .ft8-tx-state-name,
+.ft8-tx-state-card[data-state="tx"] .ft8-tx-queued-text { color: #fff8ec; }
+/* TX queued state */
+.ft8-tx-state-card[data-state="queued"] {
+  border-color: var(--accent);
+  background: var(--accent-light, rgba(var(--accent-rgb),.1));
+}
+.ft8-tx-state-card[data-state="queued"] .ft8-tx-state-name { color: var(--accent); }
+/* Armed: Enable Tx on, waiting for the next matching slot */
+.ft8-tx-state-card[data-state="armed"] {
+  border-color: #c0392b;
+  background: rgba(192, 57, 43, .08);
+}
+.ft8-tx-state-card[data-state="armed"] .ft8-tx-state-name { color: #c0392b; }
+[data-theme="dark"] .ft8-tx-state-card[data-state="armed"] {
+  border-color: #e74c3c;
+  background: rgba(231, 76, 60, .10);
+}
+[data-theme="dark"] .ft8-tx-state-card[data-state="armed"] .ft8-tx-state-name { color: #e74c3c; }
+
+/* ---------- ROW 2: Waterfall ---------- */
+.ft8-wf-panel {
+  border: 1.5px solid var(--panel-border);
+  border-radius: 10px;
+  background: #050d06;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  flex-shrink: 0;
+}
+.ft8-wf-panel canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border: none;
+  cursor: crosshair;
+}
+/* Override the generic #ft8-waterfall rule inside wf-panel */
+#tab-ft8 #ft8-waterfall { max-height: none; height: 100%; border: none; background: transparent; }
+.ft8-wf-meta {
+  position: absolute;
+  top: 5px; left: 8px; right: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: #c8d4b8;
+  pointer-events: none;
+}
+.ft8-wf-meta strong { color: #fff; font-weight: 600; }
+.ft8-wf-panel.ft8-wf-tx-blank canvas { opacity: .15; }
+.ft8-wf-panel.ft8-wf-tx-blank::after {
+  content: "TRANSMITTING";
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: .18em; font-weight: 600;
+  color: rgba(255,213,74,.85);
+  pointer-events: none;
+}
+.ft8-wf-axis {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 14px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 6px 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  color: #c8d4b8;
+  letter-spacing: .08em;
+  pointer-events: none;
+  align-items: flex-end;
+  background: linear-gradient(to top, rgba(5,13,6,.85), transparent);
+}
+.ft8-wf-rx-marker,
+.ft8-wf-tx-marker {
+  position: absolute;
+  top: 0; bottom: 14px;
+  width: 1px;
+  pointer-events: none;
+}
+.ft8-wf-rx-marker { background: rgba(255,140,80,.9); }
+.ft8-wf-tx-marker { background: rgba(120,220,150,.9); }
+.ft8-wf-rx-marker::before,
+.ft8-wf-tx-marker::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 18px;
+  left: 3px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.ft8-wf-rx-marker::before { background: rgba(255,140,80,.9); color: #1c0a00; }
+.ft8-wf-tx-marker::before { background: rgba(120,220,150,.9); color: #062812; top: 36px; }
+
+/* ---------- ROW 2b: Band quick-select ---------- */
+.ft8-band-row {
+  display: flex;
+  gap: 4px;
+  margin: 6px 0;
+  flex-shrink: 0;
+}
+#tab-ft8 .ft8-band-row button {
+  flex: 1;
+  padding: 4px 2px;
+  border: 1.5px solid var(--panel-border);
+  border-radius: 5px;
+  background: var(--field-bg);
+  color: var(--ink, var(--text));
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  cursor: pointer;
+  transition: all .12s;
+}
+#tab-ft8 .ft8-band-row button:hover { background: var(--panel); transform: translateY(-1px); }
+#tab-ft8 .ft8-band-row button.active {
+  background: #2ecc40;
+  border-color: #27ae38;
+  color: #052b0c;
+}
+
+/* ---------- ROW 3: Decodes + Composer ---------- */
+.ft8-main-row {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 7px;
+  min-height: 0;
+}
+.ft8-sub-panel {
+  background: var(--panel-2, rgba(var(--wh-cream),.55));
+  border: 1.5px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.ft8-sub-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+.ft8-sub-head h3 {
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  color: var(--ink, var(--text));
+  line-height: 1;
+  margin: 0;
+  font-weight: 700;
+}
+.ft8-live-indicator {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  color: var(--connected);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.ft8-live-indicator::before {
+  content: "";
+  width: 5px; height: 5px;
+  background: var(--connected);
+  border-radius: 50%;
+  animation: ft8-blink 1.4s ease-in-out infinite;
+}
+
+/* Decode filter bar */
+.ft8-decodes-filter {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 5px;
+  flex-shrink: 0;
+}
+#tab-ft8 .ft8-decodes-filter button {
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  padding: 3px 4px;
+  background: var(--field-bg);
+  color: var(--pencil, var(--muted));
+  border: 1px solid var(--panel-border);
+  border-radius: 5px;
+  width: auto;
+  min-width: unset;
+}
+#tab-ft8 .ft8-decodes-filter button.active {
+  background: var(--ink, var(--text));
+  color: var(--paper, var(--bg));
+  border-color: var(--ink, var(--text));
+}
+[data-theme="dark"] #tab-ft8 .ft8-decodes-filter button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.ft8-decodes-search {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  padding: 4px 6px;
+  margin-bottom: 5px;
+  background: var(--field-bg);
+  color: var(--ink, var(--text));
+  border: 1px solid var(--panel-border);
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
+/* Decode scroll area */
+.ft8-decodes-scroll {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  margin: 0 -3px;
+  padding: 0 3px;
+  scrollbar-width: thin;
+}
+.ft8-decodes-scroll::-webkit-scrollbar { width: 5px; }
+.ft8-decodes-scroll::-webkit-scrollbar-thumb { background: var(--panel-border); border-radius: 3px; }
+
+/* Decode rows */
+.ft8-decode-row {
+  display: grid;
+  grid-template-columns: 30px 28px 36px 1fr auto;
+  gap: 4px;
+  align-items: center;
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  margin-bottom: 1px;
+}
+.ft8-decode-row:hover { background: var(--panel); border-color: var(--panel-border); }
+/* Decode-highlight colors. Each category is one customizable base color (set as
+   a CSS var from Settings → FT8 Decode Colors); the tints below are derived from
+   it. Rules are ordered low→high priority because they share specificity and a
+   row can match several classes — "calling you" is last so it always wins. */
+.ft8-decode-row.worked {
+  background: color-mix(in srgb, var(--ft8-hl-worked, #9aa0a6) 16%, transparent);
+}
+.ft8-decode-row.new-grid {
+  background: color-mix(in srgb, var(--ft8-hl-grid, #ff8c00) 18%, transparent);
+  border-color: color-mix(in srgb, var(--ft8-hl-grid, #ff8c00) 45%, transparent);
+}
+.ft8-decode-row.cq {
+  background: color-mix(in srgb, var(--ft8-hl-cq, #f4d56b) 18%, transparent);
+  border-color: color-mix(in srgb, var(--ft8-hl-cq, #f4d56b) 40%, transparent);
+}
+.ft8-decode-row.to-me {
+  background: color-mix(in srgb, var(--ft8-hl-tome, #4caf50) 22%, transparent);
+  border-color: var(--ft8-hl-tome, #4caf50);
+}
+.ft8-decode-row.to-me:hover {
+  background: color-mix(in srgb, var(--ft8-hl-tome, #4caf50) 34%, transparent);
+}
+/* Transmitted message readout (WebHam shows our TX here, not in the decode list). */
+#ft8-last-tx {
+  background: color-mix(in srgb, var(--ft8-hl-tx, #ffd54a) 32%, transparent);
+  border-radius: 3px;
+  padding: 0 4px;
+}
+.ft8-slot-divider {
+  font-size: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--muted);
+  padding: 3px 6px 1px;
+  border-bottom: 1px solid var(--panel-border);
+  letter-spacing: .06em;
+}
+.dec-worked {
+  display: inline-block;
+  font-size: 7px;
+  font-weight: 700;
+  background: var(--muted);
+  color: var(--bg);
+  border-radius: 2px;
+  padding: 0 3px;
+  margin-left: 3px;
+  vertical-align: middle;
+  opacity: .7;
+}
+.dec-time { color: var(--pencil-2, var(--muted)); font-size: 8.5px; }
+.dec-snr { font-weight: 600; text-align: right; font-size: 9px; }
+.dec-snr.pos { color: var(--connected); }
+.dec-snr.neg { color: var(--pencil, var(--muted)); }
+.dec-snr.weak { color: var(--danger, #c0392b); opacity: .8; }
+.dec-freq { color: var(--pencil, var(--muted)); font-size: 8.5px; text-align: right; }
+.dec-msg {
+  color: var(--ink, var(--text));
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 10px;
+}
+.dec-msg .cs { color: var(--accent); font-weight: 700; }
+#tab-ft8 .dec-reply {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: 1px 5px;
+  background: var(--ink, var(--text));
+  color: var(--paper, var(--bg));
+  border: none;
+  border-radius: 3px;
+  opacity: 0;
+  width: auto;
+  min-width: unset;
+  transition: opacity .1s;
+}
+#tab-ft8 .ft8-decode-row:hover .dec-reply { opacity: 1; }
+
+/* Target station card */
+.ft8-target-card {
+  background: var(--field-bg);
+  border: 1px dashed var(--panel-border);
+  border-radius: 7px;
+  padding: 5px 8px;
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+.ft8-target-row { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.ft8-target-call {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--accent);
+}
+.ft8-target-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--pencil-2, var(--muted));
+  letter-spacing: .04em;
+}
+.ft8-target-msg {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--ink, var(--text));
+  margin-top: 3px;
+  padding: 3px 5px;
+  background: var(--panel);
+  border-radius: 4px;
+  border: 1px solid var(--panel-border-2, var(--panel-border));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Option B "compact arm": message list (left) → arm column (right) */
+.ft8-tx-zone-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted, var(--text));
+  opacity: .65;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+.ft8-tx-twozone {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+}
+.ft8-tx-msgcol { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
+
+/* Message list — one row per message, key + full built text */
+.ft8-tx-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+#tab-ft8 .ft8-tx-actions button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 8px;
+  text-align: left;
+  background: var(--field-bg);
+  border: 1.5px solid var(--panel-border);
+  border-radius: 7px;
+  width: 100%;
+  cursor: pointer;
+  transition: all .12s;
+}
+#tab-ft8 .ft8-tx-actions button:hover { background: var(--panel); transform: translateY(-1px); }
+.ft8-tx-key {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  line-height: 1;
+  width: 40px;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+.ft8-msg-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink, var(--text));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Without this, a flex item's default min-width is its content's
+     (nowrap) full width, so it never actually shrinks — the ellipsis
+     rule above never engages and the text spills past the button's
+     border instead of truncating. */
+  flex: 1 1 0;
+  min-width: 0;
+}
+#tab-ft8 .ft8-tx-actions button.selected {
+  background: var(--accent);
+  border-color: var(--accent-mid, var(--accent));
+}
+#tab-ft8 .ft8-tx-actions button.selected .ft8-tx-key,
+#tab-ft8 .ft8-tx-actions button.selected .ft8-msg-text { color: #fff8ec; font-weight: 700; }
+
+/* Arm column */
+.ft8-arm-col { display: flex; flex-direction: column; gap: 6px; min-height: 0; }
+#tab-ft8 .ft8-arm-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 9px 4px;
+  border-radius: 8px;
+  border: 1.5px solid var(--panel-border);
+  background: var(--field-bg);
+  color: var(--ink, var(--text));
+  font-family: 'Kalam', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.ft8-arm-icon { font-size: 14px; line-height: 1; }
+.ft8-arm-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  opacity: .9;
+}
+#tab-ft8 .ft8-arm-btn.armed {
+  border-color: #c0392b;
+  background: #c0392b;
+  color: #fff;
+  animation: ft8-tune-pulse 1.5s ease-in-out infinite;
+}
+[data-theme="dark"] #tab-ft8 .ft8-arm-btn.armed { background: #e74c3c; border-color: #e74c3c; }
+#tab-ft8 .ft8-arm-btn.armed.wd-warn { background: var(--warn, #d9822b); border-color: var(--warn, #d9822b); }
+#tab-ft8 .ft8-arm-col .ft8-halt-btn {
+  padding: 11px 4px;
+  border-radius: 8px;
+  font-family: 'Kalam', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  border: 1.5px solid color-mix(in srgb, #c0392b 45%, var(--panel-border));
+  background: var(--field-bg);
+  color: #c0392b;
+  cursor: pointer;
+}
+[data-theme="dark"] #tab-ft8 .ft8-arm-col .ft8-halt-btn { color: #e74c3c; }
+#tab-ft8 .ft8-arm-col .ft8-halt-btn:hover { background: #c0392b; border-color: #c0392b; color: #fff; }
+#tab-ft8 .ft8-arm-tune {
+  padding: 9px 4px;
+  border-radius: 8px;
+  font-family: 'Kalam', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1.5px solid var(--panel-border);
+  background: var(--field-bg);
+  color: var(--ink, var(--text));
+  cursor: pointer;
+}
+#tab-ft8 .ft8-arm-tune:hover { background: var(--panel); transform: translateY(-1px); }
+#tab-ft8 .ft8-arm-tune.tuning {
+  background: #c0392b; border-color: #c0392b; color: #fff;
+  animation: ft8-tune-pulse 1s ease-in-out infinite;
+}
+
+/* QSO tracker lives inside the target card now; free text sits at the column bottom */
+.ft8-target-card .ft8-qso-strip { margin-top: 5px; }
+.ft8-tx-msgcol .ft8-freetext-row { margin-top: auto; margin-bottom: 0; }
+
+/* Free-text message row */
+.ft8-freetext-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px;
+  margin-bottom: 5px;
+  flex-shrink: 0;
+}
+.ft8-freetext-row #ft8-freetext {
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1.5px solid var(--panel-border);
+  background: var(--panel-2, var(--panel));
+  color: var(--text);
+  font-family: 'Kalam', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  min-width: 0;
+}
+.ft8-freetext-row #ft8-freetext-btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1.5px solid var(--panel-border);
+  background: var(--panel);
+  color: var(--text);
+  font-family: 'Kalam', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.ft8-freetext-row #ft8-freetext-btn:hover { background: var(--panel-2, var(--panel)); transform: translateY(-1px); }
+.ft8-freetext-row #ft8-freetext-btn.selected {
+  background: var(--accent);
+  border-color: var(--accent-mid, var(--accent));
+  color: #fff8ec;
+}
+
+/* TX tone outside the linear SSB passband window */
+.ft8-tone-warn { color: var(--warn, #d9822b); }
+
+/* Labelled control groups inside the Transmit panel */
+.ft8-tx-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 9px;
+  flex-shrink: 0;
+}
+.ft8-tx-group-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted, var(--text));
+  opacity: .65;
+}
+/* Reset inner spacing — the group owns the rhythm now */
+.ft8-tx-group .ft8-tx-actions,
+.ft8-tx-group .ft8-freetext-row,
+.ft8-tx-group .ft8-tx-big { margin-bottom: 0; }
+
+/* Start / Stop buttons */
+.ft8-tx-big {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 5px;
+  flex-shrink: 0;
+}
+.ft8-tx-big--3 { grid-template-columns: repeat(3, 1fr); }
+#tab-ft8 .ft8-tx-big button {
+  padding: 6px 4px;
+  border-radius: 6px;
+  font-family: 'Kalam', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1.5px solid var(--panel-border);
+  background: var(--field-bg);
+  color: var(--ink, var(--text));
+  width: auto;
+}
+#tab-ft8 .ft8-tx-big button.primary {
+  background: var(--ink, var(--text));
+  color: var(--paper, var(--bg));
+  border-color: var(--ink, var(--text));
+}
+[data-theme="dark"] #tab-ft8 .ft8-tx-big button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper, var(--bg));
+}
+#tab-ft8 .ft8-tx-big button:hover { transform: translateY(-1px); }
+#tab-ft8 .ft8-tx-big button.tuning {
+  background: #c0392b;
+  border-color: #c0392b;
+  color: #fff;
+  animation: ft8-tune-pulse 1s ease-in-out infinite;
+}
+[data-theme="dark"] #tab-ft8 .ft8-tx-big button.tuning {
+  background: #e74c3c;
+  border-color: #e74c3c;
+}
+#tab-ft8 .ft8-tx-big button.active {
+  background: var(--accent);
+  border-color: var(--accent-mid, var(--accent));
+  color: #fff8ec;
+}
+/* Tx watchdog about to expire (≤1 min) — warn on the Auto button. */
+#tab-ft8 .ft8-tx-big button.active.wd-warn {
+  background: var(--warn, #d9822b);
+  border-color: var(--warn, #d9822b);
+}
+/* Enable Tx now pairs with Halt in its own row; red while armed (WSJT-X). */
+#tab-ft8 .ft8-tx-big .ft8-halt-btn {
+  color: #c0392b;
+  border-color: color-mix(in srgb, #c0392b 45%, var(--panel-border));
+}
+[data-theme="dark"] #tab-ft8 .ft8-tx-big .ft8-halt-btn { color: #e74c3c; }
+#tab-ft8 .ft8-tx-big .ft8-halt-btn:hover {
+  background: #c0392b;
+  border-color: #c0392b;
+  color: #fff;
+}
+#tab-ft8 .ft8-tx-big button.armed {
+  background: #c0392b;
+  border-color: #c0392b;
+  color: #fff;
+  animation: ft8-tune-pulse 1.5s ease-in-out infinite;
+}
+[data-theme="dark"] #tab-ft8 .ft8-tx-big button.armed {
+  background: #e74c3c;
+  border-color: #e74c3c;
+}
+#tab-ft8 .ft8-tx-big button.armed.wd-warn {
+  background: var(--warn, #d9822b);
+  border-color: var(--warn, #d9822b);
+}
+@keyframes ft8-tune-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+
+/* QSO progress strip */
+.ft8-qso-strip {
+  display: flex;
+  gap: 3px;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+.ft8-qso-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 1px;
+  background: var(--panel);
+  border: 1px dashed var(--panel-border);
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 7.5px;
+  letter-spacing: .04em;
+  color: var(--pencil-2, var(--muted));
+  text-align: center;
+}
+.ft8-qso-step strong { font-size: 9px; font-weight: 700; display: block; }
+.ft8-qso-step span { display: block; }
+.ft8-qso-step.done {
+  background: rgba(58,138,63,.1);
+  border-color: rgba(58,138,63,.4);
+  border-style: solid;
+  color: var(--connected);
+}
+.ft8-qso-step.active {
+  background: var(--accent-light, rgba(var(--accent-rgb),.1));
+  border-color: var(--accent);
+  border-style: solid;
+  color: var(--accent);
+}
+
+/* ---------- ROW 4: Settings rail ---------- */
+.ft8-settings-rail {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  background: var(--panel-2, rgba(var(--wh-cream),.55));
+  border: 1.5px solid var(--panel-border);
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--pencil, var(--muted));
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+.ft8-settings-rail .label { display: inline; margin-right: 2px; white-space: nowrap; }
+.ft8-rail-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--connected);
+}
+.ft8-settings-rail select,
+.ft8-rail-number {
+  background: var(--field-bg);
+  border: 1px solid var(--field-border, var(--panel-border));
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  color: var(--ink, var(--text));
+  width: auto;
+}
+.ft8-rail-number { width: 56px; }
+.ft8-rail-sep { width: 1px; height: 14px; background: var(--panel-border); flex-shrink: 0; }
+/* Decode + Log QSO stay together as one unit — margin-left:auto pushes the
+   pair to the row's right edge without a separate flex:1 spacer item, which
+   used to grow to fill whatever was left on its own wrapped line even when
+   Log QSO had already wrapped alone to the next line, leaving a gap that
+   pointed at nothing. */
+.ft8-rail-actions { display: flex; gap: 5px; margin-left: auto; flex-shrink: 0; }
+.ft8-rail-check { display: inline-flex; align-items: center; gap: 3px; cursor: pointer; white-space: nowrap; }
+.ft8-rail-check input { margin: 0; cursor: pointer; }
+.ft8-rail-check .label { margin-right: 0; }
+
+/* FT8 log-confirmation popup ("Log Contact Toast" design) */
+@keyframes ft8-log-confirm-pop {
+  0% { opacity: 0; transform: translateY(12px) scale(.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes ft8-log-confirm-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .25; }
+}
+.ft8-log-confirm {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 50;
+  width: 320px;
+  background: var(--panel);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 rgba(var(--wh-ink), .2);
+  padding: 14px 16px 15px;
+  animation: ft8-log-confirm-pop .4s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+.ft8-log-confirm[hidden] { display: none; }
+.ft8-log-confirm-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.ft8-log-confirm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-mid);
+  animation: ft8-log-confirm-blink 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.ft8-log-confirm-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent-mid);
+}
+.ft8-log-confirm-time {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+.ft8-log-confirm-text { margin: 0 0 3px; font-size: 15px; color: var(--pencil); }
+.ft8-log-confirm-who { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.ft8-log-confirm-callsign {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--ink);
+  background: linear-gradient(180deg, transparent 30%, var(--highlight) 30%, var(--highlight) 88%, transparent 88%);
+  padding: 0 4px;
+}
+.ft8-log-confirm-operator:empty { display: none; }
+.ft8-log-confirm-operator { font-family: 'Caveat', cursive; font-weight: 700; font-size: 19px; color: var(--pencil-2); }
+.ft8-log-confirm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  padding: 10px 11px;
+  border: 1.5px solid var(--panel-border);
+  border-radius: 8px;
+  margin-bottom: 13px;
+}
+.ft8-log-confirm-grid .label { display: block; margin-bottom: 1px; }
+.ft8-log-confirm-grid strong { display: block; font-size: 14px; color: var(--ink); }
+.ft8-log-confirm-actions { display: flex; gap: 8px; }
+.ft8-log-confirm-actions button { flex: 1; }
+#tab-ft8 .ft8-rail-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: 2px 7px;
+  background: var(--field-bg);
+  border: 1px solid var(--field-border, var(--panel-border));
+  border-radius: 4px;
+  color: var(--ink, var(--text));
+  width: auto;
+}
+#tab-ft8 .ft8-rail-btn-primary {
+  background: var(--ink, var(--text));
+  color: var(--paper, var(--bg));
+  border-color: var(--ink, var(--text));
+}
+[data-theme="dark"] #tab-ft8 .ft8-rail-btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper, var(--bg));
+}
+
+/* Override old #tab-ft8 rules that would conflict */
+#tab-ft8 > .console-card { display: none !important; } /* safety — old card removed */
+#tab-ft8 .wh-summary-cards { display: none !important; }
+#tab-ft8.pane-tab-active {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
+}
+#tab-ft8.pane-tab-active .ft8-console-pane {
+  flex: 1;
+  min-height: 0;
+}
+#tab-ft8.pane-tab-active > .ft8-advanced { flex-shrink: 0; overflow-y: auto; }
+
+/* ---- Forms ---- */
+label { display: grid; gap: .22rem; color: var(--field-label); font-size: 12px; }
+input, select, textarea, .file-label {
+  width: 100%; border: 1px solid var(--field-border); background: var(--field-bg);
+  color: var(--text); border-radius: 8px; padding: .38rem .62rem;
+  font-family: 'Kalam', sans-serif; font-size: 14px; transition: border-color .14s;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+textarea { resize: vertical; }
+
+button, .file-label {
+  cursor: pointer; width: auto; font-family: 'Kalam', sans-serif; font-size: 14px;
+  transition: transform .13s, border-color .13s, background .13s;
+  border: 1.5px solid var(--button-border); background: var(--button-bg);
+  color: var(--button-text); font-weight: 700; border-radius: 8px; padding: .36rem .72rem;
+}
+button:not(.wh-pane-maximize):hover, .file-label:hover { transform: translateY(-1px); background: var(--button-bg-hover); }
+button.secondary, .file-label.secondary {
+  background: var(--button-secondary-bg);
+  border-color: var(--button-secondary-border);
+  color: var(--button-secondary-text);
+}
+button.secondary:hover, .file-label.secondary:hover { background: var(--button-secondary-bg-hover); }
+button:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+
+button:not(.secondary):not(.wh-nav-btn):not(.wh-icon-btn):not(.wh-icon-tool):not(.wh-theme-toggle):not(.mode-chip):not(.step-btn):not(.wh-topstrip-btn):not(.wh-pane-maximize):not(.wh-swap-btn):not(.wh-btn-gradient):not(.table-action):not(.wh-row-menu):not(.wh-menu-item):not(.wh-tab-add-btn):not(.settings-nav-item):not(.settings-theme-option):not(.settings-reveal-btn):not(.settings-danger-btn) {
+  background: var(--accent); border-color: transparent; color: #fff;
+}
+button:not(.secondary):not(.wh-nav-btn):not(.wh-icon-btn):not(.wh-icon-tool):not(.wh-theme-toggle):not(.mode-chip):not(.step-btn):not(.wh-topstrip-btn):not(.wh-pane-maximize):not(.wh-swap-btn):not(.wh-btn-gradient):not(.table-action):not(.wh-row-menu):not(.wh-menu-item):not(.wh-tab-add-btn):not(.settings-nav-item):not(.settings-theme-option):not(.settings-reveal-btn):not(.settings-danger-btn):hover {
+  background: var(--accent-mid); border-color: transparent;
+}
+
+.mode-chip { color: var(--muted); }
+.step-btn { background: var(--step-button-bg); border-color: var(--step-button-border); color: var(--step-button-text); }
+.step-btn:hover { background: var(--step-button-bg-hover); }
+.mode-chip, .step-btn { width: 100%; min-width: 0; justify-content: center; }
+.mode-chip.active { border-color: rgba(var(--accent-rgb),.6); background: rgba(var(--accent-rgb),.12); color: var(--accent); }
+#ptt-btn.ptt-active { background: #c0392b; border-color: transparent; color: #fff; }
+#ptt-btn.ptt-active:hover { background: #a93226; border-color: transparent; transform: translateY(-1px); }
+
+.button-row { justify-content: flex-start; flex-wrap: wrap; margin-top: .85rem; }
+.button-row button { min-width: 7.5rem; }
+.toolbar { justify-content: flex-start; flex-wrap: wrap; margin: .95rem 0 .85rem; }
+.toolbar input[type="search"] { min-width: 13rem; flex: 1; }
+
+.empty-state { padding: .82rem; margin-bottom: .58rem; border-radius: 8px; color: var(--muted); background: rgba(var(--wh-ink),.04); font-size: 13px; }
+
+#qso-map { width: 100%; height: 400px; display: block; margin: .85rem 0 .48rem; border-radius: 10px; border: 1.5px solid var(--panel-border); overflow: hidden; }
+.leaflet-container { background: var(--paper); }
+.leaflet-control-attribution, .leaflet-control-zoom a { background: var(--panel); color: var(--text); border-color: var(--border-color); }
+.leaflet-tooltip { background: var(--panel); color: var(--text); border: 1px solid var(--border-color); }
+.spot-legend { display: flex; flex-wrap: wrap; gap: .82rem; margin-bottom: .82rem; color: var(--muted); font-size: .84rem; }
+.legend-dot { display: inline-block; width: .68rem; height: .68rem; margin-right: .26rem; border-radius: 50%; }
+.legend-dot.spot { background: #38c0ff; }
+.legend-dot.qso  { background: #ffb347; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: .58rem .46rem; border-bottom: 1px solid var(--border-color); vertical-align: top; font-size: 13px; }
+th { color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 9.5px; letter-spacing: .07em; text-transform: uppercase; font-weight: 600; background: rgba(var(--wh-ink),.04); border-bottom: 1.5px solid var(--border-color); }
+.table-action { border-color: rgba(var(--accent-rgb),.28); background: rgba(var(--accent-rgb),.08); color: var(--accent); min-width: auto; padding: .26rem .58rem; font-size: 11px; }
+.table-action:hover { background: rgba(var(--accent-rgb),.18); color: var(--accent-mid); border-color: rgba(var(--accent-rgb),.28); }
+.wh-row-menu { min-width: auto; padding: .26rem .58rem; font-size: 11px; }
+.tabbar { display: none; }
+.tabbar-btn { display: none; }
+.voice-macros-list { display: grid; gap: .62rem; margin-top: .85rem; }
+.voice-macro-row { display: flex; justify-content: space-between; align-items: center; gap: .85rem; flex-wrap: wrap; padding: .68rem .88rem; border-radius: 8px; background: rgba(var(--wh-ink),.04); border: 1px solid var(--panel-border); }
+.voice-macro-row strong { color: var(--text); word-break: break-all; }
+.file-label { display: inline-flex; align-items: center; }
+
+/* ============================================================
+   PAGE-LEVEL COMPONENTS
+   ============================================================ */
+.wh-page-header { display: flex; align-items: flex-end; justify-content: space-between; gap: .9rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
+.wh-page-title { margin: 0; font-family: 'Caveat', cursive; font-size: clamp(1.65rem, 3vw, 2.3rem); font-weight: 700; color: var(--text); }
+.wh-page-subtitle { margin: .2rem 0 0; font-size: .82rem; color: var(--muted); }
+
+/* ---- Settings: notebook-tab category rail ---- */
+.settings-with-nav { display: flex; gap: 1.4rem; align-items: flex-start; }
+.settings-nav-col { flex-shrink: 0; width: 172px; display: grid; gap: .85rem; position: sticky; top: 1rem; }
+.settings-nav-heading {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.settings-nav {
+  display: grid;
+  gap: 2px;
+  border-left: 2px solid var(--panel-border);
+  padding-left: 2px;
+}
+.settings-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 8px 10px 8px 12px;
+  border-radius: 0 8px 8px 0;
+  background: none;
+  border: none;
+  color: var(--pencil);
+  transition: background .1s, color .1s;
+}
+.settings-nav-item:hover { background: rgba(var(--wh-cream),.5); color: var(--text); }
+.settings-nav-item.active {
+  background: var(--panel);
+  color: var(--text);
+  border-top: 1.5px solid var(--panel-border);
+  border-right: 1.5px solid var(--panel-border);
+  border-bottom: 1.5px solid var(--panel-border);
+  box-shadow: 2px 2px 0 rgba(var(--wh-ink),.1);
+}
+.settings-nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.settings-nav-label { font-family: 'Caveat', cursive; font-size: 20px; font-weight: 700; line-height: 1.15; white-space: nowrap; }
+.settings-nav-count { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted); }
+.settings-nav-item.active .settings-nav-count { color: var(--accent); }
+
+.settings-body { flex: 1; min-width: 0; }
+.settings-layout { display: grid; gap: 1rem; }
+.settings-section-card {
+  display: grid;
+  gap: 1rem;
+  background: rgba(var(--wh-cream),.82);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 rgba(var(--wh-ink),.14);
+  padding: 1.25rem 1.4rem;
+}
+.settings-section-head { display: flex; justify-content: space-between; gap: .75rem; align-items: flex-start; }
+.settings-section-head h2 { margin: 0; font-family: 'Caveat', cursive; font-size: 25px; font-weight: 700; }
+.settings-section-copy { margin: .2rem 0 0; color: var(--muted); line-height: 1.55; font-size: 13px; max-width: 54ch; }
+.settings-section-head + .settings-section-copy { margin-top: -.6rem; }
+.settings-inline-note { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; padding: .75rem .85rem; border-radius: 8px; background: rgba(var(--wh-ink),.035); border: 1.5px dashed var(--panel-border); color: var(--muted); font-size: .84rem; }
+.settings-inline-note-label { display: inline-flex; align-items: center; padding: .16rem .5rem; border-radius: 20px; background: rgba(var(--wh-ink),.05); color: var(--muted); border: 1.5px solid var(--panel-border); font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+
+.grid.three { grid-template-columns: repeat(3,minmax(0,1fr)); }
+
+/* Lookup accounts card: two stacked service rows + a status chip */
+.settings-lookup-grid { display: grid; grid-template-columns: 96px minmax(0,1fr) minmax(0,1fr); gap: .75rem .9rem; align-items: end; }
+.settings-lookup-service { font-family: 'Caveat', cursive; font-size: 22px; font-weight: 700; padding-bottom: .5rem; }
+.settings-lookup-divider { grid-column: 1 / -1; border-top: 1.5px dashed var(--panel-border); }
+.settings-field-label-row { display: flex; align-items: center; gap: .5rem; }
+.settings-reveal-btn { margin-left: auto; border: none; background: none; padding: 0; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.settings-reveal-btn:hover { color: var(--accent-mid); }
+
+.settings-chip { flex: none; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; border-radius: 20px; padding: .25rem .55rem; }
+.settings-chip.on { color: var(--connected); background: color-mix(in srgb, var(--connected) 14%, transparent); border: 1.5px solid color-mix(in srgb, var(--connected) 38%, transparent); }
+.settings-chip.off { color: var(--muted); background: rgba(var(--wh-ink),.05); border: 1.5px solid var(--panel-border); }
+
+/* Bordered checkbox rows (Radio/CAT, Audio, Advanced toggles) */
+.settings-check-row { display: flex; align-items: center; gap: .75rem; padding: .75rem .85rem; border: 1.5px solid var(--panel-border); border-radius: 8px; background: rgba(var(--wh-cream),.42); cursor: pointer; }
+.settings-check-row input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent); flex: none; }
+.settings-check-row-text { display: grid; gap: 1px; }
+.settings-check-row-title { font-size: 14px; font-weight: 700; color: var(--text); }
+.settings-check-row-hint { font-size: 12px; color: var(--muted); }
+
+/* Advanced: danger zone */
+.settings-danger-zone { border: 2px dashed var(--danger); border-radius: 10px; padding: 1.1rem 1.25rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; background: color-mix(in srgb, var(--danger) 5%, transparent); }
+.settings-danger-zone-copy { min-width: 0; }
+.settings-danger-zone h2 { margin: 0; font-family: 'Caveat', cursive; font-size: 23px; font-weight: 700; color: var(--danger); }
+.settings-danger-zone p { margin: .2rem 0 0; font-size: 13px; color: var(--muted); max-width: 52ch; }
+.settings-danger-zone button { margin-left: auto; flex: none; border: 1.5px solid var(--danger); background: rgba(var(--wh-cream),.7); color: var(--danger); }
+.settings-danger-zone button:hover { background: rgba(var(--wh-cream),.9); }
+
+/* Sticky save bar, pinned to the bottom of this pane's own scroll area */
+.settings-actions-card {
+  position: sticky;
+  bottom: -0.85rem;
+  margin: .25rem -0.85rem -0.85rem;
+  padding: .75rem .85rem;
+  background: var(--paper-2);
+  border-top: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  flex-wrap: wrap;
+  z-index: 5;
+}
+.settings-save-status-inline { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .05em; color: var(--pencil); }
+#save-settings-btn.is-saved { background: rgba(var(--wh-ink),.1); border-color: transparent; color: var(--muted); cursor: default; box-shadow: none; }
+#save-settings-btn.is-saved:hover { background: rgba(var(--wh-ink),.1); transform: none; }
+
+/* FT8 decode-color list (Settings) */
+.ft8-color-list { display: grid; gap: .35rem; }
+.ft8-color-row {
+  display: flex; align-items: center; gap: .7rem;
+  padding: .4rem .55rem; border-radius: 7px;
+  border: 1px solid var(--panel-border);
+}
+.ft8-color-row input[type="color"] {
+  width: 42px; height: 26px; padding: 0; border: 1px solid var(--panel-border);
+  border-radius: 5px; background: none; cursor: pointer; flex: none;
+}
+.ft8-color-row .ft8-color-name { font-size: 13px; color: var(--text); }
+.ft8-color-row .ft8-color-hint { font-size: 11px; color: var(--muted); margin-left: auto; font-family: 'JetBrains Mono', monospace; }
+.ft8-color-row .ft8-color-value { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--pencil-2); width: 62px; text-align: right; }
+
+.wh-btn-header { flex-shrink: 0; width: auto; min-width: 8.5rem; padding-inline: 1.2rem; }
+
+.wh-filter-toolbar { display: flex; align-items: center; gap: .78rem; flex-wrap: wrap; padding: .78rem .92rem; margin-bottom: .85rem; background: var(--panel); border: 1.5px solid var(--panel-border); border-radius: 8px; }
+.wh-search-field { position: relative; flex: 1 1 188px; min-width: 148px; }
+.wh-search-field input { padding-left: 2.38rem; border-radius: 6px; }
+.wh-search-icon { position: absolute; left: .78rem; top: 50%; transform: translateY(-50%); width: .92rem; height: .92rem; color: var(--muted); pointer-events: none; }
+.wh-filter-divider { width: 1px; height: 1.6rem; background: var(--panel-border); }
+.wh-filter-select { appearance: none; background: var(--field-bg); color: var(--text); border: 1px solid var(--field-border); border-radius: 6px; padding: .5rem 1.65rem .5rem .72rem; font-size: .84rem; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236f7c66' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .58rem center; font-family: 'Kalam', sans-serif; }
+.wh-icon-btn { margin-left: auto; display: flex; align-items: center; justify-content: center; width: 2.18rem; height: 2.18rem; border-radius: 6px; border: 1px solid var(--panel-border); background: transparent; color: var(--muted); cursor: pointer; }
+.wh-icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+.wh-table-card { background: var(--panel); border: 1.5px solid var(--panel-border); border-radius: 8px; overflow: hidden; margin-bottom: .9rem; }
+.wh-qso-table-wrap { margin: 0; }
+.wh-th-accent { color: var(--accent) !important; }
+.wh-th-actions { text-align: right; }
+.wh-th-status { text-align: center; }
+.status-icon { display: inline-block; width: 18px; height: 18px; line-height: 18px; text-align: center; border-radius: 3px; font-size: 10px; font-weight: 700; color: #fff; }
+.status-icon.sent { background-color: var(--accent); opacity: .7; }
+.status-icon.confirmed { background-color: var(--connected); }
+.wh-qso-table td { border-bottom: 1px solid var(--border-color); }
+.wh-qso-table [data-field="callsign"] { font-family: 'JetBrains Mono', monospace; font-size: .9rem; letter-spacing: .06em; }
+.wh-table-footer { margin: 0; padding: .48rem .82rem; font-size: .76rem; color: var(--muted); border-top: 1px solid var(--border-color); }
+.wh-entry-section { margin-top: .36rem; }
+
+.wh-summary-cards { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .78rem; margin-bottom: .9rem; }
+.wh-sum-card { position: relative; min-height: 5.5rem; padding: .88rem; border-radius: 6px; background: var(--panel); border: 1.5px solid var(--panel-border); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+.wh-sum-label { font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.wh-sum-value { margin: 0; font-family: 'Caveat', cursive; font-size: 1.58rem; font-weight: 700; line-height: 1.2; color: var(--text); }
+.wh-sum-accent { color: var(--accent); }
+.wh-sum-dim { color: var(--muted); }
+
+/* FT8 tab: fills pane height so core elements need no scrolling.
+   No `max-height` on #ft8-waterfall here. The canvas is sized by
+   `.ft8-wf-panel canvas { height: 100% }` above, and the panel that frames it
+   is a fixed 200px with a near-black background — so any cap short of the
+   panel height leaves the uncovered remainder showing as a black band under
+   the trace. The two `max-height` rules that used to sit in this block (180px,
+   then 130px) came from the pre-redesign spectrum layout, whose markup
+   (.wh-spectrum-panel, .ft8-layout-grid, .wh-decoder-stream, .ft8-right-col)
+   no longer exists; they outlived it only because they are later in the file
+   at equal specificity, and won. */
+#tab-ft8.pane-tab-active {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+/* Present in the FT8 markup but display:none — the tab's own header carries
+   these numbers now, while the JS still writes to the cards. */
+#tab-ft8 .wh-summary-cards { display: none; }
+#tab-ft8 .ft8-status-strip { grid-template-columns: repeat(auto-fit, minmax(80px,1fr)); }
+#tab-ft8 > .console-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#tab-ft8 .ft8-status-strip { flex-shrink: 0; }
+.wh-decoder-stream .panel-header h3 { font-family: 'Caveat', cursive; font-size: 20px; }
+.wh-live-feed { font-size: .6rem; letter-spacing: .05em; text-transform: uppercase; padding: .18rem .46rem; border-radius: 3px; background: rgba(var(--wh-ink),.1); color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.wh-target-panel { padding: .95rem; border-radius: 6px; background: var(--panel); border: 1.5px solid var(--panel-border); }
+.wh-target-heading { margin: 0 0 .82rem; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.wh-lock-field { display: flex; flex-direction: column; gap: .26rem; margin-bottom: .82rem; }
+.wh-lock-label { font-size: .64rem; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+.wh-lock-input-wrap { position: relative; display: block; }
+.wh-readout { width: 100%; padding: .58rem 1.9rem .58rem .76rem; border-radius: 6px; border: 1px solid var(--field-border); background: var(--field-bg); color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: .84rem; }
+.wh-readout-rx { color: var(--accent); }
+.wh-lock-icon { position: absolute; right: .58rem; top: 50%; transform: translateY(-50%); color: var(--muted); display: flex; }
+.wh-spectrum-meta { display: flex; gap: .82rem; font-size: .72rem; color: var(--muted); margin-bottom: .62rem; }
+.wh-cluster-header { display: flex; align-items: center; justify-content: space-between; gap: .88rem; flex-wrap: wrap; margin-bottom: .85rem; }
+.wh-cluster-title { margin: 0; font-family: 'Caveat', cursive; font-size: 1.22rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
+.wh-cluster-header-tools { display: flex; align-items: center; gap: .4rem; flex: 1 1 235px; justify-content: flex-end; }
+.wh-cluster-search { flex: 1 1 185px; max-width: 295px; }
+.wh-icon-tool { display: flex; align-items: center; justify-content: center; width: 2.35rem; height: 2.35rem; border-radius: 6px; border: 1px solid var(--panel-border); background: var(--panel); color: var(--muted); cursor: pointer; }
+.wh-icon-tool:hover { color: var(--accent); border-color: rgba(var(--accent-rgb),.36); }
+.wh-cluster-filter-row { display: flex; align-items: center; justify-content: space-between; gap: .82rem; flex-wrap: wrap; margin-bottom: .82rem; }
+.wh-cluster-pills { display: flex; gap: .4rem; flex-wrap: wrap; }
+.wh-auto-refresh { font-size: .7rem; padding: .36rem .82rem; border-radius: 6px; border: 1px solid rgba(var(--accent-rgb),.24); background: rgba(var(--accent-rgb),.08); color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+.wh-cluster-card { padding: .92rem; }
+
+/* ---- Topstrip utility elements ---- */
+.wh-topstrip-foot-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--pencil-2);
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: .04em;
+}
+
+.wh-topstrip-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 7px;
+  background: rgba(var(--wh-cream),.4);
+}
+.wh-topstrip-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pencil-2);
+  line-height: 1;
+}
+.wh-topstrip-stat strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+/* ============================================================
+   HIDDEN LEGACY
+   ============================================================ */
+.wh-sidebar-nav, .wh-sidebar-vfo, .wh-sidebar-cta, .wh-sidebar-foot, .wh-sidebar-theme, .wh-nav-btn { display: none; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1100px) {
+  .ft8-layout-grid { grid-template-columns: 1fr; }
+  .ft8-layout-grid > .wh-decoder-stream .ft8-decoder-list { max-height: 320px; }
+  .ft8-grid { grid-template-columns: 1fr; }
+  .ft8-decode-summary { grid-template-columns: 1fr; }
+  .ft8-decode-summary.compact { grid-template-columns: 1fr 1fr; }
+  .wh-summary-cards { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 900px) {
+  .wh-pane-area { flex-direction: column; overflow-y: auto; overflow-x: hidden; padding: 10px 12px; }
+  .wh-pane { flex: none; min-height: 55vh; }
+  .wh-gutter { width: 100%; height: 42px; flex-direction: row; justify-content: center; gap: 12px; }
+  .wh-gutter::before { width: 55%; height: 0; top: 50%; bottom: auto; left: 22.5%; border-left: none; border-top: 2px dashed rgba(var(--wh-ink),.2); }
+  .wh-topstrip { height: auto; flex-wrap: wrap; padding: 10px 14px; gap: 10px; }
+  .wh-topstrip-freq { font-size: 22px; }
+  .settings-with-nav { flex-direction: column; }
+  .settings-nav-col { width: 100%; position: static; }
+  .settings-nav { flex-direction: row; flex-wrap: wrap; border-left: none; padding-left: 0; gap: 6px; }
+  .settings-nav-item { width: auto; border-radius: 8px; }
+  .settings-nav-item.active::before { display: none; }
+}
+
+@media (max-width: 720px) {
+  .grid.two, .frequency-step-grid { grid-template-columns: 1fr 1fr; }
+  .command-grid { grid-template-columns: 1fr; }
+  .wh-ft8-decode-row { flex-direction: column; }
+  .wh-summary-cards { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   MOBILE  (≤ 640 px)
+   ============================================================ */
+@media (max-width: 640px) {
+
+  /* ---- App shell ---- */
+  .wh-app { height: 100dvh; }
+
+  /* ---- Top strip: two compact rows ---- */
+  .wh-topstrip {
+    height: auto;
+    flex-wrap: wrap;
+    padding: 6px 10px;
+    gap: 6px 8px;
+    row-gap: 5px;
+  }
+
+  /* Row 1: logo | sep | freq | mode pill */
+  .wh-topstrip-logo { font-size: 22px; }
+  .wh-topstrip-freq { font-size: 18px; background: none; padding: 0; }
+  .wh-topstrip-vfo { gap: 1px; }
+  .wh-topstrip-vfo-label { font-size: 8px; }
+
+  /* Hide secondary top-strip items to keep it slim */
+  .wh-topstrip-smeter,
+  .wh-topstrip-audio,
+  .wh-topstrip-foot-status,
+  .wh-topstrip-stat,
+  #disconnect-btn { display: none !important; }
+
+  /* Spacer shrinks to zero */
+  .wh-topstrip-spacer { flex: 0; width: 0; min-width: 0; }
+
+  /* Connection pill: shrink text */
+  .connection-pill { font-size: 10px; padding: 4px 8px; }
+
+  /* Theme toggle: slim */
+  .wh-theme-toggle { width: 72px; height: 28px; }
+  .wh-theme-toggle-thumb { height: calc(100% - 4px); }
+
+  /* New QSO button: smaller */
+  .wh-btn-gradient { font-size: 12px; padding: 5px 11px; }
+
+  /* ---- Pane area: unified tab bar on top, one pane below ---- */
+  .wh-pane-area {
+    flex-direction: column;   /* mobile tab bar above the single pane */
+    padding: 6px 8px;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  /* Mobile unified tab bar: every open view, one tap away. Replaces both
+     per-pane bars, which are hidden below. */
+  .wh-mobile-tabbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    padding: 2px 0 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .wh-mobile-tabbar .wh-tab {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    /* A full-height touch target. The desktop chip is 36px and sized for a
+       cursor; this bar is the only way to move between views on a phone. */
+    min-height: 44px;
+    padding: 6px 12px;
+    font-size: 18px;
+  }
+  /* Only the showing tab carries a × (see renderMobileTabs), and it gets room
+     to be hit on purpose rather than in passing. */
+  .wh-mobile-tabbar .wh-tab-close {
+    font-size: 17px;
+    opacity: .6;
+    padding: 0 2px 0 6px;
+    margin-right: -2px;
+  }
+  .wh-mobile-tabbar .wh-tab-add-wrap { flex-shrink: 0; margin-left: auto; scroll-snap-align: end; }
+  .wh-mobile-tabbar .wh-tab-add-btn { min-height: 40px; min-width: 40px; }
+
+  /* The unified bar replaces the per-pane bars entirely on mobile. */
+  .wh-pane-bar { display: none !important; }
+
+  /* Pane A hosts whichever view is selected, and fills the area below the bar */
+  #pane-a { flex: 1; min-width: 0; min-height: 0; }
+
+  /* Hide pane B and gutter entirely */
+  #pane-b,
+  .wh-gutter { display: none !important; }
+
+  /* Pane bar: horizontal scroll tabs, smaller controls */
+  .wh-pane-bar { margin-bottom: 6px; gap: 6px; }
+  .wh-pane-label { display: none; }
+  .wh-tab-bar { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; }
+  .wh-tab {
+    font-size: 14px;
+    padding: 5px 10px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* Pane content: readable padding */
+  .wh-pane-content {
+    padding: 0;
+    border-radius: 6px;
+  }
+  .wh-pane-content > .tab-panel.pane-tab-active {
+    padding: 0.5rem 0.6rem 1rem;
+    gap: 0.5rem;
+  }
+
+  /* ---- All two-column grids → single column ---- */
+  .grid.two,
+  .grid.three,
+  .frequency-step-grid,
+  .settings-layout,
+  .ft8-main-row,
+  .ft8-status-row,
+  .ft8-grid,
+  .ft8-layout-grid,
+  .wh-summary-cards { grid-template-columns: 1fr !important; }
+
+  /* Frequency step grid: keep 2 cols (+ / -) */
+  .frequency-step-grid { grid-template-columns: 1fr 1fr !important; }
+
+  /* ---- Touch target sizes ---- */
+  button, .file-label, select { min-height: 40px; }
+  .step-btn, .mode-chip { min-height: 44px; font-size: 15px; }
+  .wh-tab { min-height: 36px; }
+
+  /* ---- FT8 console ---- */
+  /* On desktop the FT8 panel is a fixed-height column that hides its overflow,
+     so the console fits a pane exactly and nothing scrolls. At phone height
+     that same rule is a vice: the header, waterfall and band row leave roughly
+     120px, and `.ft8-main-row` — Decodes above Transmit once it is one column —
+     is squeezed into it with `overflow: hidden`, cropping both to half a row
+     with no way to reach the rest. Measured on a 390x844 viewport: each
+     .ft8-sub-panel rendered 57px tall around 112px of content.
+     Here the panel takes its natural height instead and .wh-pane-content, which
+     is already overflow-y: auto, does the scrolling. */
+  #tab-ft8.pane-tab-active {
+    flex: 0 0 auto;
+    overflow: visible;
+  }
+  #tab-ft8.pane-tab-active .ft8-console-pane { flex: 0 0 auto; min-height: 0; }
+  .ft8-console-pane { height: auto; grid-template-rows: none; }
+  .ft8-sub-panel { overflow: visible; }
+  /* The decode stream is the one part that still wants its own scroller — left
+     unbounded it grows without limit and pushes Transmit off the page. */
+  .ft8-decodes-scroll { flex: 0 1 auto; max-height: 45vh; }
+
+  .ft8-status-row { grid-template-columns: 1fr 1fr !important; gap: 5px; }
+  .ft8-slot-card { grid-column: 1 / -1; }   /* timer card spans full width */
+
+  .ft8-wf-panel { height: 100px; }
+
+  .ft8-main-row { grid-template-columns: 1fr !important; min-height: 0; }
+
+  .ft8-tx-actions { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  #tab-ft8 .ft8-tx-actions button { padding: 8px 3px; }
+  .ft8-tx-key { font-size: 20px; }
+
+  .ft8-settings-rail { flex-wrap: wrap; gap: 5px; }
+
+  /* Decode rows: slightly bigger tap targets */
+  .ft8-decode-row { padding: 5px 6px; }
+
+  /* The band/mode quick-set strips collapse rather than reserve height here —
+     the rule and the reasoning are at .wh-band-quickset[hidden]. */
+
+  /* ---- Logbook table: hide less important columns on mobile ---- */
+  .wh-qso-table th:nth-child(5),
+  .wh-qso-table td:nth-child(5),   /* Frequency */
+  .wh-qso-table th:nth-child(7),
+  .wh-qso-table td:nth-child(7),   /* Location */
+  .wh-qso-table th:nth-child(8),
+  .wh-qso-table td:nth-child(8) {  /* Notes */
+    display: none;
+  }
+
+  /* ---- Filter toolbar ---- */
+  .wh-filter-toolbar { padding: 0.5rem; gap: 0.5rem; }
+  .wh-filter-divider { display: none; }
+  .wh-filter-select { font-size: 13px; padding: 0.4rem 1.4rem 0.4rem 0.5rem; }
+
+  /* ---- Cards ---- */
+  .console-card { padding: 0.5rem; border-radius: 6px; }
+  .panel-header h2 { font-size: 17px; }
+  .badge { font-size: .66rem; padding: .18rem .48rem; }
+
+  /* ---- Spots / DX cluster ---- */
+  .wh-cluster-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .wh-cluster-header-tools { width: 100%; }
+  .wh-cluster-search { max-width: 100%; }
+
+  /* ---- Map ---- */
+  #qso-map { height: 300px; }
+
+  /* ---- Audio monitor spectrum ---- */
+  #audio-monitor-spectrum { height: 140px; }
+
+  /* ---- SSTV two-col → single col ---- */
+  .ft8-grid[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+
+  /* ---- Settings ---- */
+  .settings-actions-card { flex-direction: column; align-items: flex-start; }
+  .settings-actions-card button { width: 100%; }
+  .settings-lookup-grid { grid-template-columns: 1fr; }
+  .settings-danger-zone button { margin-left: 0; width: 100%; }
+  .button-row { flex-wrap: wrap; }
+  .button-row button { min-width: 0; flex: 1 1 auto; }
+
+  /* ---- Lookup panel ---- */
+  .lookup-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Audio device routing visibility helpers ─────────────────────── */
+[data-per-app-only] { display: none !important; }
+body.wh-per-app-audio [data-per-app-only] { display: revert !important; }
+body.wh-per-app-audio [data-global-only]  { display: none !important; }
+
+/* ── Topstrip audio device strip ─────────────────────────────────── */
+.wh-topstrip-audio {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.wh-topstrip-audio-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pencil-2);
+  white-space: nowrap;
+}
+.wh-topstrip-audio-select {
+  background: var(--field-bg);
+  border: 1px solid var(--field-border, var(--panel-border));
+  border-radius: 4px;
+  padding: 2px 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--ink, var(--text));
+  max-width: 120px;
+  height: 22px;
+}
+
+.wh-audio-perm-dot {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 22px;
+  flex-shrink: 0;
+}
+.wh-audio-perm-dot::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pencil-2);
+  animation: audio-perm-pulse 1.6s ease-in-out infinite;
+  transition: background 0.2s;
+}
+.wh-audio-perm-dot[data-state="granted"]::before {
+  background: #4caf50;
+  animation: none;
+}
+.wh-audio-perm-dot[data-state="live"]::before {
+  background: #4caf50;
+  animation: audio-perm-pulse 1s ease-in-out infinite;
+}
+.wh-audio-perm-dot[data-state="denied"]::before {
+  background: #e53935;
+  animation: none;
+}
+@keyframes audio-perm-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
+}
+
+/* ── Audio Monitor tab ───────────────────────────────────────────── */
+#tab-audio-monitor {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: .75rem;
+  overflow-y: auto;
+}
+.audio-monitor-spectrum-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--paper-2);
+  border: 1.5px solid var(--panel-border);
+}
+#audio-monitor-spectrum {
+  display: block;
+  width: 100%;
+  height: 200px;
+}
+.audio-monitor-axis-x {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 6px 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  background: var(--paper-2);
+}
+.audio-monitor-routing-card {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.audio-monitor-routing-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+.audio-monitor-routing-row label {
+  display: flex;
+  align-items: center;
+  gap: .38rem;
+  font-size: 11px;
+  color: var(--text);
+  margin: 0;
+}
+.audio-monitor-status-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   DARK MODE — "Lamplit Shack"  (warm variation)
+   Same amber accent, base warmed from sage toward walnut/espresso,
+   slightly higher contrast. Real elevation + legible tape kept.
+   ============================================================ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* surfaces — warm walnut/espresso with real elevation steps */
+  --paper:        #211c15;
+  --paper-2:      #2c2419;
+  --bg:           #14110c;
+  --bg-elevated:  #2c2419;
+  --panel:        rgba(38,31,22,.82);
+  --panel-2:      rgba(48,40,28,.6);
+
+  /* ink — warm cream, bright for contrast */
+  --ink:          #f1e9d8;
+  --pencil:       #c6b89c;
+  --pencil-2:     #968a6f;
+  --text:         #f1e9d8;
+  --muted:        #a3957a;
+
+  /* same brand amber accent */
+  --accent:        #ef7d45;
+  --accent-mid:    #f7934f;
+  --accent-strong: #ff9d63;
+  --accent-light:  rgba(239,125,69,.15);
+  --accent-rgb:    239,125,69;
+
+  /* amber-gold highlighter */
+  --highlight:      #e8bd52;
+  --highlight-soft: rgba(232,189,82,.20);
+  --hl-ink:         #271a06;
+
+  /* status */
+  --connected: #6cd07a;
+  --danger:    #ff8a6b;
+
+  /* tint base flips to warm cream: zebra rows, chips, meters read */
+  --wh-ink:   235,216,184;
+  --wh-cream: 48,40,28;
+
+  /* structure */
+  --panel-border: rgba(225,205,170,.14);
+  --border-color: rgba(225,205,170,.16);
+  --shadow:       0 6px 26px rgba(0,0,0,.55);
+
+  --wh-input:     #18140d;
+  --field-bg:     #18140d;
+  --field-border: rgba(225,205,170,.24);
+  --field-label:  #c6b89c;
+
+  --button-bg:                 #2c2419;
+  --button-bg-hover:           #38301f;
+  --button-border:             rgba(225,205,170,.24);
+  --button-text:               #f1e9d8;
+  --button-secondary-bg:       rgba(24,20,13,.55);
+  --button-secondary-bg-hover: rgba(38,31,22,.9);
+  --button-secondary-border:   rgba(225,205,170,.2);
+  --button-secondary-text:     #f1e9d8;
+  --step-button-bg:            rgba(239,125,69,.13);
+  --step-button-bg-hover:      rgba(239,125,69,.23);
+  --step-button-border:        rgba(239,125,69,.42);
+  --step-button-text:          #ffb486;
+
+  --theme-toggle-bg:            #211c15;
+  --theme-toggle-border:        rgba(225,205,170,.22);
+  --theme-toggle-active-bg:     #322a1d;
+  --theme-toggle-active-border: rgba(225,205,170,.36);
+  --theme-toggle-active-text:   #d8cab0;
+  --theme-toggle-shadow:        0 4px 14px rgba(0,0,0,.45);
+  --theme-toggle-icon:          #d8cab0;
+
+  --wh-nav:        #c6b89c;
+  --wh-ink-dark:   #14110c;
+}
+
+/* Warm walnut desk: faint amber dot grid */
+:root[data-theme="dark"] body {
+  background-image:
+    radial-gradient(rgba(230,200,150,.06) 1px, transparent 1px),
+    radial-gradient(rgba(230,200,150,.03) 1px, transparent 1px);
+  background-size: 4px 4px, 7px 7px;
+  background-position: 0 0, 2px 3px;
+}
+
+/* Restore hand-drawn "lifted sticker" depth on the dark desk */
+:root[data-theme="dark"] .wh-pane-content {
+  box-shadow: 5px 6px 0 rgba(0,0,0,.5);
+  border-color: rgba(225,205,170,.17);
+}
+:root[data-theme="dark"] .wh-view-select { box-shadow: 3px 3px 0 rgba(0,0,0,.55); }
+:root[data-theme="dark"] .wh-swap-btn     { box-shadow: 3px 3px 0 rgba(0,0,0,.55); }
+:root[data-theme="dark"] .wh-swap-btn:hover { box-shadow: 4px 4px 0 rgba(239,125,69,.5); }
+:root[data-theme="dark"] .wh-tab.wh-tab-active { box-shadow: 2px -2px 0 rgba(0,0,0,.4); }
+
+/* Legible highlighter: dark ink wherever the amber tape sits */
+:root[data-theme="dark"] .wh-topstrip-freq { color: var(--hl-ink); }
+:root[data-theme="dark"] .wh-menu-item:hover,
+:root[data-theme="dark"] .wh-menu-item:hover .wh-menu-item-right,
+:root[data-theme="dark"] .wh-menu-item.wh-menu-item-focused,
+:root[data-theme="dark"] .wh-menu-item.wh-menu-item-focused .wh-menu-item-right { color: var(--hl-ink); }
+:root[data-theme="dark"] .wh-menu-item:hover .wh-menu-triangle path,
+:root[data-theme="dark"] .wh-menu-item.wh-menu-item-focused .wh-menu-triangle path { stroke: var(--hl-ink); }
+
+/* Signal surface tuned to the warm base */
+:root[data-theme="dark"] #ft8-waterfall { background: #0c0805; }
+
+.seg-control { display: inline-flex; border: 1px solid var(--border, #2a3441); border-radius: 6px; overflow: hidden; }
+.seg-control button + button { border-left: 1px solid var(--border, #2a3441); }
+/* ID-scoped so these outrank the high-specificity primary-button rule
+   (the long button:not(...) chain ~line 1899), which otherwise paints every segment
+   with --accent and hides which one is active. ID beats any number of classes. */
+#map-mode button, #map-decode-style button { background: transparent; color: var(--text, inherit); border: 0; border-radius: 0; padding: 4px 10px; cursor: pointer; font: inherit; font-weight: 600; transform: none; }
+#map-mode button:hover, #map-decode-style button:hover { background: var(--button-bg-hover, rgba(127,127,127,.18)); transform: none; }
+#map-mode button.active, #map-decode-style button.active { background: var(--accent); color: #fff; }
+#map-mode button.active:hover, #map-decode-style button.active:hover { background: var(--accent-mid, var(--accent)); }
+#map-mode button:focus-visible, #map-decode-style button:focus-visible { outline: 2px solid var(--accent, #38c0ff); outline-offset: -2px; }
+
+.spot-popup { border-collapse: collapse; font-size: 12px; }
+.spot-popup caption { font-weight: 700; padding-bottom: 4px; }
+.spot-popup th { text-align: left; padding-right: 10px; opacity: 0.7; font-weight: 500; }
+.spot-popup td { text-align: right; }
+
+/* ── Logbooks (operations) ──────────────────────────────────────────────── */
+button.logbook-back-btn {
+  align-self: flex-start;
+  background: none; border: none; padding: 0; margin: 0 0 .15rem;
+  color: var(--accent); font: inherit; font-size: .85rem; font-weight: 600;
+  cursor: pointer;
+}
+button.logbook-back-btn:hover { color: var(--accent-mid); background: none; text-decoration: underline; transform: none; }
+
+.logbook-list { display: grid; gap: .6rem; margin-top: 1rem; }
+.logbook-card {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  background: var(--panel); border: 1.5px solid var(--panel-border); border-radius: 8px;
+  padding: .75rem .9rem; cursor: pointer;
+}
+.logbook-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.logbook-card.active { border-color: var(--accent); }
+.logbook-card-main { display: flex; align-items: center; gap: .75rem; min-width: 0; }
+.logbook-card-text { display: flex; flex-direction: column; min-width: 0; }
+.logbook-card-text strong { font-size: 1rem; }
+.logbook-card-detail { color: var(--muted); font-size: .8rem; }
+.logbook-type-badge {
+  padding: .22rem .6rem; border-radius: 20px; font-size: .72rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; flex-shrink: 0;
+  background: var(--soft-fill); color: var(--pencil);
+}
+.logbook-type-pota { background: rgba(58,138,63,.15); color: var(--connected); }
+.logbook-type-sota { background: rgba(var(--accent-rgb),.14); color: var(--accent); }
+.logbook-type-contest { background: var(--highlight-soft); color: var(--pencil); }
+button.logbook-delete-btn {
+  background: none; border: none; color: var(--muted); cursor: pointer;
+  font-size: .95rem; padding: .25rem .45rem; border-radius: 6px; flex-shrink: 0;
+}
+button.logbook-delete-btn:hover { color: var(--danger); background: var(--soft-fill); transform: none; }
+.logbook-create-card { margin-bottom: 1rem; }
+.logbook-nearby-label { display: flex; flex-direction: column; justify-content: flex-end; }
+.logbook-nearby-results { display: grid; gap: .35rem; font-size: .85rem; color: var(--muted); }
+button.logbook-nearby-item {
+  text-align: left; background: var(--button-secondary-bg);
+  border: 1px solid var(--button-secondary-border); border-radius: 6px;
+  color: var(--text); padding: .45rem .6rem; cursor: pointer; font-size: .85rem; font-weight: 500;
+}
+button.logbook-nearby-item:hover { background: var(--button-secondary-bg-hover); border-color: var(--accent); transform: none; }
+
+/* Simplified entry form: POTA/SOTA/contest logbooks hide full-log-only fields.
+   General also hides them (desktop, see the ≥521px block below) but always
+   shows Rig/Power/Notes in its footer — no "More" toggle. */
+#logbook-view[data-logbook-type="pota"] .full-log-only,
+#logbook-view[data-logbook-type="sota"] .full-log-only,
+#logbook-view[data-logbook-type="contest"] .full-log-only { display: none; }
+/* General-log Location field (#their-location): shown for the general logbook
+   at every width, hidden where POTA/SOTA capture it via #their-ref and contest
+   via the exchange. Distinct from full-log-only, which the general pad hides. */
+#logbook-view[data-logbook-type="pota"] .wh-loc-general,
+#logbook-view[data-logbook-type="sota"] .wh-loc-general,
+#logbook-view[data-logbook-type="contest"] .wh-loc-general { display: none; }
+.pota-sota-only, .contest-only { display: none; }
+#logbook-view[data-logbook-type="pota"] .pota-sota-only,
+#logbook-view[data-logbook-type="sota"] .pota-sota-only { display: block; }
+#logbook-view[data-logbook-type="contest"] label.contest-only { display: block; }
+#logbook-view[data-logbook-type="contest"] button.contest-only { display: inline-block; }
+/* :not([hidden]) so the JS-toggled sent-exchange chip stays hidden when empty */
+#logbook-view[data-logbook-type="contest"] div.contest-only:not([hidden]) { display: block; }
+/* The received-exchange row is a flex wrap-row, not a block. This id-scoped rule
+   (2 ids) beats both the block rule above and the .contest-only base hide; the
+   bare .wh-exch-row below deliberately omits `display` so it can't leak a
+   visible row onto non-contest tabs (where .contest-only must keep it hidden). */
+#logbook-view[data-logbook-type="contest"] #contest-exch-rcvd:not([hidden]) { display: flex; }
+
+/* Contest exchange controls (composable). The received-exchange inputs sit on
+   a wrap-row; each field stacks its label over a compact input. The sent chip
+   is a quiet read-only hint of what the operator is transmitting. */
+.wh-exch-row { flex-wrap: wrap; align-items: flex-end; gap: .35rem .5rem; }
+.wh-exch-row .wh-exch-field { flex: 1 1 90px; min-width: 0; }
+.wh-exch-row .wh-exch-field.wide { flex: 2 1 140px; }
+.wh-exch-row .wh-exch-field span { font-size: 11px; color: var(--muted); }
+.wh-exch-sent-chip {
+  font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--accent);
+  padding: .3rem .55rem; background: var(--soft-fill); border: 1px solid var(--panel-border);
+  border-radius: 8px; line-height: 1.35; align-self: flex-end;
+}
+/* Create form: "my exchange" fixed-value inputs, laid out inline */
+.wh-exch-me { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .4rem; }
+.wh-exch-me label { flex: 1 1 8rem; min-width: 0; }
+
+/* ── Logging Flow Polish (frequency/band, smart field, dupe, inline edit) ── */
+.wh-freq-wrap { position: relative; display: block; }
+.wh-freq-wrap input { padding-right: 3.6rem; }
+.wh-freq-band-chip {
+  position: absolute; right: .45rem; top: 50%; translate: 0 -50%;
+  padding: .1rem .45rem; background: var(--soft-fill); border: 1px solid var(--panel-border);
+  border-radius: 7px; font-family: 'JetBrains Mono', monospace; font-size: .62rem;
+  font-weight: 700; color: var(--pencil); pointer-events: none;
+}
+.wh-freq-band-chip:empty, .wh-freq-band-chip[data-empty="1"] { opacity: .4; }
+
+.wh-band-quickset {
+  grid-column: 1 / -1; display: flex; align-items: center; gap: .3rem; flex-wrap: wrap;
+  transition: opacity .12s ease, translate .12s ease;
+}
+/* A hidden strip keeps its height reserved, so revealing it on focus never
+   shoves the pad down — worth it on a wide pad, where the reserved row costs
+   nothing anyone sees.
+   On a phone it costs about 124px of blank form across the two strips, in a
+   single-column pad that scrolls anyway, and it reads as the layout being
+   broken rather than as space held for something. So the phone collapses them.
+   This is not a new behaviour so much as the missing half of one: the entry
+   pad's own `#logbook-view:is(…) #band-quickset[hidden] { display: none }` in
+   the (min-width: 521px) block below already collapses them at every wider
+   size, and outranks this rule by two IDs when it applies. Only the phone was
+   left holding the gap.
+   Written as two mutually exclusive media queries rather than a base rule plus
+   an override, so neither side depends on the other losing a cascade. */
+@media (max-width: 640px) {
+  .wh-band-quickset[hidden] { display: none; }
+}
+@media (min-width: 641px) {
+  .wh-band-quickset[hidden] { display: flex; visibility: hidden; opacity: 0; translate: 0 -3px; }
+}
+.wh-band-quickset button[data-qs-band],
+.wh-band-quickset button[data-qs-mode] {
+  min-height: 1.8rem; padding: .1rem .5rem; font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem; font-weight: 700;
+}
+.wh-band-quickset button[data-qs-band].active,
+.wh-band-quickset button[data-qs-mode].active {
+  background: var(--panel); border-color: var(--accent); color: var(--accent);
+}
+.wh-band-quickset-divider { width: 1.5px; height: 1.2rem; background: rgba(var(--wh-ink),.16); margin: 0 .15rem; }
+button.wh-radio-chip {
+  display: inline-flex; align-items: center; gap: .35rem; min-height: 1.8rem;
+  padding: .1rem .55rem; font-family: 'JetBrains Mono', monospace; font-size: .68rem; font-weight: 700;
+  border-color: color-mix(in oklab, var(--connected) 50%, var(--button-secondary-border)); color: var(--connected);
+}
+button.wh-radio-chip:hover { background: var(--button-secondary-bg-hover); transform: none; }
+button.wh-radio-chip.following { background: color-mix(in oklab, var(--connected) 10%, transparent); }
+.wh-radio-dot { width: .45rem; height: .45rem; border-radius: 50%; background: var(--connected); flex-shrink: 0; }
+
+.wh-smart-field-readout {
+  grid-column: 1 / -1; display: flex; align-items: center; gap: .4rem;
+  padding: .4rem .6rem; border-radius: 8px; font-size: .78rem;
+}
+/* Without this, the unconditional `display: flex` above outranks the
+   browser's default [hidden]{display:none} (author styles beat UA styles
+   regardless of specificity), so the empty box still renders as a real flex
+   item — in the general pad's Callsign/Sent/Rcvd/Location row it lands
+   between Callsign and Sent (default order: 0) and forces a gap wider than
+   the row's other gaps. */
+.wh-smart-field-readout[hidden] { display: none !important; }
+.wh-smart-field-readout .wh-smart-field-pill {
+  font-family: 'JetBrains Mono', monospace; font-size: .58rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; flex-shrink: 0;
+}
+.wh-smart-field-readout[data-kind="state"] {
+  background: var(--soft-fill); border: 1px solid var(--panel-border); color: var(--pencil);
+}
+.wh-smart-field-readout[data-kind="state"] .wh-smart-field-pill { color: var(--muted); }
+.wh-smart-field-readout[data-kind="park"] {
+  background: color-mix(in oklab, var(--connected) 8%, transparent);
+  border: 1px solid color-mix(in oklab, var(--connected) 30%, transparent);
+  color: var(--connected);
+}
+
+.wh-dupe-banner {
+  grid-column: 1 / -1; display: flex; align-items: center; gap: .6rem;
+  padding: .55rem .75rem; background: var(--highlight-soft);
+  border: 1.5px solid color-mix(in oklab, var(--highlight) 70%, var(--pencil));
+  border-radius: 9px; font-size: .82rem; color: var(--pencil); line-height: 1.4;
+}
+/* display:flex above beats the UA [hidden] rule; restore it so the banner
+   only shows when JS actually detects a dupe */
+.wh-dupe-banner[hidden] { display: none; }
+.wh-dupe-pill, .wh-dupe-pill-inline {
+  flex-shrink: 0; padding: .12rem .5rem; background: rgba(var(--wh-cream),.6);
+  border: 1px solid color-mix(in oklab, var(--highlight) 65%, var(--pencil)); border-radius: 20px;
+  font-family: 'JetBrains Mono', monospace; font-size: .6rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--pencil);
+}
+.wh-dupe-pill-inline { font-size: .56rem; margin-left: .3rem; vertical-align: 1px; padding: .08rem .4rem; }
+
+/* Inline (single-click) quick-edit row */
+.wh-qso-table tr.wh-row-editing {
+  background: rgba(var(--wh-ink),.05); box-shadow: inset 3px 0 0 var(--accent);
+}
+.wh-qso-table tr.wh-row-editing input {
+  min-height: 1.9rem; padding: .15rem .4rem; font-size: .8rem; width: 100%;
+}
+.wh-qso-table tr.wh-row-editing input.wh-edit-callsign {
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; text-transform: uppercase;
+}
+.wh-qso-table .wh-row-edit-actions { display: flex; gap: .25rem; align-items: center; }
+.wh-qso-table .wh-row-edit-actions button {
+  min-height: 1.9rem; padding: .15rem .5rem; font-size: .74rem;
+}
+
+/* Double-click → form edit mode */
+.wh-entry-section.wh-form-editing {
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--panel-border));
+}
+#qso-form-badge.wh-editing-badge {
+  color: var(--accent); border-color: rgba(var(--accent-rgb),.4); background: rgba(var(--accent-rgb),.1);
+}
+.wh-qso-table tr.wh-row-form-editing {
+  background: rgba(var(--accent-rgb),.09); box-shadow: inset 3px 0 0 var(--accent);
+}
+.wh-qso-table tr.wh-row-form-editing td[data-field="callsign"] { color: var(--accent); font-weight: 700; }
+
+/* Entry-form footer: Rig/Power/Notes stack above the Save/Clear button row
+   (DOM order is side-fields → button-row, column direction keeps buttons at
+   the bottom). General always shows the side-fields; POTA/SOTA reveal them
+   via their "More" rules further down. */
+.wh-entry-footer { display: flex; flex-direction: column; gap: .5rem; }
+.wh-side-fields { display: flex; flex-direction: column; gap: .5rem; }
+/* Rig/Power/Notes now sit inside the field grid; on the mobile CSS-grid
+   layout make the block span the full row. On desktop (flex) this is a no-op. */
+.grid.two > .wh-side-fields { grid-column: 1 / -1; }
+
+#wh-logbook-subtitle { font-family: 'JetBrains Mono', monospace; font-size: .64rem; letter-spacing: .01em; }
+
+/* ── Mobile logging layout (7c): log above, entry pad pinned below ── */
+.wh-mobile-cards { display: none; }
+.wh-mobile-save-caption { display: none; }
+/* 7c mobile-only extras — hidden everywhere until the mobile POTA/SOTA pad
+   reveals them (desktop, general, and contest never show these). */
+.wh-mobile-cards-hint { display: none; }
+.wh-mobile-op-meta { display: none; }
+.wh-mfreq-summary { display: none; }
+
+@media (max-width: 520px) {
+  /* POTA/SOTA field logging: swap the table for a card list next to the pad */
+  #logbook-view[data-logbook-type="pota"] .wh-qso-table-wrap,
+  #logbook-view[data-logbook-type="sota"] .wh-qso-table-wrap,
+  #logbook-view[data-logbook-type="pota"] .wh-filter-toolbar,
+  #logbook-view[data-logbook-type="sota"] .wh-filter-toolbar,
+  #logbook-view[data-logbook-type="pota"] #wh-new-qso,
+  #logbook-view[data-logbook-type="sota"] #wh-new-qso,
+  #logbook-view[data-logbook-type="pota"] #wh-logbook-footer-row,
+  #logbook-view[data-logbook-type="sota"] #wh-logbook-footer-row,
+  #logbook-view[data-logbook-type="pota"] .wh-logbook-side,
+  #logbook-view[data-logbook-type="sota"] .wh-logbook-side { display: none; }
+
+  #logbook-view[data-logbook-type="pota"] .wh-mobile-cards,
+  #logbook-view[data-logbook-type="sota"] .wh-mobile-cards {
+    display: flex; flex-direction: column; gap: .4rem;
+    max-height: 38vh; overflow-y: auto; padding: .2rem;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-table-card,
+  #logbook-view[data-logbook-type="sota"] .wh-table-card { border: none; background: none; box-shadow: none; padding: 0; }
+
+  .wh-mobile-qso-card {
+    display: flex; flex-direction: column; gap: .15rem; padding: .55rem .7rem;
+    background: var(--panel); border: 1.5px solid var(--panel-border); border-radius: 10px;
+    cursor: pointer;
+  }
+  .wh-mobile-qso-line1 { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; }
+  .wh-mobile-qso-line1 strong { font-family: 'JetBrains Mono', monospace; font-size: .95rem; letter-spacing: .05em; color: var(--text); }
+  .wh-mobile-qso-line1 > span:last-child { font-family: 'JetBrains Mono', monospace; font-size: .78rem; color: var(--pencil); }
+  .wh-mobile-qso-line2 { font-family: 'JetBrains Mono', monospace; font-size: .62rem; color: var(--muted); }
+  .wh-mobile-p2p { color: var(--connected); font-weight: 700; }
+
+  /* Entry pad pinned below the list (thumb zone) */
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section {
+    border-radius: 14px; box-shadow: 0 -4px 14px rgba(var(--wh-ink),.08); padding: .7rem;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .panel-header,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .panel-header { display: none; }
+  #logbook-view[data-logbook-type="pota"] label:has(#qso-date),
+  #logbook-view[data-logbook-type="sota"] label:has(#qso-date),
+  #logbook-view[data-logbook-type="pota"] label:has(#qso-time),
+  #logbook-view[data-logbook-type="sota"] label:has(#qso-time) { display: none; }
+
+  #logbook-view[data-logbook-type="pota"] #callsign,
+  #logbook-view[data-logbook-type="sota"] #callsign {
+    min-height: 3.5rem; font-size: 26px; letter-spacing: .08em; text-align: center;
+  }
+  #logbook-view[data-logbook-type="pota"] #rst-sent,
+  #logbook-view[data-logbook-type="sota"] #rst-sent,
+  #logbook-view[data-logbook-type="pota"] #rst-received,
+  #logbook-view[data-logbook-type="sota"] #rst-received,
+  #logbook-view[data-logbook-type="pota"] #their-ref,
+  #logbook-view[data-logbook-type="sota"] #their-ref {
+    min-height: 2.7rem; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 16px;
+  }
+  #logbook-view[data-logbook-type="pota"] #qso-form-submit,
+  #logbook-view[data-logbook-type="sota"] #qso-form-submit {
+    min-height: 3.3rem; font-size: 18px; font-weight: 700; width: 100%;
+  }
+  #logbook-view[data-logbook-type="pota"] .button-row,
+  #logbook-view[data-logbook-type="sota"] .button-row { flex-direction: column; align-items: stretch; }
+  #logbook-view[data-logbook-type="pota"] #delete-qso-btn,
+  #logbook-view[data-logbook-type="sota"] #delete-qso-btn { margin-left: 0 !important; }
+  /* Rig/Power/Notes now live in the footer; the POTA/SOTA mobile pad has no
+     "More" toggle, so the block is always empty here — collapse it so it can't
+     leave a gap above the big Save button. */
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .wh-side-fields,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .wh-side-fields { display: none; }
+  #logbook-view[data-logbook-type="pota"] .wh-mobile-save-caption,
+  #logbook-view[data-logbook-type="sota"] .wh-mobile-save-caption {
+    display: block; text-align: center; font-family: 'JetBrains Mono', monospace;
+    font-size: .6rem; color: var(--muted);
+  }
+
+  /* "tap a row to edit" hint under the card list */
+  #logbook-view[data-logbook-type="pota"] .wh-mobile-cards-hint,
+  #logbook-view[data-logbook-type="sota"] .wh-mobile-cards-hint {
+    display: block; text-align: center; margin-top: .15rem;
+    font-family: 'Caveat', cursive; font-size: .95rem; color: var(--muted);
+  }
+
+  /* Older cards read slightly dimmed; the newest (last) stays full-opacity */
+  #logbook-view[data-logbook-type="pota"] .wh-mobile-qso-card:not(:last-child),
+  #logbook-view[data-logbook-type="sota"] .wh-mobile-qso-card:not(:last-child) { opacity: .8; }
+
+  /* State/park input gets a subtle green (P2P) border */
+  #logbook-view[data-logbook-type="pota"] #their-ref,
+  #logbook-view[data-logbook-type="sota"] #their-ref {
+    border-color: color-mix(in oklab, var(--connected) 50%, var(--field-border));
+  }
+
+  /* Operation header: logbook name (Caveat) with ref · N QSOs to its right */
+  #logbook-view[data-logbook-type="pota"] .wh-page-header-text,
+  #logbook-view[data-logbook-type="sota"] .wh-page-header-text {
+    display: flex; flex-wrap: wrap; align-items: baseline; column-gap: .5rem;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-page-header-text #logbook-back-btn,
+  #logbook-view[data-logbook-type="sota"] .wh-page-header-text #logbook-back-btn { flex: 1 1 100%; }
+  #logbook-view[data-logbook-type="pota"] #wh-logbook-title,
+  #logbook-view[data-logbook-type="sota"] #wh-logbook-title {
+    font-family: 'Caveat', cursive; font-size: 1.35rem; color: var(--text); margin: 0;
+  }
+  #logbook-view[data-logbook-type="pota"] #wh-logbook-subtitle,
+  #logbook-view[data-logbook-type="sota"] #wh-logbook-subtitle { display: none; }
+  #logbook-view[data-logbook-type="pota"] .wh-mobile-op-meta,
+  #logbook-view[data-logbook-type="sota"] .wh-mobile-op-meta {
+    display: inline; margin-left: auto;
+    font-family: 'JetBrains Mono', monospace; font-size: .66rem; color: var(--muted);
+  }
+}
+
+@media (max-width: 520px) {
+  /* 7c: Sent | Rcvd | State/park share one row (1fr 1fr 1.5fr) */
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .grid.two,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .grid.two {
+    grid-template-columns: 1fr 1fr 1.5fr !important; /* the 640px block forces 1fr !important */
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .grid.two > label,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .grid.two > label,
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .grid.two > div,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .grid.two > div {
+    grid-column: 1 / -1;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section label:has(#rst-sent),
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section label:has(#rst-sent),
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section label:has(#rst-received),
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section label:has(#rst-received) {
+    grid-column: auto;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section label:has(#their-ref),
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section label:has(#their-ref) {
+    grid-column: auto;
+  }
+
+  /* Field order: a compact Frequency/band/mode SUMMARY rides the top row by
+     default; tapping it (`.wh-mfreq-editing` on the pad) hides the summary and
+     reveals the real Frequency + Mode inputs so they can be changed, until the
+     form resets for the next QSO. */
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .wh-mfreq-summary,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .wh-mfreq-summary {
+    display: flex; align-items: center; gap: .5rem;
+    order: -3; grid-column: 1 / -1; cursor: pointer;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .wh-mfreq-main,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .wh-mfreq-main {
+    display: flex; flex-direction: column; gap: .05rem; flex: 1;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .wh-mfreq-label,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .wh-mfreq-label {
+    font-family: 'JetBrains Mono', monospace; font-size: .54rem; font-weight: 700;
+    letter-spacing: .11em; text-transform: uppercase; color: var(--muted);
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .wh-mfreq-value,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .wh-mfreq-value {
+    font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: var(--text); line-height: 1;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .wh-mfreq-chip,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .wh-mfreq-chip {
+    padding: .25rem .55rem; background: var(--soft-fill); border: 1px solid var(--panel-border);
+    border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: .7rem;
+    font-weight: 700; color: var(--pencil);
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section .wh-mfreq-hint,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section .wh-mfreq-hint {
+    font-family: 'Caveat', cursive; font-size: .95rem; color: var(--muted);
+  }
+
+  /* Default (summary shown): hide the real Frequency/Mode inputs + quicksets. */
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section label:has(#frequency),
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section label:has(#frequency),
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section label:has(#mode),
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section label:has(#mode),
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section #band-quickset,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section #band-quickset,
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section #mode-quickset,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section #mode-quickset {
+    display: none;
+  }
+
+  /* Editing (summary tapped): hide the summary, reveal Frequency + Mode.
+     Uses `order` so the collapsed band-quickset leaves no gap above Callsign. */
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section.wh-mfreq-editing .wh-mfreq-summary,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section.wh-mfreq-editing .wh-mfreq-summary {
+    display: none;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section.wh-mfreq-editing label:has(#frequency),
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section.wh-mfreq-editing label:has(#frequency) {
+    display: grid; order: -3; grid-column: 1 / 3 !important; /* beats inline grid-column: 1 / -1 */
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section.wh-mfreq-editing label:has(#mode),
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section.wh-mfreq-editing label:has(#mode) {
+    display: grid; order: -2; grid-column: 3 / 4;
+  }
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section.wh-mfreq-editing #band-quickset,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section.wh-mfreq-editing #band-quickset,
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section.wh-mfreq-editing #mode-quickset,
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section.wh-mfreq-editing #mode-quickset {
+    display: flex; order: -1;
+  }
+  /* Reserved-space fade would leave a gap in the pad; collapse the quickset
+     when the frequency/mode field hasn't focused it, even while editing. */
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section.wh-mfreq-editing #band-quickset[hidden],
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section.wh-mfreq-editing #band-quickset[hidden],
+  #logbook-view[data-logbook-type="pota"] .wh-entry-section.wh-mfreq-editing #mode-quickset[hidden],
+  #logbook-view[data-logbook-type="sota"] .wh-entry-section.wh-mfreq-editing #mode-quickset[hidden] {
+    display: none;
+  }
+}
+
+.wh-label-short { display: none; }
+@media (max-width: 520px) {
+  #logbook-view[data-logbook-type="pota"] .wh-label-long,
+  #logbook-view[data-logbook-type="sota"] .wh-label-long { display: none; }
+  #logbook-view[data-logbook-type="pota"] .wh-label-short,
+  #logbook-view[data-logbook-type="sota"] .wh-label-short { display: inline; }
+}
+
+/* Entry form typography (7a): callsign + data fields in JetBrains Mono */
+#qso-form #callsign {
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 18px;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+#qso-form #frequency { font-family: 'JetBrains Mono', monospace; font-size: 15px; }
+#qso-form #their-ref { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+.wh-their-ref-label { grid-column: 1 / -1; }
+@media (max-width: 520px) {
+  #logbook-view[data-logbook-type="pota"] .wh-their-ref-label,
+  #logbook-view[data-logbook-type="sota"] .wh-their-ref-label { grid-column: auto; }
+}
+
+/* .grid's display:grid overrides the UA [hidden] rule; restore it */
+.grid[hidden] { display: none; }
+
+/* The New-contact heading moved inside the field grid; keep it a full-width
+   header row for General/Contest (POTA/SOTA flex layout below overrides it). */
+.grid.two > .panel-header { grid-column: 1 / -1; margin-bottom: 0; }
+
+/* ── POTA/SOTA/General desktop entry layout (wishlist sketch) ─────────────
+   Freq / Mode / Date / Time ride the heading row; Callsign spans full width;
+   Sent / Rcvd / State-park share one row; a "More" toggle reveals the extra
+   fields. Flex + `order` (not grid tracks) so the top row wraps down
+   gracefully when the Logbook shares the split with another pane. Mobile
+   (≤520px) keeps its own pad rules above and is deliberately excluded here.
+   General shares this row structure but has no park reference, and keeps
+   Rig/Power/Notes always visible in the side column instead of behind
+   "More" — see the General-only rules at the end of this block. */
+@media (min-width: 521px) {
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section .grid.two {
+    /* row-gap is 0: flexbox inserts its row-gap between every wrapped line,
+       including the zero-height break lines below, which doubles the visual
+       gap. Vertical spacing between real rows is set explicitly via
+       margin-top on each row's first item instead. */
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0 .55rem;
+  }
+  /* min-width:0 lets the row fields shrink instead of wrapping, so the split
+     pane keeps the same row structure as the maximized view (just narrower). */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section .grid.two > *,
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section .grid.two input,
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section .grid.two select { min-width: 0; }
+  /* "New contact" heading sits inline; the storage badge is noise here */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section .grid.two > .panel-header {
+    order: -20; flex: 0 1 auto; margin-bottom: 0; padding-bottom: .1rem;
+    align-self: flex-start; /* sit at the top of the row, not the input baseline */
+  }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) #qso-form-badge { display: none; }
+
+  /* Top row, right of the heading (flex ignores the inline grid-column).
+     flex-basis 0 + grow ratios → the four share the row and shrink together
+     rather than wrapping Time UTC onto a second line in a narrow pane. */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section label:has(#frequency) { order: -19; flex: 15 1 0; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section label:has(#mode) { order: -18; flex: 7 1 0; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section label:has(#qso-date) { order: -17; flex: 13 1 0; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section label:has(#qso-time) { order: -16; flex: 12 1 0; }
+  /* band/mode quick-set: own row when shown (mutually exclusive via focus,
+     so sharing order -15 is fine), collapsed (no reserved gap) when not */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section #band-quickset,
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section #mode-quickset {
+    order: -15; flex: 1 1 100%; margin-top: .35rem;
+  }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section #band-quickset[hidden],
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section #mode-quickset[hidden] { display: none; }
+
+  /* Zero-height full-width break: forces Callsign onto its own row below the
+     heading/Freq/Mode/Date/Time row instead of packing into leftover space.
+     Contributes no visual gap itself (row-gap is 0); the gap above Callsign
+     comes from Callsign's own margin-top below. */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section .grid.two::before {
+    content: ""; order: -14; flex: 1 1 100%; height: 0;
+  }
+  /* Callsign sits left; where the found-info readout and Signal Reports land
+     from here depends on the type — see the per-type overrides below. */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section label:has(#callsign) { order: -10; flex: 0 1 260px; margin-top: .35rem; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section #callsign-found { order: -9; flex: 1 1 0; margin-top: .35rem; }
+
+  /* Second break: drop whatever follows onto its own row below Callsign.
+     General, POTA and SOTA all disable this below so Signal Report Sent/Rcvd
+     (and POTA/SOTA's Their state/park) share Callsign's row instead of
+     dropping to a second one; Contest keeps it, since only Sent/Rcvd move up
+     for Contest and the exchange chip/inputs still want a row of their own. */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section .grid.two::after {
+    content: ""; order: 0; flex: 1 1 100%; height: 0;
+  }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section label:has(#rst-sent) { order: 1; flex: 1 1 80px; margin-top: .35rem; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section label:has(#rst-received) { order: 2; flex: 1 1 80px; margin-top: .35rem; }
+
+  /* General: Callsign, Sent and Rcvd share one row — neutralize the break that
+     otherwise drops Sent/Rcvd below Callsign, and let Callsign grow so it holds
+     the left while the two reports sit to its right.
+     display:none, not just a zeroed flex-basis — the pseudo-element is still
+     a flex item even at flex:0 0 0, so `gap` keeps inserting its column-gap
+     on both sides of it, leaving a dead gap between Callsign and Sent that's
+     wider than the gap between Sent/Rcvd/Location. Removing the box outright
+     removes those two gaps along with it. */
+  #logbook-view[data-logbook-type="general"] .wh-entry-section .grid.two::after { display: none; }
+  /* basis 0 + grow so the three shrink to share one line instead of wrapping
+     Rcvd onto its own row in a narrow (split-pane) view — Callsign takes the
+     lion's share on the left, the two reports ride to its right. */
+  #logbook-view[data-logbook-type="general"] .wh-entry-section label:has(#callsign) { flex: 5 1 0; }
+  #logbook-view[data-logbook-type="general"] .wh-entry-section label:has(#rst-sent),
+  #logbook-view[data-logbook-type="general"] .wh-entry-section label:has(#rst-received) { flex: 3 1 0; }
+  /* Location rides the same row, to the right of the two reports. */
+  #logbook-view[data-logbook-type="general"] .wh-entry-section label.wh-loc-general { order: 3; flex: 3 1 0; margin-top: .35rem; }
+
+  /* POTA/SOTA: same idea as General — neutralize the break so Callsign, Sent,
+     Rcvd and Their state/park all share one row. The found-info readout used
+     to ride Callsign's row directly (order -9); with three more fields now on
+     that row it moves below instead, full-width (order 4, after Their
+     state/park at order 3) so it isn't squeezed for space. The state/park/
+     summit detection readout drops to order 5 to stay under it. */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section .grid.two::after { display: none; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section label:has(#callsign) { flex: 5 1 0; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section label:has(#rst-sent),
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section label:has(#rst-received) { flex: 3 1 0; }
+  /* basis 0, not a pixel floor — a non-zero basis on this field alone would
+     reserve that width for it up front and squeeze Callsign/Sent/Rcvd harder
+     than General's equivalent row (measured: Callsign fell to 85px vs
+     General's 139px at the same pane width). Zero basis on all four lets them
+     share space purely by the grow ratio, matching General exactly. */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section .wh-their-ref-label { order: 3; flex: 3 1 0; margin-top: .35rem; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section #callsign-found { order: 4; flex: 1 1 100%; margin-top: .35rem; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section #their-ref-readout { order: 5; flex: 1 1 100%; margin-top: .5rem; }
+
+  /* Contest: Sent/Rcvd move up to share Callsign's row too (order -8/-7, ahead
+     of the break at order 0 above) — the same move as General/POTA/SOTA, just
+     via reordering instead of disabling the break, since the break is still
+     needed below. The sent-exchange hint chip no longer rides the Sent/Rcvd
+     row (that row doesn't exist here anymore); it and the dynamic
+     received-exchange inputs get their own row(s) below Callsign+Sent+Rcvd. */
+  #logbook-view[data-logbook-type="contest"] .wh-entry-section label:has(#rst-sent) { order: -8; }
+  #logbook-view[data-logbook-type="contest"] .wh-entry-section label:has(#rst-received) { order: -7; }
+  #logbook-view[data-logbook-type="contest"] .wh-entry-section label:has(#callsign) { flex: 5 1 0; }
+  #logbook-view[data-logbook-type="contest"] .wh-entry-section label:has(#rst-sent),
+  #logbook-view[data-logbook-type="contest"] .wh-entry-section label:has(#rst-received) { flex: 3 1 0; }
+  #logbook-view[data-logbook-type="contest"] .wh-entry-section #contest-exch-sent { order: 3; flex: 1 1 auto; margin-top: .5rem; }
+  #logbook-view[data-logbook-type="contest"] .wh-entry-section #contest-exch-rcvd { order: 4; flex: 1 1 100%; margin-top: .5rem; }
+
+  /* Revealed extra fields (2-up) when POTA/SOTA's "More" is open. The toggle
+     button itself now lives in the footer's button-row (beside Save/Clear),
+     not here — see the appearance rule near the end of this stylesheet. */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"], [data-logbook-type="general"], [data-logbook-type="contest"]) .wh-entry-section.wh-more-open .grid.two > .full-log-only {
+    display: grid; order: 10; flex: 1 1 45%; margin-top: .5rem;
+  }
+
+  /* POTA/SOTA: Rig/Power/Notes are gated behind "More" and now live in the
+     footer (DOM order: side-fields → button-row), so in the footer's column
+     flow they naturally land right above the Save/Clear buttons once revealed —
+     no explicit order needed. When "More" is closed the block is empty, so
+     collapse it to avoid a dead gap above the buttons. */
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section:not(.wh-more-open) .wh-side-fields { display: none; }
+  #logbook-view[data-logbook-type="contest"] .wh-entry-section .wh-side-fields { display: none; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section.wh-more-open .wh-side-fields label.full-log-only {
+    display: grid;
+  }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section.wh-more-open .wh-side-fields {
+    flex-direction: row; flex-wrap: wrap; gap: .5rem .55rem; margin-top: .5rem;
+  }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section.wh-more-open .wh-side-fields label:has(#rig),
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section.wh-more-open .wh-side-fields label:has(#power) { flex: 1 1 45%; }
+  #logbook-view:is([data-logbook-type="pota"], [data-logbook-type="sota"]) .wh-entry-section.wh-more-open .wh-side-fields label:has(#notes) { flex: 1 1 100%; }
+
+  /* General: no "More", no Operator/Grid. Callsign is the hero (order -10),
+     then Signal Reports. Rig/Power/Notes are always visible but live in the
+     FOOTER now, laid out inline with the Save/Clear buttons on one compact
+     row: Rig/Power stay narrow, Notes takes the leftover width, and the
+     button-row sits at the end (wrapping below on a narrow pane). */
+  #logbook-view[data-logbook-type="general"] .full-log-only { display: none; }
+  #logbook-view[data-logbook-type="general"] .wh-side-fields label.full-log-only { display: grid; }
+  /* General footer: Save/Clear on the left, then the field cluster to their
+     right — Location | Rig | Power on the first line, Notes wrapping onto its
+     own line below (flex 100% within the side-fields block). */
+  #logbook-view[data-logbook-type="general"] .wh-entry-footer {
+    flex-flow: row nowrap; align-items: flex-start; gap: .5rem .7rem;
+  }
+  #logbook-view[data-logbook-type="general"] .wh-entry-footer .button-row {
+    order: 0; flex: 0 0 auto; margin-left: 0; align-self: flex-start;
+    /* drop the (label-less) buttons down so they line up with the Location /
+       Rig / Power inputs, not with the field labels above them */
+    margin-top: 1.55rem;
+  }
+  #logbook-view[data-logbook-type="general"] .wh-entry-footer .wh-side-fields {
+    order: 1; flex: 1 1 0; min-width: 0; flex-flow: row wrap; align-items: flex-end;
+    gap: .5rem .55rem; margin-top: 0;
+  }
+  /* basis 0 + grow + min-width:0 so Location | Rig | Power shrink to share one
+     line (Notes wraps below at 100%) rather than Rig/Power dropping under
+     Location in a narrow pane. */
+  #logbook-view[data-logbook-type="general"] .wh-side-fields > label { min-width: 0; }
+  #logbook-view[data-logbook-type="general"] .wh-side-fields > label input,
+  #logbook-view[data-logbook-type="general"] .wh-side-fields > label textarea { min-width: 0; }
+  /* Rig | Power | Notes all ride the button row (basis 0 + grow → one line,
+     Notes a compact inline box rather than a full-width block below). */
+  #logbook-view[data-logbook-type="general"] .wh-side-fields label:has(#rig) { flex: 2 1 0; }
+  #logbook-view[data-logbook-type="general"] .wh-side-fields label:has(#power) { flex: 1 1 0; }
+  #logbook-view[data-logbook-type="general"] .wh-side-fields label:has(#notes) { flex: 3 1 0; }
+  #logbook-view[data-logbook-type="general"] .wh-side-fields label:has(#notes) textarea {
+    min-height: 2.6rem; height: 2.6rem; resize: vertical;
+  }
+}
+
+/* "More" toggle button: a quiet text link, not a filled button.
+   ID selector so it beats the global gradient button:not(...) chain. */
+#pota-more-toggle {
+  background: none; border: none; box-shadow: none; padding: .1rem 0;
+  color: var(--accent); font-family: 'Caveat', cursive; font-size: 16px;
+  text-align: left; width: max-content; cursor: pointer;
+}
+#pota-more-toggle:hover { background: none; color: var(--accent-mid); transform: none; }
+.wh-more-toggle .wh-more-caret { transition: transform .15s ease; display: inline-block; }
+.wh-entry-section.wh-more-open .wh-more-toggle .wh-more-caret { transform: rotate(180deg); }
+.wh-callsign-found {
+  font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--pencil);
+  padding: .3rem .5rem; background: var(--soft-fill); border: 1px solid var(--panel-border);
+  border-radius: 8px; line-height: 1.35;
+}
+/* !important: beats the POTA `.pota-sota-only { display:block }` reveal */
+.wh-callsign-found[hidden] { display: none !important; }
+/* The "More" toggle is a desktop affordance; the mobile pad has its own layout */
+@media (max-width: 520px) {
+  #logbook-view[data-logbook-type="pota"] #pota-more-toggle,
+  #logbook-view[data-logbook-type="sota"] #pota-more-toggle { display: none; }
+}
+
+/* ── 2b: New-logbook type picker (segmented control) ── */
+.wh-type-field { display: flex; flex-direction: column; gap: .3rem; }
+.wh-type-field-label { font-size: .85rem; color: var(--field-label); }
+.wh-type-seg {
+  display: flex; padding: .25rem; gap: .25rem;
+  background: var(--soft-fill); border: 1.5px solid var(--panel-border); border-radius: 10px;
+}
+/* ID selector so these beat the global gradient button:not(...) chain */
+#logbook-type-seg button {
+  flex: 1; padding: .5rem .4rem; min-height: 2.6rem;
+  background: transparent; border: 1.5px solid transparent; border-radius: 7px;
+  color: var(--muted); cursor: pointer; font-family: inherit; font-size: .85rem; font-weight: 700;
+  box-shadow: none;
+}
+#logbook-type-seg button[aria-pressed="true"] {
+  background: var(--panel); border-color: var(--connected); color: var(--connected);
+  box-shadow: 0 2px 8px rgba(var(--wh-ink),.1);
+}
+.wh-type-hint { font-size: .74rem; color: var(--muted); }
+.wh-ref-box {
+  padding: .7rem .75rem .8rem;
+  border: 1.5px dashed color-mix(in oklab, var(--connected) 40%, var(--panel-border));
+  border-radius: 10px; background: rgba(var(--wh-ink),.03);
+}
+
+/* ── 5a/5b: logbook view grid + operation/export/LoTW sidebar ── */
+.wh-logbook-grid { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: .9rem; align-items: start; }
+.wh-logbook-main { min-width: 0; display: flex; flex-direction: column; gap: .85rem; }
+.wh-logbook-main > * { margin: 0; }
+.wh-logbook-side { position: sticky; top: .8rem; display: flex; flex-direction: column; gap: .8rem; }
+.wh-side-card { margin: 0; }
+.wh-side-kicker {
+  font-family: 'JetBrains Mono', monospace; font-size: .6rem; font-weight: 700;
+  letter-spacing: .11em; text-transform: uppercase; color: var(--muted);
+}
+.wh-op-facts { display: grid; grid-template-columns: auto 1fr; gap: .3rem .7rem; margin: .55rem 0 0; font-size: .82rem; }
+.wh-op-facts dt { color: var(--muted); }
+.wh-op-facts dd { margin: 0; }
+.wh-op-facts dd.mono { font-family: 'JetBrains Mono', monospace; font-size: .78rem; font-weight: 700; }
+.wh-op-facts dd.park { color: var(--connected); }
+.wh-op-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; margin-top: .6rem; }
+.wh-op-tile {
+  display: flex; flex-direction: column; gap: .1rem; padding: .5rem .6rem;
+  background: var(--soft-fill); border: 1px solid var(--panel-border); border-radius: 8px;
+}
+.wh-op-tile strong { font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; color: var(--text); }
+.wh-op-unit { font-size: .7rem; color: var(--muted); }
+.wh-op-tile > span { font-size: .68rem; color: var(--muted); line-height: 1.3; }
+.wh-side-actions { display: flex; flex-direction: column; gap: .45rem; margin-top: .55rem; }
+.wh-side-actions button, .wh-side-actions .file-label {
+  min-height: 2.6rem; width: 100%; justify-content: center; text-align: center;
+}
+.wh-side-note { display: block; margin-top: .5rem; font-size: .72rem; color: var(--muted); line-height: 1.4; }
+
+/* 6a: table footer row with inline-edit hint */
+.wh-table-footer-row {
+  display: flex; align-items: center; justify-content: space-between; gap: .8rem;
+  padding-right: .82rem; border-top: 1px solid var(--border-color);
+}
+.wh-table-footer-row .wh-table-footer { border-top: none; }
+.wh-edit-hint { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--muted); white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .wh-logbook-grid { grid-template-columns: 1fr; }
+  .wh-logbook-side { position: static; }
+}
+@media (max-width: 640px) {
+  .wh-edit-hint { display: none; }
+}

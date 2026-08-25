@@ -1,0 +1,23 @@
+{
+  // Deploying WebHam as a Worker with static assets: `npx wrangler deploy`.
+  //
+  // The Pages path (`npx wrangler pages deploy dist`) does not use this file at
+  // all — it reads functions/ and _routes.json instead. Both targets serve the
+  // same dist/ and the same handlers; see docs/deploying.md.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "webham",
+  "main": "worker.js",
+
+  // Pin this. Workers behaviour is versioned by date, so leaving it off means
+  // local dev and production can drift apart as wrangler's default moves.
+  "compatibility_date": "2026-08-15",
+
+  "assets": {
+    "directory": "./dist",
+    // worker.js reaches static files through env.ASSETS.
+    "binding": "ASSETS",
+    // Serve dist/404.html for an unmatched path rather than index.html, so a
+    // mistyped URL is an honest 404 instead of a 200 that looks like the app.
+    "not_found_handling": "404-page"
+  }
+}

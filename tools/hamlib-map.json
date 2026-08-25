@@ -1,0 +1,759 @@
+{
+  "//": [
+    "Hand-decided half of the rig catalogue. tools/sync-hamlib.mjs --build joins",
+    "this with tools/hamlib-sources.json (Hamlib's own rig_caps) to produce",
+    "js/connectors/rigs-generated.js.",
+    "",
+    "Hamlib supplies model numbers, names, manufacturers and serial defaults. It",
+    "cannot supply the CAT byte protocol — that is C code per backend, not data —",
+    "so every rig needs a WebHam protocol family assigned here before it can be",
+    "emitted. An unmapped rig is reported, never guessed: a name in the picker",
+    "that fails on connect is worse than an absent one.",
+    "",
+    "EVERYTHING IS KEYED BY HAMLIB'S RIG_MODEL_* TOKEN, NOT BY MODEL NUMBER.",
+    "WebHam's hand-written catalogue and Hamlib disagree about which rig owns",
+    "which number for 22 models (WebHam's 1024 is the FT-817ND; Hamlib's 1024 is",
+    "the FT-1000MP). Keying on the number would pair one rig's protocol family",
+    "with another rig's name and serial settings — wrong CAT bytes to a real",
+    "radio. The token is stable identity; the number is derived from it.",
+    "",
+    "Why families are per-model and not per-backend: Hamlib's `yaesu` backend",
+    "spans both the 5-byte binary rigs (FT-817/857/897) and the newcat ASCII ones",
+    "(FT-450/950/991/DX10), and its `kenwood` backend contains Elecraft and",
+    "PowerSDR too. Hamlib has no notion of WebHam's classic-vs-modern split, so",
+    "that judgement lives here."
+  ],
+  "backendFamilies": {
+    "//": "Fallback when a model has no explicit entry below. Empty on purpose: a family assignment decides which bytes go down the wire, so it should always be a reviewed per-model decision rather than a backend-wide guess."
+  },
+  "familyDefaults": {
+    "yaesu-5byte": {
+      "baudRate": 4800,
+      "dataBits": 8,
+      "stopBits": 2,
+      "parity": "none",
+      "flowControl": "none"
+    },
+    "yaesu-ascii-classic": {
+      "baudRate": 4800,
+      "dataBits": 8,
+      "stopBits": 2,
+      "parity": "none",
+      "flowControl": "none"
+    },
+    "yaesu-ascii-modern": {
+      "baudRate": 38400,
+      "dataBits": 8,
+      "stopBits": 1,
+      "parity": "none",
+      "flowControl": "none"
+    },
+    "icom-civ-classic": {
+      "baudRate": 19200,
+      "dataBits": 8,
+      "stopBits": 1,
+      "parity": "none",
+      "flowControl": "none"
+    },
+    "icom-civ-modern": {
+      "baudRate": 115200,
+      "dataBits": 8,
+      "stopBits": 1,
+      "parity": "none",
+      "flowControl": "none"
+    },
+    "kenwood-ascii": {
+      "baudRate": 9600,
+      "dataBits": 8,
+      "stopBits": 1,
+      "parity": "none",
+      "flowControl": "none"
+    },
+    "elecraft-ascii": {
+      "baudRate": 38400,
+      "dataBits": 8,
+      "stopBits": 1,
+      "parity": "none",
+      "flowControl": "none"
+    },
+    "flex-ascii": {
+      "baudRate": 38400,
+      "dataBits": 8,
+      "stopBits": 1,
+      "parity": "none",
+      "flowControl": "none"
+    },
+    "hamlib-rigctld": {
+      "baudRate": 9600,
+      "dataBits": 8,
+      "stopBits": 1,
+      "parity": "none",
+      "flowControl": "none"
+    }
+  },
+  "modelFamilies": {
+    "RIG_MODEL_FT847": "yaesu-ascii-classic",
+    "RIG_MODEL_FT1000": "yaesu-ascii-classic",
+    "RIG_MODEL_FT1000D": "yaesu-ascii-classic",
+    "RIG_MODEL_FT1000MPMKV": "yaesu-ascii-classic",
+    "RIG_MODEL_FT747": "yaesu-ascii-classic",
+    "RIG_MODEL_FT757": "yaesu-ascii-classic",
+    "RIG_MODEL_FT757GXII": "yaesu-ascii-classic",
+    "RIG_MODEL_FT767": "yaesu-ascii-classic",
+    "RIG_MODEL_FT840": "yaesu-ascii-classic",
+    "RIG_MODEL_FT890": "yaesu-ascii-classic",
+    "RIG_MODEL_FT900": "yaesu-ascii-classic",
+    "RIG_MODEL_FT920": "yaesu-ascii-classic",
+    "RIG_MODEL_FT990": "yaesu-ascii-classic",
+    "RIG_MODEL_FT1000MP": "yaesu-ascii-classic",
+    "RIG_MODEL_FT1000MPMKVFLD": "yaesu-ascii-classic",
+    "RIG_MODEL_FT817": "yaesu-5byte",
+    "RIG_MODEL_FT100": "yaesu-5byte",
+    "RIG_MODEL_FT857": "yaesu-5byte",
+    "RIG_MODEL_FT897": "yaesu-5byte",
+    "RIG_MODEL_FT818": "yaesu-5byte",
+    "RIG_MODEL_FT450": "yaesu-ascii-modern",
+    "RIG_MODEL_FT950": "yaesu-ascii-modern",
+    "RIG_MODEL_FT2000": "yaesu-ascii-modern",
+    "RIG_MODEL_FTDX5000": "yaesu-ascii-modern",
+    "RIG_MODEL_FT991": "yaesu-ascii-modern",
+    "RIG_MODEL_FT891": "yaesu-ascii-modern",
+    "RIG_MODEL_FTDX3000": "yaesu-ascii-modern",
+    "RIG_MODEL_FTDX1200": "yaesu-ascii-modern",
+    "RIG_MODEL_FTDX101D": "yaesu-ascii-modern",
+    "RIG_MODEL_FTDX101MP": "yaesu-ascii-modern",
+    "RIG_MODEL_FTDX10": "yaesu-ascii-modern",
+    "RIG_MODEL_FT710": "yaesu-ascii-modern",
+    "RIG_MODEL_TS50": "kenwood-ascii",
+    "RIG_MODEL_TS440": "kenwood-ascii",
+    "RIG_MODEL_TS450S": "kenwood-ascii",
+    "RIG_MODEL_TS570D": "kenwood-ascii",
+    "RIG_MODEL_TS570S": "kenwood-ascii",
+    "RIG_MODEL_TS690S": "kenwood-ascii",
+    "RIG_MODEL_TS711": "kenwood-ascii",
+    "RIG_MODEL_TS790": "kenwood-ascii",
+    "RIG_MODEL_TS811": "kenwood-ascii",
+    "RIG_MODEL_TS850": "kenwood-ascii",
+    "RIG_MODEL_TS870S": "kenwood-ascii",
+    "RIG_MODEL_TS940": "kenwood-ascii",
+    "RIG_MODEL_TS950SDX": "kenwood-ascii",
+    "RIG_MODEL_TS2000": "kenwood-ascii",
+    "RIG_MODEL_K2": "elecraft-ascii",
+    "RIG_MODEL_TS480": "kenwood-ascii",
+    "RIG_MODEL_K3": "elecraft-ascii",
+    "RIG_MODEL_TS590S": "kenwood-ascii",
+    "RIG_MODEL_TS590SG": "kenwood-ascii",
+    "RIG_MODEL_TS990S": "kenwood-ascii",
+    "RIG_MODEL_TS890S": "kenwood-ascii",
+    "RIG_MODEL_K3S": "elecraft-ascii",
+    "RIG_MODEL_KX2": "elecraft-ascii",
+    "RIG_MODEL_KX3": "elecraft-ascii",
+    "RIG_MODEL_K4": "elecraft-ascii",
+    "RIG_MODEL_LAB599_TX500": "kenwood-ascii",
+    "RIG_MODEL_IC706": "icom-civ-classic",
+    "RIG_MODEL_IC706MKII": "icom-civ-classic",
+    "RIG_MODEL_IC706MKIIG": "icom-civ-classic",
+    "RIG_MODEL_IC707": "icom-civ-classic",
+    "RIG_MODEL_IC718": "icom-civ-classic",
+    "RIG_MODEL_IC746": "icom-civ-classic",
+    "RIG_MODEL_IC756": "icom-civ-classic",
+    "RIG_MODEL_IC756PRO": "icom-civ-classic",
+    "RIG_MODEL_IC775": "icom-civ-classic",
+    "RIG_MODEL_IC781": "icom-civ-classic",
+    "RIG_MODEL_IC746PRO": "icom-civ-classic",
+    "RIG_MODEL_IC7000": "icom-civ-classic",
+    "RIG_MODEL_IC7600": "icom-civ-classic",
+    "RIG_MODEL_IC7100": "icom-civ-modern",
+    "RIG_MODEL_IC7200": "icom-civ-modern",
+    "RIG_MODEL_IC7300": "icom-civ-modern",
+    "RIG_MODEL_IC7610": "icom-civ-modern",
+    "RIG_MODEL_IC9700": "icom-civ-modern",
+    "RIG_MODEL_IC705": "icom-civ-modern",
+    "RIG_MODEL_X6100": "icom-civ-classic",
+    "RIG_MODEL_G90": "icom-civ-classic",
+    "//RIG_MODEL_DELTAII": [
+      "Was kenwood-ascii, which could not have worked. Ten-Tec licensed Icom's CI-V for",
+      "the Delta II: Hamlib implements it in rigs/icom/delta2.c with a full",
+      "icom_priv_caps (CI-V address 0x01, civ_731_mode on) and a 1200-baud-only serial",
+      "line. As kenwood-ascii, WebHam sent `FA00014074000;` ASCII at 19200 to a radio",
+      "that speaks CI-V binary at 1200. Caught by the civFamilies check below."
+    ],
+    "RIG_MODEL_DELTAII": "icom-civ-classic"
+  },
+  "//civFamilies": [
+    "Which WebHam families speak Icom CI-V. Used by --build to check that every rig",
+    "Hamlib gives icom_priv_caps for is mapped to one of them — a CI-V radio pointed at",
+    "an ASCII family is a profile that cannot work, and the per-rig CI-V address would",
+    "be emitted onto a profile with no way to use it.",
+    "",
+    "Kept here rather than in the tool because it is a fact about WebHam's families,",
+    "i.e. a hand-decided mapping, which is what this file is for."
+  ],
+  "civFamilies": ["icom-civ-classic", "icom-civ-modern"],
+  "serialOverrides": {
+    "//RIG_MODEL_DELTAII": [
+      "Hamlib gives this rig serial_rate_min == serial_rate_max == 1200, so 1200 is not a",
+      "preference, it is the only rate the radio accepts. icom-civ-classic's family default",
+      "of 19200 is outside that range, which --diff reported as serial/3064/baudRate."
+    ],
+    "RIG_MODEL_DELTAII": {
+      "baudRate": 1200,
+      "dataBits": 8,
+      "stopBits": 1,
+      "parity": "none",
+      "flowControl": "none"
+    },
+    "RIG_MODEL_FT847": {
+      "baudRate": 57600
+    },
+    "RIG_MODEL_TS50": {
+      "baudRate": 4800,
+      "stopBits": 2
+    },
+    "RIG_MODEL_TS440": {
+      "baudRate": 4800,
+      "stopBits": 2
+    },
+    "RIG_MODEL_TS450S": {
+      "baudRate": 4800,
+      "stopBits": 2
+    },
+    "RIG_MODEL_TS690S": {
+      "baudRate": 4800,
+      "stopBits": 2
+    },
+    "RIG_MODEL_TS850": {
+      "baudRate": 4800,
+      "stopBits": 2
+    },
+    "RIG_MODEL_TS940": {
+      "baudRate": 4800,
+      "stopBits": 2
+    },
+    "RIG_MODEL_TS950SDX": {
+      "baudRate": 4800,
+      "stopBits": 2
+    },
+    "RIG_MODEL_K2": {
+      "baudRate": 4800,
+      "stopBits": 2
+    },
+    "RIG_MODEL_TS590S": {
+      "baudRate": 115200
+    },
+    "RIG_MODEL_TS590SG": {
+      "baudRate": 115200
+    },
+    "RIG_MODEL_TS990S": {
+      "baudRate": 115200
+    },
+    "RIG_MODEL_TS890S": {
+      "baudRate": 115200
+    }
+  },
+  "nameOverrides": {
+    "//": "Keyed by RIG_MODEL_* token. Empty: the generated catalogue uses Hamlib's own \"<mfg> <model_name>\" so labels track upstream. Add an entry only to override a specific label."
+  },
+  "allowNonSerial": {
+    "//": "Tokens to emit even though Hamlib marks them non-serial, because a vendor virtual COM port makes them reachable from Web Serial (SmartSDR CAT, PowerSDR).",
+    "ids": []
+  },
+  "exclude": {
+    "//": "Hamlib model tokens deliberately not offered.",
+    "ids": []
+  },
+  "extras": {
+    "//": [
+      "Profiles WebHam defines itself, emitted alongside the Hamlib-derived ones.",
+      "",
+      "Their ids are namespaced `wh:<slug>` rather than numeric ON PURPOSE. Now that",
+      "the catalogue adopts Hamlib model numbers, a WebHam-only profile keeping its",
+      "old number would sooner or later sit on a real Hamlib model: four already did",
+      "(FT-980 on Hamlib's 1013=FT-900, FT-817ND on 1024=FT-1000MP, FTDX-9000Contest",
+      "on 1032=FTDX-5000, TS-60S on 2016=TS-570S). The FT-817ND case is the sharp",
+      "one — it is yaesu-5byte binary CAT while Hamlib's 1024 is ASCII, so a stale",
+      "saved id would have driven a radio with another radio's protocol.",
+      "",
+      "`group` records why each is here (see `unresolvedNotes` below); `wasId` is the",
+      "pre-migration numeric id, kept so the migration table stays auditable."
+    ],
+    "profiles": {
+      "wh:yaesu-ft-980": {
+        "family": "yaesu-ascii-classic",
+        "name": "Yaesu FT-980",
+        "serial": null,
+        "wasId": "1013",
+        "group": "naming-variant"
+      },
+      "wh:yaesu-ft-817nd": {
+        "family": "yaesu-5byte",
+        "name": "Yaesu FT-817ND",
+        "serial": null,
+        "wasId": "1024",
+        "group": "naming-variant"
+      },
+      "wh:yaesu-ft-2000d": {
+        "family": "yaesu-ascii-modern",
+        "name": "Yaesu FT-2000D",
+        "serial": null,
+        "wasId": "1030",
+        "group": "naming-variant"
+      },
+      "wh:yaesu-ftdx-9000d": {
+        "family": "yaesu-ascii-modern",
+        "name": "Yaesu FTDX-9000D",
+        "serial": null,
+        "wasId": "1031",
+        "group": "naming-variant"
+      },
+      "wh:yaesu-ftdx-9000contest": {
+        "family": "yaesu-ascii-modern",
+        "name": "Yaesu FTDX-9000Contest",
+        "serial": null,
+        "wasId": "1032",
+        "group": "naming-variant"
+      },
+      "wh:yaesu-ftdx-9000mp": {
+        "family": "yaesu-ascii-modern",
+        "name": "Yaesu FTDX-9000MP",
+        "serial": null,
+        "wasId": "1033",
+        "group": "naming-variant"
+      },
+      "wh:yaesu-ft-991a": {
+        "family": "yaesu-ascii-modern",
+        "name": "Yaesu FT-991A",
+        "serial": null,
+        "wasId": "1039",
+        "group": "naming-variant"
+      },
+      "wh:mchf-qrp": {
+        "family": "kenwood-ascii",
+        "name": "mcHF QRP",
+        "serial": {
+          "baudRate": 19200
+        },
+        "wasId": "1045",
+        "group": "naming-variant"
+      },
+      "wh:kenwood-ts-50s-v2": {
+        "family": "kenwood-ascii",
+        "name": "Kenwood TS-50S (v2)",
+        "serial": null,
+        "wasId": "2015",
+        "group": "naming-variant"
+      },
+      "wh:kenwood-ts-60s": {
+        "family": "kenwood-ascii",
+        "name": "Kenwood TS-60S",
+        "serial": null,
+        "wasId": "2016",
+        "group": "naming-variant"
+      },
+      "wh:qrp-labs-qcx-qdx": {
+        "family": "kenwood-ascii",
+        "name": "QRP Labs QCX/QDX",
+        "serial": {
+          "baudRate": 38400
+        },
+        "wasId": "2052",
+        "group": "naming-variant"
+      },
+      "wh:qrp-labs-qmx": {
+        "family": "kenwood-ascii",
+        "name": "QRP Labs QMX",
+        "serial": {
+          "baudRate": 38400
+        },
+        "wasId": "2057",
+        "group": "naming-variant"
+      },
+      "wh:smartsdr-6000-series": {
+        "family": "flex-ascii",
+        "name": "SmartSDR (6000 Series)",
+        "serial": null,
+        "wasId": "2514",
+        "group": "out-of-scope"
+      },
+      "wh:icom-ic-910h": {
+        "family": "icom-civ-classic",
+        "name": "Icom IC-910H",
+        "serial": null,
+        "wasId": "3032",
+        "group": "naming-variant"
+      },
+      "wh:aor-ar8600": {
+        "family": "kenwood-ascii",
+        "name": "AOR AR8600",
+        "serial": null,
+        "wasId": "5011",
+        "group": "unsupported"
+      },
+      "wh:aor-ar-dv1": {
+        "family": "kenwood-ascii",
+        "name": "AOR AR-DV1",
+        "serial": {
+          "baudRate": 115200
+        },
+        "wasId": "5016",
+        "group": "unsupported"
+      },
+      "wh:jrc-nrd-535": {
+        "family": "kenwood-ascii",
+        "name": "JRC NRD-535",
+        "serial": null,
+        "wasId": "6003",
+        "group": "unsupported"
+      },
+      "wh:jrc-nrd-545": {
+        "family": "kenwood-ascii",
+        "name": "JRC NRD-545",
+        "serial": null,
+        "wasId": "6004",
+        "group": "unsupported"
+      },
+      "wh:ten-tec-omni-vi": {
+        "family": "kenwood-ascii",
+        "name": "Ten-Tec Omni VI",
+        "serial": null,
+        "wasId": "16001",
+        "group": "unsupported"
+      },
+      "wh:ten-tec-paragon": {
+        "family": "kenwood-ascii",
+        "name": "Ten-Tec Paragon",
+        "serial": null,
+        "wasId": "16002",
+        "group": "unsupported"
+      },
+      "wh:ten-tec-orion": {
+        "family": "kenwood-ascii",
+        "name": "Ten-Tec Orion",
+        "serial": null,
+        "wasId": "16010",
+        "group": "unsupported"
+      },
+      "wh:ten-tec-eagle": {
+        "family": "kenwood-ascii",
+        "name": "Ten-Tec Eagle",
+        "serial": null,
+        "wasId": "16014",
+        "group": "unsupported"
+      },
+      "wh:alinco-dx-77": {
+        "family": "kenwood-ascii",
+        "name": "Alinco DX-77",
+        "serial": null,
+        "wasId": "17001",
+        "group": "unsupported"
+      },
+      "wh:alinco-dx-sr8": {
+        "family": "kenwood-ascii",
+        "name": "Alinco DX-SR8",
+        "serial": null,
+        "wasId": "17002",
+        "group": "unsupported"
+      },
+      "wh:barrett-950": {
+        "family": "kenwood-ascii",
+        "name": "Barrett 950",
+        "serial": null,
+        "wasId": "32001",
+        "group": "unsupported"
+      },
+      "wh:barrett-2050": {
+        "family": "kenwood-ascii",
+        "name": "Barrett 2050",
+        "serial": null,
+        "wasId": "32002",
+        "group": "unsupported"
+      },
+      "wh:barrett-4050": {
+        "family": "kenwood-ascii",
+        "name": "Barrett 4050",
+        "serial": null,
+        "wasId": "32004",
+        "group": "unsupported"
+      }
+    }
+  },
+  "migration": {
+    "//": [
+      "old profileId -> new profileId, applied once to localStorage",
+      "(web-ham-logger.cat-settings.profile, and the .overrides blob's own",
+      "profileId field) by js/connectors/cat.js on load.",
+      "",
+      "Covers every id the hand-written catalogue shipped that changes:",
+      "  - 22 rigs whose number disagreed with Hamlib and are now renumbered to it",
+      "  - 27 WebHam-only profiles moved to namespaced `wh:` ids",
+      "Ids absent from this table are unchanged (they already agreed with Hamlib).",
+      "",
+      "Without this, adopting Hamlib numbering silently repoints a saved profile at",
+      "a different radio — in several cases a different protocol family and baud",
+      "rate, i.e. the wrong bytes to real hardware."
+    ],
+    "ids": {
+      "1008": {
+        "to": "1009",
+        "rig": "Yaesu FT-767GX",
+        "token": "RIG_MODEL_FT767"
+      },
+      "1009": {
+        "to": "1011",
+        "rig": "Yaesu FT-840",
+        "token": "RIG_MODEL_FT840"
+      },
+      "1010": {
+        "to": "1015",
+        "rig": "Yaesu FT-890",
+        "token": "RIG_MODEL_FT890"
+      },
+      "1011": {
+        "to": "1013",
+        "rig": "Yaesu FT-900",
+        "token": "RIG_MODEL_FT900"
+      },
+      "1012": {
+        "to": "1014",
+        "rig": "Yaesu FT-920",
+        "token": "RIG_MODEL_FT920"
+      },
+      "1013": {
+        "to": "wh:yaesu-ft-980",
+        "rig": "Yaesu FT-980",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "1014": {
+        "to": "1016",
+        "rig": "Yaesu FT-990",
+        "token": "RIG_MODEL_FT990"
+      },
+      "1015": {
+        "to": "1024",
+        "rig": "Yaesu FT-1000MP",
+        "token": "RIG_MODEL_FT1000MP"
+      },
+      "1016": {
+        "to": "1025",
+        "rig": "Yaesu FT-1000MP MARK-V Field",
+        "token": "RIG_MODEL_FT1000MPMKVFLD"
+      },
+      "1024": {
+        "to": "wh:yaesu-ft-817nd",
+        "rig": "Yaesu FT-817ND",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "1025": {
+        "to": "1041",
+        "rig": "Yaesu FT-818",
+        "token": "RIG_MODEL_FT818"
+      },
+      "1030": {
+        "to": "wh:yaesu-ft-2000d",
+        "rig": "Yaesu FT-2000D",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "1031": {
+        "to": "wh:yaesu-ftdx-9000d",
+        "rig": "Yaesu FTDX-9000D",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "1032": {
+        "to": "wh:yaesu-ftdx-9000contest",
+        "rig": "Yaesu FTDX-9000Contest",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "1033": {
+        "to": "wh:yaesu-ftdx-9000mp",
+        "rig": "Yaesu FTDX-9000MP",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "1034": {
+        "to": "1032",
+        "rig": "Yaesu FTDX-5000",
+        "token": "RIG_MODEL_FTDX5000"
+      },
+      "1038": {
+        "to": "1034",
+        "rig": "Yaesu FTDX-1200",
+        "token": "RIG_MODEL_FTDX1200"
+      },
+      "1039": {
+        "to": "wh:yaesu-ft-991a",
+        "rig": "Yaesu FT-991A",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "1041": {
+        "to": "1044",
+        "rig": "Yaesu FTDX-101MP",
+        "token": "RIG_MODEL_FTDX101MP"
+      },
+      "1045": {
+        "to": "wh:mchf-qrp",
+        "rig": "mcHF QRP",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "2005": {
+        "to": "2016",
+        "rig": "Kenwood TS-570S",
+        "token": "RIG_MODEL_TS570S"
+      },
+      "2006": {
+        "to": "2005",
+        "rig": "Kenwood TS-690S",
+        "token": "RIG_MODEL_TS690S"
+      },
+      "2007": {
+        "to": "2006",
+        "rig": "Kenwood TS-711",
+        "token": "RIG_MODEL_TS711"
+      },
+      "2008": {
+        "to": "2007",
+        "rig": "Kenwood TS-790",
+        "token": "RIG_MODEL_TS790"
+      },
+      "2009": {
+        "to": "2008",
+        "rig": "Kenwood TS-811",
+        "token": "RIG_MODEL_TS811"
+      },
+      "2010": {
+        "to": "2009",
+        "rig": "Kenwood TS-850",
+        "token": "RIG_MODEL_TS850"
+      },
+      "2011": {
+        "to": "2010",
+        "rig": "Kenwood TS-870S",
+        "token": "RIG_MODEL_TS870S"
+      },
+      "2012": {
+        "to": "2011",
+        "rig": "Kenwood TS-940S",
+        "token": "RIG_MODEL_TS940"
+      },
+      "2015": {
+        "to": "wh:kenwood-ts-50s-v2",
+        "rig": "Kenwood TS-50S (v2)",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "2016": {
+        "to": "wh:kenwood-ts-60s",
+        "rig": "Kenwood TS-60S",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "2052": {
+        "to": "wh:qrp-labs-qcx-qdx",
+        "rig": "QRP Labs QCX/QDX",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "2057": {
+        "to": "wh:qrp-labs-qmx",
+        "rig": "QRP Labs QMX",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "2514": {
+        "to": "wh:smartsdr-6000-series",
+        "rig": "SmartSDR (6000 Series)",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "3032": {
+        "to": "wh:icom-ic-910h",
+        "rig": "Icom IC-910H",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "3071": {
+        "to": "3061",
+        "rig": "Icom IC-7200",
+        "token": "RIG_MODEL_IC7200"
+      },
+      "5011": {
+        "to": "wh:aor-ar8600",
+        "rig": "AOR AR8600",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "5016": {
+        "to": "wh:aor-ar-dv1",
+        "rig": "AOR AR-DV1",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "6003": {
+        "to": "wh:jrc-nrd-535",
+        "rig": "JRC NRD-535",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "6004": {
+        "to": "wh:jrc-nrd-545",
+        "rig": "JRC NRD-545",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "16001": {
+        "to": "wh:ten-tec-omni-vi",
+        "rig": "Ten-Tec Omni VI",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "16002": {
+        "to": "wh:ten-tec-paragon",
+        "rig": "Ten-Tec Paragon",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "16003": {
+        "to": "3064",
+        "rig": "Ten-Tec Delta II",
+        "token": "RIG_MODEL_DELTAII"
+      },
+      "16010": {
+        "to": "wh:ten-tec-orion",
+        "rig": "Ten-Tec Orion",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "16014": {
+        "to": "wh:ten-tec-eagle",
+        "rig": "Ten-Tec Eagle",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "17001": {
+        "to": "wh:alinco-dx-77",
+        "rig": "Alinco DX-77",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "17002": {
+        "to": "wh:alinco-dx-sr8",
+        "rig": "Alinco DX-SR8",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "32001": {
+        "to": "wh:barrett-950",
+        "rig": "Barrett 950",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "32002": {
+        "to": "wh:barrett-2050",
+        "rig": "Barrett 2050",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      },
+      "32004": {
+        "to": "wh:barrett-4050",
+        "rig": "Barrett 4050",
+        "reason": "webham-only profile, namespaced to avoid colliding with a Hamlib model number"
+      }
+    }
+  },
+  "unresolvedNotes": [
+    "WebHam profiles with no confident Hamlib match. Listed, not emitted — each",
+    "needs a human decision, and several look like pre-existing bugs.",
+    "",
+    "Three groups:",
+    "  naming-variant  almost certainly IS in Hamlib under a different spelling",
+    "                  (FT-991A vs FT991A, IC-910H vs IC910). Needs an alias.",
+    "  unsupported     the rig's Hamlib backend (AOR, JRC, Ten-Tec, Alinco,",
+    "                  Barrett) has no WebHam protocol implementation. All 14 are",
+    "                  currently mapped to kenwood-ascii in cat.js, which an AOR",
+    "                  AR8600 does not speak — these very likely do not work",
+    "                  today and should be dropped or given a real protocol.",
+    "  out-of-scope    Hamlib has no such model at all, or it lives outside the",
+    "                  four mapped backends (SmartSDR is flexradio 23005-23012,",
+    "                  not the 2514 WebHam invented)."
+  ]
+}

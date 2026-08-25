@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#dee6d0" />
+    <link rel="manifest" href="manifest.webmanifest?v=20260404" />
+    <!-- Declaring these stops the browser's blind request for /favicon.ico,
+         which has no file behind it and 404s on every cold load. -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <title>WebHam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@300;400;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=20260820" />
+    <script>
+      (function () {
+        try {
+          var s = JSON.parse(localStorage.getItem("web-ham-logger.settings") || "{}");
+          var pref = ["dark", "light", "system"].includes(s.theme) ? s.theme : "system";
+          var resolved = pref === "system"
+            ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+            : pref;
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.dataset.themePreference = pref;
+          var m = document.querySelector('meta[name="theme-color"]');
+          if (m) m.setAttribute("content", resolved === "dark" ? "#14110c" : "#dee6d0");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <!-- SVG filter used by Open View menu dots/triangles -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <filter id="rough" x="-2%" y="-2%" width="104%" height="104%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" />
+          <feDisplacementMap in="SourceGraphic" scale="1.4" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="wh-app">
+
+      <!-- ===================== EXPERIMENTAL NOTICE =====================
+           Shell chrome, outside every tab panel. Permanent — no dismiss
+           control — revealed by js/shell/notice.js. -->
+      <div class="wh-notice" id="wh-notice" role="note" hidden>
+        <span class="wh-notice-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 3.5 2.5 20h19L12 3.5Z" stroke-linejoin="round" />
+            <path d="M12 10v4.5" stroke-linecap="round" />
+            <circle cx="12" cy="17.3" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          Experimental
+        </span>
+        <span class="wh-notice-copy">
+          <p class="wh-notice-text">WebHam is a program in alpha, largely written by AI.
+            <span class="wh-notice-sub">The invention of a 13-year-old ham —
+              <a class="wh-notice-donate-inline" href="https://ko-fi.com/rfvx0" target="_blank" rel="noopener noreferrer">you can donate here</a>.
+            </span>
+          </p>
+        </span>
+        <span class="wh-notice-links">
+          <a class="wh-notice-gh-link" href="https://github.com/rfvx/WebHam" target="_blank" rel="noopener noreferrer">
+            <svg class="wh-notice-gh-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.605-2.665-.3-5.467-1.332-5.467-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.019.005 2.046.138 3.005.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.234 1.911 1.234 3.221 0 4.61-2.807 5.625-5.48 5.92.43.372.813 1.103.813 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.216.694.826.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+            GitHub Source
+          </a>
+          <a href="https://github.com/rfvx/WebHam/issues/new" target="_blank" rel="noopener noreferrer">Report a bug</a>
+          <button class="wh-notice-guide-btn" id="wh-notice-guide" type="button" title="Open the guide" aria-label="Open the guide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="9.25" />
+              <path d="M9.4 9.1a2.7 2.7 0 0 1 5.2.9c0 1.8-2.6 2.3-2.6 3.9" stroke-linecap="round" />
+              <circle cx="12" cy="17.4" r="1.05" fill="currentColor" stroke="none" />
+            </svg>
+          </button>
+        </span>
+      </div>
+
+      <!-- ===================== FIRST-RUN GUIDE =====================
+           Shell chrome, outside every tab panel. Shown once on a first visit
+           and reopened by the notice strip's "?" button; driven by
+           js/shell/onboarding.js, which owns the card text and the gating.
+
+           The guide points at the real interface rather than describing it. A
+           card with a spotlight target dims everything EXCEPT that element —
+           #wh-guide-scrim carries a clip-path hole punched over its bounds, so
+           the highlighted control is the one thing on the page still clickable,
+           and #wh-guide-ring draws the halo around it. Cards with no target
+           block the whole app instead (the scrim with no hole, plus `inert` on
+           everything behind it).
+
+           The identity task is therefore done in Settings, in the real fields,
+           with this card watching them: it is a GATE, and Next stays disabled
+           until both hold something valid. -->
+      <div class="wh-guide" id="wh-guide" hidden>
+        <div class="wh-guide-scrim" id="wh-guide-scrim"></div>
+        <div class="wh-guide-ring" id="wh-guide-ring" aria-hidden="true" hidden></div>
+        <div class="wh-guide-card" id="wh-guide-cardel" role="dialog" aria-modal="true" aria-labelledby="wh-guide-title">
+          <div class="wh-guide-head">
+            <span class="wh-guide-kicker">Getting started</span>
+            <span class="wh-guide-count" id="wh-guide-count"></span>
+          </div>
+          <h2 class="wh-guide-title" id="wh-guide-title"></h2>
+          <p class="wh-guide-body" id="wh-guide-body"></p>
+
+          <!-- Gate feedback for the station-identity step. The fields
+               themselves are filled in over in the highlighted Settings
+               card, not here — this line only ever reports on them: what
+               to do while empty, what's wrong once something is typed, and
+               confirmation once both parse. -->
+          <p class="wh-guide-task-status" id="wh-guide-identity-status" role="status" hidden></p>
+
+          <p class="wh-guide-note" id="wh-guide-note"></p>
+          <div class="wh-guide-foot">
+            <span class="wh-guide-dots" id="wh-guide-dots" aria-hidden="true"></span>
+            <span class="wh-guide-actions">
+              <button class="secondary" id="wh-guide-skip" type="button">Skip</button>
+              <button class="secondary" id="wh-guide-back" type="button" hidden>Back</button>
+              <button id="wh-guide-next" type="button">Next</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== TOP STRIP ===================== -->
+      <header class="wh-topstrip">
+        <span class="wh-topstrip-logo">WebHam</span>
+        <div class="wh-topstrip-sep" aria-hidden="true"></div>
+
+        <!-- VFO -->
+        <div class="wh-topstrip-vfo">
+          <span class="wh-topstrip-vfo-label">VFO</span>
+          <span class="wh-topstrip-freq" id="sidebar-vfo-freq">—.———.——</span>
+          <div class="wh-topstrip-vfo-meta">
+            <span class="wh-pill" id="sidebar-vfo-mode">—</span>
+          </div>
+        </div>
+
+        <!-- S-Meter -->
+        <div class="wh-topstrip-smeter">
+          <span class="wh-topstrip-smeter-label">S-Meter</span>
+          <div class="wh-smeter-track" aria-hidden="true">
+            <div class="wh-smeter-fill" id="sidebar-smeter-fill"></div>
+          </div>
+          <span class="wh-smeter-readout">S:<span id="sidebar-smeter-text">0</span></span>
+        </div>
+
+        <div class="wh-topstrip-spacer"></div>
+
+        <!-- Global audio device strip (hidden in per-app mode) -->
+        <div class="wh-topstrip-audio" id="wh-topstrip-audio" data-global-only>
+          <button id="audio-perm-btn" class="wh-audio-perm-dot" title="Click to enable audio devices" aria-label="Audio permission status"></button>
+          <span class="wh-topstrip-audio-label">In</span>
+          <select id="global-audio-input" class="wh-topstrip-audio-select" title="Radio audio input">
+            <option value="">Default input</option>
+          </select>
+          <span class="wh-topstrip-audio-label">Out</span>
+          <select id="global-audio-output" class="wh-topstrip-audio-select" title="Radio audio output">
+            <option value="">Default output</option>
+          </select>
+        </div>
+
+        <span class="wh-topstrip-foot-status" id="sidebar-foot-status" aria-live="polite">Ready</span>
+
+        <div class="wh-topstrip-stat">
+          <span class="wh-topstrip-stat-label">QSOs</span>
+          <strong id="qso-count">0</strong>
+        </div>
+
+        <div class="wh-topstrip-sep" aria-hidden="true"></div>
+
+        <!-- Connection -->
+        <div class="connection-pill">
+          <span class="connection-dot"></span>
+          <strong id="connection-status">Disconnected</strong>
+        </div>
+
+        <button id="disconnect-btn" class="wh-topstrip-btn" disabled>Disconnect</button>
+
+
+        <!-- Theme toggle (three-state: light / dark / system) -->
+        <button type="button" class="wh-theme-toggle" id="sidebar-theme-toggle" aria-label="Theme: system. Click to switch to light theme." title="Click to cycle theme">
+          <span class="wh-theme-toggle-track" aria-hidden="true">
+            <span class="wh-theme-slot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+              </svg>
+            </span>
+            <span class="wh-theme-slot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <path d="M20 15.5A7.5 7.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" />
+              </svg>
+            </span>
+            <span class="wh-theme-slot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+                <rect x="3.5" y="4.5" width="17" height="12" rx="2.5" />
+                <path d="M8 20h8M12 16.5V20" />
+              </svg>
+            </span>
+            <span class="wh-theme-toggle-thumb" id="sidebar-theme-thumb">
+              <svg class="wh-theme-thumb-icon wh-theme-thumb-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+              </svg>
+              <svg class="wh-theme-thumb-icon wh-theme-thumb-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <path d="M20 15.5A7.5 7.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z" />
+              </svg>
+              <svg class="wh-theme-thumb-icon wh-theme-thumb-icon-system" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+                <rect x="3.5" y="4.5" width="17" height="12" rx="2.5" />
+                <path d="M8 20h8M12 16.5V20" />
+              </svg>
+            </span>
+          </span>
+        </button>
+
+        <button type="button" class="wh-btn-gradient" id="wh-add-entry">+ New QSO</button>
+      </header>
+
+      <!-- ===================== PANE AREA ===================== -->
+      <div class="wh-pane-area">
+
+        <!-- Mobile-only unified tab bar: every open view from both panes, one at
+             a time. Filled by shell.js; hidden on desktop. -->
+        <div class="wh-mobile-tabbar" id="wh-mobile-tabbar" role="tablist" aria-label="Open views"></div>
+
+        <!-- Pane A -->
+        <div class="wh-pane" id="pane-a">
+          <div class="wh-pane-bar">
+            <span class="wh-pane-label">PANE A</span>
+            <div class="wh-tab-bar" id="pane-a-tabs" role="tablist" aria-label="Pane A tabs"></div>
+            <div class="wh-tab-add-wrap">
+              <button type="button" class="wh-tab-add-btn" id="pane-a-add" aria-label="Open new tab in pane A" title="Open tab">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+              </button>
+              <div class="wh-tab-add-menu" id="pane-a-menu" hidden></div>
+            </div>
+            <button type="button" class="wh-pane-maximize" aria-label="Maximize pane A" title="Maximize">
+              <svg class="wh-icon-max" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" />
+              </svg>
+              <svg class="wh-icon-restore" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3" />
+              </svg>
+            </button>
+          </div>
+          <div class="wh-pane-content" id="pane-a-content"></div>
+        </div>
+
+        <!-- Gutter / Swap button -->
+        <div class="wh-gutter">
+          <button type="button" class="wh-swap-btn" id="wh-swap-btn" aria-label="Swap panes" title="Swap panes">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M7 16V4m0 0L3 8m4-4 4 4M17 8v12m0 0 4-4m-4 4-4-4" />
+            </svg>
+          </button>
+          <span class="wh-gutter-label">swap</span>
+        </div>
+
+        <!-- Pane B -->
+        <div class="wh-pane" id="pane-b">
+          <div class="wh-pane-bar">
+            <span class="wh-pane-label">PANE B</span>
+            <div class="wh-tab-bar" id="pane-b-tabs" role="tablist" aria-label="Pane B tabs"></div>
+            <div class="wh-tab-add-wrap">
+              <button type="button" class="wh-tab-add-btn" id="pane-b-add" aria-label="Open new tab in pane B" title="Open tab">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+              </button>
+              <div class="wh-tab-add-menu" id="pane-b-menu" hidden></div>
+            </div>
+            <button type="button" class="wh-pane-maximize" aria-label="Maximize pane B" title="Maximize">
+              <svg class="wh-icon-max" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3" />
+              </svg>
+              <svg class="wh-icon-restore" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3" />
+              </svg>
+            </button>
+          </div>
+          <div class="wh-pane-content" id="pane-b-content"></div>
+        </div>
+
+      </div>
+
+      <!-- ===================== PANEL POOL ===================== -->
+      <!-- All tab panels live here; pane management JS moves them into pane content divs. -->
+      <div id="wh-panel-pool" hidden>
+
+        <section class="tab-panel" id="tab-radio" data-tab-panel="radio">
+          <section class="console-card frequency-card">
+            <div class="card-heading">
+              <span class="eyebrow">Frequency</span>
+              <span class="badge" id="radio-badge">Offline</span>
+            </div>
+            <div class="frequency-readout" id="radio-frequency-display">--.---</div>
+            <div class="frequency-unit">MHz</div>
+            <div class="frequency-step-grid">
+              <button type="button" class="step-btn" data-step-hz="10">+10</button>
+              <button type="button" class="step-btn" data-step-hz="100">+100</button>
+              <button type="button" class="step-btn" data-step-hz="1000">+1k</button>
+              <button type="button" class="step-btn" data-step-hz="10000">+10k</button>
+              <button type="button" class="step-btn" data-step-hz="-10">-10</button>
+              <button type="button" class="step-btn" data-step-hz="-100">-100</button>
+              <button type="button" class="step-btn" data-step-hz="-1000">-1k</button>
+              <button type="button" class="step-btn" data-step-hz="-10000">-10k</button>
+            </div>
+          </section>
+
+          <section class="console-card mode-card">
+            <div class="card-heading">
+              <span class="eyebrow">Mode</span>
+              <span class="mode-readout" id="radio-mode-display">Unknown</span>
+            </div>
+            <div class="mode-grid" id="mode-quick-grid"></div>
+          </section>
+
+          <section class="console-card ptt-card">
+            <div class="card-heading">
+              <span class="eyebrow">Transmit</span>
+              <span class="badge muted" id="ptt-status">RX</span>
+            </div>
+            <div class="button-row" style="margin-top:.5rem;">
+              <button id="ptt-btn" class="secondary" disabled>PTT</button>
+            </div>
+          </section>
+
+          <section class="console-card collapsed" id="radio-connection-card">
+            <div class="panel-header">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <button type="button" class="collapse-toggle" id="radio-connection-toggle" aria-label="Toggle Radio Connection" title="Toggle Radio Connection">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <h2>Radio Connection</h2>
+              </div>
+              <span class="badge muted" id="serial-support-status">Checking...</span>
+            </div>
+
+            <div class="card-content" id="radio-connection-content">
+              <div class="button-row">
+                <button id="connect-btn">Connect Radio</button>
+                <button id="reconnect-btn" class="secondary">Reconnect Authorized Port</button>
+              </div>
+
+              <div class="grid two">
+                <label>
+                  Radio Profile
+                  <!-- Options are built at runtime from cat.js RADIO_PROFILES
+                       (js/apps/radio/index.js). They used to be ~110 hardcoded
+                       <option> tags; since the catalogue is now generated from
+                       Hamlib, hardcoding them here would leave the picker
+                       pointing at ids the catalogue no longer defines. -->
+                  <select id="radio-profile"></select>
+                </label>
+                <label class="wh-serial-setting">
+                  Baud Rate
+                  <input id="baud-rate" type="number" min="300" step="1" value="4800" />
+                </label>
+                <label class="wh-serial-setting">
+                  Data Bits
+                  <select id="data-bits">
+                    <option selected>8</option>
+                    <option>7</option>
+                  </select>
+                </label>
+                <label class="wh-serial-setting">
+                  Stop Bits
+                  <select id="stop-bits">
+                    <option value="1">1</option>
+                    <option value="2" selected>2</option>
+                  </select>
+                </label>
+                <label class="wh-serial-setting">
+                  Parity
+                  <select id="parity">
+                    <option value="none">None</option>
+                    <option value="even">Even</option>
+                    <option value="odd">Odd</option>
+                  </select>
+                </label>
+                <label class="wh-serial-setting">
+                  Flow Control
+                  <select id="flow-control">
+                    <option value="none" selected>None</option>
+                    <option value="hardware">Hardware</option>
+                  </select>
+                </label>
+                <label id="civ-addr-label" style="display: none;">
+                  CI-V Address (Hex)
+                  <input id="civ-address" type="text" placeholder="94" value="94" />
+                </label>
+                <label id="bridge-url-label" style="display: none;">
+                  rigctld Bridge URL
+                  <input id="bridge-url" type="text" placeholder="ws://localhost:8073" autocomplete="off" spellcheck="false" />
+                </label>
+              </div>
+
+              <div class="empty-state" id="serial-help">
+                Radio control uses Web Serial, so it needs a desktop Chrome, Edge, or Firefox 151 or later. If the chooser is empty, the COM port may already be open in another app, or the device may only expose TCP instead of a serial port.
+              </div>
+
+              <label>
+                Serial Console
+                <textarea id="serial-log" rows="12" readonly></textarea>
+              </label>
+            </div>
+          </section>
+
+        </section>
+
+        <section class="tab-panel" id="tab-ft8" data-tab-panel="ft8">
+
+          <!-- Summary cards (hidden by CSS, kept for JS) -->
+          <div class="wh-summary-cards" aria-hidden="true">
+            <div class="wh-sum-card">
+              <span class="wh-sum-label">UTC Time</span>
+              <strong class="wh-sum-value" id="wh-sum-utc">00:00:00</strong>
+            </div>
+            <div class="wh-sum-card">
+              <span class="wh-sum-label">Active Band</span>
+              <strong class="wh-sum-value wh-sum-accent" id="wh-sum-band">—</strong>
+            </div>
+            <div class="wh-sum-card">
+              <span class="wh-sum-label">Decodes / min</span>
+              <strong class="wh-sum-value" id="wh-sum-decodes">0</strong>
+            </div>
+            <div class="wh-sum-card">
+              <span class="wh-sum-label">Grid Locator</span>
+              <strong class="wh-sum-value wh-sum-dim" id="wh-sum-grid">—</strong>
+            </div>
+          </div>
+
+          <!-- =================== FT8 CONSOLE PANE =================== -->
+          <div class="ft8-console-pane" id="ft8-pane">
+
+            <!-- ROW 1 · Status strip -->
+            <section class="ft8-status-row">
+
+              <!-- Slot timer card -->
+              <div class="ft8-slot-card">
+                <div class="ft8-slot-ring-wrap">
+                  <svg class="ft8-slot-ring-svg" viewBox="0 0 60 60" aria-hidden="true">
+                    <circle class="ft8-slot-ring-track" cx="30" cy="30" r="25"/>
+                    <circle class="ft8-slot-ring-fill" id="ft8-slot-ring-fill" cx="30" cy="30" r="25"
+                      stroke-dasharray="157.08" stroke-dashoffset="0"/>
+                  </svg>
+                  <span class="ft8-slot-ring-time" id="ft8-countdown">15.0</span>
+                </div>
+                <div class="ft8-slot-meta">
+                  <span class="label" style="font-size:8.5px;">Slot</span>
+                  <span class="ft8-slot-id-text" id="ft8-slot-label">UTC :00</span>
+                  <span class="ft8-slot-parity" id="ft8-slot-parity">EVEN · RX</span>
+                </div>
+              </div>
+
+              <!-- Frequency card -->
+              <div class="ft8-freq-card">
+                <span class="label">Operating</span>
+                <div class="ft8-freq-readout">
+                  <span id="ft8-freq-mhz">—.———</span><span class="ft8-freq-u">.000</span>
+                </div>
+                <div class="ft8-freq-meta-row">
+                  <span class="ft8-freq-band-name" id="ft8-freq-band">—</span>
+                  <span class="ft8-freq-mode-chip">FT8 USB</span>
+                </div>
+              </div>
+
+              <!-- TX state card -->
+              <div class="ft8-tx-state-card" id="ft8-tx-card" data-state="idle">
+                <span class="label">TX</span>
+                <span class="ft8-tx-state-name" id="ft8-tx-status">Idle</span>
+                <span class="ft8-tx-queued-text" id="ft8-next-tx">—</span>
+              </div>
+
+              <!-- Session card -->
+              <div class="ft8-session-card">
+                <span class="label">Session</span>
+                <div class="ft8-session-btns">
+                  <button class="primary" id="ft8-start-session-btn" type="button"><svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true" style="vertical-align:-.1em;margin-right:4px"><polygon points="2,1 11,6 2,11"/></svg>Start</button>
+                  <button id="ft8-stop-session-btn" type="button"><svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true" style="vertical-align:-.1em;margin-right:4px"><rect x="1" y="1" width="10" height="10"/></svg>Stop</button>
+                </div>
+              </div>
+
+            </section>
+
+            <!-- ROW 2 · Waterfall -->
+            <section class="ft8-wf-panel">
+              <canvas id="ft8-waterfall" width="960" height="132"></canvas>
+              <div class="ft8-wf-meta">
+                <span>200–3000 Hz · FFT <strong id="ft8-wf-fft-label">4096</strong></span>
+                <span>PEAK <strong id="ft8-peak-tone">—</strong> · NF <strong id="ft8-noise-floor">—</strong> dB</span>
+              </div>
+              <div class="ft8-wf-rx-marker" id="ft8-wf-rx-marker" data-label="RX" style="left:35%;"></div>
+              <div class="ft8-wf-tx-marker" id="ft8-wf-tx-marker" data-label="TX" style="left:46%;"></div>
+              <div class="ft8-wf-axis">
+                <span>200</span><span>800</span><span>1400</span><span>2000</span><span>2600</span><span>3000</span>
+              </div>
+            </section>
+
+            <!-- ROW 2b · Band quick-select (jumps the radio to that band's FT8 freq) -->
+            <div class="ft8-band-row" id="ft8-band-row">
+              <button type="button" data-ft8-band="160m">160</button>
+              <button type="button" data-ft8-band="80m">80</button>
+              <button type="button" data-ft8-band="60m">60</button>
+              <button type="button" data-ft8-band="40m">40</button>
+              <button type="button" data-ft8-band="30m">30</button>
+              <button type="button" data-ft8-band="20m">20</button>
+              <button type="button" data-ft8-band="17m">17</button>
+              <button type="button" data-ft8-band="15m">15</button>
+              <button type="button" data-ft8-band="12m">12</button>
+              <button type="button" data-ft8-band="10m">10</button>
+              <button type="button" data-ft8-band="6m">6</button>
+              <button type="button" data-ft8-band="2m">2</button>
+              <button type="button" data-ft8-band="70cm">70</button>
+            </div>
+
+            <!-- ROW 3 · Decodes + Composer -->
+            <section class="ft8-main-row">
+
+              <!-- Left: Decode stream -->
+              <div class="ft8-sub-panel">
+                <div class="ft8-sub-head">
+                  <h3>Decodes</h3>
+                  <span class="ft8-live-indicator" id="ft8-decodes-rate">0/MIN</span>
+                </div>
+                <div class="ft8-decodes-filter" id="ft8-decodes-filter">
+                  <button class="active" data-ft8-filter="all">All</button>
+                  <button data-ft8-filter="cq">CQ</button>
+                  <button data-ft8-filter="unworked">Unworked</button>
+                </div>
+                <input type="search" class="ft8-decodes-search" id="ft8-decodes-search"
+                  placeholder="Search callsign…" autocomplete="off" spellcheck="false">
+                <div class="ft8-decodes-scroll" id="ft8-text-decodes">
+                  <div class="empty-state">No FT8 decodes yet. Start the FT8 session and let a full 15-second frame buffer build.</div>
+                </div>
+              </div>
+
+              <!-- Right: Transmit composer (Option B — compact arm) -->
+              <div class="ft8-sub-panel">
+                <div class="ft8-sub-head">
+                  <h3>Transmit</h3>
+                  <span class="label" id="ft8-auto-log-status">AUTO · 73</span>
+                </div>
+
+                <!-- Target station + QSO tracker -->
+                <div class="ft8-target-card">
+                  <div class="ft8-target-row">
+                    <span class="ft8-target-call" id="ft8-target-call">—</span>
+                    <span class="ft8-target-meta" id="ft8-target-meta">no target</span>
+                  </div>
+                  <div class="ft8-qso-strip" id="ft8-qso-strip">
+                    <div class="ft8-qso-step" data-step="cq"><strong>CQ</strong><span>—</span></div>
+                    <div class="ft8-qso-step" data-step="reply"><strong>RPLY</strong><span>—</span></div>
+                    <div class="ft8-qso-step" data-step="report"><strong>RPT</strong><span>—</span></div>
+                    <div class="ft8-qso-step" data-step="rrr"><strong>RR</strong><span>—</span></div>
+                    <div class="ft8-qso-step" data-step="73"><strong>73</strong><span>—</span></div>
+                  </div>
+                </div>
+
+                <span class="ft8-tx-zone-label">Pick a message → arm it next door</span>
+
+                <!-- Two-zone: message list (left) → compact arm column (right) -->
+                <div class="ft8-tx-twozone">
+                  <div class="ft8-tx-msgcol">
+                    <div class="ft8-tx-actions">
+                      <button id="ft8-queue-cq-btn" type="button"><span class="ft8-tx-key">CQ</span><span class="ft8-msg-text">—</span></button>
+                      <button id="ft8-queue-reply-btn" type="button"><span class="ft8-tx-key">RPLY</span><span class="ft8-msg-text">—</span></button>
+                      <button id="ft8-queue-report-btn" type="button"><span class="ft8-tx-key">RPT</span><span class="ft8-msg-text">—</span></button>
+                      <button id="ft8-queue-rrr-btn" type="button"><span class="ft8-tx-key">RR73</span><span class="ft8-msg-text">—</span></button>
+                      <button id="ft8-queue-73-btn" type="button"><span class="ft8-tx-key">73</span><span class="ft8-msg-text">—</span></button>
+                    </div>
+                    <!-- Free-text message (max 13 chars) -->
+                    <div class="ft8-freetext-row">
+                      <input id="ft8-freetext" type="text" maxlength="13" placeholder="Free text" autocomplete="off" spellcheck="false" />
+                      <button id="ft8-freetext-btn" type="button" title="Queue a free-text FT8 message (A–Z 0–9 space + - . / ?)">Send</button>
+                    </div>
+                  </div>
+
+                  <!-- Compact arm column -->
+                  <div class="ft8-arm-col">
+                    <button id="ft8-enable-tx-btn" type="button" class="ft8-arm-btn" title="Arm transmission — the selected message transmits every matching slot until disarmed">
+                      <span class="ft8-arm-icon" id="ft8-enable-tx-icon">▶</span>
+                      <span>Enable Tx</span>
+                      <span class="ft8-arm-sub" id="ft8-enable-tx-sub">TAP TO ARM</span>
+                    </button>
+                    <button id="ft8-abort-tx-btn" type="button" class="ft8-halt-btn" title="Halt Tx — stop transmitting now and clear the selected exchange (Enable Tx stays armed)">Halt</button>
+                    <button id="ft8-tune-btn" type="button" class="ft8-arm-tune" title="Send continuous carrier at TX tone — auto-stops after 30 s">Tune</button>
+                  </div>
+                </div>
+              </div>
+
+            </section>
+
+            <!-- ROW 4 · Settings rail -->
+            <section class="ft8-settings-rail">
+              <span class="label">Decoder</span>
+              <strong class="ft8-rail-status" id="ft8-decoder-status">Loading</strong>
+              <span class="ft8-rail-sep"></span>
+              <span class="label" data-per-app-only>Input</span>
+              <select id="ft8-audio-device" data-per-app-only>
+                <option value="">Default audio input</option>
+              </select>
+              <span class="label" data-per-app-only>Out</span>
+              <select id="ft8-audio-output" data-per-app-only>
+                <option value="">Default output</option>
+              </select>
+              <span class="ft8-rail-status" data-global-only title="Using global audio devices from top bar">🔊 Global</span>
+              <span class="label">FFT</span>
+              <select id="ft8-fft-size">
+                <option value="2048">2048</option>
+                <option value="4096" selected>4096</option>
+                <option value="8192">8192</option>
+              </select>
+              <span class="label">TX Hz</span>
+              <input type="number" id="ft8-tx-tone" value="1500" min="200" max="3000" step="25" class="ft8-rail-number" />
+              <label class="ft8-rail-check" for="ft8-skip-tx1" title="Answer a CQ at the signal report instead of the grid exchange (WSJT-X: Tx1 disabled), shortening the QSO by one round">
+                <input type="checkbox" id="ft8-skip-tx1" />
+                <span class="label">Skip Tx1</span>
+              </label>
+              <label class="ft8-rail-check" for="ft8-auto-log" title="When on, a completed QSO logs immediately with no prompt. When off (default), a popup asks before logging each completed QSO.">
+                <input type="checkbox" id="ft8-auto-log" />
+                <span class="label">Auto-log</span>
+              </label>
+              <span class="ft8-rail-sep"></span>
+              <button class="ft8-rail-btn" id="ft8-auto-seq-btn" type="button" title="Auto-sequencing OFF — click to enable">Auto Seq</button>
+              <button class="ft8-rail-btn" id="ft8-tx-parity-btn" type="button" title="Slot parity auto from decodes — click to force even/odd">Tx Auto</button>
+              <div class="ft8-rail-actions">
+                <button class="ft8-rail-btn" id="ft8-decode-now-btn" type="button">Decode</button>
+                <button class="ft8-rail-btn ft8-rail-btn-primary" id="ft8-log-qso-btn" type="button">Log QSO</button>
+              </div>
+            </section>
+
+            <div id="ft8-log-confirm" class="ft8-log-confirm" hidden>
+              <div class="ft8-log-confirm-header">
+                <span class="ft8-log-confirm-dot"></span>
+                <span class="ft8-log-confirm-eyebrow">New contact worked</span>
+                <span class="ft8-log-confirm-time" id="ft8-log-confirm-time">--</span>
+              </div>
+              <p class="ft8-log-confirm-text">Log a contact with</p>
+              <div class="ft8-log-confirm-who">
+                <span class="ft8-log-confirm-callsign" id="ft8-log-confirm-callsign">—</span>
+                <span class="ft8-log-confirm-operator" id="ft8-log-confirm-operator"></span>
+              </div>
+              <div class="ft8-log-confirm-grid">
+                <div><span class="label">Grid</span><strong id="ft8-log-confirm-grid">--</strong></div>
+                <div><span class="label">Band · Mode</span><strong id="ft8-log-confirm-band-mode">--</strong></div>
+                <div><span class="label">RST S / R</span><strong id="ft8-log-confirm-rst">--</strong></div>
+                <div><span class="label">Frequency</span><strong id="ft8-log-confirm-frequency">--</strong></div>
+              </div>
+              <div class="ft8-log-confirm-actions">
+                <button id="ft8-log-confirm-log-btn" type="button">Log it</button>
+                <button id="ft8-log-confirm-skip-btn" type="button" class="secondary">Not now</button>
+              </div>
+            </div>
+
+          </div><!-- /.ft8-console-pane -->
+
+          <!-- Hidden backward-compat elements required by js/apps/ft8/index.js (not displayed) -->
+          <div aria-hidden="true" style="display:none;">
+            <strong id="ft8-audio-status">Audio Off</strong>
+            <strong id="ft8-qso-stage">Standby</strong>
+            <strong id="ft8-frame-buffer">0.0 s</strong>
+            <strong id="ft8-sync-quality">--</strong>
+            <strong id="ft8-last-frame">None</strong>
+            <strong id="ft8-activity">Idle</strong>
+            <strong id="ft8-tx-tone-readout">1500 Hz</strong>
+            <strong id="ft8-last-tx">None</strong>
+            <div class="ft8-meter"><div class="ft8-meter-fill" id="ft8-meter-fill"></div></div>
+            <button id="ft8-fill-frequency-btn" type="button">Use FT8 Defaults</button>
+            <button id="ft8-sync-log-btn" type="button">Copy FT8 To Log</button>
+            <textarea id="ft8-session-notes" rows="3"></textarea>
+            <input id="wh-display-rx-freq" type="text" readonly value="—" />
+            <input id="wh-display-tx-freq" type="text" readonly value="—" />
+            <span id="wh-spectrum-fft-label">4096</span>
+            <input id="ft8-dx-call" type="text" />
+            <input id="ft8-dx-grid" type="text" />
+            <input id="ft8-sent-report" type="text" value="-10" />
+            <input id="ft8-received-report" type="text" value="-12" />
+          </div>
+
+        </section>
+
+        <section class="tab-panel" id="tab-logger" data-tab-panel="logger">
+          <div id="logbook-selector" hidden>
+            <header class="wh-page-header">
+              <div class="wh-page-header-text">
+                <h1 class="wh-page-title">Logbooks</h1>
+                <p class="wh-page-subtitle">Pick an operation or start a new one</p>
+              </div>
+              <button type="button" class="wh-btn-gradient wh-btn-header" id="logbook-new-btn">+ New Logbook</button>
+            </header>
+            <section class="console-card logbook-create-card" id="logbook-create" hidden>
+              <div class="panel-header">
+                <h2>New logbook</h2>
+              </div>
+              <form id="logbook-create-form" class="form-stack">
+                <div class="wh-type-field">
+                  <span class="wh-type-field-label">Type</span>
+                  <div class="wh-type-seg" id="logbook-type-seg" role="radiogroup" aria-label="Logbook type">
+                    <button type="button" data-type="general" aria-pressed="true">General</button>
+                    <button type="button" data-type="pota" aria-pressed="false">POTA</button>
+                    <button type="button" data-type="sota" aria-pressed="false">SOTA</button>
+                    <button type="button" data-type="contest" aria-pressed="false">Contest</button>
+                  </div>
+                  <span class="wh-type-hint" id="logbook-type-hint"></span>
+                  <input type="hidden" id="logbook-type" value="general" />
+                </div>
+                <label>
+                  Name
+                  <input id="logbook-name" type="text" required placeholder="e.g. Bear Mountain activation" />
+                </label>
+                <div class="grid two wh-ref-box" id="logbook-ref-row" hidden>
+                  <label>
+                    <span id="logbook-ref-label">Park reference</span>
+                    <input id="logbook-ref" type="text" placeholder="US-0680" />
+                  </label>
+                  <label class="logbook-nearby-label">
+                    <span>&nbsp;</span>
+                    <button type="button" class="secondary" id="logbook-nearby-btn">Find nearest via my location</button>
+                  </label>
+                </div>
+                <div id="logbook-nearby-results" class="logbook-nearby-results" hidden></div>
+                <div id="logbook-contest-row" hidden>
+                  <label>
+                    Contest
+                    <select id="logbook-contest"></select>
+                  </label>
+                  <!-- "My exchange": one input per fixed sent field for the
+                       chosen contest, rendered by the logger app. -->
+                  <div id="logbook-exch-me" class="wh-exch-me"></div>
+                  <!-- Entry category (N1MM-style): CATEGORY-* dropdowns +
+                       location/operators/claimed-score, rendered by the logger
+                       app from the Cabrillo category catalog. Each defaults to
+                       "— not set —" so an untouched category emits no header. -->
+                  <details class="wh-entry-cat">
+                    <summary>Entry category (for Cabrillo submission)</summary>
+                    <p class="settings-section-copy">Only categories you set here are written to the exported Cabrillo log. Leave any as “not set” to omit that header rather than declare a value you didn't choose.</p>
+                    <div id="logbook-entry-cat" class="grid two"></div>
+                  </details>
+                </div>
+                <div class="button-row">
+                  <button type="submit">Create Logbook</button>
+                  <button type="button" class="secondary" id="logbook-create-cancel">Cancel</button>
+                </div>
+              </form>
+            </section>
+            <div id="logbook-list" class="logbook-list"></div>
+          </div>
+          <div id="logbook-view">
+          <header class="wh-page-header">
+            <div class="wh-page-header-text">
+              <button type="button" class="logbook-back-btn secondary" id="logbook-back-btn" title="All logbooks">‹ Logbooks</button>
+              <h1 class="wh-page-title" id="wh-logbook-title">Station Logbook</h1>
+              <p class="wh-page-subtitle" id="wh-logbook-subtitle">0 contacts</p>
+              <span class="wh-mobile-op-meta" id="wh-mobile-op-meta" aria-hidden="true"></span>
+            </div>
+            <button type="button" class="wh-btn-gradient wh-btn-header" id="wh-new-qso">+ New QSO</button>
+          </header>
+          <div class="wh-logbook-grid">
+          <div class="wh-logbook-main">
+          <div class="wh-filter-toolbar" id="search-callsign-card">
+            <button type="button" class="collapse-toggle" id="search-callsign-toggle" aria-label="Toggle Search Callsign" title="Toggle Search Callsign">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <label class="wh-search-field">
+              <svg class="wh-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="M20 20l-4-4" />
+              </svg>
+              <input id="search-input" type="search" placeholder="Search Callsign..." />
+            </label>
+            <span class="wh-filter-divider" aria-hidden="true"></span>
+            <select id="logger-band-filter" class="wh-filter-select" aria-label="Filter by band">
+              <option value="">All Bands</option>
+              <option value="160m">160m</option>
+              <option value="80m">80m</option>
+              <option value="40m">40m</option>
+              <option value="30m">30m</option>
+              <option value="20m">20m</option>
+              <option value="17m">17m</option>
+              <option value="15m">15m</option>
+              <option value="12m">12m</option>
+              <option value="10m">10m</option>
+              <option value="6m">6m</option>
+              <option value="2m">2m</option>
+              <option value="70cm">70cm</option>
+            </select>
+            <select id="logger-mode-filter" class="wh-filter-select" aria-label="Filter by mode">
+              <option value="">All Modes</option>
+              <option value="FT8">FT8</option>
+              <option value="FT4">FT4</option>
+              <option value="CW">CW</option>
+              <option value="SSB">SSB</option>
+              <option value="USB">USB</option>
+              <option value="LSB">LSB</option>
+              <option value="FM">FM</option>
+            </select>
+            <select id="logger-lotw-filter" class="wh-filter-select" aria-label="Filter by LoTW status">
+              <option value="">All LoTW</option>
+              <option value="not-sent">Not Sent</option>
+              <option value="sent">Sent</option>
+              <option value="confirmed">Confirmed</option>
+            </select>
+            <button type="button" class="wh-icon-btn" id="logger-filter-toggle" aria-label="More filters" title="More filters">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+          <div class="wh-table-card">
+            <div id="empty-state" class="empty-state">
+              No contacts yet. Connect your radio and log your first QSO.
+            </div>
+            <div class="table-wrap wh-qso-table-wrap">
+              <table class="wh-qso-table">
+                <thead>
+                  <tr>
+                    <th>Date/UTC</th>
+                    <th class="wh-th-accent">Callsign</th>
+                    <th>Frequency</th>
+                    <th>Mode</th>
+                    <th>RST S/R</th>
+                    <th>Location</th>
+                    <th>Notes</th>
+                    <th class="wh-th-status">LoTW</th>
+                  </tr>
+                </thead>
+                <tbody id="qso-table-body"></tbody>
+              </table>
+            </div>
+            <div class="wh-mobile-cards" id="mobile-qso-cards" aria-label="Logged contacts"></div>
+            <span class="wh-mobile-cards-hint">newest at the bottom, next to the pad — tap a row to edit</span>
+            <div class="wh-table-footer-row" id="wh-logbook-footer-row" hidden>
+              <p class="wh-table-footer" id="wh-logbook-table-footer"></p>
+              <span class="wh-edit-hint">click any cell to edit that contact in place</span>
+            </div>
+          </div>
+          <section class="console-card wh-entry-section" id="qso-form-card">
+            <form id="qso-form" class="form-stack">
+              <div class="grid two">
+                <div class="panel-header">
+                  <h2 id="qso-form-heading">New contact</h2>
+                  <span class="badge muted" id="qso-form-badge">Stored in your browser</span>
+                </div>
+                <label>
+                  Callsign
+                  <input id="callsign" name="callsign" type="text" required />
+                </label>
+                <div class="wh-callsign-found pota-sota-only" id="callsign-found" hidden></div>
+                <label>
+                  Date
+                  <input id="qso-date" name="date" type="date" required />
+                </label>
+                <label>
+                  Time UTC
+                  <input id="qso-time" name="time" type="time" required />
+                </label>
+                <div class="wh-mfreq-summary" id="wh-mfreq-summary" role="button" tabindex="0" aria-label="Frequency, band and mode — tap to change">
+                  <div class="wh-mfreq-main">
+                    <span class="wh-mfreq-label">Frequency</span>
+                    <strong class="wh-mfreq-value" id="wh-mfreq-value">—</strong>
+                  </div>
+                  <span class="wh-mfreq-chip" id="wh-mfreq-band">—</span>
+                  <span class="wh-mfreq-chip" id="wh-mfreq-mode">—</span>
+                  <span class="wh-mfreq-hint">tap to change</span>
+                </div>
+                <label style="grid-column: 1 / -1;">
+                  Frequency
+                  <span class="wh-freq-wrap">
+                    <input id="frequency" name="frequency" type="text" placeholder="14.250" autocomplete="off" />
+                    <span class="wh-freq-band-chip" id="freq-band-chip" aria-hidden="true">—</span>
+                  </span>
+                </label>
+                <input type="hidden" id="band" name="band" />
+                <!-- Grid Square has no visible field (streamlined pad), but the
+                     value is still captured so logged QSOs plot on the map and
+                     export GRIDSQUARE: callsign lookup / FT8 / spot fill it. -->
+                <input type="hidden" id="grid-square" name="gridSquare" />
+                <div class="wh-band-quickset" id="band-quickset" hidden>
+                  <button type="button" class="secondary" data-qs-band="80m" data-qs-mhz="3.5">80</button>
+                  <button type="button" class="secondary" data-qs-band="40m" data-qs-mhz="7.0">40</button>
+                  <button type="button" class="secondary" data-qs-band="30m" data-qs-mhz="10.1">30</button>
+                  <button type="button" class="secondary" data-qs-band="20m" data-qs-mhz="14.0">20</button>
+                  <button type="button" class="secondary" data-qs-band="17m" data-qs-mhz="18.1">17</button>
+                  <button type="button" class="secondary" data-qs-band="15m" data-qs-mhz="21.0">15</button>
+                  <button type="button" class="secondary" data-qs-band="10m" data-qs-mhz="28.0">10</button>
+                  <span class="wh-band-quickset-divider" aria-hidden="true"></span>
+                  <button type="button" class="secondary wh-radio-chip" id="freq-radio-chip" title="Follow the rig's live frequency">
+                    <span class="wh-radio-dot" aria-hidden="true"></span><span id="freq-radio-chip-label">radio —</span>
+                  </button>
+                </div>
+                <label>
+                  Mode
+                  <input id="mode" name="mode" type="text" placeholder="SSB, CW, FT8..." />
+                </label>
+                <div class="wh-band-quickset wh-mode-quickset" id="mode-quickset" hidden>
+                  <button type="button" class="secondary" data-qs-mode="SSB">SSB</button>
+                  <button type="button" class="secondary" data-qs-mode="CW">CW</button>
+                  <button type="button" class="secondary" data-qs-mode="FT8">FT8</button>
+                  <button type="button" class="secondary" data-qs-mode="FT4">FT4</button>
+                  <button type="button" class="secondary" data-qs-mode="RTTY">RTTY</button>
+                  <button type="button" class="secondary" data-qs-mode="PSK31">PSK31</button>
+                  <button type="button" class="secondary" data-qs-mode="AM">AM</button>
+                  <button type="button" class="secondary" data-qs-mode="FM">FM</button>
+                  <span class="wh-band-quickset-divider" aria-hidden="true"></span>
+                  <button type="button" class="secondary wh-radio-chip" id="mode-radio-chip" title="Follow the rig's live mode">
+                    <span class="wh-radio-dot" aria-hidden="true"></span><span id="mode-radio-chip-label">radio —</span>
+                  </button>
+                </div>
+                <label>
+                  <span class="wh-label-long">Signal Report Sent</span><span class="wh-label-short">Sent</span>
+                  <input id="rst-sent" name="rstSent" type="text" placeholder="59" />
+                </label>
+                <label>
+                  <span class="wh-label-long">Signal Report Received</span><span class="wh-label-short">Rcvd</span>
+                  <input id="rst-received" name="rstReceived" type="text" placeholder="59" />
+                </label>
+                <label class="wh-loc-general">
+                  <span class="wh-label-long">Location</span><span class="wh-label-short">Loc</span>
+                  <input id="their-location" name="theirLocation" type="text" placeholder="Grid, state, or QTH" autocomplete="off" />
+                </label>
+                <label class="pota-sota-only wh-their-ref-label">
+                  <span id="their-ref-label">Their state / park</span>
+                  <input id="their-ref" name="theirRef" type="text" placeholder="MN or US-0001" />
+                </label>
+                <div class="wh-smart-field-readout" id="their-ref-readout" hidden></div>
+                <!-- Contest exchange (composable): a read-only chip showing the
+                     sent exchange, and a dynamic row of received-exchange inputs
+                     rendered by the logger app from the active contest's rcvd
+                     fields (RST excluded — it reuses #rst-received). -->
+                <div id="contest-exch-sent" class="contest-only wh-exch-sent-chip" hidden></div>
+                <div id="contest-exch-rcvd" class="contest-only wh-exch-row"></div>
+              </div>
+
+              <section class="lookup-panel full-log-only" aria-live="polite">
+                <div class="lookup-header">
+                  <strong>Callsign Lookup</strong>
+                  <span class="badge muted" id="callsign-lookup-status">Type a callsign to lookup</span>
+                </div>
+                <div class="lookup-grid">
+                  <div><span class="label">Source</span><strong id="callsign-lookup-source">--</strong></div>
+                  <div><span class="label">Callsign</span><strong id="callsign-lookup-call">--</strong></div>
+                  <div><span class="label">Operator</span><strong id="callsign-lookup-operator">--</strong></div>
+                  <div><span class="label">QTH</span><strong id="callsign-lookup-qth">--</strong></div>
+                  <div><span class="label">Grid</span><strong id="callsign-lookup-grid">--</strong></div>
+                  <div><span class="label">Country</span><strong id="callsign-lookup-country">--</strong></div>
+                </div>
+              </section>
+
+              <div class="wh-dupe-banner" id="dupe-banner" hidden>
+                <span class="wh-dupe-pill">dupe</span>
+                <span id="dupe-banner-text"></span>
+              </div>
+
+              <div class="wh-entry-footer" id="qso-entry-footer">
+                <!-- Rig/Power/Notes live in the footer so the General pad can lay
+                     them out inline with the Save/Clear buttons on one compact
+                     row (Rig/Power narrow, Notes flexible). POTA/SOTA keep them
+                     hidden here until "More" reveals them just above the buttons;
+                     Contest never shows them. -->
+                <div class="wh-side-fields" id="qso-side-fields">
+                  <label class="full-log-only">
+                    My Radio / Rig
+                    <input id="rig" name="rig" type="text" value="FT-897" />
+                  </label>
+                  <label class="full-log-only">
+                    Power
+                    <input id="power" name="power" type="text" placeholder="100 W" />
+                  </label>
+                  <label class="full-log-only">
+                    Notes
+                    <textarea id="notes" name="notes" rows="4"></textarea>
+                  </label>
+                </div>
+                <div class="button-row">
+                  <button type="submit" id="qso-form-submit">Save Contact</button>
+                  <button type="button" id="reset-form-btn" class="secondary" data-label-new="Clear Form" data-label-edit="Cancel">Clear Form</button>
+                  <!-- Desktop POTA/SOTA only (pota-sota-only class; hidden on
+                       the ≤520px mobile pad, which has no "More" state at
+                       all). Lives beside Save/Clear instead of in the field
+                       grid above so it doesn't compete with Signal Report
+                       Sent/Rcvd and Their state/park for the Callsign row. -->
+                  <button type="button" class="wh-more-toggle pota-sota-only" id="pota-more-toggle" aria-expanded="false">More <span class="wh-more-caret" aria-hidden="true">▾</span></button>
+                  <button type="button" id="delete-qso-btn" class="secondary" style="margin-left: auto; color: var(--danger);" hidden>Delete</button>
+                </div>
+              </div>
+              <span class="wh-mobile-save-caption">time &amp; date fill in automatically</span>
+            </form>
+          </section>
+          </div>
+          <aside class="wh-logbook-side">
+            <section class="console-card wh-side-card">
+              <span class="wh-side-kicker">this operation</span>
+              <dl class="wh-op-facts" id="wh-op-facts"></dl>
+              <div class="wh-op-tiles">
+                <div class="wh-op-tile"><strong id="wh-op-count">0</strong><span id="wh-op-count-caption">QSOs</span></div>
+                <div class="wh-op-tile"><strong id="wh-op-pace">—</strong><span>pace, last 10</span></div>
+              </div>
+            </section>
+            <section class="console-card wh-side-card">
+              <span class="wh-side-kicker">export</span>
+              <div class="wh-side-actions">
+                <button id="export-adif-btn" class="secondary" type="button">Export ADIF</button>
+                <button id="export-cabrillo-btn" class="secondary contest-only" type="button">Export Cabrillo</button>
+              </div>
+              <span class="wh-side-note" id="wh-export-note">ADIF works with every major logger.</span>
+            </section>
+            <section class="console-card wh-side-card">
+              <span class="wh-side-kicker">logbook of the world</span>
+              <div class="wh-side-actions">
+                <button id="lotw-download-btn" class="secondary" type="button">Sync LoTW</button>
+                <button id="lotw-sign-upload-btn" class="secondary" type="button">Upload to LoTW</button>
+              </div>
+              <span class="wh-side-note" id="wh-lotw-note">Not synced yet</span>
+              <span id="lotw-status" class="lotw-status-msg" aria-live="polite"></span>
+            </section>
+          </aside>
+          </div>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-spots" data-tab-panel="spots">
+          <header class="wh-cluster-header">
+            <h1 class="wh-cluster-title">Global DX Cluster Feed</h1>
+            <div class="wh-cluster-header-tools">
+              <label class="wh-search-field wh-cluster-search">
+                <svg class="wh-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M20 20l-4-4" />
+                </svg>
+                <input id="pota-filter" type="search" placeholder="Search Callsign..." />
+              </label>
+              <button id="refresh-pota-btn" class="wh-icon-tool" type="button" aria-label="Refresh spots" title="Refresh">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path d="M4 4v6h6M20 20v-6h-6M5 19A9 9 0 0 0 19 9M19 15A9 9 0 0 0 5 5" />
+                </svg>
+              </button>
+            </div>
+          </header>
+          <section class="console-card wh-cluster-card">
+            <div class="wh-cluster-filter-row">
+              <div class="wh-cluster-pills">
+                <select id="spots-band-filter" class="wh-filter-select" aria-label="Filter spots by band">
+                  <option value="">All Bands</option>
+                  <option value="radio">Radio (current band)</option>
+                  <option value="160m">160m</option>
+                  <option value="80m">80m</option>
+                  <option value="40m">40m</option>
+                  <option value="30m">30m</option>
+                  <option value="20m">20m</option>
+                  <option value="17m">17m</option>
+                  <option value="15m">15m</option>
+                  <option value="12m">12m</option>
+                  <option value="10m">10m</option>
+                  <option value="6m">6m</option>
+                  <option value="2m">2m</option>
+                  <option value="70cm">70cm</option>
+                </select>
+                <select id="spots-mode-filter" class="wh-filter-select" aria-label="Filter spots by mode">
+                  <option value="">All Modes</option>
+                  <option value="radio">Radio (current mode)</option>
+                  <option value="FT8">FT8</option>
+                  <option value="FT4">FT4</option>
+                  <option value="CW">CW</option>
+                  <option value="SSB">SSB</option>
+                  <option value="USB">USB</option>
+                  <option value="LSB">LSB</option>
+                  <option value="FM">FM</option>
+                </select>
+              </div>
+              <span class="wh-auto-refresh" id="wh-pota-auto-label">Auto-refresh: 60s</span>
+              <span class="badge muted" id="pota-status">Loading Spots</span>
+            </div>
+            <div class="spot-legend">
+              <span><i class="legend-dot spot"></i> Tune and prefill from spot list</span>
+            </div>
+            <div class="spot-list" id="pota-spot-list">
+              <div class="empty-state">POTA spots are loading.</div>
+            </div>
+          </section>
+        </section>
+
+        <section class="tab-panel" id="tab-map" data-tab-panel="map">
+          <section class="console-card">
+            <div class="panel-header">
+              <h2>Map</h2>
+              <span class="badge muted">Live Spots + Logged QSOs</span>
+            </div>
+            <div class="toolbar">
+              <div class="seg-control" id="map-mode" role="group" aria-label="Map mode">
+                <button type="button" data-map-mode="auto" class="active" aria-pressed="true">Auto</button>
+                <button type="button" data-map-mode="pota" aria-pressed="false">POTA/QSO</button>
+                <button type="button" data-map-mode="ft8" aria-pressed="false">FT8</button>
+              </div>
+              <div class="seg-control" id="map-decode-style" role="group" aria-label="FT8 decode style" hidden>
+                <button type="button" data-decode-style="pins" class="active" aria-pressed="true">Pins</button>
+                <button type="button" data-decode-style="grids" aria-pressed="false">Grids</button>
+              </div>
+              <button id="reset-map-btn" class="secondary" type="button">Reset Map</button>
+            </div>
+            <div id="qso-map" role="img" aria-label="QSO map and POTA spot map"></div>
+            <div class="spot-legend">
+              <span><i class="legend-dot spot"></i> POTA spot</span>
+              <span><i class="legend-dot qso"></i> Logged QSO</span>
+            </div>
+          </section>
+        </section>
+
+        <section class="tab-panel" id="tab-satellites" data-tab-panel="satellites">
+          <section class="console-card">
+            <div class="panel-header">
+              <h2>Satellite Tracking</h2>
+              <span class="badge muted" id="sat-tle-status">No TLE Data</span>
+            </div>
+            <div class="toolbar">
+              <button id="fetch-tle-btn" class="secondary" type="button">Fetch Amateur TLEs</button>
+              <select id="sat-selector" disabled>
+                <option value="">Select a Satellite...</option>
+              </select>
+            </div>
+            <div class="grid two">
+              <label>
+                Observer Grid
+                <input id="sat-observer-grid" type="text" placeholder="FN31" />
+              </label>
+              <div class="ft8-decode-summary compact" style="gap: 0.5rem; justify-content: space-between;">
+                <div><span class="label">Azimuth</span><strong id="sat-azimuth">--°</strong></div>
+                <div><span class="label">Elevation</span><strong id="sat-elevation">--°</strong></div>
+                <div><span class="label">Range</span><strong id="sat-range">-- km</strong></div>
+                <div><span class="label">Status</span><strong id="sat-visibility">--</strong></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="console-card">
+            <div class="panel-header">
+              <h2>Radio Doppler Control</h2>
+              <span class="badge muted" id="sat-doppler-status">Idle</span>
+            </div>
+            <div class="grid two">
+              <label>
+                Base Downlink (Hz)
+                <input id="sat-base-downlink" type="number" placeholder="436795000" />
+              </label>
+              <label>
+                Base Uplink (Hz)
+                <input id="sat-base-uplink" type="number" placeholder="145850000" />
+              </label>
+              <div class="ft8-decode-summary compact">
+                <div><span class="label">Shifted RX</span><strong id="sat-shifted-downlink">-- Hz</strong></div>
+                <div><span class="label">Shifted TX</span><strong id="sat-shifted-uplink">-- Hz</strong></div>
+              </div>
+              <div>
+                <label class="toggle-field" style="margin-top: 1rem;">
+                  <span>Auto Doppler Tune (Split VFO)</span>
+                  <input id="sat-auto-tune" type="checkbox" disabled />
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section class="console-card">
+            <div class="panel-header">
+              <h2>Rotator Control</h2>
+              <span class="badge muted" id="rotator-status">Disconnected</span>
+            </div>
+            <div class="button-row">
+              <button id="connect-rotator-btn">Connect Rotator</button>
+              <button id="disconnect-rotator-btn" class="secondary" disabled>Disconnect</button>
+            </div>
+            <div class="grid two compact" style="margin-top: 1rem;">
+              <div>
+                <label class="toggle-field">
+                  <span>Auto Track (Easycomm)</span>
+                  <input id="rotator-auto-track" type="checkbox" disabled />
+                </label>
+              </div>
+              <label>
+                Raw Target Output
+                <input id="rotator-raw-out" type="text" readonly placeholder="AZ... EL..." />
+              </label>
+            </div>
+          </section>
+        </section>
+
+        <!-- ====================== SSTV ====================== -->
+        <section class="tab-panel" id="tab-sstv" data-tab-panel="sstv">
+
+          <!-- Status strip -->
+          <section class="console-card">
+            <div class="panel-header">
+              <h2>SSTV Station</h2>
+              <span class="badge muted" id="sstv-status-badge">Idle</span>
+            </div>
+            <div class="ft8-status-strip">
+              <div><span class="label">Mode</span><strong id="sstv-mode-display">Robot 36</strong></div>
+              <div><span class="label">RX Progress</span><strong id="sstv-rx-progress">—</strong></div>
+              <div><span class="label">TX Progress</span><strong id="sstv-tx-progress">—</strong></div>
+              <div><span class="label">Audio</span><strong id="sstv-audio-status">Off</strong></div>
+              <div><span class="label">Frequency</span><strong id="sstv-freq-display">—</strong></div>
+              <div><span class="label">QSO Stage</span><strong id="sstv-qso-stage">—</strong></div>
+            </div>
+            <div class="button-row">
+              <button id="sstv-rx-start-btn" type="button">Start RX</button>
+              <button id="sstv-rx-stop-btn" type="button" class="secondary" disabled>Stop RX</button>
+              <button id="sstv-tx-start-btn" type="button" disabled>Transmit Image</button>
+              <button id="sstv-tx-stop-btn" type="button" class="secondary" disabled>Abort TX</button>
+              <select id="sstv-audio-input-select" data-per-app-only title="SSTV audio input" style="width:auto;flex-shrink:0;">
+                <option value="">Default input</option>
+              </select>
+              <select id="sstv-audio-output-select" data-per-app-only title="SSTV audio output" style="width:auto;flex-shrink:0;">
+                <option value="">Default output</option>
+              </select>
+              <select id="sstv-mode-select" style="width:auto;flex-shrink:0;">
+                <option value="auto" selected>Auto-Detect Mode</option>
+                <option value="robot24">Robot 24 (24s)</option>
+                <option value="robot36">Robot 36 (36s)</option>
+                <option value="robot72">Robot 72 (72s)</option>
+                <option value="martin1">Martin M1 (114s)</option>
+                <option value="martin2">Martin M2 (58s)</option>
+                <option value="scottie1">Scottie S1 (110s)</option>
+                <option value="scottie2">Scottie S2 (71s)</option>
+                <option value="scottiedx">Scottie DX (268s)</option>
+                <option value="pd50">PD-50 (50s)</option>
+                <option value="pd90">PD-90 (90s)</option>
+                <option value="pd120">PD-120 (126s)</option>
+                <option value="pd160">PD-160 (161s)</option>
+                <option value="pd180">PD-180 (187s)</option>
+                <option value="pd240">PD-240 (248s)</option>
+                <option value="pasokonp3">Pasokon P3 (203s)</option>
+                <option value="pasokonp5">Pasokon P5 (305s)</option>
+                <option value="pasokonp7">Pasokon P7 (406s)</option>
+              </select>
+            </div>
+          </section>
+
+          <!-- Two-column: Decoder | Encoder -->
+          <div class="ft8-grid" style="grid-template-columns:1fr 1fr;">
+
+            <!-- RX / Decoder -->
+            <section class="console-card">
+              <div class="panel-header">
+                <h2>Decoder</h2>
+                <span class="badge muted">Live RX</span>
+              </div>
+              <canvas id="sstv-rx-canvas" width="320" height="240"
+                style="width:100%;border-radius:6px;border:1px solid var(--panel-border);background:#000;display:block;"></canvas>
+              <div class="ft8-decode-summary compact" style="margin-top:.5rem;">
+                <div><span class="label">VIS Code</span><strong id="sstv-vis-code">—</strong></div>
+                <div><span class="label">Lines</span><strong id="sstv-rx-lines">0 / 240</strong></div>
+                <div><span class="label">SNR</span><strong id="sstv-rx-snr">—</strong></div>
+                <div><span class="label">Received</span><strong id="sstv-rx-count">0</strong></div>
+              </div>
+              <div class="button-row" style="margin-top:.5rem;">
+                <button id="sstv-rx-save-btn" type="button" class="secondary" disabled>Save Image</button>
+                <button id="sstv-rx-clear-btn" type="button" class="secondary">Clear Canvas</button>
+                <button id="sstv-log-rx-btn" type="button" class="secondary" disabled>Log QSO from RX</button>
+              </div>
+            </section>
+
+            <!-- TX / Encoder -->
+            <section class="console-card">
+              <div class="panel-header">
+                <h2>Encoder</h2>
+                <span class="badge muted">Build &amp; Send</span>
+              </div>
+              <!-- Preset slot tabs -->
+              <div style="display:flex;gap:.38rem;flex-wrap:wrap;margin-bottom:.5rem;">
+                <button class="sstv-preset-tab secondary" data-slot="cq" type="button">CQ</button>
+                <button class="sstv-preset-tab secondary" data-slot="qrz" type="button">QRZ?</button>
+                <button class="sstv-preset-tab secondary" data-slot="73" type="button">73</button>
+                <button class="sstv-preset-tab secondary" data-slot="qsl" type="button">QSL</button>
+                <button class="sstv-preset-tab secondary" data-slot="custom" type="button">Custom</button>
+              </div>
+              <canvas id="sstv-tx-canvas" width="320" height="240"
+                style="width:100%;border-radius:6px;border:1px solid var(--panel-border);background:#111;display:block;cursor:crosshair;"></canvas>
+              <div class="button-row" style="margin-top:.5rem;">
+                <label style="display:inline-flex;align-items:center;gap:.38rem;cursor:pointer;">
+                  <input type="file" id="sstv-load-image" accept="image/*" style="display:none;" />
+                  <button type="button" class="secondary" id="sstv-load-image-btn">Load Image</button>
+                </label>
+                <button id="sstv-capture-btn" type="button" class="secondary">Capture Screen</button>
+                <button id="sstv-preview-audio-btn" type="button" class="secondary">Preview Audio</button>
+              </div>
+            </section>
+          </div>
+
+          <!-- Photo editor / Text overlay editor -->
+          <section class="console-card" id="image-editor-card">
+            <div class="panel-header">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <button type="button" class="collapse-toggle" id="image-editor-toggle" aria-label="Toggle Image Editor" title="Toggle Image Editor">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <h2>Image Editor</h2>
+              </div>
+              <span class="badge muted">Text overlays &amp; template codes</span>
+            </div>
+            <div class="card-content" id="image-editor-content">
+            <div class="ft8-grid" style="grid-template-columns:1fr 1.4fr;align-items:start;">
+
+              <!-- Controls -->
+              <div class="form-stack">
+                <label>
+                  Text Content <span style="color:var(--muted);font-size:11px;">(use {CALL} {NAME} {GRID} {RST} {FREQ} {MODE} {DATE})</span>
+                  <input id="sstv-overlay-text" type="text" placeholder="{CALL} de W1AW  {GRID}  {DATE}" />
+                </label>
+                <div class="grid two">
+                  <label>Font size
+                    <input id="sstv-font-size" type="number" value="22" min="8" max="72" />
+                  </label>
+                  <label>Color
+                    <input id="sstv-font-color" type="color" value="#ffffff" style="height:2rem;padding:.1rem .2rem;" />
+                  </label>
+                  <label>Shadow color
+                    <input id="sstv-shadow-color" type="color" value="#000000" style="height:2rem;padding:.1rem .2rem;" />
+                  </label>
+                  <label>Font
+                    <select id="sstv-font-family">
+                      <option value="JetBrains Mono, monospace">JetBrains Mono</option>
+                      <option value="Caveat, cursive">Caveat</option>
+                      <option value="Kalam, sans-serif">Kalam</option>
+                      <option value="Arial, sans-serif">Arial</option>
+                    </select>
+                  </label>
+                </div>
+                <label>
+                  X position (px)
+                  <input id="sstv-overlay-x" type="number" value="10" />
+                </label>
+                <label>
+                  Y position (px)
+                  <input id="sstv-overlay-y" type="number" value="220" />
+                </label>
+                <div class="button-row">
+                  <button id="sstv-add-text-btn" type="button">Add Text Layer</button>
+                  <button id="sstv-clear-text-btn" type="button" class="secondary">Clear Layers</button>
+                </div>
+                <div class="button-row">
+                  <button id="sstv-apply-to-slot-btn" type="button">Save to Slot</button>
+                  <select id="sstv-apply-slot-select" style="width:auto;flex-shrink:0;">
+                    <option value="cq">CQ</option>
+                    <option value="qrz">QRZ?</option>
+                    <option value="73">73</option>
+                    <option value="qsl">QSL</option>
+                    <option value="custom">Custom</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Live preview of the TX canvas with text layers rendered -->
+              <div>
+                <div style="font-size:11px;color:var(--muted);margin-bottom:.35rem;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.06em;">
+                  Preview — <span id="sstv-editor-active-slot">CQ</span> slot
+                </div>
+                <canvas id="sstv-editor-canvas" width="320" height="240"
+                  style="width:100%;border-radius:6px;border:1px solid var(--panel-border);background:#111;display:block;"></canvas>
+                <div style="font-size:11px;color:var(--muted);margin-top:.35rem;">
+                  Click canvas to reposition last text layer · drag layers on TX canvas
+                </div>
+                <!-- Text layer list -->
+                <div id="sstv-layer-list" style="margin-top:.5rem;display:grid;gap:.3rem;"></div>
+              </div>
+            </div>
+
+            <!-- QSO field auto-populate banner -->
+            <div class="settings-inline-note" style="margin-top:.6rem;">
+              <span class="settings-inline-note-label">Template Codes</span>
+              <span>
+                <strong>{CALL}</strong> other station · <strong>{MYCALL}</strong> my call ·
+                <strong>{NAME}</strong> · <strong>{GRID}</strong> · <strong>{RST}</strong> ·
+                <strong>{FREQ}</strong> · <strong>{MODE}</strong> · <strong>{DATE}</strong> —
+                populated from the active QSO row in the Logbook.
+              </span>
+            </div>
+            </div>
+          </section>
+
+          <!-- Received image gallery -->
+          <section class="console-card">
+            <div class="panel-header">
+              <h2>Received Images</h2>
+              <span class="badge muted" id="sstv-gallery-count">0 images</span>
+            </div>
+            <div id="sstv-gallery" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.5rem;min-height:60px;">
+              <div style="color:var(--muted);font-size:13px;padding:.5rem;">No images received yet.</div>
+            </div>
+          </section>
+
+        </section>
+        <!-- end SSTV -->
+
+        <!-- =================== AUDIO MONITOR TAB =================== -->
+        <section class="tab-panel" id="tab-audio-macros" data-tab-panel="audio-macros">
+
+          <!-- ===== Audio Monitor ===== -->
+          <section class="console-card">
+            <div class="panel-header">
+              <h2>Audio Monitor</h2>
+              <span class="badge muted" id="audio-monitor-status">Off</span>
+            </div>
+            <div class="audio-monitor-status-row">
+              <button type="button" id="audio-monitor-start-btn"><svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true" style="vertical-align:-.1em;margin-right:4px"><polygon points="2,1 11,6 2,11"/></svg>Start</button>
+              <button type="button" class="secondary" id="audio-monitor-stop-btn" disabled><svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true" style="vertical-align:-.1em;margin-right:4px"><rect x="1" y="1" width="10" height="10"/></svg>Stop</button>
+              <span class="label">Input:</span>
+              <strong id="audio-monitor-input-label">—</strong>
+            </div>
+          </section>
+
+          <div class="audio-monitor-spectrum-wrap">
+            <canvas id="audio-monitor-spectrum" width="960" height="200"></canvas>
+            <div class="audio-monitor-axis-x">
+              <span>0</span><span>1k</span><span>2k</span><span>4k</span>
+              <span>8k</span><span>12k</span><span>16k</span><span>20k</span>
+            </div>
+          </div>
+
+          <section class="console-card audio-monitor-routing-card">
+            <div class="panel-header">
+              <h2>Audio Routing</h2>
+            </div>
+            <div class="audio-monitor-routing-row">
+              <label>
+                Monitor Output
+                <select id="audio-monitor-output-select">
+                  <option value="">Default output</option>
+                </select>
+              </label>
+            </div>
+            <div class="audio-monitor-routing-row" data-per-app-only>
+              <label>
+                Monitor Input
+                <select id="audio-monitor-input-select">
+                  <option value="">Default input</option>
+                </select>
+              </label>
+            </div>
+            <div class="audio-monitor-routing-row">
+              <span id="audio-monitor-routing-status" style="font-size:11px;color:var(--muted);">
+                Input: — → Output: —
+              </span>
+            </div>
+          </section>
+
+          <audio id="audio-monitor-relay" autoplay style="display:none;" aria-hidden="true"></audio>
+
+          <!-- ===== Voice Keyer ===== -->
+          <section class="console-card" id="voice-keyer-card">
+            <div class="panel-header">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <button type="button" class="collapse-toggle" id="voice-keyer-toggle" aria-label="Toggle Voice Keyer" title="Toggle Voice Keyer">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <h2>Voice Keyer</h2>
+              </div>
+              <span class="badge muted" id="voice-keyer-status">Idle</span>
+            </div>
+            <div class="card-content" id="voice-keyer-content">
+              <div class="grid two">
+                <label>
+                  Audio Output Device
+                  <select id="voice-output-device">
+                    <option value="">Default system output</option>
+                  </select>
+                </label>
+                <div id="voice-macros-list" class="voice-macros-list"></div>
+                <div class="button-row">
+                  <button id="add-voice-macro-btn" type="button" class="secondary">Add Voice Macro</button>
+                </div>
+              </div>
+              <label>
+                Text-to-Speech Message
+                <textarea id="voice-tts-text" rows="3" placeholder="Type any message. Press transmit to key CAT PTT and speak it."></textarea>
+              </label>
+              <div class="button-row">
+                <button id="voice-tx-tts-btn" type="button">TX Typed TTS</button>
+              </div>
+              <p class="ft8-meta ft8-helper-text">
+                Voice keying keys CAT PTT, then plays the selected recorded clip or speaks the typed text.
+              </p>
+            </div>
+          </section>
+
+          <!-- ===== CW Keyer ===== -->
+          <section class="console-card" id="cw-macro-card">
+            <div class="panel-header">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <button type="button" class="collapse-toggle" id="cw-macro-toggle" aria-label="Toggle CW Keyer" title="Toggle CW Keyer">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <h2>CW Keyer</h2>
+              </div>
+            </div>
+            <div class="card-content" id="cw-macro-content">
+              <div class="grid two compact">
+                <label>
+                  CW Text
+                  <input id="cw-macro-text" type="text" placeholder="CQ CQ DE K1ABC K" disabled />
+                </label>
+                <label>
+                  Speed (WPM)
+                  <input id="cw-macro-wpm" type="number" min="5" max="60" step="1" value="18" disabled />
+                </label>
+              </div>
+              <div class="button-row">
+                <button id="send-cw-macro-btn" class="secondary" disabled>Send CW</button>
+              </div>
+            </div>
+          </section>
+
+        </section>
+        <!-- end Audio and Macros -->
+
+        <section class="tab-panel" id="tab-settings" data-tab-panel="settings">
+          <header class="wh-page-header">
+            <div class="wh-page-header-text">
+              <h1 class="wh-page-title">Settings</h1>
+              <p class="wh-page-subtitle">Personalize lookups, station identity, sharing, and appearance for this browser.</p>
+            </div>
+          </header>
+
+          <div class="settings-with-nav">
+            <div class="settings-nav-col">
+              <p class="settings-nav-heading">Sections</p>
+              <nav class="settings-nav" aria-label="Settings categories">
+                <button class="settings-nav-item active" data-category="operator" type="button">
+                  <span class="settings-nav-label">Operator</span>
+                </button>
+                <button class="settings-nav-item" data-category="logging" type="button">
+                  <span class="settings-nav-label">Logging</span>
+                </button>
+                <button class="settings-nav-item" data-category="radio" type="button">
+                  <span class="settings-nav-label">Radio / CAT</span>
+                </button>
+                <button class="settings-nav-item" data-category="audio" type="button">
+                  <span class="settings-nav-label">Audio</span>
+                </button>
+                <button class="settings-nav-item" data-category="digital" type="button">
+                  <span class="settings-nav-label">Digital / FT8</span>
+                </button>
+                <button class="settings-nav-item" data-category="advanced" type="button">
+                  <span class="settings-nav-label">Advanced</span>
+                </button>
+              </nav>
+            </div>
+
+            <div class="settings-body">
+
+              <!-- Operator -->
+              <div class="settings-category" data-category="operator">
+                <div class="settings-layout">
+                  <!-- id: the first-run guide spotlights this whole card, so the
+                       operator sees where callsign and grid actually live. -->
+                  <section class="settings-section-card" id="settings-station-identity">
+                    <div class="settings-section-head">
+                      <div>
+                        <h2>Station identity</h2>
+                        <p class="settings-section-copy">Callsign and grid feed ADIF exports, FT8 messages, the map and satellite passes — one source of truth for every tab.</p>
+                      </div>
+                      <span class="badge muted">Station-wide</span>
+                    </div>
+                    <div class="grid three">
+                      <label>
+                        My callsign
+                        <input id="ft8-my-call" type="text" placeholder="K1ABC" />
+                      </label>
+                      <label>
+                        My grid
+                        <input id="ft8-my-grid" type="text" placeholder="FN31" />
+                      </label>
+                      <label>
+                        Station call &middot; ADIF
+                        <input id="settings-station-call" type="text" placeholder="W1ABC" />
+                      </label>
+                    </div>
+                  </section>
+
+                  <section class="settings-section-card">
+                    <div class="settings-section-head">
+                      <div>
+                        <h2>Callsign lookup</h2>
+                        <p class="settings-section-copy">Autofills operator details as you type a call in the logger. Set either service — QRZ is tried first.</p>
+                      </div>
+                      <span class="settings-chip off" id="settings-lookup-chip">Not set</span>
+                    </div>
+                    <div class="settings-lookup-grid">
+                      <span class="settings-lookup-service">QRZ</span>
+                      <label>
+                        Username
+                        <input id="settings-qrz-user" type="text" placeholder="W1ABC" autocomplete="username" />
+                      </label>
+                      <label>
+                        <span class="settings-field-label-row">Password<button type="button" class="settings-reveal-btn" id="settings-qrz-reveal">Show</button></span>
+                        <input id="settings-qrz-pass" type="password" placeholder="••••••••" autocomplete="current-password" />
+                      </label>
+                      <span class="settings-lookup-divider"></span>
+                      <span class="settings-lookup-service">HamQTH</span>
+                      <label>
+                        Username
+                        <input id="settings-hamqth-user" type="text" placeholder="W1ABC" autocomplete="username" />
+                      </label>
+                      <label>
+                        <span class="settings-field-label-row">Password<button type="button" class="settings-reveal-btn" id="settings-hamqth-reveal">Show</button></span>
+                        <input id="settings-hamqth-pass" type="password" placeholder="••••••••" autocomplete="current-password" />
+                      </label>
+                    </div>
+                  </section>
+                </div>
+              </div>
+
+              <!-- Logging -->
+              <div class="settings-category" data-category="logging" hidden>
+                <div class="settings-layout">
+                  <!-- id: spotlighted by the first-run guide's "Other info" card. -->
+                  <section class="settings-section-card" id="settings-lotw-section">
+                    <div class="settings-section-head">
+                      <div>
+                        <h2>Logbook of The World</h2>
+                        <p class="settings-section-copy">Credentials for syncing with ARRL LoTW. Your station certificate signs uploads directly — no TQSL install needed.</p>
+                      </div>
+                      <span class="badge muted">ARRL</span>
+                    </div>
+                    <div class="grid three">
+                      <label>
+                        Username
+                        <input id="settings-lotw-user" type="text" placeholder="W1ABC" autocomplete="username" />
+                      </label>
+                      <label>
+                        Password
+                        <input id="settings-lotw-pass" type="password" placeholder="••••••••" autocomplete="current-password" />
+                      </label>
+                      <label>
+                        Certificate password
+                        <input id="settings-lotw-p12-pass" type="password" placeholder="if any" autocomplete="off" />
+                      </label>
+                    </div>
+                    <div class="settings-inline-note">
+                      <span class="settings-inline-note-label">Station certificate</span>
+                      <span id="settings-lotw-p12-name">No certificate attached</span>
+                      <label class="file-label secondary" style="margin-left:auto">
+                        Attach .p12
+                        <input id="settings-lotw-p12-input" type="file" accept=".p12,.pfx" hidden />
+                      </label>
+                    </div>
+                    <p class="settings-help-link">
+                      Don't have a <code>.p12</code>? ARRL's
+                      <a href="https://lotw.arrl.org/lotw-help/save-certificate/" target="_blank" rel="noopener noreferrer">Saving a Callsign Certificate</a>
+                      walks through exporting one from TQSL.
+                    </p>
+                  </section>
+                </div>
+              </div>
+
+              <!-- Radio / CAT -->
+              <div class="settings-category" data-category="radio" hidden>
+                <div class="settings-layout">
+                  <section class="settings-section-card">
+                    <div>
+                      <h2>CAT connection</h2>
+                      <p class="settings-section-copy">Serial defaults come from the radio profile you pick on the Radio tab. These two are the only browser-side preferences.</p>
+                    </div>
+                    <label class="settings-check-row">
+                      <input type="checkbox" id="settings-auto-connect" />
+                      <span class="settings-check-row-text">
+                        <span class="settings-check-row-title">Reconnect to the last radio on load</span>
+                        <span class="settings-check-row-hint">Only works if the browser still holds serial permission.</span>
+                      </span>
+                    </label>
+                    <label class="settings-check-row">
+                      <input type="checkbox" id="settings-show-serial" />
+                      <span class="settings-check-row-text">
+                        <span class="settings-check-row-title">Show the serial console on the dashboard</span>
+                        <span class="settings-check-row-hint">Raw CAT traffic, useful when debugging a profile.</span>
+                      </span>
+                    </label>
+                  </section>
+                </div>
+              </div>
+
+              <!-- Audio -->
+              <div class="settings-category" data-category="audio" hidden>
+                <div class="settings-layout">
+                  <section class="settings-section-card" id="settings-audio-routing-card">
+                    <div class="settings-section-head">
+                      <div>
+                        <h2>Device routing</h2>
+                        <p class="settings-section-copy">By default every mini-app shares one radio input and output. Per-app mode gives FT8, SSTV and the macros desk their own selectors.</p>
+                      </div>
+                      <span class="badge muted">Audio</span>
+                    </div>
+                    <label class="settings-check-row">
+                      <input type="checkbox" id="settings-per-app-audio" />
+                      <span class="settings-check-row-title">Per-app audio devices</span>
+                      <span class="settings-nav-count" id="settings-audio-routing-note-text" style="margin-left:auto">Set your shared devices in the top bar.</span>
+                    </label>
+                  </section>
+                </div>
+              </div>
+
+              <!-- Digital / FT8 -->
+              <div class="settings-category" data-category="digital" hidden>
+                <div class="settings-layout">
+                  <section class="settings-section-card">
+                    <div class="settings-section-head">
+                      <div>
+                        <h2>Decode colors</h2>
+                        <p class="settings-section-copy">Highlights in the decode stream. Changes apply instantly.</p>
+                      </div>
+                      <button type="button" class="secondary" id="ft8-colors-reset">Reset</button>
+                    </div>
+                    <div class="ft8-color-list">
+                      <div class="ft8-color-row">
+                        <input type="color" id="ft8-color-tome" />
+                        <span class="ft8-color-name">Calling you</span>
+                        <span class="ft8-color-hint">my call in message</span>
+                        <span class="ft8-color-value" data-value-for="ft8-color-tome"></span>
+                      </div>
+                      <div class="ft8-color-row">
+                        <input type="color" id="ft8-color-cq" />
+                        <span class="ft8-color-name">CQ in message</span>
+                        <span class="ft8-color-value" data-value-for="ft8-color-cq"></span>
+                      </div>
+                      <div class="ft8-color-row">
+                        <input type="color" id="ft8-color-grid" />
+                        <span class="ft8-color-name">New grid</span>
+                        <span class="ft8-color-hint">not in your log</span>
+                        <span class="ft8-color-value" data-value-for="ft8-color-grid"></span>
+                      </div>
+                      <div class="ft8-color-row">
+                        <input type="color" id="ft8-color-worked" />
+                        <span class="ft8-color-name">Worked before</span>
+                        <span class="ft8-color-value" data-value-for="ft8-color-worked"></span>
+                      </div>
+                      <div class="ft8-color-row">
+                        <input type="color" id="ft8-color-tx" />
+                        <span class="ft8-color-name">Transmitted message</span>
+                        <span class="ft8-color-hint">Last Tx readout</span>
+                        <span class="ft8-color-value" data-value-for="ft8-color-tx"></span>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+
+              <!-- Advanced -->
+              <div class="settings-category" data-category="advanced" hidden>
+                <div class="settings-layout">
+                  <section class="settings-section-card">
+                    <div>
+                      <h2>Logging behaviour</h2>
+                      <p class="settings-section-copy">Small conveniences for the log form.</p>
+                    </div>
+                    <label class="settings-check-row">
+                      <input type="checkbox" id="settings-pota-notes" />
+                      <span class="settings-check-row-text">
+                        <span class="settings-check-row-title">Prefill notes from POTA spots</span>
+                        <span class="settings-check-row-hint">Park reference lands in the notes field when you click a spot.</span>
+                      </span>
+                    </label>
+                  </section>
+
+                  <section class="settings-danger-zone">
+                    <div class="settings-danger-zone-copy">
+                      <h2>Reset this browser</h2>
+                      <p>Clears every setting and every stored secret, including the attached certificate. Your logged QSOs are untouched.</p>
+                    </div>
+                    <button type="button" id="settings-reset-danger-btn" class="settings-danger-btn">Clear settings</button>
+                  </section>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <section class="settings-actions-card">
+            <span class="settings-save-status-inline" id="settings-save-status">Ready</span>
+            <button id="clear-settings-btn" type="button" class="secondary" style="margin-left:auto">Clear</button>
+            <button id="save-settings-btn" type="button" class="is-saved">Saved</button>
+          </section>
+        </section>
+
+      </div>
+      <!-- end #wh-panel-pool -->
+
+    </div>
+    <!-- end .wh-app -->
+
+
+    <template id="row-template">
+      <tr>
+        <td data-field="datetime"></td>
+        <td data-field="callsign"></td>
+        <td data-field="frequency"></td>
+        <td data-field="mode"></td>
+        <td data-field="rst"></td>
+        <td data-field="location"></td>
+        <td data-field="notes"></td>
+        <td data-field="lotw-status"></td>
+      </tr>
+    </template>
+
+    <!-- TODO(sri): this is the one third-party script loaded straight from a CDN
+         with no Subresource Integrity, so a compromised cdnjs would execute in
+         WebHam's origin — where the operator's credentials live. The CSP pins the
+         host but not the bytes. Add integrity + crossorigin; the digest can be
+         computed with:
+           curl -s https://cdnjs.cloudflare.com/ajax/libs/satellite.js/5.0.0/satellite.min.js \
+             | openssl dgst -sha384 -binary | openssl base64 -A
+         Better still, vendor it next to vendor/mqtt/ so the satellites tab works
+         offline like the rest of the app. Not done here: this environment cannot
+         reach cdnjs, and a guessed hash would break the script outright. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/satellite.js/5.0.0/satellite.min.js"></script>
+
+    <!-- Pane tab manager moved to js/shell/shell.js's mountPaneTabManager()
+         (Task 19) — js/main.js calls mountShell(apps, ctx) before the app
+         mount loop, preserving "panels placed before the module initialises". -->
+
+    <script type="module" src="js/main.js?v=20260713"></script>
+
+    <!-- SSTV engine moved to js/apps/sstv/index.js (Task 18) -->

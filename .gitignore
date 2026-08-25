@@ -1,0 +1,9 @@
+
+# Cloudflare Pages build output (tools/build-pages.mjs)
+dist/
+
+# wrangler pages dev scratch
+.wrangler/
+
+# Dev-only browser gate dependency (playwright-core), never committed
+node_modules/

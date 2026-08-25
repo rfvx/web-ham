@@ -1,0 +1,56 @@
+# Cloudflare Pages response headers for static assets.
+#
+# Pages applies this file to STATIC ASSETS ONLY — a Pages Function's Response is
+# not passed through it — so functions/_lib/respond.js sets the same security
+# headers itself for JSON replies. Keep the two in step, and in step with
+# SECURITY_HEADERS in server.js, which serves the same app locally.
+#
+# Three deliberate differences from server.js's copy:
+#
+# - img-src allows https://unpkg.com. Leaflet's default marker icons are
+#   referenced from leaflet.css, so when the map falls back to the CDN (which is
+#   today's only path — vendor/leaflet/ is not in the repo) the icons come from
+#   unpkg too. Without this the map renders with invisible markers.
+# - ws://localhost:* and ws://127.0.0.1:* reach the Hamlib rigctld bridge
+#   (js/connectors/cat.js, default ws://localhost:8073) from the hosted page.
+#   Browsers treat localhost as potentially trustworthy, so this is not blocked
+#   as mixed content even though the page itself is HTTPS.
+# - No 'unsafe-inline' in script-src. index.html's one inline script (the theme
+#   bootstrap that runs before first paint) is named by hash instead. Edit that
+#   script and this hash must change with it, or the page loads unthemed — the
+#   browser console prints the expected value on violation.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(self), microphone=(self), camera=(), payment=(), usb=(self), interest-cohort=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-PxYpOAntedsUntWSVSNJ8tkM00yECRo0ccasTNtMyaI=' 'wasm-unsafe-eval' https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.tile.openstreetmap.org https://unpkg.com; connect-src 'self' https://api.pota.app https://api.sotl.as https://api.allorigins.win wss://mqtt.pskreporter.info:1886 ws://localhost:* ws://127.0.0.1:* wss://localhost:* wss://127.0.0.1:*; media-src 'self' blob:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+
+# The app shell carries no content hash, so it must revalidate or an update
+# never reaches an installed PWA. The service worker is the update trigger of
+# last resort and must never be served stale.
+#
+# "/" and "/index.html" are listed separately because these rules match the
+# request path, not the resolved file: a request for "/" does not pick up an
+# "/index.html" rule.
+/sw.js
+  Cache-Control: no-cache
+/
+  Cache-Control: no-cache
+/index.html
+  Cache-Control: no-cache
+/manifest.webmanifest
+  Cache-Control: no-cache
+
+# The ES module graph is listed in sw.js by exact path and revalidated by the
+# service worker, but a browser with no SW yet (first visit, or SW unsupported)
+# still needs these fresh enough that a deploy is picked up on reload.
+/js/*
+  Cache-Control: no-cache
+
+# Immutable, version-pinned binaries: safe to cache hard.
+/vendor/ft8js/*
+  Cache-Control: public, max-age=31536000
+/vendor/mqtt/*
+  Cache-Control: public, max-age=31536000

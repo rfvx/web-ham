@@ -1,0 +1,458 @@
+{
+  "//": [
+    "Snapshot of the hand-written rig catalogue as it stood immediately BEFORE",
+    "the Hamlib renumbering (js/connectors/cat.js at the commit that introduced",
+    "the generated catalogue). Committed as a fixture so test-rig-migration.mjs",
+    "can assert the one property that actually matters for hardware: every id an",
+    "operator could have saved still resolves, and still resolves to a profile",
+    "with the SAME protocol family and serial settings it had before.",
+    "",
+    "Not consumed by the app at runtime \u2014 test fixture only."
+  ],
+  "profiles": {
+    "1": {
+      "family": "hamlib-rigctld",
+      "name": "Hamlib Dummy (rigctld)"
+    },
+    "2": {
+      "family": "hamlib-rigctld",
+      "name": "Hamlib NET rigctl"
+    },
+    "4": {
+      "family": "hamlib-rigctld",
+      "name": "FLRig (via rigctld -m 4)"
+    },
+    "1001": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-847"
+    },
+    "1002": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-1000"
+    },
+    "1003": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-1000D"
+    },
+    "1004": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-1000MP MARK-V"
+    },
+    "1005": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-747GX"
+    },
+    "1006": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-757GX"
+    },
+    "1007": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-757GXII"
+    },
+    "1008": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-767GX"
+    },
+    "1009": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-840"
+    },
+    "1010": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-890"
+    },
+    "1011": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-900"
+    },
+    "1012": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-920"
+    },
+    "1013": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-980"
+    },
+    "1014": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-990"
+    },
+    "1015": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-1000MP"
+    },
+    "1016": {
+      "family": "yaesu-ascii-classic",
+      "name": "Yaesu FT-1000MP MARK-V Field"
+    },
+    "1020": {
+      "family": "yaesu-5byte",
+      "name": "Yaesu FT-817"
+    },
+    "1021": {
+      "family": "yaesu-5byte",
+      "name": "Yaesu FT-100"
+    },
+    "1022": {
+      "family": "yaesu-5byte",
+      "name": "Yaesu FT-857"
+    },
+    "1023": {
+      "family": "yaesu-5byte",
+      "name": "Yaesu FT-897"
+    },
+    "1024": {
+      "family": "yaesu-5byte",
+      "name": "Yaesu FT-817ND"
+    },
+    "1025": {
+      "family": "yaesu-5byte",
+      "name": "Yaesu FT-818"
+    },
+    "1027": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FT-450"
+    },
+    "1028": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FT-950"
+    },
+    "1029": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FT-2000"
+    },
+    "1030": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FT-2000D"
+    },
+    "1031": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FTDX-9000D"
+    },
+    "1032": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FTDX-9000Contest"
+    },
+    "1033": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FTDX-9000MP"
+    },
+    "1034": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FTDX-5000"
+    },
+    "1035": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FT-991"
+    },
+    "1036": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FT-891"
+    },
+    "1037": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FTDX-3000"
+    },
+    "1038": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FTDX-1200"
+    },
+    "1039": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FT-991A"
+    },
+    "1040": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FTDX-101D"
+    },
+    "1041": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FTDX-101MP"
+    },
+    "1042": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FTDX-10"
+    },
+    "1049": {
+      "family": "yaesu-ascii-modern",
+      "name": "Yaesu FT-710"
+    },
+    "2001": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-50S"
+    },
+    "2002": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-440S"
+    },
+    "2003": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-450S"
+    },
+    "2004": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-570D"
+    },
+    "2005": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-570S"
+    },
+    "2006": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-690S"
+    },
+    "2007": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-711"
+    },
+    "2008": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-790"
+    },
+    "2009": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-811"
+    },
+    "2010": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-850"
+    },
+    "2011": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-870S"
+    },
+    "2012": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-940S"
+    },
+    "2013": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-950SDX"
+    },
+    "2014": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-2000"
+    },
+    "2015": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-50S (v2)"
+    },
+    "2016": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-60S"
+    },
+    "2028": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-480"
+    },
+    "2031": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-590S"
+    },
+    "2037": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-590SG"
+    },
+    "2039": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-990S"
+    },
+    "2041": {
+      "family": "kenwood-ascii",
+      "name": "Kenwood TS-890S"
+    },
+    "2021": {
+      "family": "elecraft-ascii",
+      "name": "Elecraft K2"
+    },
+    "2029": {
+      "family": "elecraft-ascii",
+      "name": "Elecraft K3"
+    },
+    "2043": {
+      "family": "elecraft-ascii",
+      "name": "Elecraft K3S"
+    },
+    "2044": {
+      "family": "elecraft-ascii",
+      "name": "Elecraft KX2"
+    },
+    "2045": {
+      "family": "elecraft-ascii",
+      "name": "Elecraft KX3"
+    },
+    "2047": {
+      "family": "elecraft-ascii",
+      "name": "Elecraft K4"
+    },
+    "3009": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-706"
+    },
+    "3010": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-706MkII"
+    },
+    "3011": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-706MkIIG"
+    },
+    "3012": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-707"
+    },
+    "3013": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-718"
+    },
+    "3023": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-746"
+    },
+    "3026": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-756"
+    },
+    "3027": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-756PRO"
+    },
+    "3030": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-775"
+    },
+    "3031": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-781"
+    },
+    "3032": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-910H"
+    },
+    "3046": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-746PRO"
+    },
+    "3060": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-7000"
+    },
+    "3063": {
+      "family": "icom-civ-classic",
+      "name": "Icom IC-7600"
+    },
+    "3070": {
+      "family": "icom-civ-modern",
+      "name": "Icom IC-7100"
+    },
+    "3071": {
+      "family": "icom-civ-modern",
+      "name": "Icom IC-7200"
+    },
+    "3073": {
+      "family": "icom-civ-modern",
+      "name": "Icom IC-7300"
+    },
+    "3078": {
+      "family": "icom-civ-modern",
+      "name": "Icom IC-7610"
+    },
+    "3081": {
+      "family": "icom-civ-modern",
+      "name": "Icom IC-9700"
+    },
+    "3085": {
+      "family": "icom-civ-modern",
+      "name": "Icom IC-705"
+    },
+    "3088": {
+      "family": "icom-civ-classic",
+      "name": "Xiegu G90"
+    },
+    "3087": {
+      "family": "icom-civ-classic",
+      "name": "Xiegu X6100"
+    },
+    "2057": {
+      "family": "kenwood-ascii",
+      "name": "QRP Labs QMX"
+    },
+    "2052": {
+      "family": "kenwood-ascii",
+      "name": "QRP Labs QCX/QDX"
+    },
+    "1045": {
+      "family": "kenwood-ascii",
+      "name": "mcHF QRP"
+    },
+    "2050": {
+      "family": "kenwood-ascii",
+      "name": "Lab599 TX-500"
+    },
+    "16001": {
+      "family": "kenwood-ascii",
+      "name": "Ten-Tec Omni VI"
+    },
+    "16002": {
+      "family": "kenwood-ascii",
+      "name": "Ten-Tec Paragon"
+    },
+    "16003": {
+      "family": "kenwood-ascii",
+      "name": "Ten-Tec Delta II"
+    },
+    "16010": {
+      "family": "kenwood-ascii",
+      "name": "Ten-Tec Orion"
+    },
+    "16014": {
+      "family": "kenwood-ascii",
+      "name": "Ten-Tec Eagle"
+    },
+    "17001": {
+      "family": "kenwood-ascii",
+      "name": "Alinco DX-77"
+    },
+    "17002": {
+      "family": "kenwood-ascii",
+      "name": "Alinco DX-SR8"
+    },
+    "5011": {
+      "family": "kenwood-ascii",
+      "name": "AOR AR8600"
+    },
+    "5016": {
+      "family": "kenwood-ascii",
+      "name": "AOR AR-DV1"
+    },
+    "6003": {
+      "family": "kenwood-ascii",
+      "name": "JRC NRD-535"
+    },
+    "6004": {
+      "family": "kenwood-ascii",
+      "name": "JRC NRD-545"
+    },
+    "32001": {
+      "family": "kenwood-ascii",
+      "name": "Barrett 950"
+    },
+    "32002": {
+      "family": "kenwood-ascii",
+      "name": "Barrett 2050"
+    },
+    "32004": {
+      "family": "kenwood-ascii",
+      "name": "Barrett 4050"
+    },
+    "2514": {
+      "family": "flex-ascii",
+      "name": "SmartSDR (6000 Series)"
+    },
+    "0": {
+      "family": null,
+      "name": "No Radio"
+    }
+  }
+}

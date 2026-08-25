@@ -1,0 +1,5116 @@
+{
+  "hamlibTag": "4.6.2",
+  "source": "https://github.com/Hamlib/Hamlib/tree/4.6.2",
+  "generatedBy": "tools/sync-hamlib.mjs --refresh",
+  "backends": [
+    "yaesu",
+    "kenwood",
+    "icom",
+    "flexradio"
+  ],
+  "rigCount": 196,
+  "parseGaps": [
+    {
+      "file": "kenwood/flex6xxx.c",
+      "symbol": "thetis_caps",
+      "reason": "no model_name"
+    },
+    {
+      "file": "icom/ic785x.c",
+      "symbol": "ic785x_caps",
+      "reason": "no rig_model"
+    }
+  ],
+  "vocabulary": {
+    "icom-civ": {
+      "source": "rigs/icom/icom_defs.h",
+      "frame": {
+        "PR": 254,
+        "CTRLID": 224,
+        "BCASTID": 0,
+        "FI": 253,
+        "ACK": 251,
+        "NAK": 250,
+        "COL": 252,
+        "PAD": 255
+      },
+      "commands": {
+        "SND_FREQ": 0,
+        "SND_MODE": 1,
+        "RD_BAND": 2,
+        "RD_FREQ": 3,
+        "RD_MODE": 4,
+        "SET_FREQ": 5,
+        "SET_MODE": 6,
+        "SET_VFO": 7,
+        "SET_MEM": 8,
+        "WR_MEM": 9,
+        "MEM2VFO": 10,
+        "CLR_MEM": 11,
+        "RD_OFFS": 12,
+        "SET_OFFS": 13,
+        "CTL_SCAN": 14,
+        "CTL_SPLT": 15,
+        "SET_TS": 16,
+        "CTL_ATT": 17,
+        "CTL_ANT": 18,
+        "CTL_ANN": 19,
+        "CTL_LVL": 20,
+        "RD_SQSM": 21,
+        "CTL_FUNC": 22,
+        "SND_CW": 23,
+        "SET_PWR": 24,
+        "RD_TRXID": 25,
+        "CTL_MEM": 26,
+        "SET_TONE": 27,
+        "CTL_PTT": 28,
+        "CTL_EDGE": 30,
+        "CTL_DVT": 31,
+        "CTL_DIG": 32,
+        "CTL_RIT": 33,
+        "CTL_DSD": 34,
+        "SEND_SEL_FREQ": 37,
+        "SEND_SEL_MODE": 38,
+        "CTL_SCP": 39,
+        "SND_VOICE": 40,
+        "CTL_MTEXT": 112,
+        "CTL_MISC": 127,
+        "OMNI6_XMT": 22
+      },
+      "subCommands": {
+        "LSB": 0,
+        "USB": 1,
+        "AM": 2,
+        "AMN": 2,
+        "CW": 3,
+        "RTTY": 4,
+        "FM": 5,
+        "FMN": 5,
+        "WFM": 6,
+        "CWR": 7,
+        "RTTYR": 8,
+        "AMS": 17,
+        "PSK": 18,
+        "PSKR": 19,
+        "SAML": 20,
+        "SAMU": 21,
+        "P25": 22,
+        "DSTAR": 23,
+        "DPMR": 24,
+        "NXDNVN": 25,
+        "NXDN_N": 32,
+        "DCR": 33,
+        "DD": 34,
+        "R7000_SSB": 5,
+        "VFOA": 0,
+        "VFOB": 1,
+        "BTOA": 160,
+        "XCHNG": 176,
+        "SUBTOMAIN": 177,
+        "DUAL_OFF": 192,
+        "DUAL_ON": 193,
+        "DUAL": 194,
+        "MAIN": 208,
+        "SUB": 209,
+        "BAND_SEL": 210,
+        "FRONTWIN": 224,
+        "BANK": 160,
+        "SCAN_STOP": 0,
+        "SCAN_START": 1,
+        "SCAN_PROG": 2,
+        "SCAN_DELTA": 3,
+        "SCAN_WRITE": 4,
+        "SCAN_FPROG": 18,
+        "SCAN_FDELTA": 19,
+        "SCAN_MEM2": 34,
+        "SCAN_SLCTN": 35,
+        "SCAN_SLCTM": 36,
+        "SCAN_PRIO": 66,
+        "SCAN_FDFOF": 160,
+        "SCAN_FDF5I": 161,
+        "SCAN_FDF1X": 162,
+        "SCAN_FDF2X": 163,
+        "SCAN_FDF5X": 164,
+        "SCAN_FDF1C": 165,
+        "SCAN_FDF5C": 166,
+        "SCAN_FDF1M": 167,
+        "SCAN_FDFON": 170,
+        "SCAN_NSLCT": 176,
+        "SCAN_SLCT": 177,
+        "SCAN_SL_NUM": 178,
+        "SCAN_RSMOFF": 208,
+        "SCAN_RSMONP": 209,
+        "SCAN_RSMON": 211,
+        "SPLT_OFF": 0,
+        "SPLT_ON": 1,
+        "DUP_OFF": 16,
+        "DUP_M": 17,
+        "DUP_P": 18,
+        "DUP_DD_RPS": 19,
+        "ATT_OFF": 0,
+        "ANT1": 0,
+        "ANT2": 1,
+        "ANN_ALL": 0,
+        "ANN_FREQ": 1,
+        "ANN_MODE": 2,
+        "LVL_AF": 1,
+        "LVL_RF": 2,
+        "LVL_SQL": 3,
+        "LVL_IF": 4,
+        "LVL_APF": 5,
+        "LVL_NR": 6,
+        "LVL_PBTIN": 7,
+        "LVL_PBTOUT": 8,
+        "LVL_CWPITCH": 9,
+        "LVL_RFPOWER": 10,
+        "LVL_MICGAIN": 11,
+        "LVL_KEYSPD": 12,
+        "LVL_NOTCHF": 13,
+        "LVL_COMP": 14,
+        "LVL_BKINDL": 15,
+        "LVL_BALANCE": 16,
+        "LVL_AGC": 17,
+        "LVL_NB": 18,
+        "LVL_DIGI": 19,
+        "LVL_DRIVE": 20,
+        "LVL_MON": 21,
+        "LVL_VOXGAIN": 22,
+        "LVL_ANTIVOX": 23,
+        "LVL_CONTRAST": 24,
+        "LVL_BRIGHT": 25,
+        "LVL_BASS": 27,
+        "LVL_TREBLE": 28,
+        "LVL_SCNSPD": 29,
+        "LVL_SCNDEL": 30,
+        "LVL_PRIINT": 31,
+        "LVL_RESTIM": 32,
+        "SQL": 1,
+        "SML": 2,
+        "SMF": 3,
+        "CML": 4,
+        "CSQL": 5,
+        "SAMS": 6,
+        "OVF": 7,
+        "RFML": 17,
+        "SWR": 18,
+        "ALC": 19,
+        "CMP": 20,
+        "VD": 21,
+        "ID": 22,
+        "FUNC_PAMP": 2,
+        "FUNC_AGCOFF": 16,
+        "FUNC_AGCON": 17,
+        "FUNC_AGC": 18,
+        "FUNC_NBOFF": 32,
+        "FUNC_NBON": 33,
+        "FUNC_NB": 34,
+        "FUNC_APFOFF": 48,
+        "FUNC_APFON": 49,
+        "FUNC_APF": 50,
+        "FUNC_NR": 64,
+        "FUNC_ANF": 65,
+        "FUNC_TONE": 66,
+        "FUNC_TSQL": 67,
+        "FUNC_COMP": 68,
+        "FUNC_MON": 69,
+        "FUNC_VOX": 70,
+        "FUNC_BKIN": 71,
+        "FUNC_MN": 72,
+        "FUNC_RF": 73,
+        "FUNC_AFC": 74,
+        "FUNC_CSQL": 75,
+        "FUNC_VSC": 76,
+        "FUNC_MANAGC": 77,
+        "FUNC_DIGISEL": 78,
+        "FUNC_TW_PK": 79,
+        "FUNC_DIAL_LK": 80,
+        "FUNC_P25SQL": 82,
+        "FUNC_ANTRX": 83,
+        "FUNC_IF1F": 85,
+        "FUNC_DSPF": 86,
+        "FUNC_MANN": 87,
+        "FUNC_SSBT": 88,
+        "FUNC_SUBB": 89,
+        "FUNC_SATM": 90,
+        "FUNC_DSSQL": 91,
+        "FUNC_DPSQL": 95,
+        "FUNC_NXSQL": 96,
+        "FUNC_DCSQL": 97,
+        "FUNC_DPSCM": 98,
+        "FUNC_NXENC": 99,
+        "FUNC_DCENC": 100,
+        "FUNC_IPP": 101,
+        "FUNC_TX_INHIBIT": 102,
+        "FUNC_DPP": 103,
+        "PWR_OFF": 0,
+        "PWR_ON": 1,
+        "PWR_STDBY": 2,
+        "PTT": 0,
+        "ANT_TUN": 1,
+        "RD_TX_FREQ": 3,
+        "EDGE_RD_N": 0,
+        "EDGE_RD": 1,
+        "EDGE_RD_NU": 2,
+        "EDGE_RD_U": 3,
+        "RIT_FREQ": 0,
+        "RIT": 1,
+        "XIT": 2,
+        "MEM_CNTNT": 0,
+        "MEM_BAND_REG": 1,
+        "MEM_FILT_WDTH": 3,
+        "MEM_PARM": 5,
+        "MEM_DATA_MODE": 6,
+        "MEM_TX_PB": 7,
+        "MEM_FLTR_SHAPE": 8,
+        "MEM_CNTNT_SLCT": 1,
+        "MEM_FLT_SLCT": 1,
+        "MEM_MODE_SLCT": 2,
+        "MEM_RDWR_MEM": 0,
+        "MEM_SATMEM": 1,
+        "MEM_VOXGAIN": 2,
+        "MEM_VOXDELAY": 3,
+        "MEM1_VOXDELAY": 5,
+        "MEM_ANTIVOX": 4,
+        "MEM_RIT": 6,
+        "MEM_SATMODE910": 7,
+        "MEM_BANDSCOPE": 8,
+        "MEM_DUALMODE": 89,
+        "MEM_SATMODE": 90,
+        "MEM_SKIP_SLCT_OFF": 0,
+        "MEM_SKIP_SLCT_ON": 16,
+        "MEM_PSKIP_SLCT_ON": 32,
+        "MEM_DUP_OFF": 0,
+        "MEM_DUP_MINUS": 1,
+        "MEM_DUP_PLUS": 2,
+        "MEM_TSTEP_OFF": 0,
+        "MEM_TSTEP_ON": 1,
+        "FUNC_IPPLUS": 7,
+        "MEM_AFLT": 0,
+        "MEM_ANL": 0,
+        "MEM_EAR": 1,
+        "MEM_REC": 9,
+        "MEM_PTT": 55,
+        "TONE_RPTR": 0,
+        "TONE_SQL": 1,
+        "TONE_DTCS": 2,
+        "TONE_P25NAC": 3,
+        "TONE_DSCSQL": 7,
+        "TONE_DPCOM": 8,
+        "TONE_DPCC": 9,
+        "TONE_NXRAN": 10,
+        "TONE_DCUC": 11,
+        "TONE_DPSCK": 12,
+        "TONE_NXENK": 13,
+        "TONE_DCENK": 14,
+        "RD_TRXID": 0,
+        "DIG_DSCALS": 0,
+        "DIG_DSMESS": 1,
+        "DIG_DSRSTS": 2,
+        "DIG_DSGPSD": 3,
+        "DIG_DSGPSM": 4,
+        "DIG_DSCSQL": 5,
+        "DIG_P25ID": 6,
+        "DIG_P25STS": 7,
+        "DIG_DPRXID": 8,
+        "DIG_DPRSTS": 9,
+        "DIG_NXRXID": 10,
+        "DIG_NXRSTS": 11,
+        "DIG_DCRXID": 12,
+        "DVT_DSMYCS": 0,
+        "DVT_DSTXCS": 1,
+        "DVT_DSTXMS": 2,
+        "DSD_DSTXDT": 0,
+        "SCP_DAT": 0,
+        "SCP_STS": 16,
+        "SCP_DOP": 17,
+        "SCP_MSS": 18,
+        "SCP_SDS": 19,
+        "SCP_MOD": 20,
+        "SCP_SPN": 21,
+        "SCP_EDG": 22,
+        "SCP_HLD": 23,
+        "SCP_ATT": 24,
+        "SCP_REF": 25,
+        "SCP_SWP": 26,
+        "SCP_STX": 27,
+        "SCP_CFQ": 28,
+        "SCP_VBW": 29,
+        "SCP_FEF": 30,
+        "SCP_RBW": 31,
+        "SCP_MKP": 32,
+        "OPTO_LOCAL": 1,
+        "OPTO_REMOTE": 2,
+        "OPTO_TAPE_ON": 3,
+        "OPTO_TAPE_OFF": 4,
+        "OPTO_RDSTAT": 5,
+        "OPTO_RDCTCSS": 6,
+        "OPTO_RDDCS": 7,
+        "OPTO_RDDTMF": 8,
+        "OPTO_RDID": 9,
+        "OPTO_SPKRON": 10,
+        "OPTO_SPKROFF": 11,
+        "OPTO_5KSCON": 12,
+        "OPTO_5KSCOFF": 13,
+        "OPTO_NXT": 14,
+        "OPTO_SCON": 15,
+        "OPTO_SCOFF": 16,
+        "PRM_BEEP": 2,
+        "PRM_CWPITCH": 16,
+        "PRM_LANG": 21,
+        "PRM_BACKLT": 33,
+        "PRM_SLEEP": 50,
+        "PRM_SLPTM": 51,
+        "PRM_TIME": 39
+      },
+      "modeCodes": {
+        "LSB": 0,
+        "USB": 1,
+        "AM": 2,
+        "AMN": 2,
+        "CW": 3,
+        "RTTY": 4,
+        "FM": 5,
+        "FMN": 5,
+        "WFM": 6,
+        "CWR": 7,
+        "RTTYR": 8,
+        "AMS": 17,
+        "SAML": 20,
+        "SAMU": 21,
+        "P25": 22,
+        "DSTAR": 23,
+        "DPMR": 24,
+        "NXDNVN": 25,
+        "NXDN_N": 32,
+        "DCR": 33,
+        "DD": 34,
+        "R7000_SSB": 5,
+        "VFOA": 0,
+        "VFOB": 1
+      }
+    },
+    "yaesu-5byte": {
+      "source": "rigs/yaesu/ft897.c",
+      "ncmd": [
+        {
+          "label": "lock on",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "lock off",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            128
+          ]
+        },
+        {
+          "label": "ptt on",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            8
+          ]
+        },
+        {
+          "label": "ptt off",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            136
+          ]
+        },
+        {
+          "label": "set freq",
+          "needsReply": false,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "label": "mode set main LSB",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "label": "mode set main USB",
+          "needsReply": true,
+          "bytes": [
+            1,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "label": "mode set main CW",
+          "needsReply": true,
+          "bytes": [
+            2,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "label": "mode set main CWR",
+          "needsReply": true,
+          "bytes": [
+            3,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "label": "mode set main AM",
+          "needsReply": true,
+          "bytes": [
+            4,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "label": "mode set main FM",
+          "needsReply": true,
+          "bytes": [
+            8,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "label": "mode set main FM-N",
+          "needsReply": true,
+          "bytes": [
+            136,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "label": "mode set main DIG",
+          "needsReply": true,
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "label": "mode set main PKT",
+          "needsReply": true,
+          "bytes": [
+            12,
+            0,
+            0,
+            0,
+            7
+          ]
+        },
+        {
+          "label": "clar on",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            5
+          ]
+        },
+        {
+          "label": "clar off",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            133
+          ]
+        },
+        {
+          "label": "set clar freq",
+          "needsReply": false,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            245
+          ]
+        },
+        {
+          "label": "toggle vfo a/b",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            129
+          ]
+        },
+        {
+          "label": "split on",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            2
+          ]
+        },
+        {
+          "label": "split off",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            130
+          ]
+        },
+        {
+          "label": "set RPT shift MINUS",
+          "needsReply": true,
+          "bytes": [
+            9,
+            0,
+            0,
+            0,
+            9
+          ]
+        },
+        {
+          "label": "set RPT shift PLUS",
+          "needsReply": true,
+          "bytes": [
+            73,
+            0,
+            0,
+            0,
+            9
+          ]
+        },
+        {
+          "label": "set RPT shift SIMPLEX",
+          "needsReply": true,
+          "bytes": [
+            137,
+            0,
+            0,
+            0,
+            9
+          ]
+        },
+        {
+          "label": "set RPT offset freq",
+          "needsReply": false,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            249
+          ]
+        },
+        {
+          "label": "set DCS on",
+          "needsReply": true,
+          "bytes": [
+            10,
+            0,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "label": "set DCS decoder on",
+          "needsReply": true,
+          "bytes": [
+            11,
+            0,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "label": "set DCS encoder on",
+          "needsReply": true,
+          "bytes": [
+            12,
+            0,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "label": "set CTCSS on",
+          "needsReply": true,
+          "bytes": [
+            42,
+            0,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "label": "set CTCSS decoder on",
+          "needsReply": true,
+          "bytes": [
+            58,
+            0,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "label": "set CTCSS encoder on",
+          "needsReply": true,
+          "bytes": [
+            74,
+            0,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "label": "set CTCSS/DCS off",
+          "needsReply": true,
+          "bytes": [
+            138,
+            0,
+            0,
+            0,
+            10
+          ]
+        },
+        {
+          "label": "set CTCSS tone",
+          "needsReply": false,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            11
+          ]
+        },
+        {
+          "label": "set DCS code",
+          "needsReply": false,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            12
+          ]
+        },
+        {
+          "label": "get RX status",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            231
+          ]
+        },
+        {
+          "label": "get TX status",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            247
+          ]
+        },
+        {
+          "label": "get FREQ and MODE status",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            3
+          ]
+        },
+        {
+          "label": "pwr wakeup sequence",
+          "needsReply": true,
+          "bytes": [
+            255,
+            255,
+            255,
+            255,
+            255
+          ]
+        },
+        {
+          "label": "pwr on",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            15
+          ]
+        },
+        {
+          "label": "pwr off",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            143
+          ]
+        },
+        {
+          "label": "eeprom read",
+          "needsReply": false,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            187
+          ]
+        },
+        {
+          "label": "tx meter status, i.e ALC, MOD, PWR, SWR",
+          "needsReply": true,
+          "bytes": [
+            0,
+            0,
+            0,
+            0,
+            189
+          ]
+        }
+      ]
+    },
+    "kenwood-ascii": {
+      "source": "rigs/kenwood/kenwood.c",
+      "modeDigits": {
+        "LSB": 1,
+        "USB": 2,
+        "CW": 3,
+        "FM": 4,
+        "AM": 5,
+        "RTTY": 6,
+        "CWR": 7,
+        "RTTYR": 9,
+        "PSK": 10,
+        "PSKR": 11,
+        "PKTLSB": 12,
+        "PKTUSB": 13,
+        "PKTFM": 14,
+        "PKTAM": 15,
+        "LSBD2": 16,
+        "USBD2": 17,
+        "LSBD3": 20,
+        "USBD3": 21
+      },
+      "ops": {
+        "setFreq": {
+          "fn": "kenwood_set_freq",
+          "literals": [
+            "F%c%011lld",
+            "FB",
+            "FA"
+          ]
+        },
+        "readFreq": {
+          "fn": "kenwood_get_freq",
+          "literals": [
+            "F%c"
+          ]
+        },
+        "setMode": {
+          "fn": "kenwood_set_mode",
+          "literals": [
+            "DA",
+            "SF0;",
+            "OM0%c",
+            "DT",
+            "MD%c"
+          ]
+        },
+        "readMode": {
+          "fn": "kenwood_get_mode",
+          "literals": [
+            "SF0;",
+            "SF1;",
+            "OM%c",
+            "MD$",
+            "MD",
+            "DA"
+          ]
+        },
+        "setPtt": {
+          "fn": "kenwood_set_ptt",
+          "literals": [
+            "VX0;TX",
+            "RX",
+            "TX",
+            "TX0",
+            "TX1"
+          ]
+        }
+      }
+    },
+    "yaesu-ascii": {
+      "source": "rigs/yaesu/newcat.c",
+      "modeChars": {
+        "LSB": "1",
+        "USB": "2",
+        "CW": "3",
+        "FM": "4",
+        "AM": "5",
+        "RTTY": "6",
+        "CWR": "7",
+        "PKTLSB": "8",
+        "RTTYR": "9",
+        "PKTFM": "A",
+        "FMN": "B",
+        "PKTUSB": "C",
+        "AMN": "D",
+        "C4FM": "E",
+        "PKTFMN": "F"
+      },
+      "ops": {
+        "setFreq": {
+          "fn": "newcat_set_freq",
+          "literals": [
+            "VS%c",
+            "VS%c%c",
+            "VS%d;BS%02d%c",
+            "BS%02d%c",
+            "VS%d;",
+            "FT2;BS%02d;FA%09.0f;FT3;",
+            "BS%02d;FA%09.0f;",
+            "VS1;F%c%0*lld;VS0;",
+            "F%c%0*lld;"
+          ]
+        },
+        "readFreq": {
+          "fn": "newcat_get_freq",
+          "literals": [
+            "F%c"
+          ]
+        },
+        "setMode": {
+          "fn": "newcat_set_mode",
+          "literals": [
+            "MD0x%c"
+          ]
+        },
+        "readMode": {
+          "fn": "newcat_get_mode",
+          "literals": [
+            "MD%c%c"
+          ]
+        },
+        "setPtt": {
+          "fn": "newcat_set_ptt",
+          "literals": [
+            "TX1;",
+            "EX1030;",
+            "EX1031;",
+            "TX0;"
+          ]
+        }
+      }
+    }
+  },
+  "rigs": [
+    {
+      "modelToken": "RIG_MODEL_FT847",
+      "modelName": "FT-847",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft847.c",
+      "symbol": "ft847_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1001",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT1000",
+      "modelName": "FT-1000",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft1000d.c",
+      "symbol": "ft1000_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1002",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT1000D",
+      "modelName": "FT-1000D",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft1000d.c",
+      "symbol": "ft1000d_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1003",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT1000MPMKV",
+      "modelName": "MARK-V FT-1000MP",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft1000mp.c",
+      "symbol": "ft1000mpmkv_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1004",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT747",
+      "modelName": "FT-747GX",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft747.c",
+      "symbol": "ft747_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1005",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT757",
+      "modelName": "FT-757GX",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft757gx.c",
+      "symbol": "ft757gx_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1006",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT757GXII",
+      "modelName": "FT-757GXII",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft757gx.c",
+      "symbol": "ft757gx2_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1007",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT767",
+      "modelName": "FT-767GX",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft767gx.c",
+      "symbol": "ft767gx_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1009",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT736R",
+      "modelName": "FT-736R",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft736.c",
+      "symbol": "ft736_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1010",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT840",
+      "modelName": "FT-840",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft840.c",
+      "symbol": "ft840_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1011",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT900",
+      "modelName": "FT-900",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft900.c",
+      "symbol": "ft900_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1013",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT920",
+      "modelName": "FT-920",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft920.c",
+      "symbol": "ft920_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1014",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT890",
+      "modelName": "FT-890",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft890.c",
+      "symbol": "ft890_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1015",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT990",
+      "modelName": "FT-990",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft990.c",
+      "symbol": "ft990_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1016",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FRG100",
+      "modelName": "FRG-100",
+      "mfgName": "Yaesu",
+      "file": "yaesu/frg100.c",
+      "symbol": "frg100_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1017",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FRG9600",
+      "modelName": "FRG-9600",
+      "mfgName": "Yaesu",
+      "file": "yaesu/frg9600.c",
+      "symbol": "frg9600_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1018",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FRG8800",
+      "modelName": "FRG-8800",
+      "mfgName": "Yaesu",
+      "file": "yaesu/frg8800.c",
+      "symbol": "frg8800_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1019",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT817",
+      "modelName": "FT-817",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft817.c",
+      "symbol": "ft817_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1020",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT100",
+      "modelName": "FT-100",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft100.c",
+      "symbol": "ft100_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1021",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT857",
+      "modelName": "FT-857",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft857.c",
+      "symbol": "ft857_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1022",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT897",
+      "modelName": "FT-897",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft897.c",
+      "symbol": "ft897_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1023",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT1000MP",
+      "modelName": "FT-1000MP",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft1000mp.c",
+      "symbol": "ft1000mp_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1024",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT1000MPMKVFLD",
+      "modelName": "MARK-V Field FT-1000MP",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft1000mp.c",
+      "symbol": "ft1000mpmkvfld_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1025",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_VR5000",
+      "modelName": "VR-5000",
+      "mfgName": "Yaesu",
+      "file": "yaesu/vr5000.c",
+      "symbol": "vr5000_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1026",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT450",
+      "modelName": "FT-450",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft450.c",
+      "symbol": "ft450_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1027",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT950",
+      "modelName": "FT-950",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft950.c",
+      "symbol": "ft950_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1028",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT2000",
+      "modelName": "FT-2000",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft2000.c",
+      "symbol": "ft2000_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1029",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT9000",
+      "modelName": "FTDX-9000",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft9000.c",
+      "symbol": "ft9000_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1030",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FTDX5000",
+      "modelName": "FTDX-5000",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft5000.c",
+      "symbol": "ftdx5000_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1032",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_VX1700",
+      "modelName": "VX-1700",
+      "mfgName": "Vertex Standard",
+      "file": "yaesu/vx1700.c",
+      "symbol": "vx1700_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1033",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FTDX1200",
+      "modelName": "FTDX-1200",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft1200.c",
+      "symbol": "ftdx1200_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1034",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT991",
+      "modelName": "FT-991",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft991.c",
+      "symbol": "ft991_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1035",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT891",
+      "modelName": "FT-891",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft891.c",
+      "symbol": "ft891_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1036",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FTDX3000",
+      "modelName": "FTDX-3000",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft3000.c",
+      "symbol": "ftdx3000_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1037",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT847UNI",
+      "modelName": "FT-847UNI",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft847.c",
+      "symbol": "ft847uni_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1038",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT600",
+      "modelName": "FT-600",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft600.c",
+      "symbol": "ft600_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1039",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FTDX101D",
+      "modelName": "FTDX-101D",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ftdx101.c",
+      "symbol": "ftdx101d_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1040",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT818",
+      "modelName": "FT-818",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft817.c",
+      "symbol": "ft818_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1041",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FTDX10",
+      "modelName": "FTDX-10",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ftdx10.c",
+      "symbol": "ftdx10_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1042",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT897D",
+      "modelName": "FT-897D",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft897.c",
+      "symbol": "ft897d_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1043",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FTDX101MP",
+      "modelName": "FTDX-101MP",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ftdx101mp.c",
+      "symbol": "ftdx101mp_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "1044",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_MCHFQRP",
+      "modelName": "mcHF QRP",
+      "mfgName": "M0NKA",
+      "file": "yaesu/ft847.c",
+      "symbol": "mchfqrp_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1045",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT650",
+      "modelName": "FT-650",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft847.c",
+      "symbol": "ft650_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1047",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT990UNI",
+      "modelName": "FT-990 Old Rom",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft990v12.c",
+      "symbol": "ft990uni_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1048",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_FT710",
+      "modelName": "FT-710",
+      "mfgName": "Yaesu",
+      "file": "yaesu/ft710.c",
+      "symbol": "ft710_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1049",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_Q900",
+      "modelName": "Q900",
+      "mfgName": "Guohe",
+      "file": "yaesu/ft817.c",
+      "symbol": "q900_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1051",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_PMR171",
+      "modelName": "PMR-171",
+      "mfgName": "Guohe",
+      "file": "yaesu/pmr171.c",
+      "symbol": "pmr171_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "1052",
+      "backend": "yaesu"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS50",
+      "modelName": "TS-50S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts50s.c",
+      "symbol": "ts50s_caps",
+      "privSymbol": "ts50_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2001",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS440",
+      "modelName": "TS-440S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts440.c",
+      "symbol": "ts440_caps",
+      "privSymbol": "ts440_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2002",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS450S",
+      "modelName": "TS-450S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts450s.c",
+      "symbol": "ts450s_caps",
+      "privSymbol": "ts450_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2003",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS570D",
+      "modelName": "TS-570D",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts570.c",
+      "symbol": "ts570d_caps",
+      "privSymbol": "ts570_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2004",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS690S",
+      "modelName": "TS-690S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts690.c",
+      "symbol": "ts690s_caps",
+      "privSymbol": "ts690_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2005",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS711",
+      "modelName": "TS-711",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts711.c",
+      "symbol": "ts711_caps",
+      "privSymbol": "ts711_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2006",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS790",
+      "modelName": "TS-790",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts790.c",
+      "symbol": "ts790_caps",
+      "privSymbol": "ts790_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2007",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS811",
+      "modelName": "TS-811",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts811.c",
+      "symbol": "ts811_caps",
+      "privSymbol": "ts811_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2008",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS850",
+      "modelName": "TS-850",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts850.c",
+      "symbol": "ts850_caps",
+      "privSymbol": "ts850_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2009",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS870S",
+      "modelName": "TS-870S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts870s.c",
+      "symbol": "ts870s_caps",
+      "privSymbol": "ts870s_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2010",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS940",
+      "modelName": "TS-940S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts940.c",
+      "symbol": "ts940_caps",
+      "privSymbol": "ts940_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2011",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS950S",
+      "modelName": "TS-950S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts950.c",
+      "symbol": "ts950s_caps",
+      "privSymbol": "ts950_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2012",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS950SDX",
+      "modelName": "TS-950SDX",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts950.c",
+      "symbol": "ts950sdx_caps",
+      "privSymbol": "ts950_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2013",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS2000",
+      "modelName": "TS-2000",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts2000.c",
+      "symbol": "ts2000_caps",
+      "privSymbol": "ts2000_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2014",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_R5000",
+      "modelName": "R-5000",
+      "mfgName": "Kenwood",
+      "file": "kenwood/r5000.c",
+      "symbol": "r5000_caps",
+      "privSymbol": "r5000_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2015",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS570S",
+      "modelName": "TS-570S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts570.c",
+      "symbol": "ts570s_caps",
+      "privSymbol": "ts570_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2016",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_THD7A",
+      "modelName": "TH-D7A",
+      "mfgName": "Kenwood",
+      "file": "kenwood/thd7.c",
+      "symbol": "thd7a_caps",
+      "privSymbol": "thd7_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_HANDHELD | RIG_FLAG_APRS | RIG_FLAG_TNC | RIG_FLAG_DXCLUSTER",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2017",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_THF6A",
+      "modelName": "TH-F6A",
+      "mfgName": "Kenwood",
+      "file": "kenwood/thf6a.c",
+      "symbol": "thf6a_caps",
+      "privSymbol": "thf6_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_HANDHELD",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2019",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_THF7E",
+      "modelName": "TH-F7E",
+      "mfgName": "Kenwood",
+      "file": "kenwood/thf7.c",
+      "symbol": "thf7e_caps",
+      "privSymbol": "thf7_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_HANDHELD",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2020",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_K2",
+      "modelName": "K2",
+      "mfgName": "Elecraft",
+      "file": "kenwood/k2.c",
+      "symbol": "k2_caps",
+      "privSymbol": "k2_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 4800,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2021",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS930",
+      "modelName": "TS-930",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts930.c",
+      "symbol": "ts930_caps",
+      "privSymbol": "ts930_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2022",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_THG71",
+      "modelName": "TH-G71",
+      "mfgName": "Kenwood",
+      "file": "kenwood/thg71.c",
+      "symbol": "thg71_caps",
+      "privSymbol": "thg71_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_HANDHELD",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2023",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS680S",
+      "modelName": "TS-680S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts680.c",
+      "symbol": "ts680s_caps",
+      "privSymbol": "ts680_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2024",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS140S",
+      "modelName": "TS-140S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts140.c",
+      "symbol": "ts140_caps",
+      "privSymbol": "ts140_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2025",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TMD700",
+      "modelName": "TM-D700",
+      "mfgName": "Kenwood",
+      "file": "kenwood/tmd700.c",
+      "symbol": "tmd700_caps",
+      "privSymbol": "tmd700_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE | RIG_FLAG_APRS | RIG_FLAG_TNC",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2026",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TMV7",
+      "modelName": "TM-V7",
+      "mfgName": "Kenwood",
+      "file": "kenwood/tmv7.c",
+      "symbol": "tmv7_caps",
+      "privSymbol": "tmv7_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2027",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS480",
+      "modelName": "TS-480",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts480.c",
+      "symbol": "ts480_caps",
+      "privSymbol": "ts480_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2028",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_K3",
+      "modelName": "K3",
+      "mfgName": "Elecraft",
+      "file": "kenwood/k3.c",
+      "symbol": "k3_caps",
+      "privSymbol": "k3_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2029",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TRC80",
+      "modelName": "TRC-80",
+      "mfgName": "Kenwood",
+      "file": "kenwood/trc80.c",
+      "symbol": "trc80_caps",
+      "privSymbol": "trc80_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2030",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS590S",
+      "modelName": "TS-590S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts590.c",
+      "symbol": "ts590_caps",
+      "privSymbol": "ts590_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2031",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TRANSFOX",
+      "modelName": "Transfox",
+      "mfgName": "SigFox",
+      "file": "kenwood/transfox.c",
+      "symbol": "transfox_caps",
+      "privSymbol": "transfox_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TUNER",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2032",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_THD72A",
+      "modelName": "TH-D72A",
+      "mfgName": "Kenwood",
+      "file": "kenwood/thd72.c",
+      "symbol": "thd72a_caps",
+      "privSymbol": "thd72_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_HANDHELD | RIG_FLAG_APRS | RIG_FLAG_TNC | RIG_FLAG_DXCLUSTER",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2033",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TMD710",
+      "modelName": "TM-D710(G)",
+      "mfgName": "Kenwood",
+      "file": "kenwood/tmd710.c",
+      "symbol": "tmd710_caps",
+      "privSymbol": "tmd710_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE | RIG_FLAG_APRS | RIG_FLAG_TNC",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2034",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TMV71",
+      "modelName": "TM-V71(A)",
+      "mfgName": "Kenwood",
+      "file": "kenwood/tmd710.c",
+      "symbol": "tmv71_caps",
+      "privSymbol": "tmd710_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE | RIG_FLAG_APRS | RIG_FLAG_TNC",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2035",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_F6K",
+      "modelName": "6xxx",
+      "mfgName": "FlexRadio",
+      "file": "kenwood/flex6xxx.c",
+      "symbol": "f6k_caps",
+      "privSymbol": "f6k_priv_caps",
+      "portType": "RIG_PORT_NETWORK",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "2036",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS590SG",
+      "modelName": "TS-590SG",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts590.c",
+      "symbol": "ts590sg_caps",
+      "privSymbol": "ts590_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2037",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_XG3",
+      "modelName": "XG3",
+      "mfgName": "Elecraft",
+      "file": "kenwood/xg3.c",
+      "symbol": "xg3_caps",
+      "privSymbol": "xg3_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2038",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS990S",
+      "modelName": "TS-990S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts990s.c",
+      "symbol": "ts990s_caps",
+      "privSymbol": "ts990s_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2039",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_HPSDR",
+      "modelName": "PiHPSDR",
+      "mfgName": "OpenHPSDR",
+      "file": "kenwood/pihpsdr.c",
+      "symbol": "pihpsdr_caps",
+      "privSymbol": "ts2000_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2040",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TS890S",
+      "modelName": "TS-890S",
+      "mfgName": "Kenwood",
+      "file": "kenwood/ts890s.c",
+      "symbol": "ts890s_caps",
+      "privSymbol": "ts890s_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2041",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_THD74",
+      "modelName": "TH-D74",
+      "mfgName": "Kenwood",
+      "file": "kenwood/thd74.c",
+      "symbol": "thd74_caps",
+      "privSymbol": "thd74_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_HANDHELD | RIG_FLAG_APRS | RIG_FLAG_TNC | RIG_FLAG_DXCLUSTER",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2042",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_K3S",
+      "modelName": "K3S",
+      "mfgName": "Elecraft",
+      "file": "kenwood/k3.c",
+      "symbol": "k3s_caps",
+      "privSymbol": "k3_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2043",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_KX2",
+      "modelName": "KX2",
+      "mfgName": "Elecraft",
+      "file": "kenwood/k3.c",
+      "symbol": "kx2_caps",
+      "privSymbol": "k3_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2044",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_KX3",
+      "modelName": "KX3",
+      "mfgName": "Elecraft",
+      "file": "kenwood/k3.c",
+      "symbol": "kx3_caps",
+      "privSymbol": "k3_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2045",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_PT8000A",
+      "modelName": "PT-8000A",
+      "mfgName": "Hilberling",
+      "file": "kenwood/ts480.c",
+      "symbol": "pt8000a_caps",
+      "privSymbol": "ts480_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 57600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2046",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_K4",
+      "modelName": "K4",
+      "mfgName": "Elecraft",
+      "file": "kenwood/k3.c",
+      "symbol": "k4_caps",
+      "privSymbol": "k3_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2047",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_POWERSDR",
+      "modelName": "PowerSDR",
+      "mfgName": "FlexRadio/Apache",
+      "file": "kenwood/flex6xxx.c",
+      "symbol": "powersdr_caps",
+      "privSymbol": "powersdr_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2048",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_MALACHITE",
+      "modelName": "DSP",
+      "mfgName": "Malachite",
+      "file": "kenwood/ts480.c",
+      "symbol": "malachite_caps",
+      "privSymbol": "ts480_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2049",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_LAB599_TX500",
+      "modelName": "TX-500",
+      "mfgName": "Lab599",
+      "file": "kenwood/tx500.c",
+      "symbol": "tx500_caps",
+      "privSymbol": "tx500_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2050",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_SDRUNO",
+      "modelName": "SDRUno",
+      "mfgName": "SDRPlay",
+      "file": "kenwood/ts480.c",
+      "symbol": "sdruno_caps",
+      "privSymbol": "ts480_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2051",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_QRPLABS",
+      "modelName": "QCX/QDX",
+      "mfgName": "QRPLabs",
+      "file": "kenwood/ts480.c",
+      "symbol": "qrplabs_caps",
+      "privSymbol": "ts480_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2052",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_FX4",
+      "modelName": "FX4/C/CR/L",
+      "mfgName": "BG2FX",
+      "file": "kenwood/ts590.c",
+      "symbol": "fx4_caps",
+      "privSymbol": "ts590_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 115200,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "hardware"
+      },
+      "id": "2053",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_TRUSDX",
+      "modelName": "(tr)uSDX",
+      "mfgName": "DL2MAN",
+      "file": "kenwood/ts480.c",
+      "symbol": "trudx_caps",
+      "privSymbol": "ts480_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 38400,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2055",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_SDRCONSOLE",
+      "modelName": "SDRConsole",
+      "mfgName": "SDR Radio",
+      "file": "kenwood/ts2000.c",
+      "symbol": "sdrconsole_caps",
+      "privSymbol": "ts2000_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2056",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_QRPLABS_QMX",
+      "modelName": "QMX",
+      "mfgName": "QRPLabs",
+      "file": "kenwood/ts480.c",
+      "symbol": "qrplabs_qmx_caps",
+      "privSymbol": "ts480_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 9600,
+        "rateMax": 256000,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "2057",
+      "backend": "kenwood"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC1275",
+      "modelName": "IC-1275",
+      "mfgName": "Icom",
+      "file": "icom/ic1275.c",
+      "symbol": "ic1275_caps",
+      "privSymbol": "ic1275_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3002",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 24,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC271",
+      "modelName": "IC-271",
+      "mfgName": "Icom",
+      "file": "icom/ic271.c",
+      "symbol": "ic271_caps",
+      "privSymbol": "ic271_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3003",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 32,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC275",
+      "modelName": "IC-275",
+      "mfgName": "Icom",
+      "file": "icom/ic275.c",
+      "symbol": "ic275_caps",
+      "privSymbol": "ic275_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3004",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 16,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC375",
+      "modelName": "IC-375",
+      "mfgName": "Icom",
+      "file": "icom/ic275.c",
+      "symbol": "ic375_caps",
+      "privSymbol": "ic375_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3005",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 18,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC471",
+      "modelName": "IC-471",
+      "mfgName": "Icom",
+      "file": "icom/ic471.c",
+      "symbol": "ic471_caps",
+      "privSymbol": "ic471_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3006",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 34,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC475",
+      "modelName": "IC-475",
+      "mfgName": "Icom",
+      "file": "icom/ic475.c",
+      "symbol": "ic475_caps",
+      "privSymbol": "ic475_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3007",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 20,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC575",
+      "modelName": "IC-575",
+      "mfgName": "Icom",
+      "file": "icom/ic475.c",
+      "symbol": "ic575_caps",
+      "privSymbol": "ic575_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3008",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 22,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC706",
+      "modelName": "IC-706",
+      "mfgName": "Icom",
+      "file": "icom/ic706.c",
+      "symbol": "ic706_caps",
+      "privSymbol": "ic706_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3009",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 72,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC706MKII",
+      "modelName": "IC-706MkII",
+      "mfgName": "Icom",
+      "file": "icom/ic706.c",
+      "symbol": "ic706mkii_caps",
+      "privSymbol": "ic706mkii_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3010",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 78,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC706MKIIG",
+      "modelName": "IC-706MkIIG",
+      "mfgName": "Icom",
+      "file": "icom/ic706.c",
+      "symbol": "ic706mkiig_caps",
+      "privSymbol": "ic706mkiig_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3011",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 88,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC707",
+      "modelName": "IC-707",
+      "mfgName": "Icom",
+      "file": "icom/ic707.c",
+      "symbol": "ic707_caps",
+      "privSymbol": "ic707_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3012",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 62,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC718",
+      "modelName": "IC-718",
+      "mfgName": "Icom",
+      "file": "icom/ic718.c",
+      "symbol": "ic718_caps",
+      "privSymbol": "IC718_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3013",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 94,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC725",
+      "modelName": "IC-725",
+      "mfgName": "Icom",
+      "file": "icom/ic725.c",
+      "symbol": "ic725_caps",
+      "privSymbol": "ic725_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3014",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 40,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC726",
+      "modelName": "IC-726",
+      "mfgName": "Icom",
+      "file": "icom/ic726.c",
+      "symbol": "ic726_caps",
+      "privSymbol": "ic726_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 1200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3015",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 48,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC728",
+      "modelName": "IC-728",
+      "mfgName": "Icom",
+      "file": "icom/ic728.c",
+      "symbol": "ic728_caps",
+      "privSymbol": "ic728_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3016",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 56,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC729",
+      "modelName": "IC-729",
+      "mfgName": "Icom",
+      "file": "icom/ic728.c",
+      "symbol": "ic729_caps",
+      "privSymbol": "ic729_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 2,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3017",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 58,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC735",
+      "modelName": "IC-735",
+      "mfgName": "Icom",
+      "file": "icom/ic735.c",
+      "symbol": "ic735_caps",
+      "privSymbol": "ic735_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3019",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 4,
+        "mode731": true
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC736",
+      "modelName": "IC-736",
+      "mfgName": "Icom",
+      "file": "icom/ic736.c",
+      "symbol": "ic736_caps",
+      "privSymbol": "ic736_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3020",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 64,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC737",
+      "modelName": "IC-737",
+      "mfgName": "Icom",
+      "file": "icom/ic737.c",
+      "symbol": "ic737_caps",
+      "privSymbol": "ic737_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3021",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 60,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC738",
+      "modelName": "IC-738",
+      "mfgName": "Icom",
+      "file": "icom/ic738.c",
+      "symbol": "ic738_caps",
+      "privSymbol": "ic738_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3022",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 68,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC746",
+      "modelName": "IC-746",
+      "mfgName": "Icom",
+      "file": "icom/ic746.c",
+      "symbol": "ic746_caps",
+      "privSymbol": "ic746_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3023",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 86,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC751",
+      "modelName": "IC-751",
+      "mfgName": "Icom",
+      "file": "icom/ic751.c",
+      "symbol": "ic751_caps",
+      "privSymbol": "ic751_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3024",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 28,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC756",
+      "modelName": "IC-756",
+      "mfgName": "Icom",
+      "file": "icom/ic756.c",
+      "symbol": "ic756_caps",
+      "privSymbol": "ic756_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3026",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 80,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC756PRO",
+      "modelName": "IC-756PRO",
+      "mfgName": "Icom",
+      "file": "icom/ic756.c",
+      "symbol": "ic756pro_caps",
+      "privSymbol": "ic756pro_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3027",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 92,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC761",
+      "modelName": "IC-761",
+      "mfgName": "Icom",
+      "file": "icom/ic761.c",
+      "symbol": "ic761_caps",
+      "privSymbol": "ic761_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3028",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 30,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC765",
+      "modelName": "IC-765",
+      "mfgName": "Icom",
+      "file": "icom/ic765.c",
+      "symbol": "ic765_caps",
+      "privSymbol": "ic765_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3029",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 44,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC775",
+      "modelName": "IC-775",
+      "mfgName": "Icom",
+      "file": "icom/ic775.c",
+      "symbol": "ic775_caps",
+      "privSymbol": "ic775_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3030",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 70,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC781",
+      "modelName": "IC-781",
+      "mfgName": "Icom",
+      "file": "icom/ic781.c",
+      "symbol": "ic781_caps",
+      "privSymbol": "ic781_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3031",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 38,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC820",
+      "modelName": "IC-820H",
+      "mfgName": "Icom",
+      "file": "icom/ic820h.c",
+      "symbol": "ic820h_caps",
+      "privSymbol": "ic820h_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3032",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 66,
+        "mode731": true
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC821H",
+      "modelName": "IC-821H",
+      "mfgName": "Icom",
+      "file": "icom/ic821h.c",
+      "symbol": "ic821h_caps",
+      "privSymbol": "ic821h_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3034",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 76,
+        "mode731": true
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC970",
+      "modelName": "IC-970",
+      "mfgName": "Icom",
+      "file": "icom/ic970.c",
+      "symbol": "ic970_caps",
+      "privSymbol": "ic970_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3035",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 46,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR10",
+      "modelName": "IC-R10",
+      "mfgName": "Icom",
+      "file": "icom/icr10.c",
+      "symbol": "icr10_caps",
+      "privSymbol": "icr10_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER | RIG_FLAG_HANDHELD",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3036",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR71",
+      "modelName": "IC-R71",
+      "mfgName": "Icom",
+      "file": "icom/icr71.c",
+      "symbol": "icr71_caps",
+      "privSymbol": "icr71_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 1200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3037",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR72",
+      "modelName": "IC-R72",
+      "mfgName": "Icom",
+      "file": "icom/icr72.c",
+      "symbol": "icr72_caps",
+      "privSymbol": "icr72_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 9600,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3038",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR75",
+      "modelName": "IC-R75",
+      "mfgName": "Icom",
+      "file": "icom/icr75.c",
+      "symbol": "icr75_caps",
+      "privSymbol": "icr75_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3039",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR7000",
+      "modelName": "IC-R7000",
+      "mfgName": "Icom",
+      "file": "icom/icr7000.c",
+      "symbol": "icr7000_caps",
+      "privSymbol": "icr7000_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 1200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3040",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR7100",
+      "modelName": "IC-R7100",
+      "mfgName": "Icom",
+      "file": "icom/icr7000.c",
+      "symbol": "icr7100_caps",
+      "privSymbol": "icr7100_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 1200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3041",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR8500",
+      "modelName": "ICR-8500",
+      "mfgName": "Icom",
+      "file": "icom/icr8500.c",
+      "symbol": "icr8500_caps",
+      "privSymbol": "icr8500_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3042",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR9000",
+      "modelName": "IC-R9000",
+      "mfgName": "Icom",
+      "file": "icom/icr9000.c",
+      "symbol": "icr9000_caps",
+      "privSymbol": "icr9000_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 1200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3043",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC910",
+      "modelName": "IC-910",
+      "mfgName": "Icom",
+      "file": "icom/ic910.c",
+      "symbol": "ic910_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3044",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC78",
+      "modelName": "IC-78",
+      "mfgName": "Icom",
+      "file": "icom/ic78.c",
+      "symbol": "ic78_caps",
+      "privSymbol": "ic78_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3045",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 98,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC746PRO",
+      "modelName": "IC-746PRO",
+      "mfgName": "Icom",
+      "file": "icom/ic746.c",
+      "symbol": "ic746pro_caps",
+      "privSymbol": "ic746pro_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3046",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 102,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC756PROII",
+      "modelName": "IC-756PROII",
+      "mfgName": "Icom",
+      "file": "icom/ic756.c",
+      "symbol": "ic756pro2_caps",
+      "privSymbol": "ic756pro2_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3047",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 100,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_OMNIVIP",
+      "modelName": "Omni VI Plus",
+      "mfgName": "Ten-Tec",
+      "file": "icom/omni.c",
+      "symbol": "omnivip_caps",
+      "privSymbol": "omnivip_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3051",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_OS535",
+      "modelName": "OptoScan535",
+      "mfgName": "Optoelectronics",
+      "file": "icom/os535.c",
+      "symbol": "os535_caps",
+      "privSymbol": "os535_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_SCANNER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3052",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_OS456",
+      "modelName": "OptoScan456",
+      "mfgName": "Optoelectronics",
+      "file": "icom/os456.c",
+      "symbol": "os456_caps",
+      "privSymbol": "os456_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_SCANNER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3053",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICID1",
+      "modelName": "IC ID-1",
+      "mfgName": "Icom",
+      "file": "icom/id1.c",
+      "symbol": "id1_caps",
+      "privSymbol": "id1_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 19200,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3054",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC703",
+      "modelName": "IC-703",
+      "mfgName": "Icom",
+      "file": "icom/ic703.c",
+      "symbol": "ic703_caps",
+      "privSymbol": "ic703_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3055",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 104,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7800",
+      "modelName": "IC-7800",
+      "mfgName": "Icom",
+      "file": "icom/ic7800.c",
+      "symbol": "ic7800_caps",
+      "privSymbol": "ic7800_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3056",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 106,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC756PROIII",
+      "modelName": "IC-756PROIII",
+      "mfgName": "Icom",
+      "file": "icom/ic756.c",
+      "symbol": "ic756pro3_caps",
+      "privSymbol": "ic756pro3_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3057",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 110,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR20",
+      "modelName": "IC-R20",
+      "mfgName": "Icom",
+      "file": "icom/icr20.c",
+      "symbol": "icr20_caps",
+      "privSymbol": "icr20_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER | RIG_FLAG_HANDHELD",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3058",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7000",
+      "modelName": "IC-7000",
+      "mfgName": "Icom",
+      "file": "icom/ic7000.c",
+      "symbol": "ic7000_caps",
+      "privSymbol": "IC7000_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3060",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 112,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7200",
+      "modelName": "IC-7200",
+      "mfgName": "Icom",
+      "file": "icom/ic7200.c",
+      "symbol": "ic7200_caps",
+      "privSymbol": "IC7200_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3061",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 118,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7700",
+      "modelName": "IC-7700",
+      "mfgName": "Icom",
+      "file": "icom/ic7700.c",
+      "symbol": "ic7700_caps",
+      "privSymbol": "ic7700_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3062",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 116,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7600",
+      "modelName": "IC-7600",
+      "mfgName": "Icom",
+      "file": "icom/ic7600.c",
+      "symbol": "ic7600_caps",
+      "privSymbol": "ic7600_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3063",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 122,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_DELTAII",
+      "modelName": "Delta II",
+      "mfgName": "Ten-Tec",
+      "file": "icom/delta2.c",
+      "symbol": "delta2_caps",
+      "privSymbol": "delta2_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 1200,
+        "rateMax": 1200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3064",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 1,
+        "mode731": true
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC92D",
+      "modelName": "IC-92D",
+      "mfgName": "Icom",
+      "file": "icom/ic92d.c",
+      "symbol": "ic92d_caps",
+      "privSymbol": "ic92d_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_HANDHELD",
+      "serial": {
+        "rateMin": 38400,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3065",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 1,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR9500",
+      "modelName": "IC-R9500",
+      "mfgName": "Icom",
+      "file": "icom/icr9500.c",
+      "symbol": "icr9500_caps",
+      "privSymbol": "icr9500_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 1200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3066",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7410",
+      "modelName": "IC-7410",
+      "mfgName": "Icom",
+      "file": "icom/ic7410.c",
+      "symbol": "ic7410_caps",
+      "privSymbol": "ic7410_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3067",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 128,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC9100",
+      "modelName": "IC-9100",
+      "mfgName": "Icom",
+      "file": "icom/ic9100.c",
+      "symbol": "ic9100_caps",
+      "privSymbol": "ic9100_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3068",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 124,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_ICRX7",
+      "modelName": "IC-RX7",
+      "mfgName": "Icom",
+      "file": "icom/icrx7.c",
+      "symbol": "icrx7_caps",
+      "privSymbol": "icrx7_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER | RIG_FLAG_HANDHELD",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3069",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7100",
+      "modelName": "IC-7100",
+      "mfgName": "Icom",
+      "file": "icom/ic7100.c",
+      "symbol": "ic7100_caps",
+      "privSymbol": "ic7100_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3070",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 136,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_ID5100",
+      "modelName": "ID-5100",
+      "mfgName": "Icom",
+      "file": "icom/id5100.c",
+      "symbol": "id5100_caps",
+      "privSymbol": "id5100_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3071",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC2730",
+      "modelName": "IC-2730",
+      "mfgName": "Icom",
+      "file": "icom/ic2730.c",
+      "symbol": "ic2730_caps",
+      "privSymbol": "ic2730_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3072",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 144,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7300",
+      "modelName": "IC-7300",
+      "mfgName": "Icom",
+      "file": "icom/ic7300.c",
+      "symbol": "ic7300_caps",
+      "privSymbol": "IC7300_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3073",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 148,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_PERSEUS",
+      "modelName": "Perseus",
+      "mfgName": "Microtelecom",
+      "file": "icom/perseus.c",
+      "symbol": "perseus_caps",
+      "privSymbol": "perseus_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_PCRECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3074",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_X108G",
+      "modelName": "X108G",
+      "mfgName": "Xiegu",
+      "file": "icom/xiegu.c",
+      "symbol": "x108g_caps",
+      "privSymbol": "x108g_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3076",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR6",
+      "modelName": "IC-R6",
+      "mfgName": "Icom",
+      "file": "icom/icr6.c",
+      "symbol": "icr6_caps",
+      "privSymbol": "icr6_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER | RIG_FLAG_HANDHELD",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3077",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7610",
+      "modelName": "IC-7610",
+      "mfgName": "Icom",
+      "file": "icom/ic7610.c",
+      "symbol": "ic7610_caps",
+      "privSymbol": "ic7610_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3078",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 152,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR8600",
+      "modelName": "IC-R8600",
+      "mfgName": "Icom",
+      "file": "icom/icr8600.c",
+      "symbol": "icr8600_caps",
+      "privSymbol": "icr8600_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 115200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3079",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ICR30",
+      "modelName": "IC-R30",
+      "mfgName": "Icom",
+      "file": "icom/icr30.c",
+      "symbol": "icr30_caps",
+      "privSymbol": "icr30_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_RECEIVER | RIG_FLAG_HANDHELD",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3080",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC9700",
+      "modelName": "IC-9700",
+      "mfgName": "Icom",
+      "file": "icom/ic7300.c",
+      "symbol": "ic9700_caps",
+      "privSymbol": "IC9700_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 38400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3081",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 162,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_ID4100",
+      "modelName": "ID-4100",
+      "mfgName": "Icom",
+      "file": "icom/id4100.c",
+      "symbol": "id4100_caps",
+      "privSymbol": "id4100_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_MOBILE",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3082",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ID31",
+      "modelName": "ID-31",
+      "mfgName": "Icom",
+      "file": "icom/id31.c",
+      "symbol": "id31_caps",
+      "privSymbol": "id31_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_HANDHELD",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3083",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_ID51",
+      "modelName": "ID-51",
+      "mfgName": "Icom",
+      "file": "icom/id51.c",
+      "symbol": "id51_caps",
+      "privSymbol": "id51_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_HANDHELD",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3084",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC705",
+      "modelName": "IC-705",
+      "mfgName": "Icom",
+      "file": "icom/ic7300.c",
+      "symbol": "ic705_caps",
+      "privSymbol": "IC705_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3085",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 164,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_ICF8101",
+      "modelName": "IC-F8101",
+      "mfgName": "Icom",
+      "file": "icom/icf8101.c",
+      "symbol": "icf8101_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3086",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_X6100",
+      "modelName": "X6100",
+      "mfgName": "Xiegu",
+      "file": "icom/xiegu.c",
+      "symbol": "x6100_caps",
+      "privSymbol": "x6100_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3087",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_G90",
+      "modelName": "G90",
+      "mfgName": "Xiegu",
+      "file": "icom/xiegu.c",
+      "symbol": "g90_caps",
+      "privSymbol": "g90_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 19200,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3088",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_X5105",
+      "modelName": "X5105",
+      "mfgName": "Xiegu",
+      "file": "icom/xiegu.c",
+      "symbol": "x5105_caps",
+      "privSymbol": "x108g_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3089",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC905",
+      "modelName": "IC-905",
+      "mfgName": "Icom",
+      "file": "icom/ic7300.c",
+      "symbol": "ic905_caps",
+      "privSymbol": "IC905_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 4800,
+        "rateMax": 230400,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3090",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 172,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_X6200",
+      "modelName": "X6200",
+      "mfgName": "Xiegu",
+      "file": "icom/xiegu.c",
+      "symbol": "x6200_caps",
+      "privSymbol": "x6100_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3091",
+      "backend": "icom"
+    },
+    {
+      "modelToken": "RIG_MODEL_IC7760",
+      "modelName": "IC-7760",
+      "mfgName": "Icom",
+      "file": "icom/ic7760.c",
+      "symbol": "ic7760_caps",
+      "privSymbol": "ic7760_priv_caps",
+      "portType": "RIG_PORT_SERIAL",
+      "rigType": "RIG_TYPE_TRANSCEIVER",
+      "serial": {
+        "rateMin": 300,
+        "rateMax": 19200,
+        "dataBits": 8,
+        "stopBits": 1,
+        "parity": "none",
+        "flowControl": "none"
+      },
+      "id": "3092",
+      "backend": "icom",
+      "icom": {
+        "civAddr": 178,
+        "mode731": false
+      }
+    },
+    {
+      "modelToken": "RIG_MODEL_SDR1000",
+      "modelName": "SDR-1000",
+      "mfgName": "FlexRadio",
+      "file": "flexradio/sdr1k.c",
+      "symbol": "sdr1k_rig_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_PARALLEL",
+      "rigType": "RIG_TYPE_TUNER",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23001",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_DTTSP",
+      "modelName": "DttSP IPC",
+      "mfgName": "DTTS Microwave Society",
+      "file": "flexradio/dttsp.c",
+      "symbol": "dttsp_rig_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_DEVICE",
+      "rigType": "RIG_TYPE_COMPUTER",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23003",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_DTTSP_UDP",
+      "modelName": "DttSP UDP",
+      "mfgName": "DTTS Microwave Society",
+      "file": "flexradio/dttsp.c",
+      "symbol": "dttsp_udp_rig_caps",
+      "privSymbol": null,
+      "portType": "RIG_PORT_UDP_NETWORK",
+      "rigType": "RIG_TYPE_COMPUTER",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23004",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_SMARTSDR_A",
+      "modelName": "SmartSDR Slice A",
+      "mfgName": "",
+      "file": "flexradio/smartsdr.c",
+      "symbol": "smartsdr_a_rig_caps",
+      "privSymbol": null,
+      "portType": "",
+      "rigType": "",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23005",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_SMARTSDR_B",
+      "modelName": "SmartSDR Slice B",
+      "mfgName": "",
+      "file": "flexradio/smartsdr.c",
+      "symbol": "smartsdr_b_rig_caps",
+      "privSymbol": null,
+      "portType": "",
+      "rigType": "",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23006",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_SMARTSDR_C",
+      "modelName": "SmartSDR Slice C",
+      "mfgName": "",
+      "file": "flexradio/smartsdr.c",
+      "symbol": "smartsdr_c_rig_caps",
+      "privSymbol": null,
+      "portType": "",
+      "rigType": "",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23007",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_SMARTSDR_D",
+      "modelName": "SmartSDR Slice D",
+      "mfgName": "",
+      "file": "flexradio/smartsdr.c",
+      "symbol": "smartsdr_d_rig_caps",
+      "privSymbol": null,
+      "portType": "",
+      "rigType": "",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23008",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_SMARTSDR_E",
+      "modelName": "SmartSDR Slice E",
+      "mfgName": "",
+      "file": "flexradio/smartsdr.c",
+      "symbol": "smartsdr_e_rig_caps",
+      "privSymbol": null,
+      "portType": "",
+      "rigType": "",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23009",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_SMARTSDR_F",
+      "modelName": "SmartSDR Slice F",
+      "mfgName": "",
+      "file": "flexradio/smartsdr.c",
+      "symbol": "smartsdr_f_rig_caps",
+      "privSymbol": null,
+      "portType": "",
+      "rigType": "",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23010",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_SMARTSDR_G",
+      "modelName": "SmartSDR Slice G",
+      "mfgName": "",
+      "file": "flexradio/smartsdr.c",
+      "symbol": "smartsdr_g_rig_caps",
+      "privSymbol": null,
+      "portType": "",
+      "rigType": "",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23011",
+      "backend": "flexradio"
+    },
+    {
+      "modelToken": "RIG_MODEL_SMARTSDR_H",
+      "modelName": "SmartSDR Slice H",
+      "mfgName": "",
+      "file": "flexradio/smartsdr.c",
+      "symbol": "smartsdr_h_rig_caps",
+      "privSymbol": null,
+      "portType": "",
+      "rigType": "",
+      "serial": {
+        "rateMin": null,
+        "rateMax": null,
+        "dataBits": null,
+        "stopBits": null,
+        "parity": null,
+        "flowControl": null
+      },
+      "id": "23012",
+      "backend": "flexradio"
+    }
+  ]
+}

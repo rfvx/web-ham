@@ -1,0 +1,123 @@
+{
+  "//": "The human call on every WebHam CAT value that does NOT match Hamlib.",
+  "// how this works": [
+    "`node tools/sync-hamlib.mjs --diff` compares every WebHam CAT value against",
+    "Hamlib's and classifies each one. Values that AGREE need no entry here — that is",
+    "the majority of them, and they cost no attention. Everything else needs a line in",
+    "`decisions`, or --diff exits non-zero.",
+    "",
+    "So there are only ever two honest responses to a disagreement: change the value in",
+    "js/connectors/cat.js so it agrees, or write down why it should stay. This file is",
+    "the second one. It is deliberately not a suppression list — each entry carries the",
+    "verdict it was written against, so if the verdict later changes the entry stops",
+    "excusing anything and --diff says so.",
+    "",
+    "A key ending in `/*` covers every finding under that prefix; an exact key wins over",
+    "a glob. Decisions: keep-webham | webham-extra | coverage | parked (needs `followup`)."
+  ],
+  "// what the diff found the first time it ran": [
+    "Kept, because they were already right: all five Icom CI-V opcodes, all five Yaesu",
+    "5-byte frames, all six Kenwood ASCII commands, both CI-V frame bytes, and every",
+    "mode code in six of the nine families. 389 of 445 fields.",
+    "",
+    "Fixed, because they were not (see the commit and the cat.js comments):",
+    "  - yaesu-ascii PTT sent TX;/RX;. newcat wants TX1;/TX0; — TX; is a *read* on a",
+    "    newcat rig and RX; is not a command, so PTT over CAT never keyed any Yaesu.",
+    "  - yaesu-ascii read-mode sent MD;. newcat wants MD0; — a bare MD; is answered ?;,",
+    "    so mode polling never worked either.",
+    "  - newcat replies were decoded with the Kenwood mode table, which agrees only up",
+    "    to CW-R. Added decodeNewcatMode and routed yaesu-ascii replies through it.",
+    "  - the CI-V fallback address was 0xE0, which icom_defs.h defines as CTRLID, a",
+    "    *controller's* address. Nothing ever set profile.civAddr, so every Icom was",
+    "    addressed to a controller and answered nothing until the operator typed the",
+    "    address in. Per-rig re_civ_addr is now imported for 20 rigs; the fallback is",
+    "    BCASTID.",
+    "  - Kenwood mode digit 8 decoded as \"PKT\". Upstream marks it RIG_MODE_NONE",
+    "    (\"TUNE mode or PKTUSB for SDRUNO\"), so it named a mode the radio was not in.",
+    "  - civ_731_mode rigs take an 8-digit frequency frame, not 10."
+  ],
+  "decisions": {
+    "civ-frame/controller": {
+      "verdict": "diverges",
+      "decision": "keep-webham",
+      "why": "0xE1 vs Hamlib's CTRLID 0xE0. The controller address is the sender's own choice — any value that is not some radio's address works, and both 0xE0 and 0xE1 are in the controller range. 0xE1 is arguably better here: it does not collide with a Hamlib/flrig instance sitting at 0xE0 on the same CI-V bus, which matters because CI-V is a shared bus and WebHam may well run alongside one. parseCivIncomingData does not filter replies by address, so nothing in WebHam depends on the value either way."
+    },
+
+    "civ-addr/3087": {
+      "verdict": "unverifiable",
+      "decision": "parked",
+      "why": "Xiegu X6100. Hamlib declares no icom_priv_caps for it, so there is no address to import and the operator has to enter one in Settings before CAT reaches the radio.",
+      "followup": "Xiegu radios are commonly at 0x70, but that is folklore, not upstream data. Confirm on hardware (or find it in the manual) before adding a civAddr override to tools/hamlib-map.json."
+    },
+    "civ-addr/3088": {
+      "verdict": "unverifiable",
+      "decision": "parked",
+      "why": "Xiegu G90. Same as the X6100: no icom_priv_caps upstream, so no address to import.",
+      "followup": "Same as civ-addr/3087 — needs a confirmed address, not a guessed one."
+    },
+    "civ-addr/wh:icom-ic-910h": {
+      "verdict": "unverifiable",
+      "decision": "parked",
+      "why": "IC-910H is a WebHam-only profile; Hamlib has no model for it at all, so there is neither rig_caps nor priv_caps to read.",
+      "followup": "The IC-910H's CI-V address is documented in its manual. Add it as a map override once someone has checked it."
+    },
+
+    "mode-decode/yaesu-5byte/0x06": {
+      "verdict": "webham-only",
+      "decision": "keep-webham",
+      "why": "ft897ModeName decodes 0x06 as WFM, and ncmd[] has no WFM row — but ncmd[] is the *set* table, and the FT-897 cannot be set to WFM. Checked the read path: ft897_get_mode has `case 0x06: *mode = RIG_MODE_WFM`, so upstream agrees with WebHam about what a reported 0x06 means. The absence from ncmd[] is a fact about setting modes, not about decoding them."
+    },
+
+    "mode-encode/kenwood-ascii/+PKTUSB": {
+      "verdict": "hamlib-only",
+      "decision": "parked",
+      "why": "The kenwood-ascii family offers no data mode at all. This is not cosmetic: PKT-U is the mode FT8 needs, so a Kenwood/Elecraft operator cannot put their radio into the right mode for the FT8 app from WebHam.",
+      "followup": "Add PKT-U (digit 13) and PKT-L (12) to kenwood-ascii and elecraft-ascii, then check the FT8 app's mode handoff end to end. Tracked in FOLLOWUPS.md."
+    },
+    "mode-encode/elecraft-ascii/+PKTUSB": {
+      "verdict": "hamlib-only",
+      "decision": "parked",
+      "why": "Same gap as kenwood-ascii/+PKTUSB — the family shares kenwood.c's table and offers no data mode.",
+      "followup": "See mode-encode/kenwood-ascii/+PKTUSB."
+    },
+    "mode-encode/*": {
+      "verdict": "hamlib-only",
+      "decision": "coverage",
+      "why": "Hamlib knows mode codes for modes WebHam's pickers do not list — mostly CW-R, RTTY-R, FM-N and the packet variants. Acknowledged as coverage, not adopted wholesale: every mode added to a family shows up in the operator's mode picker, so the list is a UI decision about what is worth offering, not a correctness one. The codes are correct where WebHam does offer them, which is what this diff checks. The two entries above are broken out because one of those gaps does have a functional consequence."
+    },
+
+    "mode-encode/yaesu-ascii-classic": {
+      "verdict": "unverifiable",
+      "decision": "parked",
+      "why": "The family's rigs (FT-747/757/767/840/890/900/920/980/990/1000) are not newcat in Hamlib — each has its own backend speaking a binary protocol, and none takes an ASCII MD command. So newcat's mode table is not authoritative for them and the whole family needs a protocol review, not a byte fix. The mode values are left as they are because they are no worse than any other guess for a rig that does not understand the command at all.",
+      "followup": "Decide per rig whether to implement its binary backend or drop it from the catalogue. Listing a rig that cannot work is worse than omitting it. Tracked in FOLLOWUPS.md."
+    },
+    "mode-encode/flex-ascii": {
+      "verdict": "unverifiable",
+      "decision": "keep-webham",
+      "why": "WebHam drives SmartSDR CAT — the virtual COM port that emulates a Kenwood with ZZ-prefixed commands. Hamlib's flexradio backend drives a different interface entirely, the SmartSDR TCP API (`slice tune 0 14.074`, `xmit 1`), so there is no upstream ZZ vocabulary to compare against. Not a gap in the diff: upstream genuinely has no opinion on these codes."
+    },
+    "mode-decode/flex-ascii": {
+      "verdict": "unverifiable",
+      "decision": "keep-webham",
+      "why": "Same as mode-encode/flex-ascii. Hamlib's smartsdr_set_mode does list mode NAMES (CW/USB/LSB/DIGU/DIGL/AM/FM/FMN/SAM) and WebHam's names line up with them, but the TCP API takes names where SmartSDR CAT takes digits, so there is nothing to check the digits against."
+    },
+    "command/flex-ascii": {
+      "verdict": "unverifiable",
+      "decision": "keep-webham",
+      "why": "Same as mode-encode/flex-ascii — different transport, different grammar, no comparable upstream commands."
+    },
+    "mode-encode/hamlib-rigctld": {
+      "verdict": "unverifiable",
+      "decision": "keep-webham",
+      "why": "The rigctld bridge takes symbolic mode names (`M USB 0`), not raw protocol bytes — Hamlib normalises away the very codes this diff compares. The values in this family ARE Hamlib's own tokens, so it is upstream-correct by construction; there is just no byte table to check it against."
+    },
+
+    "serial/*": {
+      "verdict": "diverges",
+      "decision": "parked",
+      "why": "25 per-rig serial disagreements, in three groups. (1) Eleven Yaesu newcat rigs where Hamlib declares 2 stop bits and WebHam uses 1 — Yaesu's own manuals specify 1 stop bit for these radios, so WebHam is probably right, but 'probably' is not a reason to overwrite either value. (2) Three Kenwood TS-711/790/811 and the IC-707 where WebHam's rate is outside the range Hamlib says the rig accepts. (3) Six more Icoms with the same. Deliberately not adopted: these values were set against real radios, and an automated import must never silently change a baud rate someone confirmed on hardware. Nothing here is a silent failure — a wrong line setting fails loudly at connect time, unlike a wrong mode byte.",
+      "followup": "Needs an owner with the radios, or at least the manuals. Resolve group by group and record each as keep-webham or fix it in tools/hamlib-map.json's serialOverrides. Tracked in FOLLOWUPS.md."
+    }
+  }
+}
