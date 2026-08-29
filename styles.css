@@ -3132,6 +3132,16 @@ body.wh-per-app-audio [data-global-only]  { display: none !important; }
   gap: .75rem;
   flex-wrap: wrap;
 }
+.audio-monitor-volume-label {
+  min-width: 3.2em;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text);
+}
+#audio-monitor-volume {
+  width: 180px;
+}
 
 /* ============================================================
    DARK MODE — "Lamplit Shack"  (warm variation)

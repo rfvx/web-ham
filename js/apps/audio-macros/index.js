@@ -48,6 +48,8 @@ export default {
       audioMonitorSpectrum: document.querySelector("#audio-monitor-spectrum"),
       audioMonitorRelay: document.querySelector("#audio-monitor-relay"),
       audioMonitorRoutingStatus: document.querySelector("#audio-monitor-routing-status"),
+      audioMonitorVolume: document.querySelector("#audio-monitor-volume"),
+      audioMonitorVolumeLabel: document.querySelector("#audio-monitor-volume-label"),
       // Sidebar quick-toggle dot — outside #tab-audio-macros, see header note.
       audioPermBtn: document.querySelector("#audio-perm-btn"),
       // Shared debug log — outside #tab-audio-macros too (lives on the Radio
@@ -64,6 +66,7 @@ export default {
       stream: null,
       sourceNode: null,
       analyser: null,
+      gainNode: null,
       destNode: null,
       relayAudioEl: null,
       animFrameId: null,
@@ -94,6 +97,13 @@ export default {
       if (els.audioMonitorRoutingStatus) {
         els.audioMonitorRoutingStatus.textContent = `Input: ${inputName} → Output: ${outputName}`;
       }
+    }
+
+    function currentMonitorGain() {
+      const el = els.audioMonitorVolume;
+      const v = el ? Number(el.value) : 100;
+      if (!Number.isFinite(v)) return 1;
+      return v / 100;
     }
 
     function drawSpectrumFrame() {
@@ -182,9 +192,12 @@ export default {
         const analyser   = context.createAnalyser();
         analyser.fftSize               = 2048;
         analyser.smoothingTimeConstant = 0.8;
+        const gainNode   = context.createGain();
+        gainNode.gain.value            = currentMonitorGain();
         const destNode   = context.createMediaStreamDestination();
         sourceNode.connect(analyser);
-        sourceNode.connect(destNode);
+        sourceNode.connect(gainNode);
+        gainNode.connect(destNode);
 
         const relay = els.audioMonitorRelay;
         if (relay) {
@@ -199,6 +212,7 @@ export default {
         ams.stream       = stream;
         ams.sourceNode   = sourceNode;
         ams.analyser     = analyser;
+        ams.gainNode     = gainNode;
         ams.destNode     = destNode;
         ams.relayAudioEl = relay;
         ams.peakBins     = null;
@@ -246,6 +260,7 @@ export default {
       ams.running    = false;
       ams.sourceNode = null;
       ams.analyser   = null;
+      ams.gainNode   = null;
       ams.destNode   = null;
       ams.peakBins   = null;
       if (ams.context) {
@@ -719,6 +734,20 @@ export default {
       audio.getConfig().perApp.audio.input = e.target.value;
       audio.saveDeviceConfig();
     });
+
+    function updateMonitorVolumeLabel() {
+      if (els.audioMonitorVolumeLabel && els.audioMonitorVolume) {
+        const v = Number(els.audioMonitorVolume.value) || 0;
+        els.audioMonitorVolumeLabel.textContent = `${v}%`;
+      }
+    }
+    els.audioMonitorVolume?.addEventListener("input", () => {
+      updateMonitorVolumeLabel();
+      if (audioMonitorState.gainNode && audioMonitorState.running) {
+        audioMonitorState.gainNode.gain.value = currentMonitorGain();
+      }
+    });
+    updateMonitorVolumeLabel();
 
     // Cat "disconnect" seam (
     // header note): disconnectRadio() used to also clean up this

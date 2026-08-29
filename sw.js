@@ -1,4 +1,4 @@
-const CACHE_NAME = "web-ham-logger-v41";
+const CACHE_NAME = "web-ham-logger-v42";
 const APP_SHELL_ASSETS = [
   "/",
   "/index.html",
