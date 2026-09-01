@@ -1,0 +1,46 @@
+Fetching Hamlib 4.6.2…
+  riglist.h: 375 models declared
+  yaesu: 40 files -> 47 rigs
+  kenwood: 43 files -> 55 rigs
+  icom: 70 files -> 83 rigs
+  flexradio: 4 files -> 11 rigs
+  vocabulary: icom-civ, yaesu-5byte, kenwood-ascii, yaesu-ascii
+
+Wrote /home/runner/work/web-ham/web-ham/tools/hamlib-sources.json (196 rigs, 2 parse gaps)
+
+── Hamlib 4.6.2 drift report ─────────────────────────────
+  snapshot rigs (mapped backends): 196
+  would emit:                      107
+  already in the catalogue:        107
+
+  NEW in Hamlib, absent from WebHam: 0
+
+  In the catalogue but NOT emitted from Hamlib: 0
+
+  Serial-parameter disagreements: 20
+    ! 1027   Yaesu FT-450: stopBits 1 vs 2
+    ! 1028   Yaesu FT-950: stopBits 1 vs 2
+    ! 1029   Yaesu FT-2000: stopBits 1 vs 2
+    ! 1032   Yaesu FTDX-5000: stopBits 1 vs 2
+    ! 1034   Yaesu FTDX-1200: stopBits 1 vs 2
+    ! 1035   Yaesu FT-991: stopBits 1 vs 2
+    ! 1036   Yaesu FT-891: stopBits 1 vs 2
+    ! 1037   Yaesu FTDX-3000: stopBits 1 vs 2
+    ! 1040   Yaesu FTDX-101D: stopBits 1 vs 2
+    ! 1042   Yaesu FTDX-10: stopBits 1 vs 2
+    ! 1044   Yaesu FTDX-101MP: stopBits 1 vs 2
+    ! 2006   Kenwood TS-711: baudRate 9600 outside Hamlib 4800-4800; stopBits 1 vs 2
+    ! 2007   Kenwood TS-790: baudRate 9600 outside Hamlib 4800-4800; stopBits 1 vs 2
+    ! 2008   Kenwood TS-811: baudRate 9600 outside Hamlib 4800-4800; stopBits 1 vs 2
+    ! 3012   Icom IC-707: baudRate 19200 outside Hamlib 300-9600; stopBits 1 vs 2
+    … and 5 more
+
+  Skipped (not emitted): 116
+      61  no family mapped for backend "icom"
+      29  no family mapped for backend "kenwood"
+      15  no family mapped for backend "yaesu"
+      11  no family mapped for backend "flexradio"
+
+  Parse gaps: 2
+    ~ kenwood/flex6xxx.c (thetis_caps): no model_name
+    ~ icom/ic785x.c (ic785x_caps): no rig_model

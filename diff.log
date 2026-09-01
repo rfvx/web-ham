@@ -1,0 +1,111 @@
+
+── WebHam vs Hamlib 4.6.2: CAT data diff ──────────────────────
+   445  fields compared
+    25  diverges
+     1  webham-only
+    21  hamlib-only
+     8  unverifiable
+   390  agrees
+
+  390 of 445 fields already match Hamlib. Those are kept as they are;
+  nothing below is changed automatically.
+
+  mode-encode (24)
+    [coverage] yaesu-5byte +CWR: hamlib-only
+           WebHam —  |  Hamlib 0x03
+           Hamlib knows CWR; this family does not offer it
+    [coverage] yaesu-5byte +FMN: hamlib-only
+           WebHam —  |  Hamlib 0x88
+           Hamlib knows FMN; this family does not offer it
+    [parked] yaesu-ascii-classic (whole table): unverifiable
+           WebHam 5 modes  |  Hamlib —
+           its rigs (FT-747/757/767/840/890/900/920/980/990/1000) are not newcat in Hamlib — each has its own backend speaking a binary protocol, with no ASCII MD command at all, so newcat's table is not authoritative for them. Needs a protocol review, not a byte fix.
+    [coverage] yaesu-ascii-modern +RTTYR: hamlib-only
+           WebHam —  |  Hamlib 0x09
+           Hamlib knows RTTYR; this family does not offer it
+    [coverage] yaesu-ascii-modern +PKTLSB: hamlib-only
+           WebHam —  |  Hamlib 0x08
+           Hamlib knows PKTLSB; this family does not offer it
+    [coverage] yaesu-ascii-modern +FMN: hamlib-only
+           WebHam —  |  Hamlib 0x0b
+           Hamlib knows FMN; this family does not offer it
+    [coverage] icom-civ-classic +CWR: hamlib-only
+           WebHam —  |  Hamlib 0x07
+           Hamlib knows CWR; this family does not offer it
+    [coverage] icom-civ-classic +RTTYR: hamlib-only
+           WebHam —  |  Hamlib 0x08
+           Hamlib knows RTTYR; this family does not offer it
+    [coverage] icom-civ-classic +FMN: hamlib-only
+           WebHam —  |  Hamlib 0x05
+           Hamlib knows FMN; this family does not offer it
+    [coverage] icom-civ-classic +DSTAR: hamlib-only
+           WebHam —  |  Hamlib 0x17
+           Hamlib knows DSTAR; this family does not offer it
+    [coverage] icom-civ-modern +CWR: hamlib-only
+           WebHam —  |  Hamlib 0x07
+           Hamlib knows CWR; this family does not offer it
+    [coverage] icom-civ-modern +RTTYR: hamlib-only
+           WebHam —  |  Hamlib 0x08
+           Hamlib knows RTTYR; this family does not offer it
+    … and 12 more
+
+  mode-decode (2)
+    [keep-webham] yaesu-5byte 0x06: webham-only
+           WebHam WFM  |  Hamlib —
+           ft897.c ncmd[] assigns no mode to 0x06
+    [keep-webham] flex-ascii (whole table): unverifiable
+           WebHam 11 codes  |  Hamlib —
+           WebHam drives SmartSDR CAT, the virtual COM port that emulates a Kenwood with ZZ-prefixed commands. Hamlib's flexradio backend drives the SmartSDR TCP API instead (`slice tune 0 14.074`, `xmit 1`), so upstream has no ZZ vocabulary to compare against.
+
+  civ-frame (1)
+    [keep-webham] icom-civ controller address: diverges
+           WebHam 0xe1  |  Hamlib 0xe0
+           the `from` byte WebHam signs frames with
+
+  command (1)
+    [keep-webham] flex-ascii (all operations): unverifiable
+           WebHam drives SmartSDR CAT, the virtual COM port that emulates a Kenwood with ZZ-prefixed commands. Hamlib's flexradio backend drives the SmartSDR TCP API instead (`slice tune 0 14.074`, `xmit 1`), so upstream has no ZZ vocabulary to compare against.
+
+  civ-addr (3)
+    [parked] 3087 Xiegu X6100 re_civ_addr: unverifiable
+           WebHam none (falls back)  |  Hamlib —
+           Hamlib declares no CI-V address for this rig, so WebHam cannot import one — the operator has to enter it in Settings before CAT will reach the radio
+    [parked] 3088 Xiegu G90 re_civ_addr: unverifiable
+           WebHam none (falls back)  |  Hamlib —
+           Hamlib declares no CI-V address for this rig, so WebHam cannot import one — the operator has to enter it in Settings before CAT will reach the radio
+    [parked] wh:icom-ic-910h Icom IC-910H re_civ_addr: unverifiable
+           WebHam none (falls back)  |  Hamlib —
+           Hamlib declares no CI-V address for this rig, so WebHam cannot import one — the operator has to enter it in Settings before CAT will reach the radio
+
+  serial (24)
+    [parked] 1027 Yaesu FT-450 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1028 Yaesu FT-950 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1029 Yaesu FT-2000 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1032 Yaesu FTDX-5000 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1034 Yaesu FTDX-1200 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1035 Yaesu FT-991 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1036 Yaesu FT-891 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1037 Yaesu FTDX-3000 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1040 Yaesu FTDX-101D stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1042 Yaesu FTDX-10 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 1044 Yaesu FTDX-101MP stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    [parked] 2006 Kenwood TS-711 stopBits: diverges
+           WebHam 1  |  Hamlib 2
+    … and 12 more
+
+── ledger (tools/hamlib-decisions.json) ─────────────────────────────
+     0  undecided
+     0  stale entries
+     0  verdict changed since adjudication
+     0  malformed entries
