@@ -10,7 +10,6 @@
 [![GitHub license](https://img.shields.io/github/license/rfvx/web-ham)](https://github.com/rfvx/web-ham/blob/main/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/rfvx/web-ham?style=flat-square)](https://github.com/rfvx/web-ham/stargazers)
 [![GitHub release](https://img.shields.io/github/v/release/rfvx/web-ham?include_prereleases)](https://github.com/rfvx/web-ham/releases)
-[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20the%20project-FF5E5B?style=flat-square&logo=kofi&logoColor=white)](https://ko-fi.com/rfvx0)
 
 </div>
 
@@ -58,9 +57,6 @@ Web Ham is offered as-is, with no warranty of any kind.
 ## Contributions are welcome 
 [CONTRIBUTING.md](CONTRIBUTING.md) explains how the project is laid out and what
 a good change looks like.
-
-If you have enjoyed Web Ham, you can donate to the developer at this
-[Ko-fi page](https://ko-fi.com/rfvx).
 
 ## Run it
 You can access it at [web-ham.com](https://web-ham.com), or locally:

@@ -1,8 +1,6 @@
 # Contributing to Web Ham
 
-First off, thanks for taking the time to contribute! ❤️
-
-All types of contributions are encouraged and valued. Please read the relevant
+First off, thanks for taking the time to contribute! Please read the relevant
 section below before making your contribution — it makes things easier for
 everyone involved.
 

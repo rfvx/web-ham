@@ -210,18 +210,6 @@ p { margin-top: 0; }
 
 .wh-notice-text { margin: 0; }
 
-.wh-notice-sub {
-  font-size: 11.5px;
-  color: var(--pencil);
-}
-
-.wh-notice-donate-inline {
-  color: var(--accent-mid);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
 .wh-notice-links {
   display: flex;
   align-items: center;
@@ -240,6 +228,8 @@ p { margin-top: 0; }
 
 .wh-notice-gh-link { display: inline-flex; align-items: center; gap: 5px; }
 .wh-notice-gh-icon { width: 13px; height: 13px; flex-shrink: 0; }
+.wh-notice-support-link { display: inline-flex; align-items: center; gap: 5px; }
+.wh-notice-support-icon { width: 15px; height: 15px; flex-shrink: 0; color: #c1272d; }
 
 /* Reopens the first-run guide. A "?" disc rather than a word: it is the one
    control in the strip that acts on the app instead of leaving it, and at this
